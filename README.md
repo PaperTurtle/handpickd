@@ -57,7 +57,7 @@ Handpickd offers an alternative to mass-produced goods by highlighting unique, h
 
 To run Handpickd locally, follow these instructions:
 
-```bash
+```shell
 # Clone the repository
 git clone https://github.com/PaperTurtle/handpickd.git
 
