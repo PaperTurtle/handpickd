@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Tienne:700|Poppins:400");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--text: #070a05;
+		--background: #fffaeb;
+		--primary: #355427;
+		--secondary: #dcecd5;
+		--accent: #538a38;
+	}
+	.dark {
+		--text: #f7faf5;
+		--background: #140f00;
+		--primary: #b9d8ab;
+		--secondary: #1a2a13;
+		--accent: #91c775;
+	}
+}
