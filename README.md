@@ -1,7 +1,7 @@
 <h1 align="center">Handpickd - Artisanal Marketplace</h1>
 
 <p align="center">
-    <img src="https://github.com/PaperTurtle/handpickd/assets/68080844/159d8096-96c0-4d44-9154-d60d8ed2cefb" 
+    <img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" 
     width=192 height=192 alt="logo" />
 </p>
 
@@ -57,7 +57,7 @@ Handpickd offers an alternative to mass-produced goods by highlighting unique, h
 
 To run Handpickd locally, follow these instructions:
 
-```bash
+```shell
 # Clone the repository
 git clone https://github.com/PaperTurtle/handpickd.git
 
