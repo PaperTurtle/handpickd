@@ -68,11 +68,12 @@
             <div>
                 <label for="images">Images (up to 3):</label>
                 <input type="file" id="images" name="images[]" multiple
-                    @change="Array.from($event.target.files).forEach(file => {
-                   let reader = new FileReader();
-                   reader.onload = (e) => { images.push(e.target.result); };
-                   reader.readAsDataURL(file);
-               })">
+                    @change="images = []; Array.from($event.target.files).forEach(file => {
+                        let reader = new FileReader();
+                        reader.onload = (e) => { images.push(e.target.result); };
+                        reader.onerror = (e) => { console.error('FileReader error: ', e); };
+                        reader.readAsDataURL(file);
+                    })">
                 @error('images')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -80,14 +81,13 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div id="image-preview-container" x-show="images.length > 0">
-                    <template x-for="(image, index) in images" :key="index">
-                        <img x-bind:src="image" style="height: 100px; margin-right: 10px;"
-                            alt="Image preview">
+                    <template x-for="image in images" :key="image">
+                        <img :src="image" style="height: 100px; margin-right: 10px;" alt="Image preview">
                     </template>
                 </div>
             </div>
 
-            <button class="bg-secondary p-2 m-2 rounded-full text-xl" type="submit">Submit</button>
+            <button class="bg-secondary px-4 py-2 m-2 rounded-full text-md" type="submit">Submit</button>
         </form>
     </div>
 </x-app-layout>
