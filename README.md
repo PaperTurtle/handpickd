@@ -5,11 +5,11 @@
     width=192 height=192 alt="logo" />
 </p>
 
-> Welcome to **Handpickd**, a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
+> Welcome to **Vintique**, a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
 
 ## 🌟 Project Overview
 
-Handpickd offers an alternative to mass-produced goods by highlighting unique, handcrafted items. It's a digital homage to the tradition of artisanry, designed to connect makers with those who appreciate the value of bespoke creations.
+Vintique offers an alternative to mass-produced goods by highlighting unique, handcrafted items. It's a digital homage to the tradition of artisanry, designed to connect makers with those who appreciate the value of bespoke creations.
 
 ## 📜 Page Breakdown
 
@@ -55,14 +55,14 @@ Handpickd offers an alternative to mass-produced goods by highlighting unique, h
 
 ## 🚀 Getting Started
 
-To run Handpickd locally, follow these instructions:
+To run Vintique locally, follow these instructions:
 
 ```shell
 # Clone the repository
-git clone https://github.com/PaperTurtle/handpickd.git
+git clone https://github.com/PaperTurtle/vintique.git
 
 # Navigate to the repository
-cd handpickd
+cd vintique
 
 # Install dependencies
 composer install
