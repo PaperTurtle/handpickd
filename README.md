@@ -1,4 +1,4 @@
-<h1 align="center">Handpickd - Artisanal Marketplace</h1>
+<h1 align="center">Vintique - Artisanal Marketplace</h1>
 
 <p align="center">
     <img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" 
