@@ -65,6 +65,7 @@ git clone https://github.com/PaperTurtle/handpickd.git
 cd handpickd
 
 # Install dependencies
+npm install
 composer install
 
 # Set up the environment
