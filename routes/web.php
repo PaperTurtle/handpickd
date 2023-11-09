@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,10 +30,20 @@ Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.in
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
 // Authenticated User Dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
+Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
+Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cart', [CheckoutController::class, 'viewCart'])->name('cart.view');
+Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+
+Route::delete('/cart/{cartItem}', [CheckoutController::class, 'remove'])->name('cart.remove');
+Route::get('/checkout/success', function () {
+    return view('checkout.success');
+})->name('checkout.success');
+Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
+    ->middleware('auth')
+    ->name('dashboard.markAsSent');
 // Auth Routes (requires authentication)
 Route::middleware('auth')->group(function () {
     // Profile Routes
