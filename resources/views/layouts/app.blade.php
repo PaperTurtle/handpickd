@@ -10,7 +10,7 @@
 </head>
 
 <body class="font-body bg-background">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
