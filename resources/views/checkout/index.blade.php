@@ -19,7 +19,7 @@
             </div>
         </template>
 
-        <template x-if="cartItems.length === 0">
+        <template x-cloak x-show="false" x-if="cartItems.length === 0">
             <p>Your shopping cart is empty.</p>
         </template>
 
