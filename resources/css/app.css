@@ -20,3 +20,7 @@
 		--accent: #91c775;
 	}
 }
+
+[x-cloak] {
+	display: none !important;
+}
