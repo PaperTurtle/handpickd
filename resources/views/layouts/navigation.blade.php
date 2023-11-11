@@ -31,7 +31,12 @@
                     </x-nav-link>
                     @if (auth()->user()->isArtisan)
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                            <span>{{ __('Dashboard') }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 ml-1 hidden lg:block">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                            </svg>
                         </x-nav-link>
                     @endif
                 @endauth
@@ -92,18 +97,18 @@
                 </div>
             @endauth
             <!-- Hamburger -->
-            <div class="flex items-center md:hidden">
-                <button @click="open = ! open"
-                    class="p-2 rounded-md text-gray-600 hover:text-gray-700 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+            <div class="flex items-center md:hidden" x-data="{ focused: false }">
+                <button @click="open = ! open" @focus="focused = true" @blur="focused = false"
+                    class="p-2 rounded-md text-gray-600 hover:text-gray-700 focus:outline-none focus:bg-background transition duration-150 ease-in-out">
                     <!-- Hamburger Icon when Menu is closed -->
-                    <svg x-show="!open" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="white">
+                    <svg x-show="!open" :stroke="focused ? 'black' : 'white'" class="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                     <!-- Close Icon when Menu is open -->
-                    <svg x-show="open" x-cloak class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="white">
+                    <svg x-show="open" x-cloak :stroke="focused ? 'black' : 'white'" class="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -116,7 +121,12 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden absolute bg-primary w-full">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <span>{{ __('Dashboard') }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                </svg>
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
