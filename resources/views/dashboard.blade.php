@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="py-12" x-data="dashboard()">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-secondary overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     @foreach ($transactions as $transaction)
-                        <div class="mb-4 p-4 border-b border-gray-200">
+                        <div class="mb-4 p-4 border-b-2 border-background">
                             <p>Product Name: {{ $transaction->product->name }}</p>
                             <p>Quantity Sold: {{ $transaction->quantity }}</p>
                             <p>Total Price: ${{ number_format($transaction->total_price, 2) }}</p>
