@@ -29,7 +29,6 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
-// Authenticated User Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
@@ -44,14 +43,10 @@ Route::get('/checkout/success', function () {
 Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
     ->middleware('auth')
     ->name('dashboard.markAsSent');
-// Auth Routes (requires authentication)
 Route::middleware('auth')->group(function () {
-    // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // Product Management Routes
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
@@ -59,5 +54,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/products/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
 });
 
-// Authentication Routes (handled by Laravel Breeze, Jetstream, etc.)
 require __DIR__ . '/auth.php';
