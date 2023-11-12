@@ -36,7 +36,7 @@ class ProductController extends Controller
             'price' => 'required|numeric|between:0,999999.99',
             'quantity' => 'required|integer|min:0',
             'images' => 'sometimes|array|max:3',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
 
         $product = Product::create($validatedData);
@@ -84,7 +84,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric|between:0,999999.99',
             'images' => 'sometimes|array|max:3',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
 
         // Update product details
