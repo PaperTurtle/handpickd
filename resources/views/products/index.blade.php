@@ -11,7 +11,7 @@
                             @if ($product->images->first())
                                 <img src="{{ Storage::url($product->images->first()->image_path) }}"
                                     alt="{{ $product->images->first()->alt_text }}"
-                                    class="h-full w-full object-cover object-center group-hover:opacity-75">
+                                    class="h-48 w-full object-cover object-center group-hover:opacity-75">
                             @endif
                         </div>
                         <h3 class="mt-4 text-sm text-gray-700">{{ $product->name }}</h3>
