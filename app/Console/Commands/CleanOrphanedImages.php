@@ -6,8 +6,15 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Console\Command;
 
 /**
- * To use = php artisan app:coi (clean-orphaned-images)
- * Gets rid of images that are not stored in the database from the storage
+ * A Laravel console command to clean orphaned images.
+ *
+ * This command interfaces with the ProductController to remove images
+ * from the storage that are no longer linked to any records in the database.
+ * It helps in maintaining the storage and ensuring that only relevant
+ * images are retained.
+ *
+ * Usage: Run the command using the Laravel Artisan command line tool.
+ * Command: `php artisan app:coi` (clean-orphaned-images).
  */
 class CleanOrphanedImages extends Command
 {
