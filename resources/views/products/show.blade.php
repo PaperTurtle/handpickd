@@ -8,7 +8,7 @@
         <div class="grid grid-cols-2 gap-4 my-4">
             @foreach ($product->images as $image)
                 <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
-                    class="h-96 rounded-md shadow-lg">
+                    class="h-96 rounded-md shadow-lg" loading="lazy">
             @endforeach
         </div>
 
