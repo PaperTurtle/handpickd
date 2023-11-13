@@ -13,6 +13,7 @@ class ProductImage extends Model
         'product_id',
         'image_path',
         'alt_text',
+        "resized_image_path"
     ];
 
     protected $casts = [
