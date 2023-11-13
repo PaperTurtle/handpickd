@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
-
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -41,19 +41,33 @@ class ProductController extends Controller
 
         $product = Product::create($validatedData);
         $uploadedImages = [];
+
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
-                $imagePath = $imageFile->store('product_images', 'public');
+                $timestamp = time();
+                $originalFilename = 'product_' . $timestamp . '_original.webp';
+                $resizedFilename = 'product_' . $timestamp . '_resized.webp';
+                $originalImagePath = 'product_images/' . $originalFilename;
+                $resizedImagePath = 'product_images/' . $resizedFilename;
 
-                $productImage = ProductImage::create([
+                // Save original image
+                $imageFile->storeAs('product_images', $originalFilename, 'public');
+
+                $nodeCommand = "node C:\Users\Seweryn\OneDrive\Desktop\handpickd\resources\js\imageProcessor.js " . escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " . escapeshellarg(storage_path('app/public/' . $resizedImagePath));
+                exec($nodeCommand);
+
+                ProductImage::create([
                     'product_id' => $product->id,
-                    'image_path' => $imagePath,
+                    'image_path' => $originalImagePath,
+                    'resized_image_path' => $resizedImagePath,
                     'alt_text' => $validatedData['description'],
                 ]);
 
                 $uploadedImages[] = [
-                    'path' => $imagePath,
-                    'url'  => asset('storage/' . $imagePath),
+                    'original_path' => $originalImagePath,
+                    'resized_path' => $resizedImagePath,
+                    'original_url' => asset('storage/' . $originalImagePath),
+                    'resized_url' => asset('storage/' . $resizedImagePath),
                 ];
             }
         }
@@ -99,13 +113,26 @@ class ProductController extends Controller
                 $images = array_slice($request->file('images'), 0, $allowedNewImages);
 
                 foreach ($images as $imageFile) {
-                    $imagePath = $imageFile->store('product_images', 'public');
+                    $timestamp = time();
+                    $originalFilename = 'product_' . $timestamp . '_original.webp';
+                    $resizedFilename = 'product_' . $timestamp . '_resized.webp';
+                    $originalImagePath = 'product_images/' . $originalFilename;
+                    $resizedImagePath = 'product_images/' . $resizedFilename;
 
-                    ProductImage::create([
-                        'product_id' => $product->id,
-                        'image_path' => $imagePath,
-                        'alt_text' => $product->name,
-                    ]);
+                    $imageFile->storeAs('product_images', $originalFilename, 'public');
+
+                    $nodeScriptPath = base_path('resources/js/imageProcessor.js');
+
+                    $nodeCommand = "node " . escapeshellarg($nodeScriptPath) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $resizedImagePath));
+
+                    exec($nodeCommand);
+
+                    ProductImage::updateOrCreate(
+                        ['product_id' => $product->id, 'image_path' => $originalImagePath],
+                        ['resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description']]
+                    );
                 }
             }
         }
@@ -126,6 +153,23 @@ class ProductController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Image deleted successfully.'
+        ]);
+    }
+
+    public function cleanOrphanedImages()
+    {
+        $allImagePaths = Storage::disk('public')->files('product_images');
+        $dbImagePaths = ProductImage::pluck('image_path')->toArray();
+
+        $orphanedImages = array_diff($allImagePaths, $dbImagePaths);
+
+        foreach ($orphanedImages as $orphanedImage) {
+            Storage::disk('public')->delete($orphanedImage);
+        }
+
+        return response()->json([
+            'message' => 'Orphaned images cleaned successfully.',
+            'orphaned_images_count' => count($orphanedImages),
         ]);
     }
 }
