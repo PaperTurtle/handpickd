@@ -158,11 +158,20 @@ class ProductController extends Controller
 
     public function cleanOrphanedImages()
     {
+        // Get all image paths from storage
         $allImagePaths = Storage::disk('public')->files('product_images');
+
+        // Get all image paths from the database (both original and resized)
         $dbImagePaths = ProductImage::pluck('image_path')->toArray();
+        $dbResizedImagePaths = ProductImage::pluck('resized_image_path')->toArray();
 
-        $orphanedImages = array_diff($allImagePaths, $dbImagePaths);
+        // Merge the two arrays and remove duplicates
+        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths));
 
+        // Calculate the orphaned images by diffing storage and database paths
+        $orphanedImages = array_diff($allImagePaths, $allDbImagePaths);
+
+        // Delete orphaned images from storage
         foreach ($orphanedImages as $orphanedImage) {
             Storage::disk('public')->delete($orphanedImage);
         }
