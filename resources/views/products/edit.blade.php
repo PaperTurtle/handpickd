@@ -120,7 +120,7 @@
                                 class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                 <span>Upload files</span>
                                 <input id="images" name="images[]" type="file" multiple class="sr-only"
-                                    x-ref="images"
+                                    accept="image/png, image/jpeg, image/jpg, image/gif, image/svg+xml" x-ref="images"
                                     @change="newImages = [];
                                     let selectedFiles = Array.from($refs.images.files);
                                     if (selectedFiles.length + imageCount > maxImageCount) {
