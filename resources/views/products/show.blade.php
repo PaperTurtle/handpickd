@@ -44,7 +44,7 @@
         </div>
         @if (auth()->check() && !$product->hasUserReviewed(auth()->id()) && auth()->id() !== $product->artisan_id)
             <template x-if="!userHasReviewed">
-                <div @submit.prevent="submitReview" class="add-review mt-6 w-1/3">
+                <div x-data="reviewForm()" @submit.prevent="submitReview" class="add-review mt-6 w-1/3">
                     <h2 class="text-2xl font-semibold mb-3">Write a Review</h2>
                     <form>
                         @csrf
