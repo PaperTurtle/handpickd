@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container">
+    <div class="container" x-data="reviewForm()">
         <h1 class="text-3xl font-bold my-4">{{ $product->name }}</h1>
         <p class="text-lg">{{ $product->description }}</p>
         <p class="text-xl font-semibold my-2">Price: ${{ number_format($product->price, 2) }}</p>
@@ -44,7 +44,7 @@
         </div>
         @if (auth()->check() && !$product->hasUserReviewed(auth()->id()) && auth()->id() !== $product->artisan_id)
             <template x-if="!userHasReviewed">
-                <div x-data="reviewForm()" @submit.prevent="submitReview" class="add-review mt-6 w-1/3">
+                <div @submit.prevent="submitReview" class="add-review mt-6 w-1/3">
                     <h2 class="text-2xl font-semibold mb-3">Write a Review</h2>
                     <form>
                         @csrf
