@@ -6,26 +6,52 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
+/**
+ * The ProductController controller handles all product-related operations.
+ * It includes functionalities like listing, showing, creating, updating, and deleting products and their images.
+ */
 class ProductController extends Controller
 {
+
+    /**
+     * Display a listing of products.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $products = Product::all();
         return view("products.index", compact("products"));
     }
 
+    /**
+     * Display a specific product.
+     *
+     * @param Product $product Product instance to display.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Product $product)
     {
         return view("products.show", compact("product"));
     }
 
+    /**
+     * Show the form for creating a new product.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('products.create');
     }
 
+    /**
+     * Store a newly created product in the database.
+     *
+     * @param Request $request The request object containing product data.
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -78,6 +104,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Show the form for editing an existing product.
+     *
+     * @param Product $product Product instance to edit.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(Product $product)
     {
         if (auth()->id() !== $product->artisan_id) {
@@ -87,6 +119,13 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
+    /**
+     * Update the specified product in the database.
+     *
+     * @param Request $request The request object containing updated product data.
+     * @param Product $product Product instance to update.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, Product $product)
     {
         if (auth()->id() !== $product->artisan_id) {
@@ -140,6 +179,13 @@ class ProductController extends Controller
         return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully.');
     }
 
+    /**
+     * Remove the specified image from the product.
+     *
+     * @param Product $product The product owning the image.
+     * @param ProductImage $productImage The product image to be deleted.
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroyImage(Product $product, ProductImage $productImage)
     {
         if ($productImage->product_id !== $product->id) {
@@ -156,6 +202,11 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Clean up orphaned images that are not linked to any products in the storage folder
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function cleanOrphanedImages()
     {
         // Get all image paths from storage
