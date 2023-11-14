@@ -8,8 +8,7 @@ use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * The ProductController controller handles all product-related operations.
- * It includes functionalities like listing, showing, creating, updating, and deleting products and their images.
+ * The ProductController controller handles listing, showing, creating, updating, and deleting products and their images.
  */
 class ProductController extends Controller
 {
