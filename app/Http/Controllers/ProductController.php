@@ -18,7 +18,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $products = Product::all();
         return view("products.index", compact("products"));
@@ -30,7 +30,7 @@ class ProductController extends Controller
      * @param Product $product Product instance to display.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Product $product)
+    public function show(Product $product): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         return view("products.show", compact("product"));
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         return view('products.create');
     }
@@ -51,7 +51,7 @@ class ProductController extends Controller
      * @param Request $request The request object containing product data.
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         $validatedData = $request->validate([
             'artisan_id' => 'required|exists:users,id',
@@ -109,7 +109,7 @@ class ProductController extends Controller
      * @param Product $product Product instance to edit.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Product $product)
+    public function edit(Product $product): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         if (auth()->id() !== $product->artisan_id) {
             abort(403);
@@ -125,7 +125,7 @@ class ProductController extends Controller
      * @param Product $product Product instance to update.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product): \Illuminate\Http\RedirectResponse
     {
         if (auth()->id() !== $product->artisan_id) {
             abort(403);

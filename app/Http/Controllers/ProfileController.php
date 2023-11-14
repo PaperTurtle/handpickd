@@ -9,10 +9,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+/**
+ * The ProfileController handles editing, updating, and deleting user profile information.
+ */
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
+     * 
+     * @param Request $request The current request instance.
+     * @return View The view for editing the user's profile.
      */
     public function edit(Request $request): View
     {
@@ -23,6 +29,9 @@ class ProfileController extends Controller
 
     /**
      * Update the user's profile information.
+     * 
+     * @param ProfileUpdateRequest $request The request instance containing validated profile data.
+     * @return RedirectResponse A redirect response to the profile edit page with a status message.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -39,6 +48,9 @@ class ProfileController extends Controller
 
     /**
      * Delete the user's account.
+     * 
+     * @param Request $request The current request instance.
+     * @return RedirectResponse A redirect response to the home page after account deletion. 
      */
     public function destroy(Request $request): RedirectResponse
     {
