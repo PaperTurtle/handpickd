@@ -43,4 +43,9 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function hasUserReviewed($userId)
+    {
+        return $this->reviews()->where('user_id', $userId)->exists();
+    }
 }
