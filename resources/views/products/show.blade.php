@@ -36,8 +36,8 @@
                     <p class="text-sm text-gray-600">Rating: <span class="font-semibold text-blue-600"
                             x-text="review.rating + ' / 5'"></span></p>
                     <p class="text-gray-800 my-2" x-text="review.review"></p>
-                    <p class="text-sm text-gray-500">Reviewed by: <span x-text="review.user.name"></span> on <span
-                            x-text="review.created_at"></span></p>
+                    <p class="text-sm text-gray-500">Reviewed by <span x-text="review.user.name"></span> on <span
+                            x-text="formatDate(review.created_at)"></span></p>
                 </div>
             </template>
             <p x-show="reviews.length === 0" class="text-gray-600">No reviews yet.</p>
@@ -81,6 +81,14 @@
                 review: '',
                 reviews: @json($product->reviews->load('user')),
                 userHasReviewed: {{ $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
+                formatDate(dateString) {
+                    const options = {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    };
+                    return new Date(dateString).toLocaleDateString(undefined, options);
+                },
                 submitReview() {
                     const payload = {
                         product_id: this.productId,
@@ -108,6 +116,7 @@
                             console.error('Error:', error);
                         });
                 }
+
             };
         }
     </script>
