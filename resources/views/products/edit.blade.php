@@ -1,41 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto px-4 py-6" x-data="{
-        newImages: [],
-        imageCount: {{ count($product->images) }},
-        maxImageCount: 3,
-        removeImage(imageId) {
-            if (!confirm('Are you sure you want to delete this image?')) return;
-            fetch(`/products/{{ $product->id }}/images/` + imageId, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                })
-                .then(response => {
-                    if (!response.ok) throw response;
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        this.$refs['image' + imageId].remove();
-                        this.imageCount--;
-                    } else {
-                        alert(data.message || 'Server error occurred.');
-                    }
-                })
-                .catch(error => {
-                    if (error instanceof Response) {
-                        error.json().then(body => {
-                            console.error('Error:', body);
-                            alert(body.message || 'Could not delete the image.');
-                        });
-                    } else {
-                        console.error('Error:', error);
-                        alert('Could not delete the image.');
-                    }
-                });
-        }
-    }">
+    <div class="container mx-auto px-4 py-6" x-data="productEdit()" x-init="imageCount = {{ count($product->images) }}">
         <h1 class="text-xl font-semibold leading-7 text-gray-900">Edit {{ $product->name }}</h1>
         <!-- Validation Errors -->
         @if ($errors->any())
@@ -96,8 +60,9 @@
                         <div x-ref="image{{ $image->id }}" class="relative">
                             <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
                                 class="rounded-md h-24 object-cover">
-                            <button type="button" @click="removeImage({{ $image->id }})"
-                                class="absolute top-0 right-0 mt-1 mr-1 rounded-md bg-red-500 px-2 py-1 text-sm text-white">Delete</button>
+                            <button type="button"
+                                class="absolute top-0 right-0 mt-1 mr-1 rounded-md bg-red-500 px-2 py-1 text-sm text-white"
+                                @click="removeImage({{ $image->id }}, '{{ csrf_token() }}', {{ $product->id }})">Delete</button>
                         </div>
                     @endforeach
                 </div>
@@ -159,4 +124,5 @@
                 Product</button>
         </form>
     </div>
+    <script src="{{ asset('js/productEdit.js') }}"></script>
 </x-app-layout>
