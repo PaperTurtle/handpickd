@@ -36,11 +36,21 @@ class CheckoutController extends Controller
         if (auth()->guest()) {
             return redirect()->route('login');
         }
-        ShoppingCart::create([
-            'user_id' => auth()->id(),
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity,
-        ]);
+
+        $cartItem = ShoppingCart::where('user_id', auth()->id())
+            ->where('product_id', $request->product_id)
+            ->first();
+
+        if ($cartItem) {
+            $cartItem->quantity += $request->quantity;
+            $cartItem->save();
+        } else {
+            ShoppingCart::create([
+                'user_id' => auth()->id(),
+                'product_id' => $request->product_id,
+                'quantity' => $request->quantity,
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Product added to cart!');
     }
