@@ -19,8 +19,7 @@
         </div>
 
         @if (auth()->id() === $product->artisan_id)
-            <a class="bg-secondary rounded-full py-1 px-4" href="{{ route('products.edit', $product->id) }}"
-                class="btn btn-primary">Edit</a>
+            <a class="bg-secondary rounded-full py-1 px-4 btn btn-primary" href="{{ route('products.edit', $product->id) }}">Edit</a>
         @elseif ($product->quantity > 0)
             <form action="{{ route('cart.add') }}" method="POST">
                 @csrf
