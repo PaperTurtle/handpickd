@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * ## ProductImage Model
- * 
- * > Represents an image associated with a product. It includes the image path, alternative text, and a reference to the product.
+ *
+ * Represents an image associated with a product. It includes the image path, alternative text, and a reference to the product.
  *
  * ### Properties:
  * - product_id (bigint, unsigned): Foreign key referencing the product this image is associated with.
@@ -43,7 +44,7 @@ class ProductImage extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 /**
  * The DashboardController is responsible for handling user-specific operations in a dashboard setting.
@@ -16,9 +19,9 @@ class DashboardController extends Controller
      * Retrieves transactions associated with the products of the authenticated user, typically an artisan,
      * and passes them to the dashboard view.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view of the dashboard with transaction details.
+     * @return Factory|View Returns a view of the dashboard with transaction details.
      */
-    public function index()
+    public function index(): Factory|View
     {
         $transactions = Transaction::with('product')
             ->whereHas('product', function ($query) {
@@ -35,9 +38,9 @@ class DashboardController extends Controller
      * Responds with JSON indicating the success or unauthorized access of the operation.
      *
      * @param Transaction $transaction The transaction to be marked as sent.
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with a success message or an unauthorized access message.
+     * @return JsonResponse Returns JSON response with a success message or an unauthorized access message.
      */
-    public function markAsSent(Transaction $transaction)
+    public function markAsSent(Transaction $transaction): JsonResponse
     {
         if ($transaction->product->artisan_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized action'], 403);
@@ -45,6 +48,6 @@ class DashboardController extends Controller
 
         $transaction->update(['status' => 'sent']);
 
-        return response()->json(['message' => 'Product marked as sent'], 200);
+        return response()->json(['message' => 'Product marked as sent']);
     }
 }

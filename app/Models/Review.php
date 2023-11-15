@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * ## Review Model
- * 
- * > Represents a review made by a user for a product. Each review includes a rating and an optional text review.
+ *
+ * Represents a review made by a user for a product. Each review includes a rating and an optional text review.
  *
  * ### Properties:
  * - id (bigint, unsigned): Unique identifier for the review.
@@ -46,12 +47,12 @@ class Review extends Model
         'rating' => 'integer',
     ];
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

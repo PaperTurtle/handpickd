@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * ## Transaction Model
- * 
- * > Represents a transaction in the system, linking a buyer (user) and a product, along with the quantity, total price, and status of the transaction.
+ *
+ * Represents a transaction in the system, linking a buyer (user) and a product, along with the quantity, total price, and status of the transaction.
  *
  * ### Properties:
  * - id (bigint, unsigned): Unique identifier for the transaction.
@@ -62,7 +63,7 @@ class Transaction extends Model
     /**
      * Get the buyer that made the transaction.
      */
-    public function buyer()
+    public function buyer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'buyer_id');
     }
@@ -70,7 +71,7 @@ class Transaction extends Model
     /**
      * Get the product that was transacted.
      */
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }

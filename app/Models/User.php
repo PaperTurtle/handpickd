@@ -4,14 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
  * ## User Model
- * 
- * > Represents a user in the system. It includes basic user information like name, email, and password.
+ *
+ * Represents a user in the system. It includes basic user information like name, email, and password.
  * The model also links to various aspects related to the user such as their profile, products they've created, reviews they've written, and transactions they're involved in.
  *
  * ### Properties:
@@ -77,7 +79,7 @@ class User extends Authenticatable
     /**
      * Get the user profile associated with the user.
      */
-    public function profile()
+    public function profile(): HasOne
     {
         return $this->hasOne(UserProfile::class);
     }
@@ -85,7 +87,7 @@ class User extends Authenticatable
     /**
      * Get the products created by the user (artisan).
      */
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'artisan_id');
     }
@@ -93,7 +95,7 @@ class User extends Authenticatable
     /**
      * Get the reviews written by the user.
      */
-    public function reviews()
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
@@ -101,7 +103,7 @@ class User extends Authenticatable
     /**
      * Get the transactions where the user is the buyer.
      */
-    public function transactions()
+    public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class, 'buyer_id');
     }

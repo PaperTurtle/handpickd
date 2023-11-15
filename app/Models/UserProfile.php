@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * ## UserProfile Model
- * 
+ *
  * Represents the extended profile of a user. It includes additional user information like location, biography, contact information, and profile picture.
  *
  * ### Properties:
@@ -60,7 +61,7 @@ class UserProfile extends Model
     /**
      * Get the user that owns the profile.
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

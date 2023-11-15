@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * ## Category Model
- * 
- * > Represents a product category in the application. Each category has a name and an optional description.
+ *
+ * Represents a product category in the application. Each category has a name and an optional description.
  *
  * ### Properties:
  * - id (int): Unique identifier for the category.
@@ -38,7 +39,7 @@ class Category extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function products()
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }

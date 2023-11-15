@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -17,9 +18,9 @@ class ReviewController extends Controller
      * Returns a JSON response containing the review data including user information.
      *
      * @param Request $request The request instance containing the review data.
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with the created review data.
+     * @return JsonResponse Returns JSON response with the created review data.
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -44,9 +45,9 @@ class ReviewController extends Controller
      *
      * @param Request $request The request instance containing the updated review data.
      * @param Review $review The review instance to be updated.
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with the updated review data.
+     * @return JsonResponse Returns JSON response with the updated review data.
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, Review $review): JsonResponse
     {
         if ($review->user_id !== auth()->id()) {
             abort(403);

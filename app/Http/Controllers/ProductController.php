@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 /**
  * ProductController handles operations related to products and their images,
@@ -18,9 +22,9 @@ class ProductController extends Controller
      * Display a listing of all products.
      * This method retrieves all products from the database and passes them to the products index view.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view with a list of all products.
+     * @return Factory|View Returns a view with a list of all products.
      */
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function index(): Factory|View
     {
         $products = Product::all();
         return view("products.index", compact("products"));
@@ -31,9 +35,9 @@ class ProductController extends Controller
      * This method returns the view for displaying detailed information about a specific product.
      *
      * @param Product $product The product instance to display.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view with the specified product details.
+     * @return Factory|View Returns a view with the specified product details.
      */
-    public function show(Product $product): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function show(Product $product): Factory|View
     {
         return view("products.show", compact("product"));
     }
@@ -42,9 +46,9 @@ class ProductController extends Controller
      * Show the form for creating a new product.
      * This method returns the view for creating a new product.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view for creating a new product.
+     * @return Factory|View Returns a view for creating a new product.
      */
-    public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function create(): Factory|View
     {
         return view('products.create');
     }
@@ -55,9 +59,9 @@ class ProductController extends Controller
      * It returns a JSON response with the result of the operation.
      *
      * @param Request $request The request object containing product data.
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with the status of product creation.
+     * @return JsonResponse Returns JSON response with the status of product creation.
      */
-    public function store(Request $request): \Illuminate\Http\JsonResponse
+    public function store(Request $request): JsonResponse
     {
         $validatedData = $request->validate([
             'artisan_id' => 'required|exists:users,id',
@@ -114,9 +118,9 @@ class ProductController extends Controller
      * This method returns the view for editing an existing product if the authenticated user is authorized.
      *
      * @param Product $product The product instance to edit.
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view for editing the specified product.
+     * @return Factory|View Returns a view for editing the specified product.
      */
-    public function edit(Product $product): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function edit(Product $product): Factory|View
     {
         if (auth()->id() !== $product->artisan_id) {
             abort(403);
@@ -132,9 +136,9 @@ class ProductController extends Controller
      *
      * @param Request $request The request object containing updated product data.
      * @param Product $product The product instance to update.
-     * @return \Illuminate\Http\RedirectResponse Returns a redirect response to the product's detail page.
+     * @return RedirectResponse Returns a redirect response to the product's detail page.
      */
-    public function update(Request $request, Product $product): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, Product $product): RedirectResponse
     {
         if (auth()->id() !== $product->artisan_id) {
             abort(403);
@@ -194,9 +198,9 @@ class ProductController extends Controller
      *
      * @param Product $product The product owning the image.
      * @param ProductImage $productImage The product image to be deleted.
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with the status of image deletion.
+     * @return JsonResponse Returns JSON response with the status of image deletion.
      */
-    public function destroyImage(Product $product, ProductImage $productImage)
+    public function destroyImage(Product $product, ProductImage $productImage): JsonResponse
     {
         if ($productImage->product_id !== $product->id) {
             abort(403, 'Unauthorized action.');
@@ -217,9 +221,9 @@ class ProductController extends Controller
      * This method removes images from storage that are not associated with any product in the database.
      * It returns a JSON response with the result of the cleanup operation.
      *
-     * @return \Illuminate\Http\JsonResponse Returns JSON response with the status of the cleanup operation.
+     * @return JsonResponse Returns JSON response with the status of the cleanup operation.
      */
-    public function cleanOrphanedImages()
+    public function cleanOrphanedImages(): JsonResponse
     {
         // Get all image paths from storage
         $allImagePaths = Storage::disk('public')->files('product_images');

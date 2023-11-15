@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * ## ShoppingCart Model
- * 
- * > Represents an individual item in a user's shopping cart, including the product, the quantity of that product, and the associated user.
+ *
+ * Represents an individual item in a user's shopping cart, including the product, the quantity of that product, and the associated user.
  *
  * ### Properties:
  * - id (bigint, unsigned): Unique identifier for the shopping cart item.
@@ -48,7 +48,7 @@ class ShoppingCart extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function getTotalPriceAttribute()
+    public function getTotalPriceAttribute(): float|int
     {
         return $this->quantity * $this->product->price;
     }

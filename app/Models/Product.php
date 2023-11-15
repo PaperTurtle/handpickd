@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * ## Product Model
- * 
- * > Represents a product in the application. Each product is created by an artisan and belongs to a specific category.
+ *
+ * Represents a product in the application. Each product is created by an artisan and belongs to a specific category.
  * It includes details like name, description, price, and quantity.
  *
  * ### Properties:
@@ -30,7 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * ### Methods:
  * - hasUserReviewed($userId): Checks if a specific user has already reviewed the product.
- * 
+ *
  * ### Fillable Attributes:
  * - artisan_id: The identifier of the user who created the product.
  * - category_id: The identifier of the category to which the product belongs.
@@ -58,27 +60,27 @@ class Product extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function artisan()
+    public function artisan(): BelongsTo
     {
         return $this->belongsTo(User::class, 'artisan_id');
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
 
-    public function reviews()
+    public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
     }
 
-    public function hasUserReviewed($userId)
+    public function hasUserReviewed($userId): bool
     {
         return $this->reviews()->where('user_id', $userId)->exists();
     }
