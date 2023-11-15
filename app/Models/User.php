@@ -8,6 +8,38 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * ## User Model
+ * 
+ * > Represents a user in the system. It includes basic user information like name, email, and password.
+ * The model also links to various aspects related to the user such as their profile, products they've created, reviews they've written, and transactions they're involved in.
+ *
+ * ### Properties:
+ * - id (bigint, unsigned): Unique identifier for the user.
+ * - name (string): Name of the user.
+ * - email (string): Email address of the user.
+ * - email_verified_at (timestamp, nullable): Timestamp when the user's email was verified. Can be null.
+ * - password (string): Password of the user (hashed).
+ * - remember_token (string, nullable): Token for the user's session.
+ * - created_at (timestamp, nullable): Timestamp when the user account was created. Can be null.
+ * - updated_at (timestamp, nullable): Timestamp when the user account was last updated. Can be null.
+ * - isArtisan (tinyint, boolean): Flag indicating whether the user is an artisan.
+ *
+ * ### Relationships:
+ * - profile(): HasOne relationship with UserProfile. Represents the user's profile.
+ * - products(): HasMany relationship with Product. Represents products created by the user (if the user is an artisan).
+ * - reviews(): HasMany relationship with Review. Represents reviews written by the user.
+ * - transactions(): HasMany relationship with Transaction. Represents transactions where the user is the buyer.
+ *
+ * ### Fillable Attributes:
+ * - name: Name of the user.
+ * - email: Email address of the user.
+ * - password: Password of the user.
+ *
+ * ### Hidden Attributes:
+ * - password: User's password (hashed).
+ * - remember_token: Token used for remember me functionality.
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
