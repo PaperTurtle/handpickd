@@ -30,7 +30,7 @@ class CleanOrphanedImages extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Removes images from the storage that are not in the database';
 
     /**
      * Execute the console command.
