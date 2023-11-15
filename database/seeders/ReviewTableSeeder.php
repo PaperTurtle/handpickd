@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Review;
-use Illuminate\Support\Str;
 
 class ReviewTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $reviews = [
             ['product_id' => 9, 'user_id' => 12, 'rating' => 5, 'review' => 'The quality exceeded my expectations! Absolutely love it.'],

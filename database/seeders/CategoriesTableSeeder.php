@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $categories = [
             ['name' => 'Handmade Crafts', 'description' => 'Beautifully crafted handmade items.'],
