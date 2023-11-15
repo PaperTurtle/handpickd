@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
     Route::delete('/products/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
+    Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
 });
 
 require __DIR__ . '/auth.php';
