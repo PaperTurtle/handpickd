@@ -3,8 +3,14 @@
         <h1 class="text-3xl font-bold my-4">{{ $product->name }}</h1>
         <p class="text-lg">{{ $product->description }}</p>
         <p class="text-xl font-semibold my-2">Price: ${{ number_format($product->price, 2) }}</p>
-
-        <!-- Images Section -->
+        <p class="text-lg">
+            Created by:
+            @if (auth()->check() && auth()->id() === $product->artisan_id)
+                <strong>You</strong>
+            @else
+                {{ $product->artisan->name }}
+            @endif
+        </p>
         <div class="grid grid-cols-2 gap-4 my-4">
             @foreach ($product->images as $image)
                 <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
