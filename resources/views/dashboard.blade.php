@@ -28,7 +28,7 @@
                 status: @json($transactions->pluck('status', 'id')),
                 markAsSent(transactionId) {
                     fetch(`/dashboard/transactions/${transactionId}/mark-as-sent`, {
-                            method: 'POST', // Laravel requires POST method with _method parameter to simulate PATCH
+                            method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
