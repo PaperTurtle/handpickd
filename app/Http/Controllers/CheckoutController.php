@@ -68,6 +68,18 @@ class CheckoutController extends Controller
         return redirect()->back()->with('success', 'Product removed from cart!');
     }
 
+    public function updateCart($itemId, Request $request)
+    {
+        $cartItem = ShoppingCart::find($itemId);
+        if ($cartItem && $cartItem->user_id == auth()->id()) {
+            $cartItem->quantity = $request->quantity;
+            $cartItem->save();
+            return response()->json(['success' => 'Cart updated successfully']);
+        }
+
+        return response()->json(['error' => 'Cart item not found'], 404);
+    }
+
     /**
      * Display the shopping cart contents for the authenticated user.
      *
