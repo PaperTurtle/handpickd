@@ -9,14 +9,16 @@ use App\Models\Transaction;
 use Exception;
 
 /**
- * CheckoutController handles operations related to the shopping cart and checkout process.
+ * CheckoutController handles operations related to managing the shopping cart and processing the checkout in an e-commerce context.
+ * This includes displaying the checkout page, adding/removing items from the cart, updating cart items, and processing the final checkout transaction.
  */
 class CheckoutController extends Controller
 {
     /**
      * Display the checkout page with items in the authenticated user's shopping cart.
+     * Retrieves all cart items associated with the current authenticated user and passes them to the checkout view.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View Returns a view of the checkout page with cart items.
      */
     public function index()
     {
@@ -26,10 +28,12 @@ class CheckoutController extends Controller
     }
 
     /**
-     * Add a product to the authenticated user's shopping cart. If the user is not authenticated, redirect to login.
+     * Add a product to the authenticated user's shopping cart.
+     * If the user is not authenticated, they are redirected to the login page.
+     * If the product already exists in the cart, its quantity is updated; otherwise, a new cart item is created.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  \Illuminate\Http\Request  $request The request object containing product details.
+     * @return \Illuminate\Http\RedirectResponse Redirects back with a success message on adding the product.
      */
     public function addToCart(Request $request)
     {
@@ -57,9 +61,10 @@ class CheckoutController extends Controller
 
     /**
      * Remove an item from the shopping cart by its item ID.
+     * Only affects the item specified by the provided cart item ID.
      *
-     * @param  int  $cartItemId
-     * @return \Illuminate\Http\RedirectResponse
+     * @param  int  $cartItemId The unique identifier of the cart item to be removed.
+     * @return \Illuminate\Http\RedirectResponse Redirects back with a success message on removing the product.
      */
     public function removeFromCart($cartItemId)
     {
@@ -68,6 +73,15 @@ class CheckoutController extends Controller
         return redirect()->back()->with('success', 'Product removed from cart!');
     }
 
+    /**
+     * Update the quantity of an item in the shopping cart.
+     * If the cart item exists and belongs to the authenticated user, its quantity is updated.
+     * Responds with JSON indicating the success or failure of the operation.
+     *
+     * @param  int  $itemId The ID of the cart item to update.
+     * @param  \Illuminate\Http\Request  $request The request object containing the new quantity.
+     * @return \Illuminate\Http\JsonResponse Returns JSON response with the result of the update operation.
+     */
     public function updateCart($itemId, Request $request)
     {
         $cartItem = ShoppingCart::find($itemId);
@@ -82,8 +96,9 @@ class CheckoutController extends Controller
 
     /**
      * Display the shopping cart contents for the authenticated user.
+     * Retrieves and displays all cart items associated with the current authenticated user.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\View\View Returns a view of the shopping cart with the user's cart items.
      */
     public function viewCart()
     {
@@ -94,13 +109,12 @@ class CheckoutController extends Controller
 
     /**
      * Process the checkout by creating transactions for each item in the cart and updating product quantities.
-     * On success, the user's cart is cleared and the user is redirected to a success route.
+     * On success, the user's cart is cleared and redirected to a success route.
      * On failure, the transaction is rolled back and the user is redirected back with an error message.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse Redirects to a success route on successful checkout, or back with an error on failure.
      */
-    public function processCheckout(Request $request)
+    public function processCheckout()
     {
         DB::beginTransaction();
 
@@ -130,10 +144,11 @@ class CheckoutController extends Controller
     }
 
     /**
-     * Remove an item from the shopping cart via an AJAX request. Responds with JSON.
+     * Remove an item from the shopping cart via an AJAX request.
+     * Responds with JSON indicating success or failure based on whether the cart item was found and deleted.
      *
-     * @param  int  $cartItemId
-     * @return \Illuminate\Http\JsonResponse
+     * @param  int  $cartItemId The unique identifier of the cart item to be removed via AJAX.
+     * @return \Illuminate\Http\JsonResponse Returns a JSON response indicating the result of the removal operation.
      */
     public function remove($cartItemId)
     {

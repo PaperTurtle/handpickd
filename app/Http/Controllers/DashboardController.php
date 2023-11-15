@@ -6,14 +6,17 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * The DashboardController handles listing user-specific transactions and marking transactions as sent.
+ * The DashboardController is responsible for handling user-specific operations in a dashboard setting.
+ * This includes displaying a list of transactions related to the authenticated user and marking transactions as sent.
  */
 class DashboardController extends Controller
 {
     /**
      * Display a listing of transactions related to the authenticated user.
+     * Retrieves transactions associated with the products of the authenticated user, typically an artisan,
+     * and passes them to the dashboard view.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Returns a view of the dashboard with transaction details.
      */
     public function index()
     {
@@ -28,10 +31,11 @@ class DashboardController extends Controller
 
     /**
      * Mark a transaction as sent.
-     * This function updates the status of a transaction to 'sent' if the authenticated user is authorized to do so.
+     * Updates the status of a transaction to 'sent' if the authenticated user (an artisan) is authorized to do so.
+     * Responds with JSON indicating the success or unauthorized access of the operation.
      *
      * @param Transaction $transaction The transaction to be marked as sent.
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse Returns JSON response with a success message or an unauthorized access message.
      */
     public function markAsSent(Transaction $transaction)
     {
