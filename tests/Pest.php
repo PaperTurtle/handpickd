@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 /*
@@ -46,3 +47,7 @@ function something()
 {
     // ..
 }
+
+beforeEach(function () {
+    Artisan::call("migrate");
+});
