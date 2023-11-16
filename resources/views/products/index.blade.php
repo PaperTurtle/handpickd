@@ -1,22 +1,30 @@
 <x-app-layout>
     <div>
-        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div class="mx-auto max-w-7xl overflow-hidden sm:px-6 lg:px-8 pt-10 pb-10">
             <h2 class="sr-only">Products</h2>
 
-            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <div class="-mx-px grid grid-cols-2 border-t border-l border-gray-300 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($products as $product)
-                    <a href="{{ route('products.show', $product->id) }}" class="group bg-secondary p-2 rounded-lg">
-                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
+                    <div class="group relative border-b border-r border-gray-300 p-4 sm:p-6">
+                        <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75">
                             @if ($product->images->first())
                                 <img src="{{ Storage::url($product->images->first()->resized_image_path) }}"
                                     alt="{{ $product->images->first()->alt_text }}"
-                                    class="h-[9em] w-full object-cover object-center group-hover:opacity-75"
-                                    loading="lazy" height="144" width="240">
+                                    class="h-full w-full object-cover object-center">
                             @endif
                         </div>
-                        <h3 class="mt-4 text-sm text-gray-700">{{ $product->name }}</h3>
-                        <p class="mt-1 text-lg font-medium text-gray-900">${{ number_format($product->price, 2) }}</p>
-                    </a>
+                        <div class="pb-4 pt-10 text-center">
+                            <h3 class="text-lg font-bold text-gray-900">
+                                <a href="{{ route('products.show', $product->id) }}">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    {{ $product->name }}
+                                </a>
+                            </h3>
+                            <p class="mt-4 text-base font-medium text-gray-900">
+                                {{ number_format($product->price, 2) }} €
+                            </p>
+                        </div>
+                    </div>
                 @endforeach
             </div>
         </div>
