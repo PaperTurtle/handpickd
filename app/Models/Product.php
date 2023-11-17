@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * ## Product Model
  *
- * Represents a product in the application. Each product is created by an artisan and belongs to a specific category.
+ * Represents a product in the application. 
+ * 
+ * Each product is created by an artisan and belongs to a specific category.
  * It includes details like name, description, price, and quantity.
- *
+ * 
  * ### Properties:
  * - id (bigint): Unique identifier for the product.
  * - artisan_id (bigint): Foreign key referencing the user who created the product.
@@ -32,6 +34,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * ### Methods:
  * - hasUserReviewed($userId): Checks if a specific user has already reviewed the product.
+ * - averageRating(): Calculates and returns the average rating of the product based on its reviews.
+ * - totalReviews(): Returns the total number of reviews made for the product.
  *
  * ### Fillable Attributes:
  * - artisan_id: The identifier of the user who created the product.
