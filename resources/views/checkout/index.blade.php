@@ -10,7 +10,7 @@
                         <p>
                             <label for="quantity">Quantity:</label>
                             <input type="number" id="quantity" x-model="cartItem.quantity" min="1"
-                                @change="updateCart(cartItem.id, cartItem.quantity)">
+                                :max="cartItem.product.quantity" @change="updateCart(cartItem.id, cartItem.quantity)">
                         </p>
                         <p x-text="`Price: $${Number(cartItem.product.price).toFixed(2)}`"></p>
                         <p x-text="`Total Price: $${(Number(cartItem.product.price) * cartItem.quantity).toFixed(2)}`">
