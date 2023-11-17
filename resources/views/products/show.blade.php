@@ -39,40 +39,30 @@
                                 <div class="flex items-center">
                                     <div>
                                         <div class="flex items-center">
-                                            <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <svg class="text-gray-300 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
+                                            <div class="flex items-center">
+                                                <template x-for="i in 5" :key="i">
+                                                    <svg class="h-5 w-5 flex-shrink-0"
+                                                        :class="{
+                                                            'text-yellow-400': i <= averageRating,
+                                                            'text-gray-300': i >
+                                                                averageRating
+                                                        }"
+                                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd"
+                                                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </template>
+                                            </div>
                                         </div>
                                         <p class="sr-only">4 out of 5 stars</p>
                                     </div>
-                                    <p class="ml-2 text-sm text-gray-500">1624 reviews</p>
+                                    <template x-if="totalReviews > 0">
+                                        <p class="ml-2 text-sm text-gray-500" x-text="`${totalReviews} reviews`"></p>
+                                    </template>
+                                    <template x-if="totalReviews === 0">
+                                        <p class="ml-2 text-sm text-gray-500">No reviews yet.</p>
+                                    </template>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +128,8 @@
                                 <div class="mt-6 text-center">
                                     <a href="#" class="group inline-flex text-base font-medium">
                                         <svg class="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" aria-hidden="true">
+                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                            aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                                         </svg>
@@ -163,161 +153,58 @@
                     <div class="mt-3 flex items-center">
                         <div>
                             <div class="flex items-center">
-                                <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                        clip-rule="evenodd" />
-                                </svg>
+                                <template x-for="i in 5" :key="i">
+                                    <svg class="h-5 w-5 flex-shrink-0"
+                                        :class="{
+                                            'text-yellow-400': i <= averageRating,
+                                            'text-gray-300': i >
+                                                averageRating
+                                        }"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </template>
                             </div>
                             <p class="sr-only">4 out of 5 stars</p>
                         </div>
-                        <p class="ml-2 text-sm text-gray-900">Based on 1624 reviews</p>
+                        <template x-if="totalReviews > 0">
+                            <p class="ml-2 text-sm text-gray-900" x-text="`Based on ${totalReviews} reviews`"></p>
+                        </template>
+                        <template x-if="totalReviews === 0">
+                            <p class="ml-2 text-sm text-gray-900">No reviews yet.</p>
+                        </template>
                     </div>
 
-                    <div class="mt-6">
+                    <div class="mt-6" x-show="totalReviews > 0">
                         <h3 class="sr-only">Review data</h3>
 
                         <dl class="space-y-3">
-                            <div class="flex items-center text-sm">
-                                <dt class="flex flex-1 items-center">
-                                    <p class="w-3 font-medium text-gray-900">5<span class="sr-only"> star
-                                            reviews</span>
-                                    </p>
-                                    <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
-                                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-
-                                        <div class="relative ml-3 flex-1">
-                                            <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                            <div style="width: calc(1019 / 1624 * 100%)"
-                                                class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
+                            <template x-for="(percent, star) in calculateStarRatingPercentages()"
+                                :key="star">
+                                <div class="flex items-center text-sm">
+                                    <dt class="flex flex-1 items-center">
+                                        <p class="w-3 font-medium text-gray-900" x-text="star"></p>
+                                        <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
+                                            <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
+                                                fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <div class="relative ml-3 flex-1">
+                                                <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
+                                                <div :style="`width: ${percent}%`"
+                                                    class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </dt>
-                                <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">63%</dd>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <dt class="flex flex-1 items-center">
-                                    <p class="w-3 font-medium text-gray-900">4<span class="sr-only"> star
-                                            reviews</span>
-                                    </p>
-                                    <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
-                                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-
-                                        <div class="relative ml-3 flex-1">
-                                            <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                            <div style="width: calc(162 / 1624 * 100%)"
-                                                class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </dt>
-                                <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">10%</dd>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <dt class="flex flex-1 items-center">
-                                    <p class="w-3 font-medium text-gray-900">3<span class="sr-only"> star
-                                            reviews</span>
-                                    </p>
-                                    <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
-                                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-
-                                        <div class="relative ml-3 flex-1">
-                                            <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                            <div style="width: calc(97 / 1624 * 100%)"
-                                                class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </dt>
-                                <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">6%</dd>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <dt class="flex flex-1 items-center">
-                                    <p class="w-3 font-medium text-gray-900">2<span class="sr-only"> star
-                                            reviews</span>
-                                    </p>
-                                    <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
-                                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-
-                                        <div class="relative ml-3 flex-1">
-                                            <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                            <div style="width: calc(199 / 1624 * 100%)"
-                                                class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </dt>
-                                <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">12%</dd>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <dt class="flex flex-1 items-center">
-                                    <p class="w-3 font-medium text-gray-900">1<span class="sr-only"> star
-                                            reviews</span>
-                                    </p>
-                                    <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
-                                        <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
-                                            fill="currentColor" aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-
-                                        <div class="relative ml-3 flex-1">
-                                            <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                            <div style="width: calc(147 / 1624 * 100%)"
-                                                class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </dt>
-                                <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900">9%</dd>
-                            </div>
+                                    </dt>
+                                    <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900"
+                                        x-text="Math.round(percent) + '%'"></dd>
+                                </div>
+                            </template>
                         </dl>
                     </div>
                     @if (auth()->check() && !$product->hasUserReviewed(auth()->id()) && auth()->id() !== $product->artisan_id)
@@ -377,7 +264,7 @@
                     @endif
                 </div>
 
-                <div class="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0 reviews">
+                <div class="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0 reviews" x-show="totalReviews > 0">
                     <h3 class="sr-only">Recent reviews</h3>
 
                     <div class="flow-root">
@@ -527,6 +414,38 @@
                 editRating: 1,
                 editReviewText: '',
                 editReviewId: null,
+                averageRating: {{ $averageRating ?? 0 }},
+                totalReviews: {{ $totalReviews ?? 0 }},
+
+                calculateAverageRating() {
+                    let totalRating = 0;
+                    this.reviews.forEach(review => totalRating += review.rating);
+                    this.averageRating = this.reviews.length > 0 ? totalRating / this.reviews.length : 0;
+                },
+
+                calculateStarRatingPercentages() {
+                    let starCounts = {
+                        1: 0,
+                        2: 0,
+                        3: 0,
+                        4: 0,
+                        5: 0
+                    };
+                    this.reviews.forEach(review => {
+                        starCounts[review.rating] = (starCounts[review.rating] || 0) + 1;
+                    });
+
+                    let percentages = {};
+                    for (let star in starCounts) {
+                        percentages[star] = (starCounts[star] / this.totalReviews) * 100;
+                    }
+                    return percentages;
+                },
+
+                updateReviewData() {
+                    this.calculateAverageRating();
+                    this.totalReviews = this.reviews.length;
+                },
 
                 beginEditReview(review) {
                     this.editingReview = true;
@@ -563,6 +482,7 @@
                         .then(response => response.json())
                         .then(data => {
                             this.reviews.push(data);
+                            this.updateReviewData();
                             this.userHasReviewed = true;
                             this.rating = '';
                             this.review = '';
@@ -604,7 +524,7 @@
                                     ...data,
                                     user: this.reviews[index].user
                                 };
-
+                                this.updateReviewData();
                                 this.editingReview = false;
                                 this.editReviewId = null;
                                 this.editRating = '1';

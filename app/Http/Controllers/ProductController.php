@@ -39,7 +39,11 @@ class ProductController extends Controller
      */
     public function show(Product $product): Factory|View
     {
-        return view("products.show", compact("product"));
+        $product = Product::with('reviews.user')->find($product->id);
+        $averageRating = $product->reviews->avg('rating');
+        $totalReviews = $product->reviews->count();
+
+        return view('products.show', compact('product', 'averageRating', 'totalReviews'));
     }
 
     /**

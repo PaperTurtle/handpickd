@@ -84,4 +84,14 @@ class Product extends Model
     {
         return $this->reviews()->where('user_id', $userId)->exists();
     }
+
+    public function averageRating()
+    {
+        return $this->reviews()->avg('rating');
+    }
+
+    public function totalReviews()
+    {
+        return $this->reviews()->count();
+    }
 }
