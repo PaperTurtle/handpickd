@@ -86,27 +86,41 @@ class ProductController extends Controller
                 $timestamp = time();
                 $originalFilename = 'product_' . $timestamp . '_original.webp';
                 $resizedFilename = 'product_' . $timestamp . '_resized.webp';
+                $showFilename = 'product_' . $timestamp . '_show.webp';
                 $originalImagePath = 'product_images/' . $originalFilename;
                 $resizedImagePath = 'product_images/' . $resizedFilename;
+                $showImagePath = 'product_images/' . $showFilename;
 
                 // Save original image
                 $imageFile->storeAs('product_images', $originalFilename, 'public');
 
-                $nodeCommand = "node C:\Users\Seweryn\OneDrive\Desktop\handpickd\resources\js\imageProcessor.js " . escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " . escapeshellarg(storage_path('app/public/' . $resizedImagePath));
+                // Resize for general view
+                $nodeCommand = "node " . escapeshellarg(base_path('resources/js/imageProcessor.js')) . " " .
+                    escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                    escapeshellarg(storage_path('app/public/' . $resizedImagePath)); // 255
                 exec($nodeCommand);
+
+                // Resize for show view
+                $nodeCommandForShow = "node " . escapeshellarg(base_path('resources/js/imageProcessorShow.js')) . " " .
+                    escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                    escapeshellarg(storage_path('app/public/' . $showImagePath));
+                exec($nodeCommandForShow);
 
                 ProductImage::create([
                     'product_id' => $product->id,
                     'image_path' => $originalImagePath,
                     'resized_image_path' => $resizedImagePath,
+                    'show_image_path' => $showImagePath,
                     'alt_text' => $validatedData['description'],
                 ]);
 
                 $uploadedImages[] = [
                     'original_path' => $originalImagePath,
                     'resized_path' => $resizedImagePath,
+                    'show_path' => $showImagePath,
                     'original_url' => asset('storage/' . $originalImagePath),
                     'resized_url' => asset('storage/' . $resizedImagePath),
+                    'show_url' => asset('storage/' . $showImagePath),
                 ];
             }
         }
@@ -171,22 +185,30 @@ class ProductController extends Controller
                     $timestamp = time();
                     $originalFilename = 'product_' . $timestamp . '_original.webp';
                     $resizedFilename = 'product_' . $timestamp . '_resized.webp';
+                    $showFilename = 'product_' . $timestamp . '_show.webp';
                     $originalImagePath = 'product_images/' . $originalFilename;
                     $resizedImagePath = 'product_images/' . $resizedFilename;
+                    $showImagePath = 'product_images/' . $showFilename;
 
                     $imageFile->storeAs('product_images', $originalFilename, 'public');
 
-                    $nodeScriptPath = base_path('resources/js/imageProcessor.js');
-
-                    $nodeCommand = "node " . escapeshellarg($nodeScriptPath) . " " .
+                    $nodeCommand = "node " . escapeshellarg(base_path('resources/js/imageProcessor.js')) . " " .
                         escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
                         escapeshellarg(storage_path('app/public/' . $resizedImagePath));
 
                     exec($nodeCommand);
 
+                    $nodeCommandForShow = "node " . escapeshellarg(base_path('resources/js/imageProcessorShow.js')) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $showImagePath));
+                    exec($nodeCommandForShow);
+
                     ProductImage::updateOrCreate(
                         ['product_id' => $product->id, 'image_path' => $originalImagePath],
-                        ['resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description']]
+                        [
+                            'resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description'],
+                            'show_image_path' => $showImagePath,
+                        ]
                     );
                 }
             }
@@ -235,9 +257,10 @@ class ProductController extends Controller
         // Get all image paths from the database (both original and resized)
         $dbImagePaths = ProductImage::pluck('image_path')->toArray();
         $dbResizedImagePaths = ProductImage::pluck('resized_image_path')->toArray();
+        $dbShowImagePaths = ProductImage::pluck('show_image_path')->toArray();
 
         // Merge the two arrays and remove duplicates
-        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths));
+        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths, $dbShowImagePaths));
 
         // Calculate the orphaned images by diffing storage and database paths
         $orphanedImages = array_diff($allImagePaths, $allDbImagePaths);
