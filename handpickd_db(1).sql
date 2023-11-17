@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 03:02 PM
+-- Generation Time: Nov 17, 2023 at 06:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -144,13 +144,25 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `artisan_id`, `category_id`, `name`, `description`, `price`, `quantity`, `created_at`, `updated_at`) VALUES
 (4, 1, 1, 'Handmade Wooden Bowl', 'A beautifully carved wooden bowl that serves as a centerpiece.', 59.99, 6, '2023-11-01 16:34:34', '2023-11-09 16:31:53'),
-(6, 1, 1, 'Dna', 'A string of Dna I found on the floor', 1.99, 0, '2023-11-03 08:22:49', '2023-11-09 15:20:11'),
 (11, 16, 3, 'Vintage Leather Wallet', 'A durable and stylish vintage leather wallet.', 29.99, 20, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
 (12, 16, 4, 'Handwoven Scarf', 'A warm and fashionable handwoven scarf.', 34.99, 7, '2023-11-12 09:41:12', '2023-11-14 18:19:51'),
 (13, 21, 5, 'Artisanal Scented Candles', 'Soothing scented candles made with natural ingredients.', 19.99, 30, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
 (14, 21, 6, 'Hand-painted Canvas Art', 'Abstract canvas art, perfect for decorating any room.', 89.99, 5, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
 (15, 27, 7, 'Personalized Jewelry Box', 'An elegant, personalized jewelry box for your treasures.', 49.99, 12, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
-(16, 27, 8, 'Custom Engraved Pen', 'A custom engraved pen, ideal for gifts.', 24.99, 20, '2023-11-12 09:41:12', '2023-11-12 09:41:12');
+(16, 27, 8, 'Custom Engraved Pen', 'A custom engraved pen, ideal for gifts.', 24.99, 20, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
+(17, 1, 4, 'Rustic Wooden Serving Tray', 'A handcrafted serving tray made from reclaimed wood, perfect for rustic-themed gatherings.', 39.99, 15, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(18, 1, 4, 'Oak Wood Coaster Set', 'A set of six oak wood coasters, each uniquely grained and finished with a protective coating to resist water stains.', 25.00, 25, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(19, 1, 4, 'Carved Wooden Picture Frame', 'An elegantly carved picture frame, suitable for 5x7 inch photos.', 29.50, 20, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(20, 16, 3, 'Hand-Stitched Leather Belt', 'A classic, durable leather belt, hand-stitched for superior quality.', 35.99, 18, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(21, 16, 3, 'Leather Journal Cover', 'A premium leather journal cover, designed to fit standard-sized notebooks.', 40.00, 12, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(22, 16, 3, 'Leather Phone Case', 'A sleek, handcrafted leather phone case.', 27.99, 25, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(23, 16, 3, 'Vintage Leather Satchel', 'A stylish satchel made from high-quality vintage leather.', 69.99, 10, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(24, 21, 10, 'Handcrafted Soap Set', 'A set of four natural, handcrafted soaps made with organic ingredients.', 24.99, 30, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(25, 21, 10, 'Decorative Throw Pillows', 'A pair of hand-sewn throw pillows, featuring vibrant, artistic designs.', 55.00, 15, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(26, 21, 10, 'Ceramic Coffee Mugs', 'A set of two handcrafted ceramic coffee mugs, each with a unique, rustic design.', 32.99, 20, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(27, 27, 1, 'Engraved Wooden Watch', 'A sophisticated wooden watch with a custom engraving option.', 60.00, 15, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(28, 27, 1, 'Personalized Leather Bookmark', 'A sleek leather bookmark, customizable with your choice of initials or a short message.', 12.99, 40, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
+(29, 27, 1, 'Hand-Engraved Decorative Plate', 'A stunning, hand-engraved decorative plate, ideal for display or special occasions.', 49.99, 8, '2023-11-17 13:34:53', '2023-11-17 13:34:53');
 
 -- --------------------------------------------------------
 
@@ -165,15 +177,38 @@ CREATE TABLE `product_images` (
   `alt_text` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `resized_image_path` varchar(255) DEFAULT NULL
+  `resized_image_path` varchar(255) DEFAULT NULL,
+  `show_image_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `product_images`
 --
 
-INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `alt_text`, `created_at`, `updated_at`, `resized_image_path`) VALUES
-(38, 6, 'product_images/product_1699861564_original.webp', 'A string of Dna I found on the floor', '2023-11-13 06:46:04', '2023-11-13 07:46:52', 'product_images/product_1699861564_resized.webp');
+INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `alt_text`, `created_at`, `updated_at`, `resized_image_path`, `show_image_path`) VALUES
+(44, 13, 'product_images/product_1700227257_original.webp', 'Soothing scented candles made with natural ingredients.', '2023-11-17 12:20:57', '2023-11-17 12:20:57', 'product_images/product_1700227257_resized.webp', NULL),
+(53, 6, 'product_images/product_1700237697_original.webp', 'A string of Dna I found on the floor', '2023-11-17 15:14:58', '2023-11-17 15:14:58', 'product_images/product_1700237697_resized.webp', 'product_images/product_1700237697_show.webp'),
+(54, 4, 'product_images/product_1700237749_original.webp', 'A beautifully carved wooden bowl that serves as a centerpiece.', '2023-11-17 15:15:51', '2023-11-17 15:15:51', 'product_images/product_1700237749_resized.webp', 'product_images/product_1700237749_show.webp'),
+(55, 11, 'product_images/product_1700237883_original.webp', 'A durable and stylish vintage leather wallet.', '2023-11-17 15:18:05', '2023-11-17 15:18:05', 'product_images/product_1700237883_resized.webp', 'product_images/product_1700237883_show.webp'),
+(56, 12, 'product_images/product_1700237909_original.webp', 'A warm and fashionable handwoven scarf.', '2023-11-17 15:18:30', '2023-11-17 15:18:30', 'product_images/product_1700237909_resized.webp', 'product_images/product_1700237909_show.webp'),
+(57, 13, 'product_images/product_1700237975_original.webp', 'Soothing scented candles made with natural ingredients.', '2023-11-17 15:19:37', '2023-11-17 15:19:37', 'product_images/product_1700237975_resized.webp', 'product_images/product_1700237975_show.webp'),
+(58, 14, 'product_images/product_1700238001_original.webp', 'Abstract canvas art, perfect for decorating any room.', '2023-11-17 15:20:04', '2023-11-17 15:20:04', 'product_images/product_1700238001_resized.webp', 'product_images/product_1700238001_show.webp'),
+(59, 15, 'product_images/product_1700238049_original.webp', 'An elegant, personalized jewelry box for your treasures.', '2023-11-17 15:20:52', '2023-11-17 15:20:52', 'product_images/product_1700238049_resized.webp', 'product_images/product_1700238049_show.webp'),
+(60, 16, 'product_images/product_1700238128_original.webp', 'A custom engraved pen, ideal for gifts.', '2023-11-17 15:22:10', '2023-11-17 15:22:10', 'product_images/product_1700238128_resized.webp', 'product_images/product_1700238128_show.webp'),
+(61, 17, 'product_images/product_1700238174_original.webp', 'A handcrafted serving tray made from reclaimed wood, perfect for rustic-themed gatherings.', '2023-11-17 15:22:55', '2023-11-17 15:22:55', 'product_images/product_1700238174_resized.webp', 'product_images/product_1700238174_show.webp'),
+(62, 18, 'product_images/product_1700238277_original.webp', 'A set of six oak wood coasters, each uniquely grained and finished with a protective coating to resist water stains.', '2023-11-17 15:24:39', '2023-11-17 15:24:39', 'product_images/product_1700238277_resized.webp', 'product_images/product_1700238277_show.webp'),
+(63, 18, 'product_images/product_1700238279_original.webp', 'A set of six oak wood coasters, each uniquely grained and finished with a protective coating to resist water stains.', '2023-11-17 15:24:41', '2023-11-17 15:24:41', 'product_images/product_1700238279_resized.webp', 'product_images/product_1700238279_show.webp'),
+(64, 19, 'product_images/product_1700238359_original.webp', 'An elegantly carved picture frame, suitable for 5x7 inch photos.', '2023-11-17 15:26:00', '2023-11-17 15:26:00', 'product_images/product_1700238359_resized.webp', 'product_images/product_1700238359_show.webp'),
+(65, 20, 'product_images/product_1700238463_original.webp', 'A classic, durable leather belt, hand-stitched for superior quality.', '2023-11-17 15:27:46', '2023-11-17 15:27:46', 'product_images/product_1700238463_resized.webp', 'product_images/product_1700238463_show.webp'),
+(66, 21, 'product_images/product_1700238567_original.webp', 'A premium leather journal cover, designed to fit standard-sized notebooks.', '2023-11-17 15:29:29', '2023-11-17 15:29:29', 'product_images/product_1700238567_resized.webp', 'product_images/product_1700238567_show.webp'),
+(67, 22, 'product_images/product_1700238607_original.webp', 'A sleek, handcrafted leather phone case.', '2023-11-17 15:30:08', '2023-11-17 15:30:08', 'product_images/product_1700238607_resized.webp', 'product_images/product_1700238607_show.webp'),
+(68, 23, 'product_images/product_1700238648_original.webp', 'A stylish satchel made from high-quality vintage leather.', '2023-11-17 15:30:51', '2023-11-17 15:30:51', 'product_images/product_1700238648_resized.webp', 'product_images/product_1700238648_show.webp'),
+(69, 24, 'product_images/product_1700238947_original.webp', 'A set of four natural, handcrafted soaps made with organic ingredients.', '2023-11-17 15:35:49', '2023-11-17 15:35:49', 'product_images/product_1700238947_resized.webp', 'product_images/product_1700238947_show.webp'),
+(70, 25, 'product_images/product_1700239013_original.webp', 'A pair of hand-sewn throw pillows, featuring vibrant, artistic designs.', '2023-11-17 15:36:55', '2023-11-17 15:36:55', 'product_images/product_1700239013_resized.webp', 'product_images/product_1700239013_show.webp'),
+(71, 26, 'product_images/product_1700239310_original.webp', 'A set of two handcrafted ceramic coffee mugs, each with a unique, rustic design.', '2023-11-17 15:41:52', '2023-11-17 15:41:52', 'product_images/product_1700239310_resized.webp', 'product_images/product_1700239310_show.webp'),
+(72, 27, 'product_images/product_1700239399_original.webp', 'A sophisticated wooden watch with a custom engraving option.', '2023-11-17 15:43:20', '2023-11-17 15:43:20', 'product_images/product_1700239399_resized.webp', 'product_images/product_1700239399_show.webp'),
+(73, 28, 'product_images/product_1700239687_original.webp', 'A sleek leather bookmark, customizable with your choice of initials or a short message.', '2023-11-17 15:48:10', '2023-11-17 15:48:10', 'product_images/product_1700239687_resized.webp', 'product_images/product_1700239687_show.webp'),
+(74, 29, 'product_images/product_1700239767_original.webp', 'A stunning, hand-engraved decorative plate, ideal for display or special occasions.', '2023-11-17 15:49:29', '2023-11-17 15:49:29', 'product_images/product_1700239767_resized.webp', 'product_images/product_1700239767_show.webp');
 
 -- --------------------------------------------------------
 
@@ -215,9 +250,67 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `rating`, `review`, `creat
 (23, 16, 31, 4, 'Great product, but the packaging could be improved.', '2023-11-12 09:47:34', '2023-11-12 09:47:34'),
 (24, 12, 1, 3, 'Very interesting product', '2023-11-14 11:09:44', '2023-11-14 11:09:44'),
 (25, 11, 1, 4, 'Very cool item', '2023-11-14 11:32:28', '2023-11-14 11:32:28'),
-(26, 14, 1, 5, 'Cool Product :)', '2023-11-14 12:01:16', '2023-11-15 13:14:31'),
+(26, 14, 1, 5, 'Not so cool product :(', '2023-11-14 12:01:16', '2023-11-17 11:24:26'),
 (38, 13, 1, 4, 'Cool', '2023-11-14 19:55:36', '2023-11-15 14:29:15'),
-(39, 16, 1, 1, 'Rool', '2023-11-15 16:19:50', '2023-11-15 16:19:50');
+(39, 16, 1, 1, 'Rool', '2023-11-15 16:19:50', '2023-11-15 16:19:50'),
+(42, 15, 1, 4, 'Cool Stuff', '2023-11-16 15:15:06', '2023-11-17 11:48:09'),
+(71, 17, 11, 4, 'The rustic charm of this tray is perfect for my country cottage aesthetic. Love it!', '2023-11-17 13:44:08', '2023-11-17 13:44:08'),
+(72, 17, 11, 4, 'The rustic charm of this tray is perfect for my country cottage aesthetic. Love it!', '2023-11-17 13:44:38', '2023-11-17 13:44:38'),
+(101, 17, 13, 5, 'Every time I have guests over, they compliment this tray. It’s as sturdy as it is beautiful.', '2023-11-17 13:46:13', '2023-11-17 13:46:13'),
+(102, 17, 19, 5, 'I bought this as a housewarming gift and my friend can’t stop raving about it.', '2023-11-17 13:46:13', '2023-11-17 13:46:13'),
+(103, 17, 22, 3, 'The tray is well-made but a bit smaller than I expected. Check dimensions before buying.', '2023-11-17 13:46:13', '2023-11-17 13:46:13'),
+(104, 18, 12, 4, 'These coasters have a lovely finish and protect my tables effectively.', '2023-11-17 13:46:56', '2023-11-17 13:46:56'),
+(105, 18, 14, 5, 'Just what I was looking for - rustic and practical.', '2023-11-17 13:46:56', '2023-11-17 13:46:56'),
+(106, 18, 23, 3, 'Decent coasters, though I anticipated a bit more heft to them.', '2023-11-17 13:46:56', '2023-11-17 13:46:56'),
+(107, 18, 30, 4, 'The grain of the wood is so nice, and they have a very natural feel.', '2023-11-17 13:46:56', '2023-11-17 13:46:56'),
+(108, 19, 15, 5, 'The frame is a piece of art in itself. It’s now holding my favorite family photo.', '2023-11-17 13:47:16', '2023-11-17 13:47:16'),
+(109, 19, 20, 4, 'Beautiful craftsmanship, though it took a little longer to arrive than expected.', '2023-11-17 13:47:16', '2023-11-17 13:47:16'),
+(110, 19, 24, 5, 'So pleased with this purchase. It’s beautifully carved and solid.', '2023-11-17 13:47:16', '2023-11-17 13:47:16'),
+(111, 19, 29, 2, 'A bit disappointed as the carving was not as detailed as I hoped.', '2023-11-17 13:47:16', '2023-11-17 13:47:16'),
+(116, 20, 31, 5, 'The belt is just phenomenal. It feels custom-made for my waist.', '2023-11-17 13:47:52', '2023-11-17 13:47:52'),
+(117, 20, 21, 5, 'High quality leather and the stitching detail is impeccable.', '2023-11-17 13:47:52', '2023-11-17 13:47:52'),
+(118, 20, 25, 4, 'Took some time to break in, but now it’s the perfect fit and very comfortable.', '2023-11-17 13:47:52', '2023-11-17 13:47:52'),
+(119, 20, 28, 3, 'Solid belt, but the buckle feels a bit lightweight.', '2023-11-17 13:47:52', '2023-11-17 13:47:52'),
+(185, 21, 10, 5, 'Transformed my journal into something I can proudly display on my shelf.', '2023-11-17 13:49:24', '2023-11-17 13:49:24'),
+(186, 21, 17, 4, 'The leather smells amazing and the texture is very pleasant.', '2023-11-17 13:49:24', '2023-11-17 13:49:24'),
+(187, 21, 26, 4, 'It’s a stylish cover, though I wish there were more color options.', '2023-11-17 13:49:24', '2023-11-17 13:49:24'),
+(188, 21, 31, 4, 'Very classy - makes me feel like a true writer when I pull this out at coffee shops.', '2023-11-17 13:49:24', '2023-11-17 13:49:24'),
+(189, 24, 16, 4, 'The scents are divine and it’s great knowing they’re made with natural ingredients.', '2023-11-17 13:49:39', '2023-11-17 13:49:39'),
+(190, 24, 18, 5, 'These soaps lather up nicely and don’t dry out my skin.', '2023-11-17 13:49:39', '2023-11-17 13:49:39'),
+(191, 24, 27, 3, 'Enjoyed the variety, but the lavender one didn’t smell as I expected.', '2023-11-17 13:49:39', '2023-11-17 13:49:39'),
+(192, 24, 31, 5, 'Each bar has a subtle and soothing scent. They’re gentle and I love the eco-friendly packaging.', '2023-11-17 13:49:39', '2023-11-17 13:49:39'),
+(193, 25, 25, 4, 'They add such a cozy touch to my reading nook.', '2023-11-17 13:50:51', '2023-11-17 13:50:51'),
+(194, 25, 16, 5, 'The colors are vibrant, and the material is top-notch.', '2023-11-17 13:50:51', '2023-11-17 13:50:51'),
+(195, 25, 29, 3, 'Cute and comfy, but they flatten out a bit too quickly.', '2023-11-17 13:50:51', '2023-11-17 13:50:51'),
+(196, 25, 28, 4, 'These pillows look like something you’d find in a chic boutique!', '2023-11-17 13:50:51', '2023-11-17 13:50:51'),
+(272, 27, 20, 5, 'The craftsmanship of this watch is outstanding. It feels personalized and is incredibly stylish.', '2023-11-17 14:00:21', '2023-11-17 17:02:08'),
+(273, 27, 26, 4, 'Beautifully made and the engraving is a nice touch. A perfect gift for a loved one.', '2023-11-17 14:00:21', '2023-11-17 17:02:08'),
+(274, 27, 30, 5, 'Truly a piece of art. This wooden watch stands out every time I wear it.', '2023-11-17 14:00:21', '2023-11-17 17:02:08'),
+(275, 27, 29, 3, 'The watch is nice, but it’s lighter than I expected. I’m not sure how it will hold up over time.', '2023-11-17 14:00:21', '2023-11-17 17:02:08'),
+(276, 28, 28, 5, 'The leather bookmark is not just practical, it’s also very elegant.', '2023-11-17 14:00:21', '2023-11-17 17:02:59'),
+(277, 28, 19, 4, 'I love the personalization option. It’s a simple yet thoughtful touch.', '2023-11-17 14:00:21', '2023-11-17 17:02:59'),
+(278, 28, 10, 4, 'This bookmark makes reading even more enjoyable. The leather feels premium.', '2023-11-17 14:00:21', '2023-11-17 17:02:59'),
+(279, 28, 22, 5, 'Got this as a present for a friend and they absolutely loved it! The craftsmanship is superb.', '2023-11-17 14:00:21', '2023-11-17 17:02:59'),
+(280, 29, 10, 5, 'This decorative plate is even more beautiful in person. The hand-engraved details are impeccable.', '2023-11-17 14:00:21', '2023-11-17 14:00:21'),
+(281, 29, 11, 4, 'It’s the centerpiece of my dining table and always gets compliments.', '2023-11-17 14:00:21', '2023-11-17 14:00:21'),
+(282, 29, 13, 3, 'Lovely design, but the plate is smaller than I anticipated.', '2023-11-17 14:00:21', '2023-11-17 14:00:21'),
+(283, 29, 15, 4, 'The artwork on this plate is stunning. It has a permanent spot in my display cabinet.', '2023-11-17 14:00:21', '2023-11-17 14:00:21'),
+(284, 26, 21, 5, 'The ceramic mugs have a great hand-feel and the craftsmanship is top-notch.', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(285, 26, 26, 4, 'I adore the rustic look of these mugs. They’re perfect for my morning coffee.', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(286, 26, 13, 4, 'These mugs retain heat well and are a joy to use. Plus, they’re dishwasher safe!', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(287, 26, 26, 5, 'Absolutely beautiful. Each mug is unique which makes them feel extra special.', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(288, 26, 19, 3, 'The mugs are pretty, but one of them had a small chip on the bottom.', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(289, 26, 30, 5, 'Perfect size for my latte. The quality is evident and they have a lovely design.', '2023-11-17 14:02:27', '2023-11-17 14:03:51'),
+(290, 22, 17, 5, 'The phone case feels luxurious and fits perfectly. Definitely exceeded my expectations.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(291, 22, 23, 4, 'The leather quality is superb, and it offers good protection for my phone.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(292, 22, 26, 3, 'Nice case but a bit tight on the sides. Hoping it stretches out a bit with use.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(293, 22, 14, 4, 'Elegant and sleek - it’s exactly what I was looking for in a phone case.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(294, 22, 25, 5, 'Impressed with the craftsmanship. It’s stylish and functional.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(295, 23, 24, 5, 'This satchel is the perfect size for daily use, and the vintage leather feels like it will last.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(296, 23, 12, 4, 'Classic design with a lot of character. It stands out from typical bags.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(297, 23, 29, 4, 'The satchel carries all my essentials without being bulky. The leather is really high quality.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
+(298, 23, 10, 3, 'Good bag but I expected more compartments for organization.', '2023-11-17 14:07:18', '2023-11-17 14:07:18'),
+(299, 23, 11, 5, 'I’ve received numerous compliments on this bag. It’s durable and looks even better as it ages.', '2023-11-17 14:07:18', '2023-11-17 14:07:18');
 
 -- --------------------------------------------------------
 
@@ -448,25 +541,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT for table `shopping_carts`
 --
 ALTER TABLE `shopping_carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `transactions`
