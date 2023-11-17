@@ -13,49 +13,65 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| Registration of web routes for the application. These routes are loaded
+| by the RouteServiceProvider within a group that contains the "web" middleware group.
+| Create something great!
 |
 */
 
-// Public Routes
+// ========= Public Routes =========
+// Home page
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
+// Checkout and FAQ routes
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-
-Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
-Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
-Route::get('/cart', [CheckoutController::class, 'viewCart'])->name('cart.view');
-Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
-
-Route::delete('/cart/{cartItem}', [CheckoutController::class, 'remove'])->name('cart.remove');
-Route::get('/checkout/success', function () {
-    return view('checkout.success');
-})->name('checkout.success');
-Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
-    ->middleware('auth')
-    ->name('dashboard.markAsSent');
+// ========= Authentication Required Routes =========
 Route::middleware('auth')->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Cart routes
+    Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
+    Route::get('/cart', [CheckoutController::class, 'viewCart'])->name('cart.view');
+
+    // Checkout process
+    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+    Route::get('/checkout/success', function () {
+        return view('checkout.success');
+    })->name('checkout.success');
+
+    // Dashboard transaction management
+    Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
+        ->name('dashboard.markAsSent');
+
+    // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Product management
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
+
+    // Review routes
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
-    Route::delete('/products/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
+
+    // Update cart item
     Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
 });
 
+// ========= Authentication Routes (Laravel Breeze, Jetstream, etc.) =========
 require __DIR__ . '/auth.php';
