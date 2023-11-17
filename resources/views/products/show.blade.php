@@ -17,7 +17,8 @@
                     </nav>
 
                     <div class="mt-4">
-                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ $product->name }}
+                        <h1 class="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            {{ $product->name }}
                         </h1>
                         <h3 class="text-lg font-medium text-gray-700">Created by:
                             @if (auth()->check() && auth()->id() === $product->artisan_id)
@@ -147,7 +148,8 @@
             <div
                 class="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
                 <div class="lg:col-span-4">
-                    <h2 id="reviews-heading" class="text-2xl font-bold tracking-tight text-gray-900">Customer Reviews
+                    <h2 id="reviews-heading" class="font-heading text-2xl font-bold tracking-tight text-gray-900">
+                        Customer Reviews
                     </h2>
 
                     <div class="mt-3 flex items-center">
