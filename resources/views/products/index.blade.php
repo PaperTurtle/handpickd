@@ -27,7 +27,7 @@
                 <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
                 <div class="flex items-center justify-between">
-                    <div x-data="{ open: false }" class="relative inline-block text-left">
+                    <div x-cloak x-data="{ open: false }" class="relative inline-block text-left">
                         <div>
                             <button @click="open = !open" type="button"
                                 class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
@@ -65,7 +65,7 @@
 
 
                     <div class="flex items-baseline space-x-8">
-                        <div x-data="{ open: false }" id="menu" class="relative inline-block text-left">
+                        <div x-cloak x-data="{ open: false }" id="menu" class="relative inline-block text-left">
                             <div>
                                 <button @click="open = !open" type="button"
                                     class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
@@ -83,11 +83,11 @@
                                 <div class="space-y-4">
                                     @foreach (App\Models\Category::all() as $category)
                                         <div class="flex items-center">
-                                            <input id="filter-category-0" name="categories"
+                                            <input id="{{ $category->name }}" name="categories"
                                                 value="{{ $category->name }}" type="checkbox"
                                                 x-model="selectedCategories"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
-                                            <label for="filter-category-0"
+                                            <label for="{{ $category->name }}"
                                                 class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900">{{ $category->name }}</label>
                                         </div>
                                     @endforeach
@@ -116,7 +116,7 @@
                                 @endif
                             </div>
                             <div class="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-                                <h3>{{ $product->name }}</h3>
+                                <h3 class="font-heading font-bold">{{ $product->name }}</h3>
                                 <p>{{ number_format($product->price, 2) }} €</p>
                             </div>
                             <div class="flex items-center mt-2">
