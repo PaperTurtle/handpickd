@@ -135,7 +135,7 @@
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                         @foreach ($product->images as $image)
-                            <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
+                            <img src="{{ Storage::url($image->show_image_path) }}" alt="{{ $image->alt_text }}"
                                 class="h-full w-full object-cover object-center" loading="lazy">
                         @endforeach
                     </div>
