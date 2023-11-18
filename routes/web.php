@@ -73,5 +73,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
 });
 
-// ========= Authentication Routes (Laravel Breeze, Jetstream, etc.) =========
+// ========= Authentication Routes (Laravel Breeze) =========
 require __DIR__ . '/auth.php';
