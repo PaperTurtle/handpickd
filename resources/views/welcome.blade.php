@@ -50,12 +50,30 @@
               </div>
             </div>
 
-            <a href="#" class="inline-block rounded-md border border-transparent bg-[#355427] px-8 py-3 text-center font-bold text-[#FFFAEB] hover:bg-[#DCECD5] hover:text-[#355427]">Shop Collection</a>
+            <a href="#" class="inline-block rounded-md border border-transparent bg-[#355427] px-8 py-3 text-center font-bold text-[#FFFAEB] hover:bg-[#DCECD5] hover:text-[#355427]">Browse Products</a>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <main>
+
+    <!-- Category section -->
+    <section aria-labelledby="category-heading" class="bg-[#355427]">
+      <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div class="sm:flex sm:items-baseline sm:justify-between">
+          <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-[#FFFAEB]">Shop by Category</h2>
+          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:text-base hover:text-[#355427] sm:block">
+            Browse all categories
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
+    </section> 
+  </main>
+    
+        
+
 
 </div>
 
