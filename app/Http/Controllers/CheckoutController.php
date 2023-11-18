@@ -36,12 +36,12 @@ class CheckoutController extends Controller
      * If the product already exists in the cart, its quantity is updated; otherwise, a new cart item is created.
      *
      * @param Request $request The request object containing product details.
-     * @return RedirectResponse Redirects back with a success message on adding the product.
+     * @return JsonResponse Redirects back with a success message on adding the product.
      */
-    public function addToCart(Request $request): RedirectResponse
+    public function addToCart(Request $request): JsonResponse
     {
         if (auth()->guest()) {
-            return redirect()->route('login');
+            return response()->json(['redirect' => route('login')]);
         }
 
         $cartItem = ShoppingCart::where('user_id', auth()->id())
@@ -59,7 +59,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Product added to cart!');
+        return response()->json(['success' => 'Product added to cart!']);
     }
 
     /**
@@ -67,13 +67,13 @@ class CheckoutController extends Controller
      * Only affects the item specified by the provided cart item ID.
      *
      * @param int $cartItemId The unique identifier of the cart item to be removed.
-     * @return RedirectResponse Redirects back with a success message on removing the product.
+     * @return JsonResponse Redirects back with a success message on removing the product.
      */
-    public function removeFromCart(int $cartItemId): RedirectResponse
+    public function removeFromCart(int $cartItemId): JsonResponse
     {
         ShoppingCart::where('id', $cartItemId)->delete();
 
-        return redirect()->back()->with('success', 'Product removed from cart!');
+        return response()->json(["success" => "Product removed from cart!"]);
     }
 
     /**
