@@ -1,6 +1,42 @@
 <x-app-layout>
 
     <section x-data="reviewForm()">
+        <div x-cloak x-show="showAlert" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform scale-90"
+            x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-90"
+            class="fixed top-0 left-1/2 transform -translate-x-1/2 mt-4 z-50">
+            <div class="rounded-md bg-green-50 p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-lg font-medium text-green-800">Item Added to Cart!</h3>
+                        <div class="mt-2 text-sm text-green-700">
+                            <p>The product has been added to your cart.</p>
+                            <p>Continue shopping for more awesome products or proceed to checkout.</p>
+                        </div>
+                        <div class="mt-4">
+                            <div class="-mx-2 -my-1.5 flex">
+                                <button @click="showAlert = false" type="button"
+                                    class="rounded-md bg-green-50 px-2 py-1.5 text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50">Dismiss
+                                </button>
+                                <button type="button"
+                                    class="ml-3 rounded-md bg-green-50 px-2 py-1.5 text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50">Process
+                                    to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div
                 class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -110,16 +146,16 @@
                         <section aria-labelledby="options-heading">
                             <h2 id="options-heading" class="sr-only">Product options</h2>
 
-                            <form action="{{ route('cart.add') }}" method="POST">
+                            <form method="POST" @submit.prevent="addToCart">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                                <div class="mt-4">
+                                {{-- <div class="mt-4">
                                     <label for="quantity-0"
                                         class="block text-sm font-medium text-gray-700">Quantity</label>
                                     <input type="number" name="quantity" value="1" min="1"
                                         max="{{ $product->quantity }}" class="rounded border-gray-300">
-                                </div>
+                                </div> --}}
 
                                 <div class="mt-10">
                                     <button type="submit"
@@ -129,8 +165,8 @@
                                 <div class="mt-6 text-center">
                                     <a href="#" class="group inline-flex text-base font-medium">
                                         <svg class="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                            aria-hidden="true">
+                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                                         </svg>
@@ -413,6 +449,7 @@
                 reviews: @json($product->reviews->load('user')),
                 userHasReviewed: {{ $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
                 editingReview: false,
+                showAlert: false,
                 editRating: 1,
                 editReviewText: '',
                 editReviewId: null,
@@ -537,6 +574,32 @@
                             console.error('Error:', error);
                         });
                 },
+
+                addToCart(event) {
+                    const formData = new FormData(event.target);
+                    formData.append('quantity', '1');
+                    fetch('{{ route('cart.add') }}', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.showAlert = true;
+                            setTimeout(() => this.showAlert = false, 5000);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
             };
         }
     </script>
