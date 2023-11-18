@@ -2,7 +2,7 @@
     <section class="bg-white" x-data="dashboard()">
         <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:pb-24">
             <div class="max-w-xl">
-                <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Your Dashboard</h1>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-heading">Your Dashboard</h1>
                 <p class="mt-2 text-sm text-gray-500">Manage the status of recent orders and </p>
             </div>
 
