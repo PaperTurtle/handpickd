@@ -103,6 +103,23 @@
               </div>
             </div>
           </div>
+
+          <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
+            <img src="https://tinyurl.com/yocfe2m8" alt="a hanging rack in a industrial looking room" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
+            <div class="flex items-end p-6 sm:absolute sm:inset-0">
+              <div>
+                <h3 class="font-semibold text-white">
+                  <a href="#">
+                    <span class="absolute inset-0"></span>
+                    Clothing
+                  </a>
+                </h3>
+                <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </section> 
   </main>
     
