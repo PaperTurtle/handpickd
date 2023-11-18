@@ -69,6 +69,23 @@
             <span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
+
+        <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
+          <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
+            <img src="https://tinyurl.com/yrprq2e8" alt="diamond drop earrings on a blue background" class="object-cover object-center group-hover:opacity-75">
+            <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50"></div>
+            <div class="flex items-end p-6">
+              <div>
+                <h3 class="font-semibold text-white">
+                  <a href="#">
+                    <span class="absolute inset-0"></span>
+                    Jewelery
+                  </a>
+                </h3>
+                <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
+              </div>
+            </div>
+          </div>
     </section> 
   </main>
     
