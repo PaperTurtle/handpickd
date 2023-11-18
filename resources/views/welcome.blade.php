@@ -1,3 +1,3 @@
 <x-app-layout>
-    <h1>Welcome Welcome</h1>
+    <h1>Welcome Handpickd</h1>
 </x-app-layout>
