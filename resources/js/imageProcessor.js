@@ -3,7 +3,7 @@ import sharp from "sharp";
 const [inputPath, outputPath] = process.argv.slice(2);
 
 sharp(inputPath)
-	.resize(255, 255)
+	.resize(384, 576)
 	.webp({ quality: 100 })
 	.toFile(outputPath)
 	.then(() => console.log("Image processed and saved successfully"))
