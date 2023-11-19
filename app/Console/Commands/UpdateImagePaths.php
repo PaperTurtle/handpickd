@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
  * Usage: Run the command using the Laravel Artisan command line tool.
  * Command: `php artisan images:update-thumbnails`.
  */
-class UpdateThumbnailPaths extends Command
+class UpdateImagePaths extends Command
 {
     /**
      * The name and signature of the console command.
