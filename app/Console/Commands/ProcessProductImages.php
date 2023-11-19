@@ -5,6 +5,16 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * A Laravel console command to process product images and create resized and show versions.
+ *
+ * This command processes original product images stored in the 'public/product_images' directory.
+ * It creates resized and show versions of the images based on predefined Node.js scripts.
+ * The command is designed to maintain different versions of product images for various use cases.
+ *
+ * Usage: Run the command using the Laravel Artisan command line tool.
+ * Command: `php artisan product:process-images`.
+ */
 class ProcessProductImages extends Command
 {
     /**
@@ -45,6 +55,14 @@ class ProcessProductImages extends Command
         $this->info('All images processed successfully.');
     }
 
+    /**
+     * Process an image using a Node.js script to create resized or show versions.
+     *
+     * @param string $sourcePath The source image file path.
+     * @param string $targetPath The target image file path to store the processed image.
+     * @param string $type The type of processing to apply (default, show, or thumbnail).
+     * @return void
+     */
     protected function processImage($sourcePath, $targetPath, $type = 'default')
     {
         switch ($type) {

@@ -6,11 +6,38 @@ use Illuminate\Console\Command;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * A Laravel console command to update the database with paths for show, resized, and thumbnail images.
+ *
+ * This command interfaces with the ProductImage model to update image paths in the database for different
+ * image types (show, resized, thumbnail). It's useful for ensuring the database holds correct references
+ * to image files stored in the system, especially after batch processing or migration.
+ *
+ * Usage: Run the command using the Laravel Artisan command line tool.
+ * Command: `php artisan images:update-thumbnails`.
+ */
 class UpdateThumbnailPaths extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'images:update-thumbnails';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Updates the database with paths for show, resized, and thumbnail images.';
 
+    /**
+     * Execute the console command.
+     * Iterates through different image types and updates their paths in the database.
+     *
+     * @return void
+     */
     public function handle()
     {
         $this->info('Updating image paths...');
