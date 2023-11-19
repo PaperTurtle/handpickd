@@ -10,6 +10,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\CleanOrphanedImages::class,
         \App\Console\Commands\ProcessProductImages::class,
+        \App\Console\Commands\UpdateThumbnailPaths::class,
     ];
     /**
      * Define the application's command schedule.
