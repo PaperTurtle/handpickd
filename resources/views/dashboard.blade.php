@@ -31,7 +31,7 @@
                                     <tr>
                                         <td class="py-6 pr-8">
                                             <div class="flex items-center">
-                                                <img src="{{ Storage::url($transaction->product->images->first()->image_path) }}"
+                                                <img src="{{ Storage::url($transaction->product->images->first()->thumbnail_image_path) }}"
                                                     alt="{{ $transaction->product->first()->alt_text }}"
                                                     class="mr-6 h-16 w-16 rounded object-cover object-center" />
                                                 <div>
