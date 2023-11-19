@@ -85,11 +85,16 @@ class ProductController extends Controller
             foreach ($request->file('images') as $imageFile) {
                 $timestamp = time();
                 $originalFilename = 'product_' . $timestamp . '_original.webp';
-                $resizedFilename = 'product_' . $timestamp . '_resized.webp';
-                $showFilename = 'product_' . $timestamp . '_show.webp';
                 $originalImagePath = 'product_images/' . $originalFilename;
+
+                $resizedFilename = 'product_' . $timestamp . '_resized.webp';
                 $resizedImagePath = 'product_images/' . $resizedFilename;
+
+                $showFilename = 'product_' . $timestamp . '_show.webp';
                 $showImagePath = 'product_images/' . $showFilename;
+
+                $thumbnailFilename = 'product_' . $timestamp . '_thumbnail.webp';
+                $thumbnailImagePath = 'product_images/' . $thumbnailFilename;
 
                 // Save original image
                 $imageFile->storeAs('product_images', $originalFilename, 'public');
@@ -106,11 +111,17 @@ class ProductController extends Controller
                     escapeshellarg(storage_path('app/public/' . $showImagePath));
                 exec($nodeCommandForShow);
 
+                $nodeCommandForThumbnail = "node " . escapeshellarg(base_path('resources/js/imageProcessorThumbnail.js')) . " " .
+                    escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                    escapeshellarg(storage_path('app/public/' . $thumbnailImagePath));
+                exec($nodeCommandForThumbnail);
+
                 ProductImage::create([
                     'product_id' => $product->id,
                     'image_path' => $originalImagePath,
                     'resized_image_path' => $resizedImagePath,
                     'show_image_path' => $showImagePath,
+                    'thumbnail_image_path' => $thumbnailImagePath,
                     'alt_text' => $validatedData['description'],
                 ]);
 
@@ -118,8 +129,10 @@ class ProductController extends Controller
                     'original_path' => $originalImagePath,
                     'resized_path' => $resizedImagePath,
                     'show_path' => $showImagePath,
+                    'thumbnail_path' => $thumbnailImagePath,
                     'original_url' => asset('storage/' . $originalImagePath),
                     'resized_url' => asset('storage/' . $resizedImagePath),
+                    'thumbnail_url' => asset('storage/' . $thumbnailImagePath),
                     'show_url' => asset('storage/' . $showImagePath),
                 ];
             }
@@ -184,11 +197,16 @@ class ProductController extends Controller
                 foreach ($images as $imageFile) {
                     $timestamp = time();
                     $originalFilename = 'product_' . $timestamp . '_original.webp';
-                    $resizedFilename = 'product_' . $timestamp . '_resized.webp';
-                    $showFilename = 'product_' . $timestamp . '_show.webp';
                     $originalImagePath = 'product_images/' . $originalFilename;
+
+                    $resizedFilename = 'product_' . $timestamp . '_resized.webp';
                     $resizedImagePath = 'product_images/' . $resizedFilename;
+
+                    $showFilename = 'product_' . $timestamp . '_show.webp';
                     $showImagePath = 'product_images/' . $showFilename;
+
+                    $thumbnailFilename = 'product_' . $timestamp . '_thumbnail.webp';
+                    $thumbnailImagePath = 'product_images/' . $thumbnailFilename;
 
                     $imageFile->storeAs('product_images', $originalFilename, 'public');
 
@@ -203,10 +221,16 @@ class ProductController extends Controller
                         escapeshellarg(storage_path('app/public/' . $showImagePath));
                     exec($nodeCommandForShow);
 
+                    $nodeCommandForThumbnail = "node " . escapeshellarg(base_path('resources/js/imageProcessorThumbnail.js')) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $thumbnailImagePath));
+                    exec($nodeCommandForThumbnail);
+
                     ProductImage::updateOrCreate(
                         ['product_id' => $product->id, 'image_path' => $originalImagePath],
                         [
                             'resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description'],
+                            'thumbnail_image_path' => $thumbnailImagePath,
                             'show_image_path' => $showImagePath,
                         ]
                     );
@@ -258,9 +282,10 @@ class ProductController extends Controller
         $dbImagePaths = ProductImage::pluck('image_path')->toArray();
         $dbResizedImagePaths = ProductImage::pluck('resized_image_path')->toArray();
         $dbShowImagePaths = ProductImage::pluck('show_image_path')->toArray();
+        $dbThumbnailImagePaths = ProductImage::pluck('thumbnail_image_path')->toArray();
 
         // Merge the two arrays and remove duplicates
-        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths, $dbShowImagePaths));
+        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths, $dbShowImagePaths, $dbThumbnailImagePaths));
 
         // Calculate the orphaned images by diffing storage and database paths
         $orphanedImages = array_diff($allImagePaths, $allDbImagePaths);
