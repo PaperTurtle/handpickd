@@ -27,7 +27,8 @@
                 <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
                 <div class="flex items-center justify-between">
-                    <div x-cloak x-data="{ open: false }" class="relative inline-block text-left">
+                    <div x-cloak x-data="{ open: false, toggle() { this.open = !this.open }, closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }" @click.away="closeOnClickAway"
+                        class="relative inline-block text-left">
                         <div>
                             <button @click="open = !open" type="button"
                                 class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
@@ -54,8 +55,6 @@
                                 <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
                                     role="menuitem" tabindex="-1" id="menu-item-1">Best Rating</a>
                                 <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
-                                    role="menuitem" tabindex="-1" id="menu-item-2">Newest</a>
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
                                     role="menuitem" tabindex="-1" id="menu-item-3">Price: Low to High</a>
                                 <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
                                     role="menuitem" tabindex="-1" id="menu-item-4">Price: High to Low</a>
@@ -65,7 +64,8 @@
 
 
                     <div class="flex items-baseline space-x-8">
-                        <div x-cloak x-data="{ open: false }" id="menu" class="relative inline-block text-left">
+                        <div x-cloak x-data="{ open: false, toggle() { this.open = !this.open }, closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }" @click.away="closeOnClickAway"
+                            class="relative inline-block text-left">
                             <div>
                                 <button @click="open = !open" type="button"
                                     class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
