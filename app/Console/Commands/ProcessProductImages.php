@@ -34,18 +34,30 @@ class ProcessProductImages extends Command
 
                 $resizedPath = str_replace('_original', '_resized', $imagePath);
                 $showPath = str_replace('_original', '_show', $imagePath);
+                $thumbnailPath = str_replace('_original', '_thumbnail', $imagePath);
 
                 $this->processImage($imagePath, $resizedPath);
-                $this->processImage($imagePath, $showPath, true);
+                $this->processImage($imagePath, $showPath, 'show');
+                $this->processImage($imagePath, $thumbnailPath, 'thumbnail');
             }
         }
 
         $this->info('All images processed successfully.');
     }
 
-    protected function processImage($sourcePath, $targetPath, $forShow = false)
+    protected function processImage($sourcePath, $targetPath, $type = 'default')
     {
-        $nodeScript = $forShow ? 'imageProcessorShow.js' : 'imageProcessor.js';
+        switch ($type) {
+            case 'show':
+                $nodeScript = 'imageProcessorShow.js';
+                break;
+            case 'thumbnail':
+                $nodeScript = 'imageProcessorThumbnail.js';
+                break;
+            default:
+                $nodeScript = 'imageProcessor.js';
+        }
+
         $nodeCommand = "node " . escapeshellarg(base_path("resources/js/$nodeScript")) . " " .
             escapeshellarg(storage_path("app/public/$sourcePath")) . " " .
             escapeshellarg(storage_path("app/public/$targetPath"));
