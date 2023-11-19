@@ -7,33 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * ## Review Model
+ * Represents a review made by a user for a product.
  *
- * Represents a review made by a user for a product. Each review includes a rating and an optional text review.
+ * @property int $id Unique identifier for the review.
+ * @property int $product_id Foreign key referencing the product being reviewed.
+ * @property int $user_id Foreign key referencing the user who created the review.
+ * @property int $rating Rating given by the user, typically on a scale of 1 to 5.
+ * @property string|null $review Text of the review. Can be null.
+ * @property \Illuminate\Support\Carbon $created_at Timestamp when the review was created.
+ * @property \Illuminate\Support\Carbon $updated_at Timestamp when the review was last updated.
  *
- * ### Properties:
- * - id (bigint, unsigned): Unique identifier for the review.
- * - product_id (bigint, unsigned): Foreign key referencing the product being reviewed.
- * - user_id (bigint, unsigned): Foreign key referencing the user who created the review.
- * - rating (int): Rating given by the user, typically on a scale of 1 to 5.
- * - review (text, nullable): Text of the review. Can be null.
- * - created_at (timestamp): Timestamp when the review was created.
- * - updated_at (timestamp): Timestamp when the review was last updated.
+ * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product that is being reviewed.
+ * @method BelongsTo user() BelongsTo relationship with User. Indicates the user who made the review.
  *
- * ### Relationships:
- * - product(): BelongsTo relationship with Product. Indicates the product that is being reviewed.
- * - user(): BelongsTo relationship with User. Indicates the user who made the review.
- *
- * ### Fillable Attributes:
- * - product_id: Identifier of the product being reviewed.
- * - user_id: Identifier of the user who wrote the review.
- * - rating: Numeric rating given to the product.
- * - review: Text content of the review.
+ * @package App\Models
  */
 class Review extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'product_id',
         'user_id',
@@ -41,17 +38,32 @@ class Review extends Model
         'review',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'rating' => 'integer',
     ];
 
+    /**
+     * Define the relationship with the product being reviewed.
+     *
+     * @return BelongsTo
+     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
+    /**
+     * Define the relationship with the user who made the review.
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

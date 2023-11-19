@@ -11,36 +11,24 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * ## User Model
+ * Represents a user in the system.
  *
- * Represents a user in the system. It includes basic user information like name, email, and password.
- * The model also links to various aspects related to the user such as their profile, products they've created, reviews they've written, and transactions they're involved in.
+ * @property int $id Unique identifier for the user.
+ * @property string $name Name of the user.
+ * @property string $email Email address of the user.
+ * @property \Illuminate\Support\Carbon|null $email_verified_at Timestamp when the user's email was verified. Can be null.
+ * @property string $password Password of the user (hashed).
+ * @property string|null $remember_token Token for the user's session. Can be null.
+ * @property \Illuminate\Support\Carbon|null $created_at Timestamp when the user account was created. Can be null.
+ * @property \Illuminate\Support\Carbon|null $updated_at Timestamp when the user account was last updated. Can be null.
+ * @property bool $isArtisan Flag indicating whether the user is an artisan.
  *
- * ### Properties:
- * - id (bigint, unsigned): Unique identifier for the user.
- * - name (string): Name of the user.
- * - email (string): Email address of the user.
- * - email_verified_at (timestamp, nullable): Timestamp when the user's email was verified. Can be null.
- * - password (string): Password of the user (hashed).
- * - remember_token (string, nullable): Token for the user's session.
- * - created_at (timestamp, nullable): Timestamp when the user account was created. Can be null.
- * - updated_at (timestamp, nullable): Timestamp when the user account was last updated. Can be null.
- * - isArtisan (tinyint, boolean): Flag indicating whether the user is an artisan.
+ * @method HasOne profile() HasOne relationship with UserProfile. Represents the user's profile.
+ * @method HasMany products() HasMany relationship with Product. Represents products created by the user (if the user is an artisan).
+ * @method HasMany reviews() HasMany relationship with Review. Represents reviews written by the user.
+ * @method HasMany transactions() HasMany relationship with Transaction. Represents transactions where the user is the buyer.
  *
- * ### Relationships:
- * - profile(): HasOne relationship with UserProfile. Represents the user's profile.
- * - products(): HasMany relationship with Product. Represents products created by the user (if the user is an artisan).
- * - reviews(): HasMany relationship with Review. Represents reviews written by the user.
- * - transactions(): HasMany relationship with Transaction. Represents transactions where the user is the buyer.
- *
- * ### Fillable Attributes:
- * - name: Name of the user.
- * - email: Email address of the user.
- * - password: Password of the user.
- *
- * ### Hidden Attributes:
- * - password: User's password (hashed).
- * - remember_token: Token used for remember me functionality.
+ * @package App\Models
  */
 class User extends Authenticatable
 {
@@ -78,6 +66,8 @@ class User extends Authenticatable
 
     /**
      * Get the user profile associated with the user.
+     *
+     * @return HasOne
      */
     public function profile(): HasOne
     {
@@ -86,6 +76,8 @@ class User extends Authenticatable
 
     /**
      * Get the products created by the user (artisan).
+     *
+     * @return HasMany
      */
     public function products(): HasMany
     {
@@ -94,6 +86,8 @@ class User extends Authenticatable
 
     /**
      * Get the reviews written by the user.
+     *
+     * @return HasMany
      */
     public function reviews(): HasMany
     {
@@ -102,6 +96,8 @@ class User extends Authenticatable
 
     /**
      * Get the transactions where the user is the buyer.
+     *
+     * @return HasMany
      */
     public function transactions(): HasMany
     {

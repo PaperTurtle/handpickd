@@ -7,38 +7,47 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * ## Category Model
+ * Represents a product category in the application.
  *
- * Represents a product category in the application. Each category has a name and an optional description.
+ * @property int $id Unique identifier for the category.
+ * @property string $name Name of the category.
+ * @property string|null $description Description of the category. Can be null.
+ * @property \Illuminate\Support\Carbon $created_at Timestamp when the category was created.
+ * @property \Illuminate\Support\Carbon $updated_at Timestamp when the category was last updated.
  *
- * ### Properties:
- * - id (int): Unique identifier for the category.
- * - name (string): Name of the category.
- * - description (string, nullable): Description of the category. Can be null.
- * - created_at (timestamp): Timestamp when the category was created.
- * - updated_at (timestamp): Timestamp when the category was last updated.
+ * @method HasMany products() HasMany relationship with Product. Represents all products belonging to this category.
  *
- * ### Relationships:
- * - products(): HasMany relationship with Product. Represents all products belonging to this category.
- *
- * ### Fillable Attributes:
- * - name: The name of the category.
- * - description: The description of the category.
+ * @package App\Models
  */
 class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'description',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
+    /**
+     * Define the relationship with products.
+     *
+     * @return HasMany
+     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
