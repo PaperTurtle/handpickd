@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * - image_path: Path of the image file.
  * - resized_image_path: Path of the resized image file.
  * - show_image_path: Path of the show image file.
+ * - thumbnail_image_path: Path of the thumbnail image file.
  * - alt_text: Alternative text for the image.
  */
 class ProductImage extends Model
@@ -39,7 +40,8 @@ class ProductImage extends Model
         'image_path',
         'alt_text',
         "resized_image_path",
-        "show_image_path"
+        "show_image_path",
+        "thumbnail_image_path"
     ];
 
     protected $casts = [
