@@ -17,7 +17,7 @@
                         </svg>
                     </div>
                     <div class="ml-3">
-                        <h3 class="text-lg font-medium text-green-800">Item Added to Cart!</h3>
+                        <h3 class="text-lg font-medium text-green-800 font-heading">Item Added to Cart!</h3>
                         <div class="mt-2 text-sm text-green-700">
                             <p>The product has been added to your cart.</p>
                             <p>Continue shopping for more awesome products or proceed to checkout.</p>
