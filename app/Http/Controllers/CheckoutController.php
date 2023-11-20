@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddToCartRequest;
+use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -35,14 +37,12 @@ class CheckoutController extends Controller
      * If the user is not authenticated, they are redirected to the login page.
      * If the product already exists in the cart, its quantity is updated; otherwise, a new cart item is created.
      *
-     * @param Request $request The request object containing product details.
+     * @param AddToCartRequest $request The request object containing product details.
      * @return JsonResponse Redirects back with a success message on adding the product.
      */
-    public function addToCart(Request $request): JsonResponse
+    public function addToCart(AddToCartRequest $request): JsonResponse
     {
-        if (auth()->guest()) {
-            return response()->json(['redirect' => route('login')]);
-        }
+        $this->authorize('addToCart', ShoppingCart::class);
 
         $cartItem = ShoppingCart::where('user_id', auth()->id())
             ->where('product_id', $request->product_id)
@@ -71,7 +71,11 @@ class CheckoutController extends Controller
      */
     public function removeFromCart(int $cartItemId): JsonResponse
     {
-        ShoppingCart::where('id', $cartItemId)->delete();
+        $cartItem = ShoppingCart::where('user_id', auth()->id())->findOrFail($cartItemId);
+
+        $this->authorize('removeFromCart', $cartItem);
+
+        $cartItem->delete();
 
         return response()->json(["success" => "Product removed from cart!"]);
     }
@@ -82,32 +86,19 @@ class CheckoutController extends Controller
      * Responds with JSON indicating the success or failure of the operation.
      *
      * @param int $itemId The ID of the cart item to update.
-     * @param Request $request The request object containing the new quantity.
+     * @param UpdateCartRequest $request The request object containing the new quantity.
      * @return JsonResponse Returns JSON response with the result of the update operation.
      */
-    public function updateCart(int $itemId, Request $request): JsonResponse
+    public function updateCart(int $itemId, UpdateCartRequest $request): JsonResponse
     {
-        $cartItem = ShoppingCart::find($itemId);
-        if ($cartItem && $cartItem->user_id == auth()->id()) {
-            $cartItem->quantity = $request->quantity;
-            $cartItem->save();
-            return response()->json(['success' => 'Cart updated successfully']);
-        }
+        $cartItem = ShoppingCart::where('user_id', auth()->id())->findOrFail($itemId);
 
-        return response()->json(['error' => 'Cart item not found'], 404);
-    }
+        $this->authorize('update', $cartItem);
 
-    /**
-     * Display the shopping cart contents for the authenticated user.
-     * Retrieves and displays all cart items associated with the current authenticated user.
-     *
-     * @return View Returns a view of the shopping cart with the user's cart items.
-     */
-    public function viewCart(): View
-    {
-        $cartItems = ShoppingCart::where('user_id', auth()->id())->get();
+        $cartItem->quantity = $request->quantity;
+        $cartItem->save();
 
-        return view('cart.index', compact('cartItems'));
+        return response()->json(['success' => 'Cart updated successfully']);
     }
 
     /**
@@ -140,27 +131,11 @@ class CheckoutController extends Controller
             ShoppingCart::where('user_id', $user->id)->delete();
             DB::commit();
             return redirect()->route('checkout.success')->with('success', 'Your purchase has been completed successfully!');
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
+            return redirect()->back()->with('error', 'Product not found.');
         } catch (Exception) {
             DB::rollBack();
             return redirect()->back()->with('error', 'An error occurred while processing your order. Please try again.');
         }
-    }
-
-    /**
-     * Remove an item from the shopping cart via an AJAX request.
-     * Responds with JSON indicating success or failure based on whether the cart item was found and deleted.
-     *
-     * @param int $cartItemId The unique identifier of the cart item to be removed via AJAX.
-     * @return JsonResponse Returns a JSON response indicating the result of the removal operation.
-     */
-    public function remove(int $cartItemId): JsonResponse
-    {
-        $cartItem = ShoppingCart::find($cartItemId);
-        if ($cartItem) {
-            $cartItem->delete();
-            return response()->json(['success' => 'Item removed from cart']);
-        }
-
-        return response()->json(['error' => 'Item not found'], 404);
     }
 }
