@@ -242,7 +242,7 @@
      <section aria-labelledby="cause-heading">
       <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
         <div class="absolute inset-0 overflow-hidden">
-          <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="h-full w-full object-cover object-center">
+          <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
         </div>
         <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
         <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -252,6 +252,17 @@
         </div>
       </div>
     </section>
+
+     <!-- Favorites section -->
+     <section aria-labelledby="favorites-heading">
+      <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div class="sm:flex sm:items-baseline sm:justify-between">
+          <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-gray-900">Our Favorites</h2>
+          <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+            Browse all favorites
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
   </main>
     
         
