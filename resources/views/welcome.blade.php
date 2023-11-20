@@ -237,6 +237,21 @@
         </div>
       </div>
     </section>
+
+     <!-- Wir als Handpickd section -->
+     <section aria-labelledby="cause-heading">
+      <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
+        <div class="absolute inset-0 overflow-hidden">
+          <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="h-full w-full object-cover object-center">
+        </div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
+        <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Long-term thinking</h2>
+          <p class="mt-3 text-xl text-white">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
+          <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Find out more about us</a>
+        </div>
+      </div>
+    </section>
   </main>
     
         
