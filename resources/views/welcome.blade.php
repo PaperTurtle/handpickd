@@ -308,7 +308,18 @@
           </div>
         </div>
 
-       
+        <!-- Browse all favorites mobile  -->
+        <div class="mt-6 sm:hidden">
+          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-[#355427] px-4 py-1 text-[#FFFAEB] hover:shadow-lg hover:scale-105">
+            Browse all favorites
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+      
+
+      
   </main>
     
         
