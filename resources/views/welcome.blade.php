@@ -33,7 +33,7 @@
                       <img src="https://tinyurl.com/ys3cgyjz" alt="" class="h-full w-full object-cover object-center">
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/yoevvb6c" alt="" class="h-full w-full object-cover object-center">
+                      <img src="https://tinyurl.com/yoevvb6c" alt="" class="h-full w-full object-cover object-center">l
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
                       <img src="https://tinyurl.com/yw6thpkx" alt="" class="h-full w-full object-cover object-center">
@@ -62,11 +62,11 @@
 
     <!-- Category section -->
     <section aria-labelledby="category-heading" class="bg-[#355427]">
-      <div class="mx-auto max-w-[2000px] px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-[2000px] mb-[100px] px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="sm:flex sm:items-baseline sm:justify-between">
           <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-[#FFFAEB]">Shop by Category</h2>
           <!-- Browse Categories Desktop -->
-          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105 hover:text-[#355427] sm:block">
+          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105 sm:block">
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -230,7 +230,7 @@
         
         <!-- Browse Categories mobile -->
         <div class="mt-6 sm:hidden">
-          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105 hover:text-[#355427]">
+          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105">
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -238,31 +238,77 @@
       </div>
     </section>
 
-     <!-- Wir als Handpickd section -->
-     <section aria-labelledby="cause-heading">
-      <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
+    <!-- Wir als Handpickd section -->
+    <section aria-labelledby="cause-heading">
+    <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
         <div class="absolute inset-0 overflow-hidden">
           <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
         </div>
         <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
         <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Long-term thinking</h2>
-          <p class="mt-3 text-xl text-white">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
-          <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Find out more about us</a>
+          <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-[#FFFAEB] sm:text-4xl">Long-term thinking</h2>
+          <p class="mt-3 text-xl text-[#FFFAEB]">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
+          <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-[#FFFAEB] px-8 py-3 text-base font-medium text-[#355427] hover:bg-gray-100 sm:w-auto">Find out more about us</a>
         </div>
       </div>
     </section>
-
-     <!-- Favorites section -->
-     <section aria-labelledby="favorites-heading">
+    
+    <!-- Favorites section -->
+    <section aria-labelledby="favorites-heading">
       <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="sm:flex sm:items-baseline sm:justify-between">
-          <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-gray-900">Our Favorites</h2>
-          <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+          <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-[#355427]">Our Favorites</h2>
+          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#355427] px-4 py-1 text-[#FFFAEB] hover:shadow-lg hover:scale-105 sm:block">
             Browse all favorites
             <span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
+
+        <!-- 1st Favorite  -->
+        <div class="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-0 lg:gap-x-8">
+          <div class="group relative">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+              <img src="https://images.pexels.com/photos/7085777/pexels-photo-7085777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Black Wallet For Him
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-[#355427]">38€</p>
+          </div>
+
+          <!-- 2nd Favorite  -->
+          <div class="group relative">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+              <img src="https://images.pexels.com/photos/11232062/pexels-photo-11232062.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Off-White Basic Bowl
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-[#355427]">29€</p>
+          </div>
+
+          <!-- 3rd Favorite  -->
+          <div class="group relative">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+              <img src="https://images.pexels.com/photos/969832/pexels-photo-969832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
+            </div>
+            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Artwork Vase
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-[#355427]">42€</p>
+          </div>
+        </div>
+
+       
   </main>
     
         
