@@ -35,7 +35,6 @@ class ProductController extends Controller
     public function __construct(ImageService $imageService)
     {
         $this->imageService = $imageService;
-        $this->authorizeResource(Product::class, 'product');
     }
 
     /**
@@ -67,7 +66,7 @@ class ProductController extends Controller
      */
     public function show(Product $product): Factory|View
     {
-        $product->load('reviews.user');;
+        $product->load('reviews.user');
 
         return view('products.show', [
             'product' => $product,
@@ -197,7 +196,7 @@ class ProductController extends Controller
      */
     public function destroyImage(Product $product, ProductImage $productImage): JsonResponse
     {
-        $this->authorize('deleteImage', $productImage);
+        $this->authorize('deleteImage', [$product, $productImage]);
 
         $this->imageService->deleteImage($productImage);
 

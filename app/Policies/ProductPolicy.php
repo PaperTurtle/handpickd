@@ -84,7 +84,7 @@ class ProductPolicy
      */
     public function deleteImage(User $user, Product $product, ProductImage $productImage): bool
     {
-        return $user->id === $product->artisan_id;
+        return $user->id === $product->artisan_id && $productImage->product_id === $product->id;
     }
 
     /**
