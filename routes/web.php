@@ -29,8 +29,7 @@ Route::get('/', function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-// Checkout and FAQ routes
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+// FAQ routes
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
 // ========= Authentication Required Routes =========
@@ -41,9 +40,9 @@ Route::middleware('auth')->group(function () {
     // Cart routes
     Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
     Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
-    Route::get('/cart', [CheckoutController::class, 'viewCart'])->name('cart.view');
 
     // Checkout process
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/checkout/success', function () {
         return view('checkout.success');
