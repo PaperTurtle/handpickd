@@ -54,7 +54,16 @@ class UpdateImagePaths extends Command
     protected function updateImagePathsForType($type)
     {
         $columnName = "{$type}_image_path";
-        ProductImage::whereNull($columnName)->chunk(100, function ($images) use ($columnName, $type) {
+
+        $imagesCount = ProductImage::where(function ($query) use ($columnName) {
+            $query->whereNull($columnName)->orWhere($columnName, '');
+        })->count();
+
+        $this->info("Found {$imagesCount} images with null or empty {$type} image path.");
+
+        ProductImage::where(function ($query) use ($columnName) {
+            $query->whereNull($columnName)->orWhere($columnName, '');
+        })->chunk(100, function ($images) use ($columnName, $type) {
             foreach ($images as $image) {
                 $path = str_replace('_original', "_{$type}", $image->image_path);
 
