@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Services\ImageService;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -147,41 +148,72 @@ class ProductController extends Controller
      * This method validates and updates the given product in the database.
      * It returns a redirect response to the updated product's page.
      *
-     * @param UpdateProductRequest $request The request object containing updated product data.
+     * @param Request $request The request object containing updated product data.
      * @param Product $product The product instance to update.
      * @return RedirectResponse Returns a redirect response to the product's detail page.
      */
-    public function update(UpdateProductRequest $request, Product $product): RedirectResponse
+    public function update(Request $request, Product $product): RedirectResponse
     {
-        $this->authorize('update', $product);
+        // $this->authorize('update', $product);
 
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric|between:0,999999.99',
+            'images' => 'sometimes|array|max:3',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        ]);
+        $product->update($validatedData);
+        if ($request->hasFile('images')) {
 
-        DB::beginTransaction();
-        try {
-            // Update product details
-            $product->update($validatedData);
+            $currentImageCount = $product->images()->count();
+            $allowedNewImages = 3 - $currentImageCount;
+            if ($allowedNewImages > 0) {
+                $images = array_slice($request->file('images'), 0, $allowedNewImages);
 
-            // Handle image uploads
-            if ($request->hasFile('images')) {
-                $currentImageCount = $product->images()->count();
-                $allowedNewImages = self::MAX_IMAGES - $currentImageCount;
+                foreach ($images as $imageFile) {
+                    $timestamp = time();
+                    $originalFilename = 'product_' . $timestamp . '_original.webp';
+                    $originalImagePath = 'product_images/' . $originalFilename;
 
-                if ($allowedNewImages > 0) {
-                    $newImages = array_slice($request->file('images'), 0, $allowedNewImages);
-                    $this->imageService->processAndStoreImages($newImages, $product->id, $validatedData['description']);
+                    $resizedFilename = 'product_' . $timestamp . '_resized.webp';
+                    $resizedImagePath = 'product_images/' . $resizedFilename;
+
+                    $showFilename = 'product_' . $timestamp . '_show.webp';
+                    $showImagePath = 'product_images/' . $showFilename;
+
+                    $thumbnailFilename = 'product_' . $timestamp . '_thumbnail.webp';
+                    $thumbnailImagePath = 'product_images/' . $thumbnailFilename;
+
+                    $imageFile->storeAs('product_images', $originalFilename, 'public');
+
+                    $nodeCommand = "node " . escapeshellarg(base_path('resources/js/imageProcessor.js')) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $resizedImagePath));
+
+                    exec($nodeCommand);
+
+                    $nodeCommandForShow = "node " . escapeshellarg(base_path('resources/js/imageProcessorShow.js')) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $showImagePath));
+                    exec($nodeCommandForShow);
+
+                    $nodeCommandForThumbnail = "node " . escapeshellarg(base_path('resources/js/imageProcessorThumbnail.js')) . " " .
+                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
+                        escapeshellarg(storage_path('app/public/' . $thumbnailImagePath));
+                    exec($nodeCommandForThumbnail);
+
+                    ProductImage::updateOrCreate(
+                        ['product_id' => $product->id, 'image_path' => $originalImagePath],
+                        [
+                            'resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description'],
+                            'thumbnail_image_path' => $thumbnailImagePath,
+                            'show_image_path' => $showImagePath,
+                        ]
+                    );
                 }
             }
-            $this->clearProductCache();
-
-            DB::commit();
-
             return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully.');
-        } catch (\Exception $e) {
-            DB::rollBack(); // Roll back the transaction on error
-
-            // Redirect back with error message
-            return redirect()->back()->withInput()->withErrors(['error' => 'An error occurred while updating the product.']);
         }
     }
 
