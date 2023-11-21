@@ -380,14 +380,17 @@
                                 <div>
                                     <label for="editRating"
                                         class="block text-sm font-medium text-gray-700">Rating</label>
-                                    <select id="editRating" x-model="editRating"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            <option :value="{{ $i }}"
-                                                x-bind:selected="editRating == {{ $i }}">
-                                                {{ $i }}</option>
-                                        @endfor
-                                    </select>
+                                    <div id="editRating" x-model="editRating" class="flex">
+                                        <template x-for="i in 5" :key="i">
+                                            <svg @click="editRating = i" class="h-5 w-5 flex-shrink-0 cursor-pointer"
+                                                :class="{ 'text-yellow-400': i <= editRating, 'text-gray-300': i > editRating }"
+                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </template>
+                                    </div>
                                 </div>
                                 <div class="mt-4">
                                     <label for="editReviewText"
@@ -414,22 +417,31 @@
                     <div
                         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                         <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <h3 class="text-xl leading-6 font-medium text-gray-900" id="modal-title">Write a Review
+                            <h3 class="text-xl leading-6 font-medium text-gray-900" id="modal-title">
+                                Write a Review
                             </h3>
-                            <div>
-                                <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                <select id="rating" x-model="rating"
-                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
-                            </div>
                             <div class="mt-2">
-                                <textarea x-model="review" rows="4"
-                                    class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none"></textarea>
+                                <div>
+                                    <label for="rating"
+                                        class="block text-sm font-medium text-gray-700">Rating</label>
+                                    <div id="rating" class="flex">
+                                        <template x-for="i in 5" :key="i">
+                                            <svg @click="rating = i" class="h-5 w-5 flex-shrink-0 cursor-pointer"
+                                                :class="{ 'text-yellow-400': i <= rating, 'text-gray-300': i > rating }"
+                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label for="writeReviewText" class="block text-sm font-medium text-gray-700">Your
+                                        Review</label>
+                                    <textarea id="writeReviewText" x-model="review" rows="4"
+                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none"></textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="px-4 py-3 sm:flex sm:flex-row-reverse">
@@ -509,7 +521,7 @@
                 submitReview() {
                     const payload = {
                         product_id: this.productId,
-                        rating: parseInt(this.rating, 10),
+                        rating: this.rating,
                         review: this.review,
                         _token: '{{ csrf_token() }}'
                     };
@@ -538,7 +550,7 @@
 
                 updateReview() {
                     const payload = {
-                        rating: parseInt(this.editRating, 10),
+                        rating: this.editRating,
                         review: this.editReviewText,
                         _token: '{{ csrf_token() }}'
                     };
