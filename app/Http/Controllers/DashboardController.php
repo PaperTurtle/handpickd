@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -24,17 +23,13 @@ class DashboardController extends Controller
      */
     public function index(): Factory|View
     {
-        // $transactions = Transaction::with('product')
-        //     ->whereHas('product', function ($query) {
-        //         $query->where('artisan_id', auth()->id());
-        //     })
-        //     ->get();
-
-        $orders = Order::with('transactions.product')
-            ->where('buyer_id', Auth::id())
+        $transactions = Transaction::with('product')
+            ->whereHas('product', function ($query) {
+                $query->where('artisan_id', auth()->id());
+            })
             ->get();
 
-        return view('dashboard', compact('orders'));
+        return view('dashboard', compact('transactions'));
     }
 
     /**
@@ -47,9 +42,9 @@ class DashboardController extends Controller
      */
     public function markAsSent(Transaction $transaction): JsonResponse
     {
-        // if ($transaction->product->artisan_id !== Auth::id()) {
-        //     return response()->json(['message' => 'Unauthorized action'], 403);
-        // }
+        if ($transaction->product->artisan_id !== Auth::id()) {
+            return response()->json(['message' => 'Unauthorized action'], 403);
+        }
 
         $transaction->update(['status' => 'sent']);
 
