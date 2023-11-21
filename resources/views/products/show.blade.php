@@ -122,11 +122,10 @@
                                 </p>
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="red" class="w-6 h-6">
+                                    stroke-width="1.5" stroke="red" class="h-5 w-5 flex-shrink-0">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
-
-                                <p class="text-red-500">Out of Stock. Resuppling soon!</p>
+                                <p class="ml-2 text-sm text-red-500">Out of Stock. Resuppling soon!</p>
                             @endif
                         </div>
                     </section>
