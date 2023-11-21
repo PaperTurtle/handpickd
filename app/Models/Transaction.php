@@ -34,7 +34,6 @@ class Transaction extends Model
      */
     protected $fillable = [
         'buyer_id',
-        'order_id',
         'product_id',
         'quantity',
         'total_price',
@@ -70,15 +69,5 @@ class Transaction extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
-    }
-
-    /**
-     * Get the order that owns the transaction.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
     }
 }
