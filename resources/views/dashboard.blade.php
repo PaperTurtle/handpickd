@@ -3,7 +3,11 @@
         <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:pb-24">
             <div class="max-w-xl">
                 <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-heading">Your Dashboard</h1>
+<<<<<<< HEAD
                 <p class="mt-2 text-sm text-gray-500">Manage the status of recent orders</p>
+=======
+                <p class="mt-2 text-sm text-gray-500">Manage the status of recent orders and </p>
+>>>>>>> edcf301f59ff55721fb2cec47568b694ecced446
             </div>
 
             <div class="mt-16">
