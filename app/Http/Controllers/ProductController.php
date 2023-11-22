@@ -160,14 +160,4 @@ class ProductController extends Controller
             'message' => 'Image deleted successfully.'
         ]);
     }
-
-    /**
-     * Clears the products cache.
-     * 
-     * @return void
-     */
-    private function clearProductCache(): void
-    {
-        Cache::forget('products_index');
-    }
 }
