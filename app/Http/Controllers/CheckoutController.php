@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
 use App\Http\Requests\UpdateCartRequest;
-use App\Models\Order;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -117,15 +116,8 @@ class CheckoutController extends Controller
             $user = auth()->user();
             $cartItems = ShoppingCart::with('product')->where('user_id', $user->id)->get();
 
-            $order = Order::create([
-                'buyer_id' => $user->id,
-            ]);
-
-            $totalPrice = 0;
-
             foreach ($cartItems as $item) {
-                $transaction = Transaction::create([
-                    'order_id' => $order->id,
+                Transaction::create([
                     'buyer_id' => $user->id,
                     'product_id' => $item->product_id,
                     'quantity' => $item->quantity,
@@ -133,15 +125,8 @@ class CheckoutController extends Controller
                     'status' => 'pending',
                 ]);
 
-                $totalPrice += $transaction->total_price;
-
                 $item->product->decrement('quantity', $item->quantity);
             }
-
-            $order->update([
-                'total_price' => $totalPrice,
-                'is_complete' => $cartItems->isEmpty() || $cartItems->every(fn ($item) => $item->status === 'sent'),
-            ]);
 
             ShoppingCart::where('user_id', $user->id)->delete();
             DB::commit();

@@ -46,15 +46,8 @@ class ProductController extends Controller
      */
     public function index(): Factory|View
     {
-        // Cache key
-        $cacheKey = 'products_index';
+        $products = Product::all();
 
-        // Cache duration in minutes
-        $cacheDuration = 60;
-
-        $products = Cache::remember($cacheKey, $cacheDuration, function () {
-            return Product::with('category')->get();
-        });
         return view("products.index", compact("products"));
     }
 
@@ -92,41 +85,19 @@ class ProductController extends Controller
      * This method validates and stores a new product in the database, along with its images.
      * It returns a JSON response with the result of the operation.
      *
-     * @param StoreProductRequest $request The request object containing product data.
-     * @return JsonResponse Returns JSON response with the status of product creation.
+     * @param Request $request The request object containing product data.
+     * @return RedirectResponse Returns JSON response with the status of product creation.
      */
-    public function store(StoreProductRequest $request): JsonResponse
+    public function store(StoreProductRequest $request): RedirectResponse
     {
-        $this->authorize('create', Product::class);
-
         $validatedData = $request->validated();
 
-        DB::beginTransaction();
+        $product = Product::create($validatedData);
 
-        try {
-            $product = Product::create($validatedData);
-
-            if ($request->hasFile('images')) {
-                $uploadedImages = $this->imageService->processAndStoreImages(
-                    $request->file('images'),
-                    $product->id,
-                    $validatedData['description']
-                );
-            }
-
-            $this->clearProductCache();
-
-            DB::commit();
-
-            return response()->json([
-                'message' => 'Product created successfully.',
-                'product_id' => $product->id,
-                'uploaded_images' => $uploadedImages,
-            ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(['error' => 'An error occurred while creating the product.'], 500);
+        if ($request->hasFile('images')) {
+            $this->imageService->processAndStoreImages($product, $request->file('images'), $validatedData['name']);
         }
+        return redirect()->route('products.show', $product->id)->with('success', 'Product created successfully.');
     }
 
     /**
@@ -148,73 +119,25 @@ class ProductController extends Controller
      * This method validates and updates the given product in the database.
      * It returns a redirect response to the updated product's page.
      *
-     * @param Request $request The request object containing updated product data.
+     * @param UpdateProductRequest $request The request object containing updated product data.
      * @param Product $product The product instance to update.
      * @return RedirectResponse Returns a redirect response to the product's detail page.
      */
-    public function update(Request $request, Product $product): RedirectResponse
+    public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
-        // $this->authorize('update', $product);
-
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|numeric|between:0,999999.99',
-            'images' => 'sometimes|array|max:3',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        ]);
+        $validatedData = $request->validated();
         $product->update($validatedData);
-        if ($request->hasFile('images')) {
 
+        if ($request->hasFile('images')) {
             $currentImageCount = $product->images()->count();
-            $allowedNewImages = 3 - $currentImageCount;
+            $allowedNewImages = ProductController::MAX_IMAGES - $currentImageCount;
+
             if ($allowedNewImages > 0) {
                 $images = array_slice($request->file('images'), 0, $allowedNewImages);
-
-                foreach ($images as $imageFile) {
-                    $timestamp = time();
-                    $originalFilename = 'product_' . $timestamp . '_original.webp';
-                    $originalImagePath = 'product_images/' . $originalFilename;
-
-                    $resizedFilename = 'product_' . $timestamp . '_resized.webp';
-                    $resizedImagePath = 'product_images/' . $resizedFilename;
-
-                    $showFilename = 'product_' . $timestamp . '_show.webp';
-                    $showImagePath = 'product_images/' . $showFilename;
-
-                    $thumbnailFilename = 'product_' . $timestamp . '_thumbnail.webp';
-                    $thumbnailImagePath = 'product_images/' . $thumbnailFilename;
-
-                    $imageFile->storeAs('product_images', $originalFilename, 'public');
-
-                    $nodeCommand = "node " . escapeshellarg(base_path('resources/js/imageProcessor.js')) . " " .
-                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
-                        escapeshellarg(storage_path('app/public/' . $resizedImagePath));
-
-                    exec($nodeCommand);
-
-                    $nodeCommandForShow = "node " . escapeshellarg(base_path('resources/js/imageProcessorShow.js')) . " " .
-                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
-                        escapeshellarg(storage_path('app/public/' . $showImagePath));
-                    exec($nodeCommandForShow);
-
-                    $nodeCommandForThumbnail = "node " . escapeshellarg(base_path('resources/js/imageProcessorThumbnail.js')) . " " .
-                        escapeshellarg(storage_path('app/public/product_images/' . $originalFilename)) . " " .
-                        escapeshellarg(storage_path('app/public/' . $thumbnailImagePath));
-                    exec($nodeCommandForThumbnail);
-
-                    ProductImage::updateOrCreate(
-                        ['product_id' => $product->id, 'image_path' => $originalImagePath],
-                        [
-                            'resized_image_path' => $resizedImagePath, 'alt_text' => $validatedData['description'],
-                            'thumbnail_image_path' => $thumbnailImagePath,
-                            'show_image_path' => $showImagePath,
-                        ]
-                    );
-                }
+                $this->imageService->processAndStoreImages($product, $images, $validatedData['description']);
             }
-            return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully.');
         }
+        return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully.');
     }
 
     /**
@@ -231,8 +154,6 @@ class ProductController extends Controller
         $this->authorize('deleteImage', [$product, $productImage]);
 
         $this->imageService->deleteImage($productImage);
-
-        $this->clearProductCache();
 
         return response()->json([
             'success' => true,
