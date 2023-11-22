@@ -8,7 +8,6 @@
                     <p class="mt-2 text-sm text-gray-500">Manage the status of recent orders.</p>
                 </div>
             </div>
-
             <div class="mt-16">
                 <h2 class="sr-only">Recent orders</h2>
                 <div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
