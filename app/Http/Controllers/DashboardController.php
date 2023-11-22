@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 /**
@@ -29,6 +30,10 @@ class DashboardController extends Controller
             })
             ->orderBy('created_at', 'desc')
             ->get()
+            ->map(function ($transaction) {
+                $transaction->delivered_on = $transaction->updated_at->format('F j, Y'); // format date
+                return $transaction;
+            })
             ->groupBy(function ($transaction) {
                 return $transaction->created_at->toDateTimeString();
             });
