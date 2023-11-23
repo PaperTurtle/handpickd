@@ -115,9 +115,10 @@ class CheckoutController extends Controller
         try {
             $user = auth()->user();
             $cartItems = ShoppingCart::with('product')->where('user_id', $user->id)->get();
+            $transactionDetails = [];
 
             foreach ($cartItems as $item) {
-                Transaction::create([
+                $transaction = Transaction::create([
                     'buyer_id' => $user->id,
                     'product_id' => $item->product_id,
                     'quantity' => $item->quantity,
@@ -125,12 +126,14 @@ class CheckoutController extends Controller
                     'status' => 'pending',
                 ]);
 
+                $transactionDetails[] = $transaction;
                 $item->product->decrement('quantity', $item->quantity);
             }
 
             ShoppingCart::where('user_id', $user->id)->delete();
             DB::commit();
-            return redirect()->route('checkout.success')->with('success', 'Your purchase has been completed successfully!');
+            return redirect()->route('checkout.success')->with('success', 'Your purchase has been completed successfully!')
+                ->with('transactionDetails', $transactionDetails);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
             return redirect()->back()->with('error', 'Product not found.');
         } catch (Exception) {
