@@ -52,7 +52,7 @@
             @auth
                 <!-- Profile Settings -->
                 <div class="hidden md:flex md:items-center sm:gap-4">
-                    <x-nav-link :href="route('profile.edit')">
+                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         <span>{{ __('Profile') }} </span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6 ml-1 hidden lg:block">
