@@ -17,6 +17,7 @@
                             @php
                                 $date = new \DateTime($timestamp);
                                 $orderNumber = $date->format('YmdHi');
+                                $isOrderCompleted = collect($group)->every(fn($transaction) => $transaction->status === 'sent');
                             @endphp
                             <div class="border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
                                 <h3 class="sr-only">Order placed on <time
@@ -45,6 +46,15 @@
                                                 {{ number_format($totalAmount, 2) }} €</dd>
                                         </div>
                                     </dl>
+                                    <h3 x-show="isOrderCompleted({{ json_encode($group->pluck('id')) }})"
+                                        class="inline-flex items-center text-green-500 font-bold">
+                                        <span>Order Completed</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </h3>
                                 </div>
 
                                 <!-- Products -->
@@ -160,11 +170,15 @@
                         })
                         .then(data => {
                             this.status[transactionId] = 'sent';
+                            this.$nextTick(() => this.checkOrderCompletion());
                         })
                         .catch(error => {
                             console.error('There has been a problem with your fetch operation:', error);
                         });
-                }
+                },
+                isOrderCompleted(transactionIds) {
+                    return transactionIds.every(id => this.status[id] === 'sent');
+                },
             };
         }
     </script>
