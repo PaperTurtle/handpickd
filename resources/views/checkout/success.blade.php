@@ -52,7 +52,7 @@
                             <dt class="font-medium text-gray-900">Shipping Address</dt>
                             <dd class="mt-2">
                                 <address class="not-italic">
-                                    <span class="block">Kristin Watson</span>
+                                    <span class="block">{{ $transaction->buyer->name }}</span>
                                 </address>
                             </dd>
                         </div>
