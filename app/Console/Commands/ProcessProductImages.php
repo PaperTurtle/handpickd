@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
  * The command is designed to maintain different versions of product images for various use cases.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan product:process-images`.
+ * Command: `php artisan images:ppi (process-product-images)`.
  */
 class ProcessProductImages extends Command
 {
@@ -22,7 +22,7 @@ class ProcessProductImages extends Command
      *
      * @var string
      */
-    protected $signature = 'product:process-images';
+    protected $signature = 'images:ppi';
 
     /**
      * The console command description.

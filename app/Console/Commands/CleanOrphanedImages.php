@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
  * images are retained.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan app:coi` (clean-orphaned-images).
+ * Command: `php artisan images:coi` (clean-orphaned-images).
  */
 class CleanOrphanedImages extends Command
 {
@@ -24,7 +24,7 @@ class CleanOrphanedImages extends Command
      *
      * @var string
      */
-    protected $signature = 'app:coi';
+    protected $signature = 'images:coi';
 
     /**
      * The console command description.
