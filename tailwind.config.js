@@ -42,6 +42,9 @@ export default {
 			primary: "var(--primary)",
 			secondary: "var(--secondary)",
 			accent: "var(--accent)",
+			accentcontrast: "#64d97b",
+
+			'light-grey': "rgba(0, 0, 0, 0.03)",
 		},
 		fontSize: {
 			sm: "0.750rem",

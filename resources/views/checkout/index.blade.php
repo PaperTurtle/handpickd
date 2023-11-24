@@ -27,7 +27,7 @@
         <template x-cloak x-if="cartItems.length === 0">
             <p>Your shopping cart is empty.</p>
         </template>
-
+        <a href="{{ route('checkout.process') }}">proceed to checkout</a>
         <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
             @csrf
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
