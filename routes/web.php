@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout/success', function () {
         return view('checkout.success');
     })->name('checkout.success');
+    Route::get('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
 
     // Dashboard transaction management
     Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])

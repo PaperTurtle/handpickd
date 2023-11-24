@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use App\Models\ShoppingCart;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaction;
 use App\Mail\SendOrderConfirmation;
@@ -31,6 +32,12 @@ class CheckoutController extends Controller
         $cartItems = ShoppingCart::with('product')->where('user_id', auth()->id())->get();
 
         return view('checkout.index', compact('cartItems'));
+    }
+
+    public function process(Request $request): View
+    {
+        $user = $request->user();
+        return view('checkout.process',["user"=>$user]);
     }
 
     /**
