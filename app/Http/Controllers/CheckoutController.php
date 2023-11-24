@@ -7,10 +7,11 @@ use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use App\Models\ShoppingCart;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaction;
+use App\Mail\SendOrderConfirmation;
+use Illuminate\Support\Facades\Mail;
 use Exception;
 
 /**
@@ -132,6 +133,7 @@ class CheckoutController extends Controller
 
             ShoppingCart::where('user_id', $user->id)->delete();
             DB::commit();
+            Mail::to($user->email)->send(new SendOrderConfirmation($user, $transactionDetails));
             return redirect()->route('checkout.success')->with('success', 'Your purchase has been completed successfully!')
                 ->with('transactionDetails', $transactionDetails);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
