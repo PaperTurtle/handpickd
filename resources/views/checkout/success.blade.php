@@ -16,7 +16,7 @@
                     <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Thanks for ordering</p>
                     <p class="mt-2 text-base text-gray-500">We appreciate your order, the artisan is currently
                         processing it. So
-                        hang tight and we’ll send you confirmation very soon!</p>
+                        hang tight and we'll send you confirmation very soon!</p>
                     <ul role="list"
                         class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500">
                         @foreach (session('transactionDetails') as $transaction)
