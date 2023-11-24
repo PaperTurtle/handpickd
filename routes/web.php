@@ -24,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
 // Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::middleware('auth')->group(function () {
