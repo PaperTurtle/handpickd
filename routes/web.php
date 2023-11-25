@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     // Cart routes
     Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
     Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
+    Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
 
     // Checkout process
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
@@ -68,9 +69,6 @@ Route::middleware('auth')->group(function () {
     // Review routes
     Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
-
-    // Update cart item
-    Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
 });
 
 // ========= Authentication Routes (Laravel Breeze) =========
