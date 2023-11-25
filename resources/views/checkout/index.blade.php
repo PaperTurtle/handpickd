@@ -18,14 +18,18 @@
 
                                 <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                                     <div class="relative sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+
                                         <div>
-                                            <div class="flex-col justify-between">
-                                                <!-- name -->
-                                                <p x-text="`${cartItem.product.name}`"></p>
-                                                <!-- price -->
-                                                <p x-text="`$${Number(cartItem.product.price).toFixed(2)} €`"></p>
-                                            </div>
+                                            <!-- name -->
+                                            <h3 class="text-sm">
+                                                <a href="#" class="hover:text-gray-400"
+                                                    x-text="`${cartItem.product.name}`"></a>
+                                            </h3>
+                                            <!-- price -->
+                                            <p class="mt-1 text-sm font-medium text-text pt-10"
+                                                x-text="`$${Number(cartItem.product.price).toFixed(2)} €`"></p>
                                         </div>
+
                                         <div>
                                             <!-- quantity -->
                                             <p>
@@ -52,13 +56,13 @@
                                     <template x-if="cartItem.product.quantity <= 0">
                                         <div class="flex">
                                             <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
-                                                    fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd"
-                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                <p x-text="`Ships in 3-4 weeks`"></p>
-                                        </div>    
+                                                fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <p x-text="`Ships in 3-4 weeks`"></p>
+                                        </div>
                                     </template>
                                     <template x-if="cartItem.product.quantity > 0">
                                         <div class="flex">
