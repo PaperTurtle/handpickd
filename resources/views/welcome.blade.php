@@ -267,7 +267,7 @@
         <!-- 1st Favorite  -->
         <div class="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-0 lg:gap-x-8">
           <div class="group relative">
-            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 transition ease-in-out delay-150 group-hover:scale-105 group-hover:shadow sm:h-auto">
               <img src="https://images.pexels.com/photos/7085777/pexels-photo-7085777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
             <h3 class="mt-4 text-base font-semibold text-primary">
@@ -281,7 +281,7 @@
 
           <!-- 2nd Favorite  -->
           <div class="group relative">
-            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 transition ease-in-out delay-150 group-hover:scale-105 group-hover:shadow sm:h-auto">
               <img src="https://images.pexels.com/photos/11232062/pexels-photo-11232062.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
             <h3 class="mt-4 text-base font-semibold text-primary">
@@ -295,7 +295,7 @@
 
           <!-- 3rd Favorite  -->
           <div class="group relative">
-            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
+            <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 transition ease-in-out delay-150 group-hover:scale-105 group-hover:shadow sm:h-auto">
               <img src="https://images.pexels.com/photos/969832/pexels-photo-969832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
             <h3 class="mt-4 text-base font-semibold text-primary">
