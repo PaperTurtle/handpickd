@@ -2,7 +2,6 @@
 <x-app-layout>
     <div class="container mx-auto px-4 py-6" x-data="{ images: [] }">
         <h1 class="text-xl font-semibold leading-7 text-gray-900">Post New Product</h1>
-
         <!-- Display Validation Errors -->
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"">
