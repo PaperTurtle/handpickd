@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * ProductController handles operations related to products and their images,
@@ -44,9 +45,20 @@ class ProductController extends Controller
      *
      * @return Factory|View Returns a view with a list of all products.
      */
-    public function index(): Factory|View
+    public function index(Request $request): Factory|View
     {
-        $products = Product::all();
+        $searchTerm = $request->query('search', '');
+        $selectedCategories = $request->query('categories', []);
+
+        if (!is_array($selectedCategories)) {
+            $selectedCategories = [$selectedCategories];
+        }
+
+        $products = Product::when($searchTerm, function ($query, $searchTerm) {
+            return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
+        })->when(count($selectedCategories), function ($query) use ($selectedCategories) {
+            return $query->whereIn('category_id', $selectedCategories);
+        })->get();
 
         return view("products.index", compact("products"));
     }
