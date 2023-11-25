@@ -17,7 +17,9 @@ it('has correct fillable attributes', function () {
         'product_id',
         'image_path',
         'alt_text',
-        'resized_image_path',
+        "resized_image_path",
+        "show_image_path",
+        "thumbnail_image_path"
     ]);
 });
 
