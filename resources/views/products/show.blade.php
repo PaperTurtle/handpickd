@@ -21,7 +21,7 @@
                                 </svg>
                             </div>
                             <div class="ml-3 w-0 flex-1 pt-0.5">
-                                <h3 class="text-lg font-medium text-gray-900">Item Added to Cart!</h3>
+                                <h3 class="text-lg font-medium text-text">Item Added to Cart!</h3>
                                 <p class="mt-1 text-sm text-gray-500">The product has been added to your cart. Continue
                                     shopping for more awesome products or proceed to checkout.</p>
                             </div>
@@ -53,14 +53,14 @@
                             <li>
                                 <div class="flex items-center text-sm">
                                     <span
-                                        class="font-medium text-gray-500 hover:text-gray-900">{{ $product->category->name }}</span>
+                                        class="font-medium text-gray-500 hover:text-text">{{ $product->category->name }}</span>
                                 </div>
                             </li>
                         </ol>
                     </nav>
                     <!-- Breadcrumb & Product Name -->
                     <div class="mt-4">
-                        <h1 class="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        <h1 class="font-heading text-3xl font-bold tracking-tight text-text sm:text-4xl">
                             {{ $product->name }}
                         </h1>
                         <h3 class="text-lg font-medium text-gray-700">Created by:
@@ -76,7 +76,7 @@
                         <h2 id="information-heading" class="sr-only">Product information</h2>
 
                         <div class="flex items-center">
-                            <p class="text-lg text-gray-900 sm:text-xl">{{ number_format($product->price, 2) }}€</p>
+                            <p class="text-lg text-text sm:text-xl">{{ number_format($product->price, 2) }}€</p>
 
                             <div class="ml-4 border-l border-gray-300 pl-4">
                                 <h2 class="sr-only">Reviews</h2>
@@ -193,7 +193,7 @@
                 class="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
                 <!-- Customer Reviews & Ratings -->
                 <div class="lg:col-span-4">
-                    <h2 id="reviews-heading" class="font-heading text-2xl font-bold tracking-tight text-gray-900">
+                    <h2 id="reviews-heading" class="font-heading text-2xl font-bold tracking-tight text-text">
                         Customer Reviews
                     </h2>
 
@@ -217,10 +217,10 @@
                             <p class="sr-only">4 out of 5 stars</p>
                         </div>
                         <template x-if="totalReviews > 0">
-                            <p class="ml-2 text-sm text-gray-900" x-text="`Based on ${totalReviews} reviews`"></p>
+                            <p class="ml-2 text-sm text-text" x-text="`Based on ${totalReviews} reviews`"></p>
                         </template>
                         <template x-if="totalReviews === 0">
-                            <p class="ml-2 text-sm text-gray-900">No reviews yet.</p>
+                            <p class="ml-2 text-sm text-text">No reviews yet.</p>
                         </template>
                     </div>
 
@@ -233,7 +233,7 @@
                                 :key="star">
                                 <div class="flex items-center text-sm">
                                     <dt class="flex flex-1 items-center">
-                                        <p class="w-3 font-medium text-gray-900" x-text="star"></p>
+                                        <p class="w-3 font-medium text-text" x-text="star"></p>
                                         <div aria-hidden="true" class="ml-1 flex flex-1 items-center">
                                             <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
@@ -249,7 +249,7 @@
                                             </div>
                                         </div>
                                     </dt>
-                                    <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900"
+                                    <dd class="ml-3 w-10 text-right text-sm tabular-nums text-text"
                                         x-text="`${Math.round(calculateStarRatingPercentages()[star])}%`"></dd>
                                 </div>
                             </template>
@@ -258,14 +258,14 @@
                     @if (auth()->check() && !$product->hasUserReviewed(auth()->id()) && auth()->id() !== $product->artisan_id)
                         <template x-if="!userHasReviewed">
                             <div class="mt-10 add-review" @submit.prevent="submitReview">
-                                <h3 class="text-lg font-medium text-gray-900">Share your thoughts</h3>
+                                <h3 class="text-lg font-medium text-text">Share your thoughts</h3>
                                 <p class="mt-1 text-sm text-gray-600">If you’ve used this product, share your thoughts
                                     with
                                     other
                                     customers</p>
 
                                 <button @click="openModal = true"
-                                    class="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 sm:w-auto lg:w-full">Write
+                                    class="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-text hover:bg-gray-50 sm:w-auto lg:w-full">Write
                                     a review</button>
                             </div>
                         </template>
@@ -280,7 +280,7 @@
                                 <div
                                     class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Write
+                                        <h3 class="text-lg leading-6 font-medium text-text" id="modal-title">Write
                                             a
                                             Review</h3>
                                         <div>
@@ -321,7 +321,7 @@
                                 <div class="py-12">
                                     <div class="flex items-center">
                                         <div class="ml-4">
-                                            <h4 class="text-sm font-bold text-gray-900" x-text="review.user.name">
+                                            <h4 class="text-sm font-bold text-text" x-text="review.user.name">
                                             </h4>
                                             <div class="mt-2 flex items-center">
                                                 <template x-for="i in review.rating">
@@ -381,7 +381,7 @@
                     <div
                         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                         <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <h3 class="text-xl leading-6 font-medium text-gray-900" id="modal-title">Edit
+                            <h3 class="text-xl leading-6 font-medium text-text" id="modal-title">Edit
                                 Your Review
                             </h3>
                             <div class="mt-2">
@@ -426,7 +426,7 @@
                     <div
                         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                         <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <h3 class="text-xl leading-6 font-medium text-gray-900" id="modal-title">
+                            <h3 class="text-xl leading-6 font-medium text-text" id="modal-title">
                                 Write a Review
                             </h3>
                             <div class="mt-2">

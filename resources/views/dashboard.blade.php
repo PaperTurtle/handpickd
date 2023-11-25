@@ -3,7 +3,7 @@
         <div class="py-16 sm:py-24">
             <div class="mx-auto max-w-7xl sm:px-2 lg:px-8">
                 <div class="mx-auto max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-                    <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl font-heading">Your Dashboard
+                    <h1 class="text-2xl font-bold tracking-tight text-text sm:text-3xl font-heading">Your Dashboard
                     </h1>
                     <p class="mt-2 text-sm text-gray-500">Manage the status of recent orders.</p>
                 </div>
@@ -28,11 +28,11 @@
                                     <dl
                                         class="grid flex-1 grid-cols-2 gap-x-6 text-sm sm:col-span-3 sm:grid-cols-3 lg:col-span-2">
                                         <div>
-                                            <dt class="font-medium text-gray-900">Order number</dt>
+                                            <dt class="font-medium text-text">Order number</dt>
                                             <dd class="mt-1 text-gray-500">{{ $orderNumber }}</dd>
                                         </div>
                                         <div class="hidden sm:block">
-                                            <dt class="font-medium text-gray-900">Date placed</dt>
+                                            <dt class="font-medium text-text">Date placed</dt>
                                             <dd class="mt-1 text-gray-500">
                                                 <time datetime="2021-07-06">{{ $date->format('F j, Y') }}</time>
                                             </dd>
@@ -41,8 +41,8 @@
                                             $totalAmount = $group->sum('total_price');
                                         @endphp
                                         <div>
-                                            <dt class="font-medium text-gray-900">Total amount</dt>
-                                            <dd class="mt-1 font-medium text-gray-900">
+                                            <dt class="font-medium text-text">Total amount</dt>
+                                            <dd class="mt-1 font-medium text-text">
                                                 {{ number_format($totalAmount, 2) }} €</dd>
                                         </div>
                                     </dl>

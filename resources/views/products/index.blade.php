@@ -3,7 +3,7 @@
         <!-- Introduction Section -->
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="py-24 text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 font-heading">Discover Artisanal Wonders</h1>
+                <h1 class="text-4xl font-bold tracking-tight text-text font-heading">Discover Artisanal Wonders</h1>
                 <p class="mx-auto mt-4 max-w-3xl text-base text-gray-500">Explore a curated selection of handcrafted
                     treasures, each piece telling a unique story of skill and creativity, perfect for enhancing your
                     living space and lifestyle..</p>
@@ -32,7 +32,7 @@
                         class="relative inline-block text-left">
                         <div>
                             <button @click="open = !open" type="button"
-                                class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                                class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-text"
                                 id="menu-button" aria-expanded="false" aria-haspopup="true">
                                 Sort
                                 <svg class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -53,12 +53,12 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
-                                    role="menuitem" tabindex="-1" id="menu-item-1">Best Rating</a>
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
-                                    role="menuitem" tabindex="-1" id="menu-item-3">Price: Low to High</a>
-                                <a href="#" class="block px-4 py-2 text-sm font-medium text-gray-900"
-                                    role="menuitem" tabindex="-1" id="menu-item-4">Price: High to Low</a>
+                                <a href="#" class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                    tabindex="-1" id="menu-item-1">Best Rating</a>
+                                <a href="#" class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                    tabindex="-1" id="menu-item-3">Price: Low to High</a>
+                                <a href="#" class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                    tabindex="-1" id="menu-item-4">Price: High to Low</a>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                             class="relative inline-block text-left">
                             <div>
                                 <button @click="open = !open" type="button"
-                                    class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                                    class="group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-text"
                                     aria-expanded="false">
                                     <span>Categories</span>
                                 </button>
@@ -88,7 +88,7 @@
                                                 x-model="selectedCategories"
                                                 class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="{{ $category->name }}"
-                                                class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-gray-900">{{ $category->name }}</label>
+                                                class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-text">{{ $category->name }}</label>
                                         </div>
                                     @endforeach
                                 </div>
@@ -116,7 +116,7 @@
                                         class="h-full w-full object-cover object-center group-hover:opacity-75" />
                                 @endif
                             </div>
-                            <div class="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
+                            <div class="mt-4 flex items-center justify-between text-base font-medium text-text">
                                 <h3 class="font-heading font-bold">{{ $product->name }}</h3>
                                 <p>{{ number_format($product->price, 2) }} €</p>
                             </div>
