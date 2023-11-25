@@ -9,14 +9,14 @@
                 <template x-if="cartItems.length > 0">
                     <div class="cart-items divide-y divide-gray-200 border-b border-t border-gray-200">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
-                            <div class="cart-item flex">
+                            <div class="cart-item flex py-6 sm:py-10">
                                 <!-- picture -->
                                 <div class="flex-shrink-0">
                                     <img src="" alt=""
                                         class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
                                 </div>
 
-                                <div class="flex flex-1 flex-col justify-between">
+                                <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                                     <div class="relative sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                         <div>
                                             <div class="flex-col justify-between">
