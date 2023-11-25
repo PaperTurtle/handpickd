@@ -88,8 +88,7 @@
                             <label for="images"
                                 class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                 <span>Upload files</span>
-                                <input type="file" id="images" name="images[]" multiple type="file" multiple
-                                    class="sr-only" <input type="file" id="images" name="images[]" multiple
+                                <input type="file" id="images" name="images[]" multiple
                                     accept="image/png, image/jpeg, image/jpg, image/gif, image/svg+xml"
                                     @change="images = []; Array.from($event.target.files).forEach(file => {
                                     let reader = new FileReader();
