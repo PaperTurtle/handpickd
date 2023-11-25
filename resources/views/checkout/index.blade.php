@@ -42,7 +42,13 @@
             </section>
 
             <section class="col-span-5">
-
+                <p>Order Summary</p>
+                <template x-for="cartItem in cartItems" :key="cartItem.id">
+                    <div>
+                        <h3 x-text="`${cartItem.product.name}`"></h3>
+                        <p x-text="`${cartItem.product.price} €`"></p>
+                    </div>
+                </template>
                 <p x-text="`Total Price: $${calculateTotalPrice()} €`"></p>
 
                 <a href="{{ route('checkout.process') }}">proceed to checkout</a>
