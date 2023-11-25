@@ -33,7 +33,6 @@
                                 </button>
                             </div>
                         </template>
-                        <p x-text="`Total Price: $${calculateTotalPrice()} €`"></p>
                     </div>
                 </template>
 
@@ -44,6 +43,7 @@
 
             <section class="col-span-5">
 
+                <p x-text="`Total Price: $${calculateTotalPrice()} €`"></p>
 
                 <a href="{{ route('checkout.process') }}">proceed to checkout</a>
                 <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
