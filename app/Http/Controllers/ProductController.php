@@ -54,10 +54,20 @@ class ProductController extends Controller
             $selectedCategories = [$selectedCategories];
         }
 
+        $sort = $request->query('sort');
+
         $products = Product::when($searchTerm, function ($query, $searchTerm) {
             return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
         })->when(count($selectedCategories), function ($query) use ($selectedCategories) {
             return $query->whereIn('category_id', $selectedCategories);
+        })->when($sort, function ($query) use ($sort) {
+            if ($sort == 'rating') {
+                return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
+            } elseif ($sort == 'price_asc') {
+                return $query->orderBy('price');
+            } elseif ($sort == 'price_desc') {
+                return $query->orderBy('price', 'desc');
+            }
         })->get();
 
         return view("products.index", compact("products"));

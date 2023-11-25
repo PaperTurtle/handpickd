@@ -54,12 +54,15 @@
                                 role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                 <div class="py-1" role="none">
                                     <!-- Active: "bg-gray-100", Not Active: "" -->
-                                    <a href="#" class="block px-4 py-2 text-sm font-medium text-text"
-                                        role="menuitem" tabindex="-1" id="menu-item-1">Best Rating</a>
-                                    <a href="#" class="block px-4 py-2 text-sm font-medium text-text"
-                                        role="menuitem" tabindex="-1" id="menu-item-3">Price: Low to High</a>
-                                    <a href="#" class="block px-4 py-2 text-sm font-medium text-text"
-                                        role="menuitem" tabindex="-1" id="menu-item-4">Price: High to Low</a>
+                                    <a href="{{ route('products.index', ['sort' => 'rating']) }}"
+                                        class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                        tabindex="-1" id="menu-item-1">Best Rating</a>
+                                    <a href="{{ route('products.index', ['sort' => 'price_asc']) }}"
+                                        class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                        tabindex="-1" id="menu-item-3">Price: Low to High</a>
+                                    <a href="{{ route('products.index', ['sort' => 'price_desc']) }}"
+                                        class="block px-4 py-2 text-sm font-medium text-text" role="menuitem"
+                                        tabindex="-1" id="menu-item-4">Price: High to Low</a>
                                 </div>
                             </div>
                         </div>
