@@ -24,7 +24,7 @@
                         </div>
 
                         <p style="color: #2d3748; font-weight: 500; margin-left: 16px;">
-                            ${{ number_format($transaction->total_price, 2) }}
+                            {{ number_format($transaction->total_price, 2) }} €
                         </p>
                     </li>
                 @endforeach
