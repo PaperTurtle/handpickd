@@ -1,6 +1,6 @@
 <x-app-layout>
 
-<div class="bg-[#FFFAEB]">
+<div class="bg-background">
 
 
   <header class="relative overflow-hidden">
@@ -10,7 +10,7 @@
     <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
-          <h1 class="text-4xl font-bold tracking-tight text-[#355427] sm:text-6xl">Handpickd</h1>
+          <h1 class="text-4xl font-bold tracking-tight text-primary sm:text-6xl">Handpickd</h1>
           <p class="mt-4 text-xl text-gray-500">Welcome to Handpickd, a community-driven platform that celebrates creativity and craftsmanship. </br> Handpickd provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.</p>
         </div>
         <div>
@@ -51,7 +51,7 @@
               </div>
             </div>
 
-            <a href="#" class="inline-block rounded-md border border-transparent bg-[#355427] px-8 py-3 text-center font-bold text-[#FFFAEB] hover:bg-[#DCECD5] hover:text-[#355427]">Browse Products</a>
+            <a href="#" class="inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Browse Products</a>
           </div>
         </div>
       </div>
@@ -61,12 +61,12 @@
   <main>
 
     <!-- Category section -->
-    <section aria-labelledby="category-heading" class="bg-[#355427]">
+    <section aria-labelledby="category-heading" class="bg-primary">
       <div class="mx-auto max-w-[2000px] mb-[100px] px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="sm:flex sm:items-baseline sm:justify-between">
-          <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-[#FFFAEB]">Shop by Category</h2>
+          <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-background">Shop by Category</h2>
           <!-- Browse Categories Desktop -->
-          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105 sm:block">
+          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-background px-4 py-1 text-primary hover:shadow-lg hover:scale-105 sm:block">
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -230,7 +230,7 @@
         
         <!-- Browse Categories mobile -->
         <div class="mt-6 sm:hidden">
-          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-[#FFFAEB] px-4 py-1 text-[#355427] hover:shadow-lg hover:scale-105">
+          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-background px-4 py-1 text-primary hover:shadow-lg hover:scale-105">
             Browse all categories
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -246,9 +246,9 @@
         </div>
         <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
         <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-[#FFFAEB] sm:text-4xl">Long-term thinking</h2>
-          <p class="mt-3 text-xl text-[#FFFAEB]">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
-          <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-[#FFFAEB] px-8 py-3 text-base font-medium text-[#355427] hover:bg-gray-100 sm:w-auto">Find out more about us</a>
+          <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-background sm:text-4xl">Long-term thinking</h2>
+          <p class="mt-3 text-xl text-background">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
+          <a href="#" class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Find out more about us</a>
         </div>
       </div>
     </section>
@@ -257,8 +257,8 @@
     <section aria-labelledby="favorites-heading">
       <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="sm:flex sm:items-baseline sm:justify-between">
-          <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-[#355427]">Our Favorites</h2>
-          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-[#355427] px-4 py-1 text-[#FFFAEB] hover:shadow-lg hover:scale-105 sm:block">
+          <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Our Favorites</h2>
+          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
             Browse all favorites
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -270,13 +270,13 @@
             <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
               <img src="https://images.pexels.com/photos/7085777/pexels-photo-7085777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
-            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+            <h3 class="mt-4 text-base font-semibold text-primary">
               <a href="#">
                 <span class="absolute inset-0"></span>
                 Black Wallet For Him
               </a>
             </h3>
-            <p class="mt-1 text-sm text-[#355427]">38€</p>
+            <p class="mt-1 text-sm text-primary">38€</p>
           </div>
 
           <!-- 2nd Favorite  -->
@@ -284,13 +284,13 @@
             <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
               <img src="https://images.pexels.com/photos/11232062/pexels-photo-11232062.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
-            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+            <h3 class="mt-4 text-base font-semibold text-primary">
               <a href="#">
                 <span class="absolute inset-0"></span>
                 Off-White Basic Bowl
               </a>
             </h3>
-            <p class="mt-1 text-sm text-[#355427]">29€</p>
+            <p class="mt-1 text-sm text-primary">29€</p>
           </div>
 
           <!-- 3rd Favorite  -->
@@ -298,19 +298,19 @@
             <div class="h-96 w-full overflow-hidden rounded-lg sm:aspect-h-3 sm:aspect-w-2 group-hover:opacity-75 sm:h-auto">
               <img src="https://images.pexels.com/photos/969832/pexels-photo-969832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
             </div>
-            <h3 class="mt-4 text-base font-semibold text-[#355427]">
+            <h3 class="mt-4 text-base font-semibold text-primary">
               <a href="#">
                 <span class="absolute inset-0"></span>
                 Artwork Vase
               </a>
             </h3>
-            <p class="mt-1 text-sm text-[#355427]">42€</p>
+            <p class="mt-1 text-sm text-primary">42€</p>
           </div>
         </div>
 
         <!-- Browse all favorites mobile  -->
         <div class="mt-6 sm:hidden">
-          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-[#355427] px-4 py-1 text-[#FFFAEB] hover:shadow-lg hover:scale-105">
+          <a href="#" class="block text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105">
             Browse all favorites
             <span aria-hidden="true"> &rarr;</span>
           </a>
@@ -320,36 +320,36 @@
       
 
       <!-- Customer reviews -->
-      <section aria-labelledby="testimonial-heading" class="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <section aria-labelledby="testimonial-heading" class="bg-primary mb-20 relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-10 rounded-lg">
         <div class="mx-auto max-w-2xl lg:max-w-none">
-          <h2 id="testimonial-heading" class="text-2xl font-bold tracking-tight text-gray-900">What are people saying?</h2>
+          <h2 id="testimonial-heading" class="text-2xl font-bold tracking-tight text-background">What are people saying?</h2>
 
           <div class="mt-16 space-y-16 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
             <blockquote class="sm:flex lg:block">
-              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-gray-300">
+              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-background opacity-75">
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-gray-600">My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!</p>
-                <cite class="mt-4 block font-semibold not-italic text-gray-900">Sarah Peters, New Orleans</cite>
+                <p class="text-lg text-background">My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Sarah Peters, New Orleans</cite>
               </div>
             </blockquote>
             <blockquote class="sm:flex lg:block">
-              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-gray-300">
+              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-background opacity-75">
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-gray-600">I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!</p>
-                <cite class="mt-4 block font-semibold not-italic text-gray-900">Kelly McPherson, Chicago</cite>
+                <p class="text-lg text-background">I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Kelly McPherson, Chicago</cite>
               </div>
             </blockquote>
             <blockquote class="sm:flex lg:block">
-              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-gray-300">
+              <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true" class="flex-shrink-0 text-background opacity-75">
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-gray-600">Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient, and I know the quality will always be there.</p>
-                <cite class="mt-4 block font-semibold not-italic text-gray-900">Chris Paul, Phoenix</cite>
+                <p class="text-lg text-background">Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient.</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Chris Paul, Phoenix</cite>
               </div>
             </blockquote>
           </div>
