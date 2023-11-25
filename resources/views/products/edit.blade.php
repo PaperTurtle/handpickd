@@ -1,9 +1,6 @@
 @php use App\Models\Category; @endphp
 <x-app-layout>
     <div class="container mx-auto px-4 py-6" x-data="{
-        newImages: [],
-        imageCount: {{ count($product->images) }},
-        maxImageCount: 3,
         removeImage(imageId) {
             if (!confirm('Are you sure you want to delete this image?')) return;
             fetch(`/products/{{ $product->id }}/images/` + imageId, {
