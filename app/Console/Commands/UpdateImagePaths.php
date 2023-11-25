@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
  * to image files stored in the system, especially after batch processing or migration.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan images:ui (update-images)`.
+ * Command: `php artisan images:ui` (update-images).
  */
 class UpdateImagePaths extends Command
 {
