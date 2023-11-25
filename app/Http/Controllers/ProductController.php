@@ -43,34 +43,21 @@ class ProductController extends Controller
      * Display a listing of all products.
      * This method retrieves all products from the database and passes them to the products index view.
      *
+     * @param Request $request The request object containing the fetched product data.
      * @return Factory|View Returns a view with a list of all products.
      */
     public function index(Request $request): Factory|View
     {
         $searchTerm = $request->query('search', '');
-        $selectedCategories = $request->query('categories', []);
-
-        if (!is_array($selectedCategories)) {
-            $selectedCategories = [$selectedCategories];
-        }
-
+        $selectedCategories = is_array($request->query('categories', [])) ? $request->query('categories', []) : [$request->query('categories', [])];
         $sort = $request->query('sort');
 
-        $products = Product::when($searchTerm, function ($query, $searchTerm) {
-            return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
-        })->when(count($selectedCategories), function ($query) use ($selectedCategories) {
-            return $query->whereIn('category_id', $selectedCategories);
-        })->when($sort, function ($query) use ($sort) {
-            if ($sort == 'rating') {
-                return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
-            } elseif ($sort == 'price_asc') {
-                return $query->orderBy('price');
-            } elseif ($sort == 'price_desc') {
-                return $query->orderBy('price', 'desc');
-            }
-        })->get();
+        $products = Product::query();
+        $products = $this->applySearch($products, $searchTerm);
+        $products = $this->applyCategoryFilter($products, $selectedCategories);
+        $products = $this->applySorting($products, $sort);
 
-        return view("products.index", compact("products"));
+        return view("products.index", ['products' => $products->get()]);
     }
 
     /**
@@ -181,5 +168,59 @@ class ProductController extends Controller
             'success' => true,
             'message' => 'Image deleted successfully.'
         ]);
+    }
+
+    /**
+     * Apply search criteria to a product query.
+     * This method filters products based on a search term that matches the product's name.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param string $searchTerm The search term used for filtering products.
+     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the search condition applied.
+     */
+    private function applySearch($query, $searchTerm)
+    {
+        if ($searchTerm) {
+            return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
+        }
+        return $query;
+    }
+
+    /**
+     * Apply category filter to a product query.
+     * This method filters products based on selected category IDs.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param array $selectedCategories An array of selected category IDs for filtering.
+     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the category filter applied.
+     */
+    private function applyCategoryFilter($query, $selectedCategories)
+    {
+        if (count($selectedCategories)) {
+            return $query->whereIn('category_id', $selectedCategories);
+        }
+        return $query;
+    }
+
+    /**
+     * Apply sorting to a product query.
+     * This method sorts products based on the specified sorting criteria such as rating, price ascending, or price descending.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param string|null $sort The sorting criteria.
+     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the sorting applied.
+     */
+    private function applySorting($query, $sort)
+    {
+        switch ($sort) {
+            case 'rating':
+                return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
+            case 'price_asc':
+                return $query->orderBy('price');
+            case 'price_desc':
+                return $query->orderBy('price', 'desc');
+            default:
+                return $query;
+        }
     }
 }
