@@ -63,14 +63,23 @@
             </section>
 
             <section class="col-span-5">
-                <p>Order Summary</p>
-                <template x-for="cartItem in cartItems" :key="cartItem.id">
-                    <div>
-                        <h3 x-text="`${cartItem.product.name}`"></h3>
-                        <p x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></p>
+                <dl>
+                    <div class="flex items-center justify-between">
+                        <dt x-text="`Order Summary`"></dt>
+                        <dd x-text="`Price`"></dd>
                     </div>
-                </template>
-                <p x-text="`Total Price: $${calculateTotalPrice()} €`"></p>
+                    <template x-for="cartItem in cartItems" :key="cartItem.id">
+                        <div class="flex items-center justify-between">
+                            <dt x-text="`${cartItem.product.name}`"></dt>
+                            <dd x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
+                        </div>
+                    </template>
+
+                    <div class="flex items-center justify-between">
+                        <dt x-text="`Total Price:`"></dt>
+                        <dd x-text="`$${calculateTotalPrice()}`"></dd>
+                    </div>
+                </dl>
 
                 <a href="{{ route('checkout.process') }}">proceed to checkout</a>
                 <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
