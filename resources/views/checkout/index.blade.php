@@ -12,24 +12,38 @@
                             <div class="cart-item flex">
                                 <!-- picture -->
                                 <div class="flex-shrink-0">
-                                    <img src=""
-                                        alt=""
+                                    <img src="" alt=""
                                         class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
                                 </div>
 
                                 <div class="flex flex-1 flex-col justify-between">
-                                    
-                                    <!-- name -->
-                                    <p x-text="`${cartItem.product.name}`"></p>
-                                    <!-- quantity -->
-                                    <p>
-                                        <label for="quantity">Quantity:</label>
-                                        <input type="number" id="quantity" x-model="cartItem.quantity" min="1"
-                                            :max="cartItem.product.quantity"
-                                            @change="updateCart(cartItem.id, cartItem.quantity)">
-                                    </p>
-                                    <!-- price -->
-                                    <p x-text="`Price: $${Number(cartItem.product.price).toFixed(2)}`"></p>
+                                    <div class="relative sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                                        <div>
+                                            <div class="flex-col justify-between">
+                                                <!-- name -->
+                                                <p x-text="`${cartItem.product.name}`"></p>
+                                                <!-- price -->
+                                                <p x-text="`$${Number(cartItem.product.price).toFixed(2)} €`"></p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- quantity -->
+                                            <p>
+                                                <label for="quantity">Quantity:</label>
+                                                <input type="number" id="quantity" x-model="cartItem.quantity" min="1"
+                                                    :max="cartItem.product.quantity"
+                                                    @change="updateCart(cartItem.id, cartItem.quantity)">
+                                            </p>
+                                            <!-- remove -->
+                                            <div class="absolute right-0 top-0">
+                                                <button type="button" @click="removeFromCart(cartItem.id)"
+                                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- in stock / not in stock -->
                                     <template x-if="cartItem.product.quantity <= 0">
                                         <p>Ships in 3-4 weeks</p>
@@ -37,10 +51,6 @@
                                     <template x-if="cartItem.product.quantity > 0">
                                         <p>In stock</p>
                                     </template>
-                                    <button type="button" @click="removeFromCart(cartItem.id)"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         </template>
