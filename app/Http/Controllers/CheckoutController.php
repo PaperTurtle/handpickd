@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Transaction;
 use App\Mail\SendOrderConfirmation;
 use Illuminate\Support\Facades\Mail;
+use App\Services\CartService;
+use App\Services\CheckoutService;
 use Exception;
 
 /**
@@ -20,6 +22,17 @@ use Exception;
  */
 class CheckoutController extends Controller
 {
+
+    protected $cartService;
+
+    protected $checkoutService;
+
+    public function __construct(CartService $cartService, CheckoutService $checkoutService)
+    {
+        $this->cartService = $cartService;
+        $this->checkoutService = $checkoutService;
+    }
+
     /**
      * Display the checkout page with items in the authenticated user's shopping cart.
      * Retrieves all cart items associated with the current authenticated user and passes them to the checkout view.
@@ -45,22 +58,9 @@ class CheckoutController extends Controller
     {
         $this->authorize('addToCart', ShoppingCart::class);
 
-        $cartItem = ShoppingCart::where('user_id', auth()->id())
-            ->where('product_id', $request->product_id)
-            ->first();
+        $response = $this->cartService->addToCart($request->product_id, $request->quantity);
 
-        if ($cartItem) {
-            $cartItem->quantity += $request->quantity;
-            $cartItem->save();
-        } else {
-            ShoppingCart::create([
-                'user_id' => auth()->id(),
-                'product_id' => $request->product_id,
-                'quantity' => $request->quantity,
-            ]);
-        }
-
-        return response()->json(['success' => 'Product added to cart!']);
+        return response()->json($response);
     }
 
     /**
@@ -111,36 +111,14 @@ class CheckoutController extends Controller
      */
     public function processCheckout(): RedirectResponse
     {
-        DB::beginTransaction();
+        $user = auth()->user();
+        $response = $this->checkoutService->processCheckout($user);
 
-        try {
-            $user = auth()->user();
-            $cartItems = ShoppingCart::with('product')->where('user_id', $user->id)->get();
-            $transactionDetails = [];
-
-            foreach ($cartItems as $item) {
-                $transaction = Transaction::create([
-                    'buyer_id' => $user->id,
-                    'product_id' => $item->product_id,
-                    'quantity' => $item->quantity,
-                    'total_price' => $item->quantity * $item->product->price,
-                    'status' => 'pending',
-                ]);
-
-                $transactionDetails[] = $transaction;
-                $item->product->decrement('quantity', $item->quantity);
-            }
-
-            ShoppingCart::where('user_id', $user->id)->delete();
-            DB::commit();
-            Mail::to($user->email)->send(new SendOrderConfirmation($user, $transactionDetails));
-            return redirect()->route('checkout.success')->with('success', 'Your purchase has been completed successfully!')
-                ->with('transactionDetails', $transactionDetails);
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
-            return redirect()->back()->with('error', 'Product not found.');
-        } catch (Exception) {
-            DB::rollBack();
-            return redirect()->back()->with('error', 'An error occurred while processing your order. Please try again.');
+        if ($response['status'] === 'success') {
+            return redirect()->route('checkout.success')->with('success', $response['message'])
+                ->with('transactionDetails', $response['transactionDetails']);
+        } else {
+            return redirect()->back()->with('error', $response['message']);
         }
     }
 }
