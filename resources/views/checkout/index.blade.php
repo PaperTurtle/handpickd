@@ -1,11 +1,13 @@
 <x-app-layout>
     <div class="container" x-data="cart()">
-        <h1>Shopping Cart</h1>
-        <div class="lg:grid lg:grid-cols-12">
+        <h1 class="text-3xl font-bold">Shopping Cart</h1>
+        <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <section class="col-span-7">
+                <div>
+                    <h2 id="cart-heading" x-text="`Items in your shopping cart`"></h2>
+                </div>
                 <template x-if="cartItems.length > 0">
-                    <div class="cart-items">
-                        <h2 id="cart-heading" x-text="`Items in your shopping cart`"></h2>
+                    <div class="cart-items divide-y divide-gray-200 border-b border-t border-gray-200">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
                             <div class="cart-item">
                                 <p x-text="`Product Name: ${cartItem.product.name}`"></p>
@@ -34,19 +36,20 @@
                         <p x-text="`Total Price: $${calculateTotalPrice()} €`"></p>
                     </div>
                 </template>
-    
+
                 <template x-cloak x-if="cartItems.length === 0">
                     <p>Your shopping cart is empty.</p>
                 </template>
             </section>
-    
+
             <section class="col-span-5">
-    
-    
+
+
                 <a href="{{ route('checkout.process') }}">proceed to checkout</a>
                 <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
                     @csrf
-                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    <button type="submit"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                         Complete Purchase
                     </button>
                 </form>
