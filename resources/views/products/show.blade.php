@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <section x-data="reviewForm()">
-
+        <!-- Notification when adding product to cart-->
         <div aria-live="assertive"
             class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50">
             <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
@@ -41,11 +41,13 @@
             </div>
         </div>
 
-
+        <!-- Main Content  -->
         <div class="container">
+            <!-- Product Details Section -->
             <div
                 class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                 <div class="lg:max-w-lg lg:self-end">
+                    <!-- Product Description & Details -->
                     <nav aria-label="Breadcrumb">
                         <ol role="list" class="flex items-center space-x-2">
                             <li>
@@ -56,7 +58,7 @@
                             </li>
                         </ol>
                     </nav>
-
+                    <!-- Breadcrumb & Product Name -->
                     <div class="mt-4">
                         <h1 class="font-heading text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                             {{ $product->name }}
@@ -69,7 +71,7 @@
                             @endif
                         </h3>
                     </div>
-
+                    <!-- Product Information Section -->
                     <section aria-labelledby="information-heading" class="mt-4">
                         <h2 id="information-heading" class="sr-only">Product information</h2>
 
@@ -135,7 +137,7 @@
                         </div>
                     </section>
                 </div>
-                <!-- Product image -->
+                <!-- Product Image Section -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                         @foreach ($product->images as $image)
@@ -144,7 +146,7 @@
                         @endforeach
                     </div>
                 </div>
-                <!-- Product form -->
+                <!-- Product Form Section (Add to Cart) -->
                 @if (auth()->check() && auth()->id() !== $product->artisan_id)
                     @if ($product->quantity > 0)
                         <div class="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
@@ -185,10 +187,11 @@
                 @endif
             </div>
         </div>
-
+        <!-- Reviews Section -->
         <section aria-labelledby="reviews-heading" class="bg-background">
             <div
                 class="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:py-32">
+                <!-- Customer Reviews & Ratings -->
                 <div class="lg:col-span-4">
                     <h2 id="reviews-heading" class="font-heading text-2xl font-bold tracking-tight text-gray-900">
                         Customer Reviews
@@ -308,7 +311,7 @@
                         </div>
                     @endif
                 </div>
-
+                <!-- Recent Reviews Display Section -->
                 <div class="mt-16 lg:col-span-7 lg:col-start-6 lg:mt-0 reviews" x-show="totalReviews > 0">
                     <h3 class="sr-only">Recent reviews</h3>
 
@@ -368,6 +371,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Edit Review Form Modal -->
             <div x-cloak x-show="editingReview" class="fixed inset-0 z-10 overflow-y-auto"
                 aria-labelledby="modal-title" role="dialog" aria-modal="true">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -413,6 +417,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Create Review Form Modal -->
             <div x-cloak x-show="openModal" class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title"
                 role="dialog" aria-modal="true">
                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

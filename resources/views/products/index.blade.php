@@ -1,5 +1,6 @@
 <x-app-layout>
     <section x-data="{ selectedCategories: [], searchTerm: '' }">
+        <!-- Introduction Section -->
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="py-24 text-center">
                 <h1 class="text-4xl font-bold tracking-tight text-gray-900 font-heading">Discover Artisanal Wonders</h1>
@@ -7,7 +8,7 @@
                     treasures, each piece telling a unique story of skill and creativity, perfect for enhancing your
                     living space and lifestyle..</p>
             </div>
-
+            <!-- Search Bar Section -->
             <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto my-6">
                 <div class="relative">
                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -22,10 +23,10 @@
                         placeholder="Search products" type="search">
                 </div>
             </div>
-            <!-- Filters -->
+            <!-- Filters Section -->
             <section aria-labelledby="filter-heading" class="border-t border-gray-200 pt-6">
                 <h2 id="filter-heading" class="sr-only">Product filters</h2>
-
+                <!-- Filter Options -->
                 <div class="flex items-center justify-between">
                     <div x-cloak x-data="{ open: false, toggle() { this.open = !this.open }, closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }" @click.away="closeOnClickAway"
                         class="relative inline-block text-left">
@@ -61,8 +62,7 @@
                             </div>
                         </div>
                     </div>
-
-
+                    <!-- Category Filters -->
                     <div class="flex items-baseline space-x-8">
                         <div x-cloak x-data="{ open: false, toggle() { this.open = !this.open }, closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }" @click.away="closeOnClickAway"
                             class="relative inline-block text-left">
@@ -98,11 +98,12 @@
                 </div>
             </section>
 
-            <!-- Product grid -->
+            <!-- Product Grid Section -->
             <section aria-labelledby="products-heading" class="mt-8">
                 <h2 id="products-heading" class="sr-only">Products</h2>
-
+                <!-- Products Grid -->
                 <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    <!-- Product Cards -->
                     @foreach ($products as $product)
                         <a href="{{ route('products.show', $product->id) }}" class="group"
                             data-category="{{ $product->category->name }}"

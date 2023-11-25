@@ -3,7 +3,7 @@
     <div class="container mx-auto px-4 py-6" x-data="{ images: [] }">
         <h1 class="text-xl font-semibold leading-7 text-gray-900">Post New Product</h1>
 
-        <!-- If there are any validation errors, they will be displayed here -->
+        <!-- Display Validation Errors -->
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"">
                 <ul>
@@ -13,12 +13,11 @@
                 </ul>
             </div>
         @endif
-
+        <!-- Create Product Form -->
         <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
             @csrf
             <input type="hidden" name="artisan_id" value="{{ auth()->id() }}">
-
-            <!-- Name Field -->
+            <!-- Product Name Input -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900" for="name">Name:</label>
                 <input
@@ -28,7 +27,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-
+            <!-- Product Category Selection -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900" for="category_id">Category:</label>
                 <select
@@ -42,8 +41,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-
-            <!-- Description Field -->
+            <!-- Product Description Input -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900" for="description">Description:</label>
                 <textarea
@@ -53,8 +51,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-
-            <!-- Price Field -->
+            <!-- Product Price Input -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900" for="price">Price:</label>
                 <input
@@ -64,8 +61,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-
-            <!-- Quantity Field -->
+            <!-- Product Quantity Input -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900" for="quantity">Quantity:</label>
                 <input
@@ -75,7 +71,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-
+            <!-- Image Upload Field -->
             <div>
                 <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Add More Images (up to
                     3):</label>
@@ -121,7 +117,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- Submit Button -->
             <button class="bg-secondary px-4 py-2 m-2 rounded-full text-md" type="submit">Submit</button>
         </form>
     </div>

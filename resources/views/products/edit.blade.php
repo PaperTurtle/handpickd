@@ -38,7 +38,7 @@
         }
     }">
         <h1 class="text-xl font-semibold leading-7 text-gray-900">Edit {{ $product->name }}</h1>
-        <!-- Validation Errors -->
+        <!-- Display Validation Errors -->
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <ul>
@@ -48,20 +48,20 @@
                 </ul>
             </div>
         @endif
-
+        <!-- Edit Product Form -->
         <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data"
             class="mt-6 space-y-6">
             @csrf
             @method('PUT')
 
-            <!-- Name Field -->
+            <!-- Product Name Input Field -->
             <div>
                 <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name:</label>
                 <input type="text" id="name" name="name" value="{{ $product->name }}" required
                     class="mt-1 block w-1/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             </div>
 
-            <!-- Category Field -->
+            <!-- Product Category Dropdown -->
             <div>
                 <label for="category_id" class="block text-sm font-medium leading-6 text-gray-900">Category:</label>
                 <select name="category_id" id="category_id" required
@@ -75,21 +75,21 @@
                 </select>
             </div>
 
-            <!-- Description Field -->
+            <!-- Product Description Textarea -->
             <div>
                 <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description:</label>
                 <textarea id="description" name="description" required
                     class="mt-1 block w-1/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ $product->description }}</textarea>
             </div>
 
-            <!-- Price Field -->
+            <!-- Product Price Input Field -->
             <div>
                 <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price:</label>
                 <input type="number" id="price" name="price" value="{{ $product->price }}" step="0.01"
                     required
                     class="mt-1 block w-1/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
             </div>
-            <!-- Existing Images Field -->
+            <!-- Display Existing Product Images -->
             <div>
                 <label class="block text-sm font-medium leading-6 text-gray-900">Current Images:</label>
                 <div class="flex space-x-4 mt-2">
@@ -105,7 +105,7 @@
                     @endforeach
                 </div>
             </div>
-            <!-- Images Field -->
+            <!-- Image Upload Field -->
             <div>
                 <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Add More Images (up to
                     3):</label>
@@ -158,7 +158,7 @@
                     </template>
                 </div>
             </div>
-
+            <!-- Submit Button -->
             <button type="submit" class="rounded-md bg-primary px-4 py-2 text-lg text-white shadow-sm">Update
                 Product
             </button>
