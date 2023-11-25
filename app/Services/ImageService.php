@@ -8,11 +8,21 @@ use App\Models\ProductImage;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Service class for handling image-related operations for products.
- * This includes processing, storing, resizing, and deleting images.
+ * ImageService is a service class responsible for handling image-related operations for products.
+ * It provides functionalities for processing, storing, resizing, and deleting images associated with a product.
  */
 class ImageService
 {
+
+    /**
+     * Process and store multiple images for a given product.
+     * Iterates through each image file, processes, and stores them in the specified location.
+     *
+     * @param Product $product The product to associate the images with.
+     * @param array $images An array of UploadedFile objects representing the images.
+     * @param string $name The name used for alternative text in images.
+     * @return void
+     */
     public function processAndStoreImages(Product $product, array $images, $name)
     {
         foreach ($images as $imageFile) {
@@ -20,6 +30,16 @@ class ImageService
         }
     }
 
+    /**
+     * Store an individual image associated with a product.
+     * Processes the image and creates various versions (original, resized, show, thumbnail).
+     * Updates or creates a ProductImage record with the image paths.
+     *
+     * @param Product $product The product to associate the image with.
+     * @param UploadedFile $imageFile The image file to be processed and stored.
+     * @param string $name The name used for alternative text in images.
+     * @return void
+     */
     private function storeImage(Product $product, UploadedFile $imageFile, $name)
     {
         $timestamp = time();
@@ -58,6 +78,15 @@ class ImageService
         );
     }
 
+    /**
+     * Process an image using a specified processor script.
+     * Applies a node.js script to perform operations like resizing on the image.
+     *
+     * @param string $sourcePath Path of the source image.
+     * @param string $destinationPath Path to store the processed image.
+     * @param string $processorScript The script used to process the image.
+     * @return void
+     */
     private function processImage($sourcePath, $destinationPath, $processorScript)
     {
         $nodeCommand = "node " . escapeshellarg(base_path('resources/js/' . $processorScript)) . " " .
@@ -69,7 +98,7 @@ class ImageService
 
     /**
      * Delete a product image from storage.
-     * Removes the image file and its resized versions from the storage.
+     * Removes the image file and its resized versions from the storage and deletes the corresponding ProductImage record.
      *
      * @param ProductImage $productImage The ProductImage instance to delete.
      * @return void
