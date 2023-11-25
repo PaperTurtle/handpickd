@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container" x-data="cart()">
+    <div class="container mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8" x-data="cart()">
         <h1 class="text-3xl font-bold">Shopping Cart</h1>
         <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <section class="col-span-7">
