@@ -223,4 +223,15 @@ class ProductController extends Controller
                 return $query;
         }
     }
+
+    public function topRatedProducts()
+    {
+        $topRatedProducts = Product::with('reviews')
+            ->withAvg('reviews', 'rating')
+            ->orderByDesc('reviews_avg_rating')
+            ->take(3)
+            ->get();
+
+        return view('welcome', ['topRatedProducts' => $topRatedProducts]);
+    }
 }
