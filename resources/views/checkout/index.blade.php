@@ -88,12 +88,14 @@
 
             <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
                 <dl>
+                    <!-- heading text -->
                     <div class="flex items-baseline justify-between">
                         <dt >
                             <h2 x-text="`Order Summary`" class="text-2xl" ></h2>
                         </dt>
                         <dd x-text="`Price`"></dd>
                     </div>
+                    <!-- items summary -->
                     <div class="mt-6">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
                             <div class="flex items-center justify-between space-y-2">
@@ -102,13 +104,23 @@
                             </div>
                         </template>
                     </div>
-
+                    <!-- subtotal -->
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-6">
+                        <dt x-text="`Subotal:`"></dt>
+                        <dd x-text="`${calculateSubtotalPrice()}`"></dd>
+                    </div>
+                    <!-- shipping estimate -->
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-6">
+                        <dt x-text="`Shipping Estimate`"></dt>
+                        <dd x-text="`4.99 €`"></dd>
+                    </div>
+                    <!-- total price -->
                     <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-4">
                         <dt x-text="`Order Total:`"></dt>
                         <dd x-text="`${calculateTotalPrice()} €`"></dd>
                     </div>
                 </dl>
-
+                <!-- checkout button -->
                 <form class="pt-4" action="{{ route('checkout.process') }}" c-cloack x-show="cartItems.length > 0">
                     <button type="submit"
                         class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full">
@@ -174,12 +186,18 @@
                         console.error('There has been a problem with your update operation:', error);
                     });
             },
+            
+            calculateSubtotalPrice() {
+                let subTotalPrice = 0;
+                this.cartItems.forEach(cartItem => {
+                    subTotalPrice += cartItem.product.price * cartItem.quantity;
+                });
+                return Number(subTotalPrice).toFixed(2);
+            },
 
             calculateTotalPrice() {
-                let totalPrice = 0;
-                this.cartItems.forEach(cartItem => {
-                    totalPrice += cartItem.product.price * cartItem.quantity;
-                });
+                let shippingEstimate = 4.99;
+                let totalPrice = parseInt(this.calculateSubtotalPrice()) + shippingEstimate;
                 return Number(totalPrice).toFixed(2);
             },
         }
