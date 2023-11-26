@@ -2,6 +2,7 @@
     <div class="container mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8" x-data="cart()">
         <h1 class="text-3xl font-bold">Shopping Cart</h1>
         <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
+            <!-- shopping cart -->
             <section class="col-span-7">
                 <template x-if="cartItems.length > 0">
                     <div class="cart-items divide-y divide-gray-200 border-b border-t border-gray-200">
@@ -49,7 +50,18 @@
                                         </div>
                                     </div>
 
-                                    <!-- in stock / not in stock -->
+                                    <!-- in stock -->
+                                    <template x-if="cartItem.product.quantity > 0">
+                                        <div class="flex">
+                                            <svg class="h-5 w-5 flex-shrink-0 text-accent " viewBox="0 0 20 20"
+                                                fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <p x-text="`In stock`"></p>
+                                        </div>
+                                    <!-- not in stock -->
                                     <template x-if="cartItem.product.quantity <= 0">
                                         <div class="flex">
                                             <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
@@ -61,16 +73,6 @@
                                             <p x-text="`Ships in 3-4 weeks`"></p>
                                         </div>
                                     </template>
-                                    <template x-if="cartItem.product.quantity > 0">
-                                        <div class="flex">
-                                            <svg class="h-5 w-5 flex-shrink-0 text-accent " viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <p x-text="`In stock`"></p>
-                                        </div>
                                     </template>
                                 </div>
                             </div>
@@ -82,7 +84,7 @@
                     <p>Your shopping cart is empty.</p>
                 </template>
             </section>
-
+            <!-- Order Summary -->
             <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
                 <dl>
                     <!-- heading text -->
