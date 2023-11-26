@@ -49,7 +49,7 @@
                                                     </svg>
                                                 </button>
                                                 <!-- items -->
-                                                <ul class="py-1 absolute right-0 z-10 mt-2 w-16 h-80 overflow-scroll overflow-x-hidden
+                                                <ul class="py-1 absolute right-0 z-10 mt-2 w-16 h-fit max-h-80 overflow-scroll overflow-x-hidden
                                                     origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5"
                                                     x-show="open" x-transition:enter="transition ease-out duration-100"
                                                     x-transition:enter-start="transform opacity-0 scale-95"
