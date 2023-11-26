@@ -111,7 +111,7 @@
 
                 <form class="pt-4" action="{{ route('checkout.process') }}" c-cloack x-show="cartItems.length > 0">
                     <button type="submit"
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded">
                         Complete Purchase
                     </button>
                 </form>
