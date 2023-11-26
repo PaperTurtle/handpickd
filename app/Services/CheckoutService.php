@@ -9,8 +9,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Exception;
 
+/**
+ * CheckoutService handles the checkout process for a shopping cart.
+ * It processes the checkout by creating transactions and handles success and failure cases.
+ */
 class CheckoutService
 {
+    /**
+     * Processes the checkout for a given user.
+     * It begins a database transaction and attempts to create a Transaction record for each cart item.
+     * It sends an order confirmation email upon success or rolls back the transaction on failure.
+     *
+     * @param \App\Models\User $user The user performing the checkout.
+     * @return array Returns the status of the checkout process along with appropriate messages and transaction details.
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException Throws if a product in the cart is not found.
+     * @throws Exception Throws on any other error encountered during the process.
+     */
     public function processCheckout($user)
     {
         DB::beginTransaction();
