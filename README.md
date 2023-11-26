@@ -1,4 +1,7 @@
-# Handpickd - Artisanal Marketplace <div align="center"><img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" width=192 height=192 alt="logo" /></div>
+<h1 align="center"> Handpickd - Artisanal Marketplace</h1> 
+<div align="center">
+<img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" width=192 height=192 alt="logo" />
+</div>
 
 Handpickd is a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
 
@@ -41,6 +44,10 @@ If the command returns a version number, then NodeJS has been installed correctl
 ### XAMPP
 
 Next, install XAMPP from the link above. Once installed, open up the XAMPP Control Panel and start the Apache and MySQL services. Once started, click on the "Admin" button for MySQL. This will open up a new tab in your browser. Click on the "New" button on the left-hand side and create a new database called "handpickd". Once created, click on the "Import" button on the top navigation bar. Click on the "Choose File" button and navigate to the `handpickd_db.sql` file in the root folder of the project. Once selected, click on the "Go" button on the bottom right-hand side. This will import the database into your local MySQL server. Below you will find pictures detailing the steps above.
+
+![XAMMP Install 1](https://github.com/PaperTurtle/handpickd/assets/68080844/0ec2cade-07ec-4e6e-9b0a-140447fa5383)
+
+![XAMPP Install 2](https://github.com/PaperTurtle/handpickd/assets/68080844/74c9092a-97a6-4fd9-a577-44a64e56ab9a)
 
 > Note: The installation of Composer and Laravel will be done via Git Bash, so make sure to install it before proceeding. Errors may occur if you try to install it via Powershell.
 
@@ -126,9 +133,28 @@ cp .env.example .env
 php artisan key:generate
 
 # Run migrations
-php artisan migrate
+php artisan migrate // Optional
 
 # Serve the application
 php artisan serve // (Terminal 1)
 npm run dev // (Terminal 2)
 ```
+
+Once the application is running, you can access it at [http://localhost:8000](http://localhost:8000).
+
+## Known Issues
+
+When you run the application, an error may occur stating that an sql driver does not exist. To fix this, download these two files: `php_pdo_sqlsrv_82_ts_x64` and `php_sqlsrv_82_ts_x64` from the [Microsoft SQL Drivers](https://learn.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver16). Place them in the following directory: `C:\xampp\php\ext`. Once placed, open up the `php.ini` file in the `C:\xampp\php` directory or open the XAMPP Control Panel and click on the Config Button in the Apache Section and add the following line to the bottom of the file:
+
+```shell
+extension=php_pdo_sqlsrv_82_ts_x64
+extension=php_sqlsrv_82_ts_x64
+```
+
+Once added, save the file and restart the Apache and MySQL services in the XAMPP Control Panel. Once restarted, the application should run without any issues.
+
+## 📜 Authors
+
+-  Seweryn Czabanowski
+-  Loran Heinzel
+-  Tobias Neubert
