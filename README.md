@@ -7,15 +7,18 @@ Handpickd is a community-driven platform that celebrates creativity and craftsma
 
 ## 📖 Table of Contents
 
-1. [Project Overview](#-project-overview)
-2. [Requirements](#-requirements)
-3. [Installation Instructions](#installation-instructions)
-4. [Page Breakdown](#-page-breakdown)
-5. [Features & Functionality](#-features--functionality)
-6. [Built with](#-built-with)
-7. [Getting Started](#-getting-started)
-8. [Known Issues](#known-issues)
-9. [Authors](#-authors)
+-  [Project Overview](#-project-overview)
+-  [Requirements](#-requirements)
+-  [Installation Instructions](#installation-instructions)
+-  [Page Breakdown](#-page-breakdown)
+-  [Features & Functionality](#-features--functionality)
+-  [Built with](#-built-with)
+   -  [Frontend](#frontend)
+   -  [Backend](#backend)
+   -  [Testing](#testing)
+-  [Getting Started](#-getting-started)
+-  [Known Issues](#known-issues)
+-  [Authors](#-authors)
 
 ## 🌟 Project Overview
 
@@ -102,23 +105,32 @@ composer global require laravel/installer
 
 -  **Product Posting**: Allows Artisans to create new products and post them to the marketplace.
 
-## 🛠 Built with
+## 🧰 Built with
 
-### Frontend
+### 🖥️ Frontend
 
--  **Tailwind CSS**: Tailwind is a utility-first CSS framework that provides a comprehensive set of styling options. It's highly customizable and easy to use.
--  **Alpine.js**: A lightweight JavaScript framework for building interactive components. It's easy to learn and integrates seamlessly with Tailwind.
--  **Heroicons**: A set of free SVG icons from the makers of Tailwind CSS that are easy to customize and use in any project. They're designed to pair well with Tailwind.
+-  **[Tailwind CSS](https://tailwindcss.com/)**: Tailwind is a utility-first CSS framework that provides a comprehensive set of styling options. It's highly customizable and easy to use.
+-  **[Alpine.js](https://alpinejs.dev/)**: A lightweight JavaScript framework for building interactive components. It's easy to learn and integrates seamlessly with Tailwind.
+-  **[Heroicons](https://heroicons.com/)**: A set of free SVG icons from the makers of Tailwind CSS that are easy to customize and use in any project. They're designed to pair well with Tailwind.
 
-### Backend
+### 🗄️ Backend
 
--  **Laravel**: A PHP framework for building web applications. It's fast, secure, and easy to use. It also provides a robust set of tools for managing database migrations and seeding. Laravel is the foundation of Handpickd. It's used to create the backend API and handle routing.
--  **MySQL**: A relational database management system that's fast, reliable, and easy to use. It's used to store data for Users, Products, and Transactions.
--  **Laravel Breeze**: A lightweight authentication scaffolding for Laravel. It's used to create the authentication system for Handpickd. It provides a simple, minimalistic UI for user registration and login. It also includes password reset functionality.
+-  **[Laravel](https://laravel.com/)**: A PHP framework for building web applications. It's fast, secure, and easy to use. It also provides a robust set of tools for managing database migrations and seeding. Laravel is the foundation of Handpickd. It's used to create the backend API and handle routing.
+-  **[MySQL](https://www.mysql.com/)**: A relational database management system that's fast, reliable, and easy to use. It's used to store data for Users, Products, and Transactions.
+-  **[Laravel Breeze](https://laravel.com/docs/10.x/starter-kits#laravel-breeze)**: A lightweight authentication scaffolding for Laravel. It's used to create the authentication system for Handpickd. It provides a simple, minimalistic UI for user registration and login. It also includes password reset functionality.
+-  **[Gmail](https://mail.google.com/)**: A free email service provided by Google. It's used to send emails to users when they register, reset their password, or purchase a product.
+
+### 🧪 Testing
+
+-  **[Pest](https://pestphp.com/)**: Pest is a testing framework for PHP. It's simple, elegant, and a pleasure to use. It's used to test the backend API for Handpickd.
 
 ## 🚀 Getting Started
 
 To run Handpickd locally, follow these instructions:
+
+First, open up XAMPP and start both the Apache and the MySQL server.
+
+Next, navigate to the root folder of the project and open up a terminal. Run the following commands:
 
 ```shell
 # Clone the repository
@@ -145,7 +157,7 @@ npm run dev // (Terminal 2)
 
 Once the application is running, you can access it at [http://localhost:8000](http://localhost:8000).
 
-## Known Issues
+## 🐛 Known Issues
 
 When you run the application, an error may occur stating that an sql driver does not exist. To fix this, download these two files: `php_pdo_sqlsrv_82_ts_x64` and `php_sqlsrv_82_ts_x64` from the [Microsoft SQL Drivers](https://learn.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver16). Place them in the following directory: `C:\xampp\php\ext`. Once placed, open up the `php.ini` file in the `C:\xampp\php` directory or open the XAMPP Control Panel and click on the Config Button in the Apache Section and add the following line to the bottom of the file:
 
