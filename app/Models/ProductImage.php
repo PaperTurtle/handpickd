@@ -31,7 +31,7 @@ class ProductImage extends Model
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'product_id',
         'image_path',
         'alt_text',
@@ -45,7 +45,7 @@ class ProductImage extends Model
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

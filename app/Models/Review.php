@@ -31,7 +31,7 @@ class Review extends Model
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'product_id',
         'user_id',
         'rating',
@@ -43,7 +43,7 @@ class Review extends Model
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'rating' => 'integer',

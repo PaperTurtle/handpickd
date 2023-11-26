@@ -36,7 +36,7 @@ class Product extends Model
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'artisan_id',
         'category_id',
         'name',
@@ -50,7 +50,7 @@ class Product extends Model
      *
      * @var array<string, string>
      */
-    protected array $casts = [
+    protected $casts = [
         'price' => 'decimal:2',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',

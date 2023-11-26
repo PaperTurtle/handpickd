@@ -31,7 +31,7 @@ class ShoppingCart extends Model
      *
      * @var array<int, string>
      */
-    protected array $fillable = [
+    protected $fillable = [
         'user_id',
         'product_id',
         'quantity',
