@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // ========= Public Routes =========
 // Home page
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [ProductController::class, 'topRatedProducts'])->name('home');
 // Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::middleware('auth')->group(function () {
