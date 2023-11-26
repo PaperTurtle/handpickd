@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,8 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $description Description of the product.
  * @property float $price Price of the product, stored as a decimal with two digits after the decimal point.
  * @property int $quantity Quantity of the product available.
- * @property \Illuminate\Support\Carbon $created_at Timestamp when the product was created.
- * @property \Illuminate\Support\Carbon $updated_at Timestamp when the product was last updated.
+ * @property Carbon $created_at Timestamp when the product was created.
+ * @property Carbon $updated_at Timestamp when the product was last updated.
  *
  * @method BelongsTo artisan() BelongsTo relationship with User. Indicates the creator of the product.
  * @method BelongsTo category() BelongsTo relationship with Category. Indicates the category of the product.
