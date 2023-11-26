@@ -86,7 +86,7 @@
                 </template>
             </section>
 
-            <section class="col-span-5">
+            <section class="col-span-5 bg-light-grey h-fit px-4 py-6 sm:p-6 lg:p-8">
                 <dl>
                     <div class="flex items-baseline justify-between">
                         <dt >
