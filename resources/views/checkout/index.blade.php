@@ -49,8 +49,9 @@
                                                     </svg>
                                                 </button>
                                                 <!-- items -->
-                                                <ul class="py-1 absolute right-0 z-10 mt-2 w-16 origin-top-right
-                                        bg-white" x-show="open" x-transition:enter="transition ease-out duration-100"
+                                                <ul class="py-1 absolute right-0 z-10 mt-2 w-16 h-80 overflow-scroll overflow-x-hidden
+                                                    origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+                                                    x-show="open" x-transition:enter="transition ease-out duration-100"
                                                     x-transition:enter-start="transform opacity-0 scale-95"
                                                     x-transition:enter-end="transform opacity-100 scale-100"
                                                     x-transition:leave="transition ease-in duration-75"
@@ -59,7 +60,7 @@
                                                     <template x-for="i in cartItem.product.quantity">
                                                         <li class="text-text block px-4 py-2 text-sm 
                                                         hover:bg-accent hover:text-white hover:duration-200 rounded-md"
-                                                         @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
+                                                            @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
                                                             <button class="text-center" x-text="`${i}`"></button>
                                                         </li>
                                                     </template>
