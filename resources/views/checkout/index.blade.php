@@ -86,37 +86,35 @@
             </section>
             <!-- Order Summary -->
             <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
-                <dl>
+                <dl class="text-text text-sm">
                     <!-- heading text -->
                     <div class="flex items-baseline justify-between">
-                        <dt >
-                            <h2 x-text="`Order Summary`" class="text-2xl" ></h2>
-                        </dt>
-                        <dd x-text="`Price`"></dd>
+                        <dt x-text="`Order Summary`" class="text-xl"></dt>
+                        <dd class="text-base" x-text="`Price`"></dd>
                     </div>
                     <!-- items summary -->
                     <div class="mt-6">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
                             <div class="flex items-center justify-between space-y-2">
                                 <dt x-text="`${cartItem.product.name}`"></dt>
-                                <dd x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
+                                <dd class="font-medium" x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
                             </div>
                         </template>
                     </div>
                     <!-- subtotal -->
                     <div class="flex items-center justify-between mt-6">
                         <dt x-text="`Subotal:`"></dt>
-                        <dd x-text="`${calculateSubtotalPrice()}`"></dd>
+                        <dd class="font-medium" x-text="`${Number(calculateSubtotalPrice()).toFixed(2)} €`"></dd>
                     </div>
                     <!-- shipping estimate -->
                     <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
                         <dt x-text="`Shipping Estimate`"></dt>
-                        <dd x-text="`4.99 €`"></dd>
+                        <dd class="font-medium" x-text="`4.99 €`"></dd>
                     </div>
                     <!-- total price -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4 text-base">
                         <dt x-text="`Order Total:`"></dt>
-                        <dd x-text="`${calculateTotalPrice()} €`"></dd>
+                        <dd class="font-medium" x-text="`${calculateTotalPrice()} €`"></dd>
                     </div>
                 </dl>
                 <!-- checkout button -->
