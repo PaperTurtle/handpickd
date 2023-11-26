@@ -104,17 +104,17 @@
                         </template>
                     </div>
                     <!-- subtotal -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-6">
+                    <div class="flex items-center justify-between mt-6">
                         <dt x-text="`Subotal:`"></dt>
                         <dd x-text="`${calculateSubtotalPrice()}`"></dd>
                     </div>
                     <!-- shipping estimate -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-6">
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
                         <dt x-text="`Shipping Estimate`"></dt>
                         <dd x-text="`4.99 €`"></dd>
                     </div>
                     <!-- total price -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-4">
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
                         <dt x-text="`Order Total:`"></dt>
                         <dd x-text="`${calculateTotalPrice()} €`"></dd>
                     </div>
