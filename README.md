@@ -7,12 +7,15 @@ Handpickd is a community-driven platform that celebrates creativity and craftsma
 
 ## 📖 Table of Contents
 
--  [Project Overview](#project-overview)
--  [Requirements](#requirements)
--  [Page Breakdown](#page-breakdown)
--  [Features & Functionality](#features--functionality)
--  [Built with](#built-with)
--  [Getting Started](#getting-started)
+1. [Project Overview](#-project-overview)
+2. [Requirements](#-requirements)
+3. [Installation Instructions](#installation-instructions)
+4. [Page Breakdown](#-page-breakdown)
+5. [Features & Functionality](#-features--functionality)
+6. [Built with](#-built-with)
+7. [Getting Started](#-getting-started)
+8. [Known Issues](#known-issues)
+9. [Authors](#-authors)
 
 ## 🌟 Project Overview
 
@@ -27,7 +30,7 @@ Handpickd requires the following tools to run:
 -  [Composer](https://getcomposer.org/): A tool for dependency management in PHP, allowing you to declare the libraries your project depends on.
 -  [Laravel](https://laravel.com/): Version 10, a robust PHP framework for web application development. Which will be installed via Composer
 
-However, because the installation of Laravel and composer can be error-prone when installed via Powershell, it is hightly recommended to install it via [Git Bash](https://gitforwindows.org/) instead.
+However, because the installation of Laravel and composer can be error-prone when installed via Powershell, it is highly recommended to install it via [Git Bash](https://gitforwindows.org/) instead.
 
 ## Installation Instructions
 
