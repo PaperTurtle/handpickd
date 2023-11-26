@@ -88,30 +88,40 @@
 
             <section class="col-span-5">
                 <dl>
-                    <div class="flex items-center justify-between">
-                        <dt x-text="`Order Summary`"></dt>
+                    <div class="flex items-baseline justify-between">
+                        <dt >
+                            <h2 x-text="`Order Summary`" class="text-2xl" ></h2>
+                        </dt>
                         <dd x-text="`Price`"></dd>
                     </div>
-                    <template x-for="cartItem in cartItems" :key="cartItem.id">
-                        <div class="flex items-center justify-between">
-                            <dt x-text="`${cartItem.product.name}`"></dt>
-                            <dd x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
-                        </div>
-                    </template>
+                    <div class="mt-6">
+                        <template x-for="cartItem in cartItems" :key="cartItem.id">
+                            <div class="flex items-center justify-between space-y-2">
+                                <dt x-text="`${cartItem.product.name}`"></dt>
+                                <dd x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
+                            </div>
+                        </template>
+                    </div>
 
-                    <div class="flex items-center justify-between">
-                        <dt x-text="`Total Price:`"></dt>
-                        <dd x-text="`$${calculateTotalPrice()}`"></dd>
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-6 pt-4">
+                        <dt x-text="`Order Total:`"></dt>
+                        <dd x-text="`${calculateTotalPrice()} €`"></dd>
                     </div>
                 </dl>
 
-                <a href="{{ route('checkout.process') }}">proceed to checkout</a>
-                <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
+                <form class="pt-4" action="{{ route('checkout.process') }}" c-cloack x-show="cartItems.length > 0">
                     <button type="submit"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                         Complete Purchase
                     </button>
                 </form>
+                <!-- <a href="{{ route('checkout.process') }}">proceed to checkout</a>
+                <form action="{{ route('checkout.process') }}" method="POST" x-show="cartItems.length > 0" x-cloak>
+                    <button type="submit"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        Complete Purchase
+                    </button>
+                </form> -->
             </section>
         </div>
     </div>
