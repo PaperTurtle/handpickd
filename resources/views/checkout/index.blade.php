@@ -36,12 +36,10 @@
                                                 @click.away="closeOnClickAway">
 
                                                 <!-- Button -->
-                                                <button type="button"
-                                                    class="inline-flex w-full justify-center bg-white gap-x-1.5 rounded-md 
+                                                <button type="button" class="inline-flex w-full justify-center bg-white gap-x-1.5 rounded-md 
                                                     py-2 text-sm text-text font-semibold shadow-sm ring-1 
                                                     ring-inset ring-gray-300 hover:bg-gray-50
-                                                     focus:ring-2 focus:ring-accent"
-                                                    @click="open = !open">
+                                                     focus:ring-2 focus:ring-accent" @click="open = !open">
                                                     <div class="row-span-6" x-text="cartItem.quantity"></div>
                                                     <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20"
                                                         fill="currentColor" aria-hidden="true">
@@ -52,7 +50,12 @@
                                                 </button>
                                                 <!-- items -->
                                                 <ul class="py-1 absolute right-0 z-10 mt-2 w-16 origin-top-right
-                                        bg-white" x-show="open">
+                                        bg-white" x-show="open" x-transition:enter="transition ease-out duration-100"
+                                                    x-transition:enter-start="transform opacity-0 scale-95"
+                                                    x-transition:enter-end="transform opacity-100 scale-100"
+                                                    x-transition:leave="transition ease-in duration-75"
+                                                    x-transition:leave-start="transform opacity-100 scale-100"
+                                                    x-transition:leave-end="transform opacity-0 scale-95">
                                                     <template x-for="i in cartItem.product.quantity">
                                                         <li class=""
                                                             @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
