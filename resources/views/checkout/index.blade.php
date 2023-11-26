@@ -25,17 +25,48 @@
                                             </h3>
                                             <!-- price -->
                                             <p class="mt-1 text-sm font-medium text-text pt-10"
-                                                x-text="`$${Number(cartItem.product.price).toFixed(2)} €`"></p>
+                                                x-text="`${Number(cartItem.product.price).toFixed(2)} €`"></p>
                                         </div>
 
                                         <div>
-                                            <!-- quantity -->
-                                            <p>
-                                                <label for="quantity">Quantity:</label>
-                                                <input type="number" id="quantity" x-model="cartItem.quantity" min="1"
-                                                    :max="cartItem.product.quantity"
-                                                    @change="updateCart(cartItem.id, cartItem.quantity)">
-                                            </p>
+                                            <!-- quantity dropdown-->
+                                            <div class="relative inline-block text-left w-16"
+                                                x-data="{ open: false, toggle() { this.open = !this.open },
+                                            closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }"
+                                                @click.away="closeOnClickAway">
+
+                                                <!-- Button -->
+                                                <!-- <button type="button" class="w-full rounded-md bg-white 
+                                        py-2 text-sm font-semibold text-text " id="menu-button" @click="open = !open"> -->
+                                                <button type="button"
+                                                    class="inline-flex w-full justify-center bg-white 
+                                                    py-2 text-sm text-text" @click="open = !open">
+                                                        <div class="row-span-6" x-text="cartItem.quantity"></div>
+                                                        <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                                                            fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd"
+                                                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                </button>
+                                                <!-- items -->
+                                                <ul class="py-1 absolute right-0 z-10 mt-2 w-16 origin-top-right
+                                        bg-white" x-show="open">
+                                                    <template x-for="i in cartItem.product.quantity">
+                                                        <li class=""
+                                                            @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
+                                                            <button x-text="`${i}`"></button>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                            </div>
+                                            <!-- old quantity -->
+                                            <!-- <p>
+                                                        <label for="quantity">Quantity:</label>
+                                                        <input type="number" id="quantity" x-model="cartItem.quantity"
+                                                            min="1" :max="cartItem.product.quantity"
+                                                            @change="updateCart(cartItem.id, cartItem.quantity)">
+                                                    </p> -->
                                             <!-- remove -->
                                             <div class="absolute right-0 top-0">
                                                 <button type="button" @click="removeFromCart(cartItem.id)"
@@ -61,18 +92,18 @@
                                             </svg>
                                             <p x-text="`In stock`"></p>
                                         </div>
-                                    <!-- not in stock -->
-                                    <template x-if="cartItem.product.quantity <= 0">
-                                        <div class="space-x-2 flex text-sm text-text">
-                                            <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
-                                                fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <p x-text="`Ships in 3-4 weeks`"></p>
-                                        </div>
-                                    </template>
+                                        <!-- not in stock -->
+                                        <template x-if="cartItem.product.quantity <= 0">
+                                            <div class="space-x-2 flex text-sm text-text">
+                                                <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
+                                                    fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <p x-text="`Ships in 3-4 weeks`"></p>
+                                            </div>
+                                        </template>
                                     </template>
                                 </div>
                             </div>
@@ -97,7 +128,8 @@
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
                             <div class="flex items-center justify-between space-y-2">
                                 <dt x-text="`${cartItem.product.name}`"></dt>
-                                <dd class="font-medium" x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
+                                <dd class="font-medium"
+                                    x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
                             </div>
                         </template>
                     </div>
@@ -183,7 +215,7 @@
                         console.error('There has been a problem with your update operation:', error);
                     });
             },
-            
+
             calculateSubtotalPrice() {
                 let subTotalPrice = 0;
                 this.cartItems.forEach(cartItem => {
