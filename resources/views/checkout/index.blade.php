@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8" x-data="cart()">
-        <h1 class="text-3xl font-bold">Shopping Cart</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">Shopping Cart</h1>
         <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <!-- shopping cart -->
             <section class="col-span-7">
@@ -20,7 +20,7 @@
                                         <div>
                                             <!-- name -->
                                             <h3 class="text-sm">
-                                                <a href="#" class="hover:text-gray-400"
+                                                <a href="#" class="font-medium text-text hover:text-gray-400"
                                                     x-text="`${cartItem.product.name}`"></a>
                                             </h3>
                                             <!-- price -->
@@ -52,7 +52,7 @@
 
                                     <!-- in stock -->
                                     <template x-if="cartItem.product.quantity > 0">
-                                        <div class="flex">
+                                        <div class="space-x-2 flex text-sm text-text">
                                             <svg class="h-5 w-5 flex-shrink-0 text-accent " viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd"
@@ -63,7 +63,7 @@
                                         </div>
                                     <!-- not in stock -->
                                     <template x-if="cartItem.product.quantity <= 0">
-                                        <div class="flex">
+                                        <div class="space-x-2 flex text-sm text-text">
                                             <svg class="h-5 w-5 flex-shrink-0 text-gray-300" viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd"
