@@ -2,44 +2,7 @@
 
     <section x-data="reviewForm()">
         <!-- Notification when adding product to cart-->
-        <div aria-live="assertive"
-            class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50">
-            <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
-                <div x-cloak x-show="showAlert" x-transition:enter="transform ease-out duration-300 transition"
-                    x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
-                    x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
-                    x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                    class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                    <div class="p-4">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <div class="ml-3 w-0 flex-1 pt-0.5">
-                                <h3 class="text-lg font-medium text-text">Item Added to Cart!</h3>
-                                <p class="mt-1 text-sm text-gray-500">The product has been added to your cart. Continue
-                                    shopping for more awesome products or proceed to checkout.</p>
-                            </div>
-                            <div class="ml-4 flex flex-shrink-0">
-                                <button @click="showAlert = false" type="button"
-                                    class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                    <span class="sr-only">Close</span>
-                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path
-                                            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-notification />
 
         <!-- Main Content  -->
         <div class="container">
@@ -47,30 +10,7 @@
             <div
                 class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                 <div class="lg:max-w-lg lg:self-end">
-                    <!-- Product Description & Details -->
-                    <nav aria-label="Breadcrumb">
-                        <ol role="list" class="flex items-center space-x-2">
-                            <li>
-                                <div class="flex items-center text-sm">
-                                    <span
-                                        class="font-medium text-gray-500 hover:text-text">{{ $product->category->name }}</span>
-                                </div>
-                            </li>
-                        </ol>
-                    </nav>
-                    <!-- Breadcrumb & Product Name -->
-                    <div class="mt-4">
-                        <h1 class="font-heading text-3xl font-bold tracking-tight text-text sm:text-4xl">
-                            {{ $product->name }}
-                        </h1>
-                        <h3 class="text-lg font-medium text-gray-700">Created by:
-                            @if (auth()->check() && auth()->id() === $product->artisan_id)
-                                <strong>You</strong>
-                            @else
-                                {{ $product->artisan->name }}
-                            @endif
-                        </h3>
-                    </div>
+                    <x-product-details :product="$product"></x-product-details>
                     <!-- Product Information Section -->
                     <section aria-labelledby="information-heading" class="mt-4">
                         <h2 id="information-heading" class="sr-only">Product information</h2>
@@ -139,52 +79,10 @@
                 </div>
                 <!-- Product Image Section -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-                    <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
-                        @foreach ($product->images as $image)
-                            <img src="{{ Storage::url($image->show_image_path) }}" alt="{{ $image->alt_text }}"
-                                class="h-full w-full object-cover object-center" loading="lazy">
-                        @endforeach
-                    </div>
+                    <x-product-image :product="$product"></x-product-image>
                 </div>
                 <!-- Product Form Section (Add to Cart) -->
-                @if (auth()->check() && auth()->id() !== $product->artisan_id)
-                    @if ($product->quantity > 0)
-                        <div class="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
-                            <section aria-labelledby="options-heading">
-                                <h2 id="options-heading" class="sr-only">Product options</h2>
-
-                                <form method="POST" @submit.prevent="addToCart">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-                                    {{-- <div class="mt-4">
-                                    <label for="quantity-0"
-                                        class="block text-sm font-medium text-gray-700">Quantity</label>
-                                    <input type="number" name="quantity" value="1" min="1"
-                                        max="{{ $product->quantity }}" class="rounded border-gray-300">
-                                </div> --}}
-
-                                    <div class="mt-10">
-                                        <button type="submit"
-                                            class="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-accent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Add
-                                            to Cart</button>
-                                    </div>
-                                    <div class="mt-6 text-center">
-                                        <a href="#" class="group inline-flex text-base font-medium">
-                                            <svg class="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                                                fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                                            </svg>
-                                            <span class="text-gray-500 hover:text-gray-700">Lifetime Guarantee</span>
-                                        </a>
-                                    </div>
-                                </form>
-                            </section>
-                        </div>
-                    @endif
-                @endif
+                <x-add-to-cart-form :product="$product"></x-add-to-cart-form>
             </div>
         </div>
         <!-- Reviews Section -->
