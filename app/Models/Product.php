@@ -113,7 +113,7 @@ class Product extends Model
      *
      * @return float
      */
-    public function averageRating(): float
+    public function averageRating(): float|null
     {
         return $this->reviews()->avg('rating');
     }
