@@ -7,18 +7,23 @@ Handpickd is a community-driven platform that celebrates creativity and craftsma
 
 ## 📖 Table of Contents
 
--  [Project Overview](#-project-overview)
--  [Requirements](#-requirements)
--  [Installation Instructions](#installation-instructions)
--  [Page Breakdown](#-page-breakdown)
--  [Features & Functionality](#-features--functionality)
--  [Built with](#-built-with)
-   -  [Frontend](#frontend)
-   -  [Backend](#backend)
-   -  [Testing](#testing)
--  [Getting Started](#-getting-started)
--  [Known Issues](#known-issues)
--  [Authors](#-authors)
+-  [📖 Table of Contents](#-table-of-contents)
+-  [🌟 Project Overview](#-project-overview)
+-  [🔧 Requirements](#-requirements)
+-  [⚙️ Installation Instructions](#️-installation-instructions)
+   -  [NodeJS](#nodejs)
+   -  [XAMPP](#xampp)
+   -  [Composer](#composer)
+   -  [Laravel](#laravel)
+-  [📜 Page Breakdown](#-page-breakdown)
+-  [✨ Features \& Functionality](#-features--functionality)
+-  [🧰 Built with](#-built-with)
+   -  [🖥️ Frontend](#️-frontend)
+   -  [🗄️ Backend](#️-backend)
+   -  [🧪 Testing](#-testing)
+-  [🚀 Getting Started](#-getting-started)
+-  [🐛 Known Issues](#-known-issues)
+-  [📜 Authors](#-authors)
 
 ## 🌟 Project Overview
 
@@ -35,7 +40,7 @@ Handpickd requires the following tools to run:
 
 However, because the installation of Laravel and composer can be error-prone when installed via Powershell, it is highly recommended to install it via [Git Bash](https://gitforwindows.org/) instead.
 
-## Installation Instructions
+## ⚙️ Installation Instructions
 
 ### NodeJS
 
@@ -49,7 +54,7 @@ If the command returns a version number, then NodeJS has been installed correctl
 
 ### XAMPP
 
-Next, install XAMPP from the link above. Once installed, open up the XAMPP Control Panel and start the Apache and MySQL services. Once started, click on the "Admin" button for MySQL. This will open up a new tab in your browser. Click on the "New" button on the left-hand side and create a new database called "handpickd". Once created, click on the "Import" button on the top navigation bar. Click on the "Choose File" button and navigate to the `handpickd_db.sql` file in the root folder of the project. Once selected, click on the "Go" button on the bottom right-hand side. This will import the database into your local MySQL server. Below you will find pictures detailing the steps above.
+Next, install XAMPP from the link above. Once installed, open up the XAMPP Control Panel and start the Apache and MySQL services. Once started, click on the "Admin" button for MySQL. This will open up a new tab in your browser. Click on the "New" button on the left-hand side and create a new database called "handpickd_db". Once created, click on the "Import" button on the top navigation bar. Click on the "Choose File" button and navigate to the `handpickd_db.sql` file in the root folder of this project. Once selected, click on the "Go" button on the bottom right-hand side. This will import the database into your local MySQL server. Below you will find pictures detailing the steps above.
 
 ![XAMMP Install 1](https://github.com/PaperTurtle/handpickd/assets/68080844/0ec2cade-07ec-4e6e-9b0a-140447fa5383)
 
