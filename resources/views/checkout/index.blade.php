@@ -3,9 +3,6 @@
         <h1 class="text-3xl font-bold">Shopping Cart</h1>
         <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <section class="col-span-7">
-                <div>
-                    <h2 id="cart-heading" x-text="`Items in your shopping cart`"></h2>
-                </div>
                 <template x-if="cartItems.length > 0">
                     <div class="cart-items divide-y divide-gray-200 border-b border-t border-gray-200">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
