@@ -86,7 +86,7 @@
                 </template>
             </section>
 
-            <section class="col-span-5 bg-light-grey h-fit px-4 py-6 sm:p-6 lg:p-8">
+            <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
                 <dl>
                     <div class="flex items-baseline justify-between">
                         <dt >
@@ -111,7 +111,7 @@
 
                 <form class="pt-4" action="{{ route('checkout.process') }}" c-cloack x-show="cartItems.length > 0">
                     <button type="submit"
-                        class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded min-w-full">
+                        class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full">
                         Checkout
                     </button>
                 </form>
