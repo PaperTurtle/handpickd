@@ -10,9 +10,9 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Services\ImageService;
+use App\Services\ProductQueryService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Database\Eloquent\Builder;
 
 /**
  * ProductController handles operations related to products and their images,
@@ -28,13 +28,18 @@ class ProductController extends Controller
     protected $imageService;
 
     /**
+     * @var ProductQueryService
+     */
+    protected $productQueryService;
+    /**
      * ProductController constructor.
      * 
      * @param ImageService $imageService Service for handling image-related operations.
      */
-    public function __construct(ImageService $imageService)
+    public function __construct(ImageService $imageService, ProductQueryService $productQueryService)
     {
         $this->imageService = $imageService;
+        $this->productQueryService = $productQueryService;
     }
 
     /**
@@ -51,9 +56,9 @@ class ProductController extends Controller
         $sort = $request->query('sort');
 
         $products = Product::query();
-        $products = $this->applySearch($products, $searchTerm);
-        $products = $this->applyCategoryFilter($products, $selectedCategories);
-        $products = $this->applySorting($products, $sort);
+        $products = $this->productQueryService->applySearch($products, $searchTerm);
+        $products = $this->productQueryService->applyCategoryFilter($products, $selectedCategories);
+        $products = $this->productQueryService->applySorting($products, $sort);
 
         return view("products.index", ['products' => $products->get()]);
     }
@@ -166,60 +171,6 @@ class ProductController extends Controller
             'success' => true,
             'message' => 'Image deleted successfully.'
         ]);
-    }
-
-    /**
-     * Apply search criteria to a product query.
-     * This method filters products based on a search term that matches the product's name.
-     *
-     * @param Builder $query The Eloquent query builder instance.
-     * @param string $searchTerm The search term used for filtering products.
-     * @return Builder The modified query builder with the search condition applied.
-     */
-    private function applySearch($query, $searchTerm): Builder
-    {
-        if ($searchTerm) {
-            return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
-        }
-        return $query;
-    }
-
-    /**
-     * Apply category filter to a product query.
-     * This method filters products based on selected category IDs.
-     *
-     * @param Builder $query The Eloquent query builder instance.
-     * @param array $selectedCategories An array of selected category IDs for filtering.
-     * @return Builder The modified query builder with the category filter applied.
-     */
-    private function applyCategoryFilter($query, $selectedCategories): Builder
-    {
-        if (count($selectedCategories)) {
-            return $query->whereIn('category_id', $selectedCategories);
-        }
-        return $query;
-    }
-
-    /**
-     * Apply sorting to a product query.
-     * This method sorts products based on the specified sorting criteria such as rating, price ascending, or price descending.
-     *
-     * @param Builder $query The Eloquent query builder instance.
-     * @param string|null $sort The sorting criteria.
-     * @return Builder The modified query builder with the sorting applied.
-     */
-    private function applySorting($query, $sort): Builder
-    {
-        switch ($sort) {
-            case 'rating':
-                return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
-            case 'price_asc':
-                return $query->orderBy('price');
-            case 'price_desc':
-                return $query->orderBy('price', 'desc');
-            default:
-                return $query;
-        }
     }
 
     /**
