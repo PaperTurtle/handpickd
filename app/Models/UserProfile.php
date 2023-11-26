@@ -31,7 +31,7 @@ class UserProfile extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'user_id',
         'location',
         'bio',
@@ -44,7 +44,7 @@ class UserProfile extends Model
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected array $casts = [
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

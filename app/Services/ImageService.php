@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Storage;
  */
 class ImageService
 {
-
     /**
      * Process and store multiple images for a given product.
      * Iterates through each image file, processes, and stores them in the specified location.

@@ -36,7 +36,7 @@ class Product extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected array $fillable = [
         'artisan_id',
         'category_id',
         'name',
@@ -50,7 +50,7 @@ class Product extends Model
      *
      * @var array<string, string>
      */
-    protected $casts = [
+    protected array $casts = [
         'price' => 'decimal:2',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
@@ -112,7 +112,7 @@ class Product extends Model
      *
      * @return float
      */
-    public function averageRating()
+    public function averageRating(): float
     {
         return $this->reviews()->avg('rating');
     }
@@ -122,7 +122,7 @@ class Product extends Model
      *
      * @return int
      */
-    public function totalReviews()
+    public function totalReviews(): int
     {
         return $this->reviews()->count();
     }
