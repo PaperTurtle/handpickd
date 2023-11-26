@@ -12,9 +12,7 @@ use App\Models\ProductImage;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * ProductController handles operations related to products and their images,
@@ -174,11 +172,11 @@ class ProductController extends Controller
      * Apply search criteria to a product query.
      * This method filters products based on a search term that matches the product's name.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param Builder $query The Eloquent query builder instance.
      * @param string $searchTerm The search term used for filtering products.
-     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the search condition applied.
+     * @return Builder The modified query builder with the search condition applied.
      */
-    private function applySearch($query, $searchTerm)
+    private function applySearch($query, $searchTerm): Builder
     {
         if ($searchTerm) {
             return $query->where('name', 'LIKE', '%' . $searchTerm . '%');
@@ -190,11 +188,11 @@ class ProductController extends Controller
      * Apply category filter to a product query.
      * This method filters products based on selected category IDs.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param Builder $query The Eloquent query builder instance.
      * @param array $selectedCategories An array of selected category IDs for filtering.
-     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the category filter applied.
+     * @return Builder The modified query builder with the category filter applied.
      */
-    private function applyCategoryFilter($query, $selectedCategories)
+    private function applyCategoryFilter($query, $selectedCategories): Builder
     {
         if (count($selectedCategories)) {
             return $query->whereIn('category_id', $selectedCategories);
@@ -206,11 +204,11 @@ class ProductController extends Controller
      * Apply sorting to a product query.
      * This method sorts products based on the specified sorting criteria such as rating, price ascending, or price descending.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query The Eloquent query builder instance.
+     * @param Builder $query The Eloquent query builder instance.
      * @param string|null $sort The sorting criteria.
-     * @return \Illuminate\Database\Eloquent\Builder The modified query builder with the sorting applied.
+     * @return Builder The modified query builder with the sorting applied.
      */
-    private function applySorting($query, $sort)
+    private function applySorting($query, $sort): Builder
     {
         switch ($sort) {
             case 'rating':
@@ -224,7 +222,16 @@ class ProductController extends Controller
         }
     }
 
-    public function topRatedProducts()
+    /**
+     * Retrieve and display the top three rated products.
+     * This method fetches the top three products based on their average ratings.
+     * It uses Eloquent's relationship and aggregation features to calculate the average rating for each product,
+     * orders them in descending order of their average rating, and then limits the result to the top three products.
+     * The fetched products are then passed to the welcome view.
+     *
+     * @return Factory|View Returns a view with the top three rated products.
+     */
+    public function topRatedProducts(): Factory|View
     {
         $topRatedProducts = Product::with('reviews')
             ->withAvg('reviews', 'rating')
