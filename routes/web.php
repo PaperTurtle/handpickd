@@ -6,6 +6,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Middleware\RedirectIfNoTransactionDetails;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
     Route::get('/checkout/success', function () {
         return view('checkout.success');
-    })->name('checkout.success');
+    })->name('checkout.success')->middleware(RedirectIfNoTransactionDetails::class);
 
     // Dashboard transaction management
     Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
