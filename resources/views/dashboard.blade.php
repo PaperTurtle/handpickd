@@ -46,7 +46,7 @@
                                                 {{ number_format($totalAmount, 2) }} €</dd>
                                         </div>
                                     </dl>
-                                    <h3 x-show="isOrderCompleted({{ json_encode($group->pluck('id')) }})"
+                                    <h3 x-cloak x-show="isOrderCompleted({{ json_encode($group->pluck('id')) }})"
                                         class="inline-flex items-center text-green-500 font-bold">
                                         <span>Order Completed</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -170,7 +170,6 @@
                         })
                         .then(data => {
                             this.status[transactionId] = 'sent';
-                            this.$nextTick(() => this.checkOrderCompletion());
                         })
                         .catch(error => {
                             console.error('There has been a problem with your fetch operation:', error);
