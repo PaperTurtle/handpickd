@@ -170,7 +170,7 @@ php artisan serve // (Terminal 1)
 npm run dev // (Terminal 2)
 ```
 
-Once the application is running, you can access it at [http://localhost:8000](http://localhost:8000).
+Once the application is running, you can access it at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## 🐛 Known Issues
 
