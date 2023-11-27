@@ -1,17 +1,18 @@
 <?php
 
 use App\Models\Product;
+use App\Models\ProductImage;
 
 it('belongs to a product', function () {
     $product = Product::factory()->create();
-    $productImage = \App\Models\ProductImage::factory()->create(['product_id' => $product->id]);
+    $productImage = ProductImage::factory()->create(['product_id' => $product->id]);
 
     expect($productImage->product)->toBeInstanceOf(Product::class);
 });
 
 
 it('has correct fillable attributes', function () {
-    $productImage = new \App\Models\ProductImage();
+    $productImage = new ProductImage();
 
     expect($productImage->getFillable())->toBe([
         'product_id',
@@ -24,14 +25,14 @@ it('has correct fillable attributes', function () {
 });
 
 it('has correct casts', function () {
-    $productImage = new \App\Models\ProductImage();
+    $productImage = new ProductImage();
 
     expect($productImage->getCasts())->toHaveKey('created_at', 'datetime');
     expect($productImage->getCasts())->toHaveKey('updated_at', 'datetime');
 });
 
 it('can be created', function () {
-    $productImage = \App\Models\ProductImage::create([
+    $productImage = ProductImage::create([
         'product_id' => Product::factory()->create()->id,
         'image_path' => 'images/example.jpg',
         'alt_text' => 'Example Image',
@@ -46,7 +47,7 @@ it('can be created', function () {
 });
 
 it('can update attributes', function () {
-    $productImage = \App\Models\ProductImage::factory()->create();
+    $productImage = ProductImage::factory()->create();
 
     $productImage->update(['alt_text' => 'Updated Alt Text']);
 

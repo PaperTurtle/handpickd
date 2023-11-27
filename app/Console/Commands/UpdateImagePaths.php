@@ -38,7 +38,7 @@ class UpdateImagePaths extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Updating image paths...');
 
@@ -51,7 +51,7 @@ class UpdateImagePaths extends Command
         $this->info('All image paths updated successfully.');
     }
 
-    protected function updateImagePathsForType($type)
+    protected function updateImagePathsForType($type): void
     {
         $columnName = "{$type}_image_path";
 
@@ -59,20 +59,20 @@ class UpdateImagePaths extends Command
             $query->whereNull($columnName)->orWhere($columnName, '');
         })->count();
 
-        $this->info("Found {$imagesCount} images with null or empty {$type} image path.");
+        $this->info("Found $imagesCount images with null or empty $type image path.");
 
         ProductImage::where(function ($query) use ($columnName) {
             $query->whereNull($columnName)->orWhere($columnName, '');
         })->chunk(100, function ($images) use ($columnName, $type) {
             foreach ($images as $image) {
-                $path = str_replace('_original', "_{$type}", $image->image_path);
+                $path = str_replace('_original', "_$type", $image->image_path);
 
                 if (Storage::disk('public')->exists($path)) {
                     $image->$columnName = $path;
                     $image->save();
-                    $this->info("{$type} path updated for image: {$image->id}");
+                    $this->info("$type path updated for image: $image->id");
                 } else {
-                    $this->error("{$type} image does not exist for image: {$image->id}");
+                    $this->error("$type image does not exist for image: $image->id");
                 }
             }
         });

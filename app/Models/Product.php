@@ -103,7 +103,7 @@ class Product extends Model
      * @param int $userId
      * @return bool
      */
-    public function hasUserReviewed($userId): bool
+    public function hasUserReviewed(int $userId): bool
     {
         return $this->reviews()->where('user_id', $userId)->exists();
     }
@@ -111,7 +111,7 @@ class Product extends Model
     /**
      * Calculates and returns the average rating of the product based on its reviews.
      *
-     * @return float
+     * @return float|null
      */
     public function averageRating(): float|null
     {

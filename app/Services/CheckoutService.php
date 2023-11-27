@@ -27,7 +27,7 @@ class CheckoutService
      * @throws ModelNotFoundException Throws if a product in the cart is not found.
      * @throws Exception Throws on any other error encountered during the process.
      */
-    public function processCheckout($user): array
+    public function processCheckout(?User $user): array
     {
         DB::beginTransaction();
 

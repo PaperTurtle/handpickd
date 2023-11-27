@@ -1,24 +1,25 @@
 <?php
 
+use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Product;
 
 it('belongs to a buyer', function () {
     $user = User::factory()->create();
-    $transaction = \App\Models\Transaction::factory()->create(['buyer_id' => $user->id]);
+    $transaction = Transaction::factory()->create(['buyer_id' => $user->id]);
 
     expect($transaction->buyer)->toBeInstanceOf(User::class);
 });
 
 it('belongs to a product', function () {
     $product = Product::factory()->create();
-    $transaction = \App\Models\Transaction::factory()->create(['product_id' => $product->id]);
+    $transaction = Transaction::factory()->create(['product_id' => $product->id]);
 
     expect($transaction->product)->toBeInstanceOf(Product::class);
 });
 
 it('has correct fillable attributes', function () {
-    $transaction = new \App\Models\Transaction();
+    $transaction = new Transaction();
 
     expect($transaction->getFillable())->toBe([
         'buyer_id',
@@ -30,7 +31,7 @@ it('has correct fillable attributes', function () {
 });
 
 it('has correct casts', function () {
-    $transaction = new \App\Models\Transaction();
+    $transaction = new Transaction();
 
     expect($transaction->getCasts())->toHaveKey('total_price', 'decimal:2');
     expect($transaction->getCasts())->toHaveKey('created_at', 'datetime');
@@ -38,7 +39,7 @@ it('has correct casts', function () {
 });
 
 it('can be created', function () {
-    $transaction = \App\Models\Transaction::factory()->create([
+    $transaction = Transaction::factory()->create([
         'quantity' => 2,
         'total_price' => 200.00,
         'status' => 'completed'
@@ -52,7 +53,7 @@ it('can be created', function () {
 });
 
 it('can update attributes', function () {
-    $transaction = \App\Models\Transaction::factory()->create();
+    $transaction = Transaction::factory()->create();
 
     $transaction->update(['status' => 'cancelled']);
 

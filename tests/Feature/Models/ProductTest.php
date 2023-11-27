@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\ProductImage;
@@ -7,20 +8,20 @@ use App\Models\Review;
 
 it('belongs to an artisan', function () {
     $artisan = User::factory()->create();
-    $product = \App\Models\Product::factory()->create(['artisan_id' => $artisan->id]);
+    $product = Product::factory()->create(['artisan_id' => $artisan->id]);
 
     expect($product->artisan)->toBeInstanceOf(User::class);
 });
 
 it('belongs to a category', function () {
     $category = Category::factory()->create();
-    $product = \App\Models\Product::factory()->create(['category_id' => $category->id]);
+    $product = Product::factory()->create(['category_id' => $category->id]);
 
     expect($product->category)->toBeInstanceOf(Category::class);
 });
 
 it('has many images', function () {
-    $product = \App\Models\Product::factory()->create();
+    $product = Product::factory()->create();
     $image = ProductImage::factory()->create(['product_id' => $product->id]);
 
     expect($product->images)->toHaveCount(1);
@@ -28,7 +29,7 @@ it('has many images', function () {
 });
 
 it('has many reviews', function () {
-    $product = \App\Models\Product::factory()->create();
+    $product = Product::factory()->create();
     $review = Review::factory()->create(['product_id' => $product->id]);
 
     expect($product->reviews)->toHaveCount(1);
@@ -36,7 +37,7 @@ it('has many reviews', function () {
 });
 
 it('has correct fillable attributes', function () {
-    $product = new \App\Models\Product();
+    $product = new Product();
 
     expect($product->getFillable())->toBe([
         'artisan_id',
@@ -49,7 +50,7 @@ it('has correct fillable attributes', function () {
 });
 
 it('has correct casts', function () {
-    $product = new \App\Models\Product();
+    $product = new Product();
 
     expect($product->getCasts())->toHaveKey('price', 'decimal:2');
     expect($product->getCasts())->toHaveKey('created_at', 'datetime');
@@ -58,7 +59,7 @@ it('has correct casts', function () {
 
 it('can check if user has reviewed', function () {
     $user = User::factory()->create();
-    $product = \App\Models\Product::factory()->create();
+    $product = Product::factory()->create();
     $review = Review::factory()->create(['product_id' => $product->id, 'user_id' => $user->id]);
 
     expect($product->hasUserReviewed($user->id))->toBeTrue();
@@ -66,7 +67,7 @@ it('can check if user has reviewed', function () {
 });
 
 it('can be created', function () {
-    $product = \App\Models\Product::create([
+    $product = Product::create([
         'artisan_id' => User::factory()->create()->id,
         'category_id' => Category::factory()->create()->id,
         'name' => 'Handmade Vase',
@@ -84,7 +85,7 @@ it('can be created', function () {
 });
 
 it('can be updated', function () {
-    $product = \App\Models\Product::factory()->create();
+    $product = Product::factory()->create();
 
     $product->update(['name' => 'Updated Name']);
 

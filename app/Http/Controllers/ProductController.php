@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -25,15 +26,15 @@ class ProductController extends Controller
     /**
      * @var ImageService
      */
-    protected $imageService;
+    protected ImageService $imageService;
 
     /**
      * @var ProductQueryService
      */
-    protected $productQueryService;
+    protected ProductQueryService $productQueryService;
     /**
      * ProductController constructor.
-     * 
+     *
      * @param ImageService $imageService Service for handling image-related operations.
      */
     public function __construct(ImageService $imageService, ProductQueryService $productQueryService)
@@ -97,7 +98,7 @@ class ProductController extends Controller
      * This method validates and stores a new product in the database, along with its images.
      * It returns a JSON response with the result of the operation.
      *
-     * @param Request $request The request object containing product data.
+     * @param StoreProductRequest $request The request object containing product data.
      * @return RedirectResponse Returns JSON response with the status of product creation.
      */
     public function store(StoreProductRequest $request): RedirectResponse
@@ -118,6 +119,7 @@ class ProductController extends Controller
      *
      * @param Product $product The product instance to edit.
      * @return Factory|View Returns a view for editing the specified product.
+     * @throws AuthorizationException
      */
     public function edit(Product $product): Factory|View
     {
@@ -160,6 +162,7 @@ class ProductController extends Controller
      * @param Product $product The product owning the image.
      * @param ProductImage $productImage The product image to be deleted.
      * @return JsonResponse Returns JSON response with the status of image deletion.
+     * @throws AuthorizationException
      */
     public function destroyImage(Product $product, ProductImage $productImage): JsonResponse
     {
@@ -176,7 +179,7 @@ class ProductController extends Controller
     /**
      * Retrieve and display the top three rated products.
      * This method fetches the top three products based on their average ratings.
-     * It uses Eloquent's relationship and aggregation features to calculate the average rating for each product,
+     * It uses Eloquent relationship and aggregation features to calculate the average rating for each product,
      * orders them in descending order of their average rating, and then limits the result to the top three products.
      * The fetched products are then passed to the welcome view.
      *

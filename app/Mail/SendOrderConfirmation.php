@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Address;
@@ -18,22 +19,22 @@ class SendOrderConfirmation extends Mailable
     /**
      * @var mixed The user to whom the order confirmation will be sent.
      */
-    public $user;
+    public mixed $user;
 
     /**
      * @var array The details of the transaction related to the order.
      */
-    public $transactionDetails;
+    public array $transactionDetails;
 
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
-     * 
+     *
      * @param mixed $user The user instance.
      * @param array $transactionDetails Details of the transaction.
      */
-    public function __construct($user, $transactionDetails)
+    public function __construct(mixed $user, array $transactionDetails)
     {
         $this->user = $user;
         $this->transactionDetails = $transactionDetails;
@@ -74,7 +75,7 @@ class SendOrderConfirmation extends Mailable
      * Get the attachments for the message.
      * Currently, this method returns an empty array as no attachments are added by default.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment> Returns an array of attachments.
+     * @return array<int, Attachment> Returns an array of attachments.
      */
     public function attachments(): array
     {

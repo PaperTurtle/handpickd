@@ -20,7 +20,7 @@ class CartService
      * @param int $quantity The quantity of the product to add.
      * @return array Returns a success message upon successful addition.
      */
-    public function addToCart($productId, $quantity): array
+    public function addToCart(int $productId, int $quantity): array
     {
         $cartItem = ShoppingCart::where('user_id', Auth::id())
             ->where('product_id', $productId)

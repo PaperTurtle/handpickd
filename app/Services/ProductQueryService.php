@@ -55,15 +55,11 @@ class ProductQueryService
      */
     public function applySorting(Builder $query, ?string $sort): Builder
     {
-        switch ($sort) {
-            case 'rating':
-                return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
-            case 'price_asc':
-                return $query->orderBy('price');
-            case 'price_desc':
-                return $query->orderBy('price', 'desc');
-            default:
-                return $query;
-        }
+        return match ($sort) {
+            'rating' => $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc'),
+            'price_asc' => $query->orderBy('price'),
+            'price_desc' => $query->orderBy('price', 'desc'),
+            default => $query,
+        };
     }
 }

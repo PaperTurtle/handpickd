@@ -6,7 +6,6 @@ use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Models\Review;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 /**
  * ReviewController handles operations related to creating and updating reviews for products.

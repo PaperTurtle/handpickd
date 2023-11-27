@@ -22,7 +22,7 @@ class ImageService
      * @param string $name The name used for alternative text in images.
      * @return void
      */
-    public function processAndStoreImages(Product $product, array $images, $name): void
+    public function processAndStoreImages(Product $product, array $images, string $name): void
     {
         foreach ($images as $imageFile) {
             $this->storeImage($product, $imageFile, $name);
@@ -39,7 +39,7 @@ class ImageService
      * @param string $name The name used for alternative text in images.
      * @return void
      */
-    private function storeImage(Product $product, UploadedFile $imageFile, $name): void
+    private function storeImage(Product $product, UploadedFile $imageFile, string $name): void
     {
         $timestamp = time();
         $originalFilename = 'product_' . $timestamp . '_original.webp';
@@ -86,7 +86,7 @@ class ImageService
      * @param string $processorScript The script used to process the image.
      * @return void
      */
-    private function processImage($sourcePath, $destinationPath, $processorScript): void
+    private function processImage(string $sourcePath, string $destinationPath, string $processorScript): void
     {
         $nodeCommand = "node " . escapeshellarg(base_path('resources/js/' . $processorScript)) . " " .
             escapeshellarg(storage_path('app/public/' . $sourcePath)) . " " .

@@ -36,7 +36,7 @@ class CleanOrphanedImages extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         // Get all image paths from storage
         $allImagePaths = Storage::disk('public')->files('product_images');

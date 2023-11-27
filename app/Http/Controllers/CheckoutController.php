@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
 use App\Http\Requests\UpdateCartRequest;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use App\Models\ShoppingCart;
-use Illuminate\Support\Facades\DB;
-use App\Models\Transaction;
-use App\Mail\SendOrderConfirmation;
-use Illuminate\Support\Facades\Mail;
 use App\Services\CartService;
 use App\Services\CheckoutService;
 use Exception;
@@ -53,6 +50,7 @@ class CheckoutController extends Controller
      *
      * @param AddToCartRequest $request The request object containing product details.
      * @return JsonResponse Redirects back with a success message on adding the product.
+     * @throws AuthorizationException
      */
     public function addToCart(AddToCartRequest $request): JsonResponse
     {
@@ -69,6 +67,7 @@ class CheckoutController extends Controller
      *
      * @param int $cartItemId The unique identifier of the cart item to be removed.
      * @return JsonResponse Redirects back with a success message on removing the product.
+     * @throws AuthorizationException
      */
     public function removeFromCart(int $cartItemId): JsonResponse
     {
@@ -89,6 +88,7 @@ class CheckoutController extends Controller
      * @param int $itemId The ID of the cart item to update.
      * @param UpdateCartRequest $request The request object containing the new quantity.
      * @return JsonResponse Returns JSON response with the result of the update operation.
+     * @throws AuthorizationException
      */
     public function updateCart(int $itemId, UpdateCartRequest $request): JsonResponse
     {
@@ -108,6 +108,7 @@ class CheckoutController extends Controller
      * On failure, the transaction is rolled back and the user is redirected back with an error message.
      *
      * @return RedirectResponse Redirects to a success route on successful checkout, or back with an error on failure.
+     * @throws Exception
      */
     public function processCheckout(): RedirectResponse
     {

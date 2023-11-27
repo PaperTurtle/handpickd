@@ -6,7 +6,6 @@ use App\Models\Transaction;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
 /**

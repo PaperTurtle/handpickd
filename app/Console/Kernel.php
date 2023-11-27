@@ -2,15 +2,18 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CleanOrphanedImages;
+use App\Console\Commands\ProcessProductImages;
+use App\Console\Commands\UpdateImagePaths;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        \App\Console\Commands\CleanOrphanedImages::class,
-        \App\Console\Commands\ProcessProductImages::class,
-        \App\Console\Commands\UpdateImagePaths::class,
+        CleanOrphanedImages::class,
+        ProcessProductImages::class,
+        UpdateImagePaths::class,
     ];
     /**
      * Define the application's command schedule.

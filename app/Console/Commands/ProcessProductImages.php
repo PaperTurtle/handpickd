@@ -34,7 +34,7 @@ class ProcessProductImages extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $originalImages = Storage::disk('public')->files('product_images');
 
@@ -63,18 +63,13 @@ class ProcessProductImages extends Command
      * @param string $type The type of processing to apply (default, show, or thumbnail).
      * @return void
      */
-    protected function processImage($sourcePath, $targetPath, $type = 'default')
+    protected function processImage(string $sourcePath, string $targetPath, string $type = 'default'): void
     {
-        switch ($type) {
-            case 'show':
-                $nodeScript = 'imageProcessorShow.js';
-                break;
-            case 'thumbnail':
-                $nodeScript = 'imageProcessorThumbnail.js';
-                break;
-            default:
-                $nodeScript = 'imageProcessor.js';
-        }
+        $nodeScript = match ($type) {
+            'show' => 'imageProcessorShow.js',
+            'thumbnail' => 'imageProcessorThumbnail.js',
+            default => 'imageProcessor.js',
+        };
 
         $nodeCommand = "node " . escapeshellarg(base_path("resources/js/$nodeScript")) . " " .
             escapeshellarg(storage_path("app/public/$sourcePath")) . " " .
