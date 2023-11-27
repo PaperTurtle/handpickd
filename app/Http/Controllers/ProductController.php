@@ -155,6 +155,21 @@ class ProductController extends Controller
     }
 
     /**
+     * Remove the specified product from the database.
+     *
+     * @param Product $product The product instance to delete.
+     * @return RedirectResponse
+     */
+    public function destroy(Product $product): RedirectResponse
+    {
+        $this->authorize('delete', $product);
+
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+    }
+
+    /**
      * Remove the specified image from a product.
      * This method deletes a specified product image if the authenticated user is authorized.
      * It returns a JSON response with the result of the deletion operation.
