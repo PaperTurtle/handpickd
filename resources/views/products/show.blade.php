@@ -5,7 +5,7 @@
         <x-notification />
 
         <!-- Main Content  -->
-        <div class="container">
+        <div class="container" x-data="{ showModal: false }">
             <!-- Product Details Section -->
             <div
                 class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -79,7 +79,25 @@
                 </div>
                 <!-- Product Image Section -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-                    <x-product-image :product="$product"></x-product-image>
+                    <div class="relative">
+                        <x-product-image :product="$product" />
+                        @auth
+                            @if (auth()->id() === $product->artisan_id)
+                                <div class="absolute top-0 right-0">
+                                    <button @click="showModal = true"
+                                        class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-red-500 focus-visible:outline font-body focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        Delete
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="-mr-0.5 h-5 w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                        </svg>
+                                    </button>
+                                    <x-delete-modal :product="$product" />
+                                </div>
+                            @endif
+                        @endauth
+                    </div>
                 </div>
                 <!-- Product Form Section (Add to Cart) -->
                 <x-add-to-cart-form :product="$product"></x-add-to-cart-form>
@@ -162,51 +180,11 @@
                                     other
                                     customers</p>
 
-                                <button @click="openModal = true"
+                                <button @click="writingReview = true"
                                     class="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-text hover:bg-gray-50 sm:w-auto lg:w-full">Write
                                     a review</button>
                             </div>
                         </template>
-                        <div x-cloak x-show="openModal" class="fixed inset-0 z-10 overflow-y-auto"
-                            aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                            <div
-                                class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                                    aria-hidden="true"></div>
-                                <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
-                                    aria-hidden="true">&#8203;</span>
-                                <div
-                                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                        <h3 class="text-lg leading-6 font-medium text-text" id="modal-title">Write
-                                            a
-                                            Review</h3>
-                                        <div>
-                                            <label for="rating"
-                                                class="block text-sm font-medium text-gray-700">Rating</label>
-                                            <select id="rating" x-model="rating"
-                                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="mt-2">
-                                            <textarea x-model="review" rows="4"
-                                                class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
-                                        <button @click="submitReview" type="button"
-                                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
-                                        <button @click="openModal = false" type="button"
-                                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     @endif
                 </div>
                 <!-- Recent Reviews Display Section -->
@@ -270,96 +248,9 @@
                 </div>
             </div>
             <!-- Edit Review Form Modal -->
-            <div x-cloak x-show="editingReview" class="fixed inset-0 z-10 overflow-y-auto"
-                aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <!-- Modal backdrop -->
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                    <div
-                        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <h3 class="text-xl leading-6 font-medium text-text" id="modal-title">Edit
-                                Your Review
-                            </h3>
-                            <div class="mt-2">
-                                <div>
-                                    <label for="editRating"
-                                        class="block text-sm font-medium text-gray-700">Rating</label>
-                                    <div id="editRating" x-model="editRating" class="flex">
-                                        <template x-for="i in 5" :key="i">
-                                            <svg @click="editRating = i" class="h-5 w-5 flex-shrink-0 cursor-pointer"
-                                                :class="{ 'text-yellow-400': i <= editRating, 'text-gray-300': i > editRating }"
-                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </template>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <label for="editReviewText"
-                                        class="block text-sm font-medium text-gray-700">Review</label>
-                                    <textarea id="editReviewText" x-model="editReviewText" rows="4"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none sm:text-sm"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="px-4 py-3 sm:flex sm:flex-row-reverse">
-                            <button @click="updateReview" type="button"
-                                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-accent focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Update</button>
-                            <button @click="editingReview = false" type="button"
-                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-secondary text-base font-medium text-black focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-edit-modal :product="$product" />
             <!-- Create Review Form Modal -->
-            <div x-cloak x-show="openModal" class="fixed inset-0 z-10 overflow-y-auto" aria-labelledby="modal-title"
-                role="dialog" aria-modal="true">
-                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                    <div
-                        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                            <h3 class="text-xl leading-6 font-medium text-text" id="modal-title">
-                                Write a Review
-                            </h3>
-                            <div class="mt-2">
-                                <div>
-                                    <label for="rating"
-                                        class="block text-sm font-medium text-gray-700">Rating</label>
-                                    <div id="rating" class="flex">
-                                        <template x-for="i in 5" :key="i">
-                                            <svg @click="rating = i" class="h-5 w-5 flex-shrink-0 cursor-pointer"
-                                                :class="{ 'text-yellow-400': i <= rating, 'text-gray-300': i > rating }"
-                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path fill-rule="evenodd"
-                                                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                        </template>
-                                    </div>
-                                </div>
-                                <div class="mt-4">
-                                    <label for="writeReviewText" class="block text-sm font-medium text-gray-700">Your
-                                        Review</label>
-                                    <textarea id="writeReviewText" x-model="review" rows="4"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="px-4 py-3 sm:flex sm:flex-row-reverse">
-                            <button @click="submitReview" type="button"
-                                class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-accent focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
-                            <button @click="openModal = false" type="button"
-                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-secondary text-base font-medium text-black focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-create-modal :product="$product" />
         </section>
     </section>
     <script>
@@ -371,6 +262,7 @@
                 review: '',
                 reviews: @json($product->reviews->load('user')),
                 userHasReviewed: {{ $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
+                writingReview: false,
                 editingReview: false,
                 showAlert: false,
                 editRating: 1,
@@ -403,6 +295,7 @@
                     }
                     return percentages;
                 },
+
 
                 updateReviewData() {
                     this.calculateAverageRating();
