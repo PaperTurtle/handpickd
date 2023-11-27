@@ -82,17 +82,27 @@ composer global require laravel/installer
 
 ## 📜 Page Breakdown
 
--  **Homepage**: Introduces the platform and features a search bar for finding products, along with a showcase of selected items.
+-  **Homepage**: Introduces the platform and features a search bar for finding products, along with a showcase of featured items and categories.
 
 -  **Login/Registration**: Allows new users to join the community and existing members to access their accounts.
 
--  **Post a Product**: Enables registered artisans to list new items, complete with detailed descriptions and images.
+-  **Products**: Enables registered artisans to list new items, complete with detailed descriptions and images.
 
--  **Product Listings**: Displays items based on search criteria or browsing, with filters for categories and artisan location.
+   -  **Browser Products**: Allows users to browse products by category, price range and best reviews.
+   -  **Search Products**: Enables users to search for products by keyword.
+   -  **Product Details**: Provides in-depth information about each product, including images, pricing and reviews. It also allows a user to post/update their review and add the product to their cart.
 
--  **Product Details**: Provides in-depth information about each product, including images, pricing, and artisan profiles.
+-  **Cart**: Enables users to view and manage the items they intend to purchase.
 
--  **Artisan Profile**: Offers insights into the artisans' backgrounds, their product range, and customer reviews.
+   -  **Checkout**: Allows users to complete their purchase and receive a confirmation email.
+
+-  **Dashboard**: Provides a personalized overview of the artisan's pending and completed orders.
+-  **FAQ**: Provides answers to frequently asked questions about the platform.
+-  **Profile**: Offers insights into the artisans' backgrounds, their product range, and customer reviews.
+   -  **Edit Profile**: Allows users to update their profile information and add new products.
+   -  **Edit Product**: Enables artisans to update their product information and images.
+   -  **Delete Profile**: Enables users to remove their profile from the marketplace.
+   -  **Delete Product**: Allows artisans to remove their products from the marketplace.
 
 ## ✨ Features & Functionality
 
