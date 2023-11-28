@@ -73,6 +73,13 @@ Route::middleware('auth')->group(function () {
 
     // Update cart item
     Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
+
+    // Email Verification
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+     
+    
 });
 
 // ========= Authentication Routes (Laravel Breeze, Jetstream, etc.) =========
