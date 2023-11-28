@@ -140,19 +140,9 @@
                         </template>
                     </div>
                     <!-- subtotal -->
-                    <div class="flex items-center justify-between mt-6">
+                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4 text-base">
                         <dt x-text="`Subotal:`"></dt>
                         <dd class="font-medium" x-text="`${Number(calculateSubtotalPrice()).toFixed(2)} €`"></dd>
-                    </div>
-                    <!-- shipping estimate -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
-                        <dt x-text="`Shipping Estimate`"></dt>
-                        <dd class="font-medium" x-text="`4.99 €`"></dd>
-                    </div>
-                    <!-- total price -->
-                    <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4 text-base">
-                        <dt x-text="`Order Total:`"></dt>
-                        <dd class="font-medium" x-text="`${calculateTotalPrice()} €`"></dd>
                     </div>
                 </dl>
                 <!-- checkout button -->
@@ -228,12 +218,6 @@
                     subTotalPrice += cartItem.product.price * cartItem.quantity;
                 });
                 return Number(subTotalPrice).toFixed(2);
-            },
-
-            calculateTotalPrice() {
-                let shippingEstimate = 4.99;
-                let totalPrice = parseInt(this.calculateSubtotalPrice()) + shippingEstimate;
-                return Number(totalPrice).toFixed(2);
             },
         }
     };
