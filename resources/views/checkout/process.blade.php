@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-8">
+    <div class="container mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-8 text-sm">
         <label>
             <h1 class="text-3xl sm:text-4xl tracking-tight font-bold">Checkout</h1>
         </label>
@@ -10,14 +10,14 @@
                     <label class="text-xl">Contact information</label>
                     <div class="mt-4">
                         <div class="lg:grid">
-                            <label class="text-sm">Email address</label>
+                            <label>Email address</label>
                             <input type="email"
                                 class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                                                 ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                                                                 focus:ring-2 focus:ring-accent focus:border-accent"></input>
                         </div>
                         <div class="lg:grid mt-4">
-                            <label class="text-sm">Phone number</label>
+                            <label class="">Phone number</label>
                             <input type="text"
                                 class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                                                 ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
@@ -26,7 +26,7 @@
                     </div>
                 </section>
                 <!-- Shipping Information -->
-                <section class="lg:grid border-t border-b border-gray-200 mt-6 pt-4 mb-4 pb-6 text-sm">
+                <section class="lg:grid border-t border-b border-gray-200 mt-6 pt-4 mb-4 pb-6 ">
                     <label class="text-xl">Shipping information</label>
                     <div class="flex mt-4 justify-between">
                         <div class="lg:grid flex-grow">
@@ -88,7 +88,7 @@
                 </section>
                 <!-- Delivery Method -->
                 <section x-data="{deliveryMethod: 'Standard'}">
-                <label class="text-xl">Delivery Method</label>
+                    <label class="text-xl">Delivery Method</label>
                     <fieldset class="flex justify-between">
                         <div class="flex-grow border bg-white ">
                             <input type="radio" value="Standard">
@@ -99,7 +99,7 @@
                                 <div>4.99 €</div>
                             </div>
                         </div>
-                        
+
                         <div class="ml-4 flex-grow border bg-white ">
                             <input type="radio" value="Express">
                             </input>
@@ -112,27 +112,43 @@
                     </fieldset>
                 </section>
                 <!-- Payment -->
-                <section>
-                <label class="text-xl">Payment</label>
-                <div class="flex flex-col">
-                    <label>Card number</label>
-                    <input type="text"></input>
-                    
-                    <label>Name on card</label>
-                    <input type="text"></input>
-                    
-                    <label>Expiration date (MM/YY)</label>
-                    <input type="text"></input>
-                    
-                    <label>CVC</label>
-                    <input type="text"></input>
-                </div>
+                <section class="border-t border-b border-gray-200 mt-6 pt-4 mb-4 pb-6">
+                    <label class="text-xl">Payment</label>
+                    <div class="flex flex-col">
+                        <div class="flex flex-col mt-4">
+                            <label>Card number</label>
+                            <input type="number" class="h-8 text-sm rounded-md font-semibold shadow-sm  
+                            ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
+                            focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                        </div>
+                        <div class="flex flex-col mt-4">
+                            <label>Name on card</label>
+                            <input type="text" class="h-8 text-sm rounded-md font-semibold shadow-sm  
+                            ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
+                            focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <div class="flex flex-col w-3/5 mr-2">
+                                <label>Expiration date (MM/YY)</label>
+                                <input type="text" class="h-8 text-sm rounded-md font-semibold shadow-sm
+                                ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50focus:ring-2
+                                focus:ring-accent focus:border-accent"></input>
+                            </div>
+                            <div class="flex flex-col w-1/3">
+                                <label>CVC</label>
+                                <input type="text" class="h-8 text-sm rounded-md font-semibold shadow-sm  
+                                ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
+                                focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                            </div>
+                        </div>
+
+                    </div>
                 </section>
             </section>
             <!-- Order Summary -->
             <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8 mt-12" x-data="cart()"
                 x-cloak>
-                <dl class="text-text text-sm">
+                <dl class="text-text">
                     <!-- heading text -->
                     <div class="flex items-baseline justify-between">
                         <dt x-text="`Order Summary`" class="text-xl"></dt>
@@ -167,7 +183,7 @@
                 <!-- checkout button -->
                 <form class="pt-4" action="{{ route('checkout.process') }}" c-cloack x-show="cartItems.length > 0">
                     <button type="submit"
-                        class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full">
+                        class="bg-accent text-base hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full">
                         Confirm Order
                     </button>
                 </form>
