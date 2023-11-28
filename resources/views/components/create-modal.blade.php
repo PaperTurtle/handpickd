@@ -1,12 +1,12 @@
 <div x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
     x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0" x-cloak x-show="writingReview" aria-labelledby="modal-title" class="relative z-10"
-    aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    x-transition:leave-end="opacity-0" x-cloak id="writeReviewModal" x-show="writingReview" aria-labelledby="modal-title"
+    class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity">
     </div>
 
-    <div class="fixed inset-0 z-10 w-screen overflow-y-auto bg-white">
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
         <div x-transition:enter="ease-out duration-300"
             x-transition:enter-start="opacity-0 transform translate-y-4 sm:translate-y-0 sm:scale-95"
             x-transition:enter-end="opacity-100 transform translate-y-0 sm:scale-100"
@@ -26,7 +26,7 @@
                         </svg>
                     </div>
                     <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Write Review</h3>
+                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Edit Review</h3>
                         <div class="mt-2 font-normal">
                             <div class="mt-2">
                                 <div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
                             <button @click="submitReview" type="button"
-                                class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">Submit</button>
+                                class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">Submit</button>
                             <button @click="writingReview = false" type="button"
                                 class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-bold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancel</button>
                         </div>
