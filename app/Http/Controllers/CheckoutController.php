@@ -44,6 +44,16 @@ class CheckoutController extends Controller
     }
 
     /**
+     * Display the checkout success page. 
+     *
+     * @return View Returns a view of the checkout success page.
+     */
+    public function success(): View
+    {
+        return view('checkout.success');
+    }
+
+    /**
      * Add a product to the authenticated user's shopping cart.
      * If the user is not authenticated, they are redirected to the login page.
      * If the product already exists in the cart, its quantity is updated; otherwise, a new cart item is created.
