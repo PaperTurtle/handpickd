@@ -23,12 +23,24 @@ use Illuminate\Support\Facades\Route;
 // ========= Public Routes =========
 // Home page
 Route::get('/', [ProductController::class, 'topRatedProducts'])->name('home');
+
 // Product routes
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::middleware('auth')->group(function () {
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::prefix('products')->group(function () {
+    // Publicly accessible product routes
+    Route::get('/', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/{product}', [ProductController::class, 'show'])
+        ->where('product', '[0-9]+')->name('products.show');
+
+    // Routes requiring authentication
+    Route::middleware('auth')->group(function () {
+        Route::get('/create', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+        Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');
+        Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+        Route::delete('/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
+    });
 });
-Route::get('/products/{product}', [ProductController::class, 'show'])->where('product', '[0-9]+')->name('products.show');
 
 // FAQ routes
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
@@ -36,39 +48,39 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 // ========= Authentication Required Routes =========
 Route::middleware('auth')->group(function () {
     // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::prefix("dashboard")->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::patch('/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
+            ->name('dashboard.markAsSent');
+    });
 
     // Cart routes
-    Route::post('/cart', [CheckoutController::class, 'addToCart'])->name('cart.add');
-    Route::delete('/cart/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
-    Route::patch('/cart/update/{itemId}', [CheckoutController::class, 'updateCart']);
+    Route::prefix("cart")->group(function () {
+        Route::post('/', [CheckoutController::class, 'addToCart'])->name('cart.add');
+        Route::delete('/{cartItem}', [CheckoutController::class, 'removeFromCart'])->name('cart.remove');
+        Route::patch('/update/{itemId}', [CheckoutController::class, 'updateCart'])->name('cart.update');
+    });
 
     // Checkout process
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
-    Route::get('/checkout/success', function () {
-        return view('checkout.success');
-    })->name('checkout.success')->middleware(RedirectIfNoTransactionDetails::class);
-
-    // Dashboard transaction management
-    Route::patch('/dashboard/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
-        ->name('dashboard.markAsSent');
+    Route::prefix("checkout")->group(function () {
+        Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
+        Route::post('/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+        Route::get('/success', [CheckoutController::class, 'success'])->name('checkout.success')
+            ->middleware(RedirectIfNoTransactionDetails::class);
+    });
 
     // Profile routes
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // Product management
-    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
-    Route::delete('/products/{product}/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
 
     // Review routes
-    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
-    Route::patch('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::prefix("reviews")->group(function () {
+        Route::post('/', [ReviewController::class, 'store'])->name('reviews.store');
+        Route::patch('/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+    });
 });
 
 // ========= Authentication Routes (Laravel Breeze) =========
