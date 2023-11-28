@@ -39,7 +39,7 @@ class CheckoutController extends Controller
     {
         $user = $request->user();
         $cartItems = ShoppingCart::with('product')->where('user_id', auth()->id())->get();
-        return view('checkout.process',["user"=>$user, "cartitems"=>$cartItems]);
+        return view('checkout.process',["user"=>$user, "cartItems"=>$cartItems]);
     }
 
     /**
