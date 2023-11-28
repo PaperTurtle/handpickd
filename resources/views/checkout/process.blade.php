@@ -90,22 +90,34 @@
                 <section x-data="{deliveryMethod: 'Standard'}" x-cloak>
                     <fieldset class="flex justify-between mt-4">
                         <legend class="text-xl">Delivery Method</legend>
-                        <label class="cursor-pointer flex-grow border-2 bg-white p-3 rounded-md" :class="{'border-accent': deliveryMethod ==='Standard'}">
-                            <input type="radio" name="shipping" value="Standard" x-model="deliveryMethod" checked></input>
+                        <label class="flex flex-1 justify-between cursor-pointer flex-grow border-2
+                         bg-white p-3 rounded-md" :class="{'border-accent': deliveryMethod ==='Standard'}">
+                            <input type="radio" name="shipping" value="Standard" x-model="deliveryMethod" checked class="sr-only"></input>
                             <div class="flex flex-col">
                                 <div>Standard</div>
                                 <div>4-10 business days</div>
                                 <div>4.99 €</div>
                             </div>
+                            <svg class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="currentColor" x-show="deliveryMethod ==='Standard'">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd" />
+                                </svg>
                         </label>
 
-                        <label class="ml-4 cursor-pointer flex-grow border-2 bg-white p-3 rounded-md" :class="{'border-accent': deliveryMethod === 'Express'}">
-                        <input type="radio" name="shipping" value="Express" x-model="deliveryMethod" checked></input>
+                        <label class="flex flex-1 justify-between ml-4 cursor-pointer flex-grow border-2 bg-white p-3 rounded-md" 
+                        :class="{'border-accent': deliveryMethod === 'Express'}">
+                        <input type="radio" name="shipping" value="Express" x-model="deliveryMethod" class="sr-only"></input>
                             <div class="flex flex-col">
                                 <div>Express</div>
                                 <div>2-5 business days</div>
                                 <div>12.99 €</div>
                             </div>
+                            <svg class="h-5 w-5 text-accent" viewBox="0 0 20 20" fill="currentColor" x-show="deliveryMethod ==='Express'">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd" />
+                                </svg>
                         </label>
                     </fieldset>
                 </section>
