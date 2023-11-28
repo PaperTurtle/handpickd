@@ -26,8 +26,10 @@
                     <input type="text" class="w-40 h-5"></input>
                 </div>
             </div>
-            <label for="address" class="text-md">Address</label>
-            <input if="address" type="text" class="w-40 h-5"></input>
+            <label class="text-md">Address</label>
+            <input type="text" class="w-40 h-5"></input>
+            <label class="text-md">Apartment, suite, etc.</label>
+            <input type="text" class="w-40 h-5"></input>
             <div class="flex">
                 <div class="lg:grid">
                     <label class="text-md">City</label>
