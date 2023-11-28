@@ -137,7 +137,7 @@ composer global require laravel/installer
 
 ### 🧪 Testing
 
--  **[Pest](https://pestphp.com/)**: Pest is a testing framework for PHP. It's simple, elegant, and a pleasure to use. It's used to test the backend API for Handpickd.
+-  **[Pest](https://pestphp.com/)**: Pest is a testing framework for PHP. It's simple, elegant, and a pleasure to use. It's used to test the Models.
 
 ## 🚀 Getting Started
 
