@@ -37,12 +37,16 @@ it('can be created', function () {
         'image_path' => 'images/example.jpg',
         'alt_text' => 'Example Image',
         'resized_image_path' => 'images/resized_example.jpg',
+        "show_image_path" => "images/show_example.jpg",
+        "thumbnail_image_path" => "images/thumbnail_example.jpg",
     ]);
 
     $this->assertDatabaseHas('product_images', [
         'image_path' => 'images/example.jpg',
         'alt_text' => 'Example Image',
         'resized_image_path' => 'images/resized_example.jpg',
+        "show_image_path" => "images/show_example.jpg",
+        "thumbnail_image_path" => "images/thumbnail_example.jpg",
     ]);
 });
 
