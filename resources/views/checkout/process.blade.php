@@ -87,28 +87,26 @@
                     </div>
                 </section>
                 <!-- Delivery Method -->
-                <section x-data="{deliveryMethod: 'Standard'}">
-                    <label class="text-xl">Delivery Method</label>
-                    <fieldset class="flex justify-between">
-                        <div class="flex-grow border bg-white ">
-                            <input type="radio" value="Standard">
-                            </input>
+                <section x-data="{deliveryMethod: 'Standard'}" x-cloak>
+                    <fieldset class="flex justify-between mt-4">
+                        <legend class="text-xl">Delivery Method</legend>
+                        <label class="cursor-pointer flex-grow border-2 bg-white p-3 rounded-md" :class="{'border-accent': deliveryMethod ==='Standard'}">
+                            <input type="radio" name="shipping" value="Standard" x-model="deliveryMethod" checked></input>
                             <div class="flex flex-col">
                                 <div>Standard</div>
                                 <div>4-10 business days</div>
                                 <div>4.99 €</div>
                             </div>
-                        </div>
+                        </label>
 
-                        <div class="ml-4 flex-grow border bg-white ">
-                            <input type="radio" value="Express">
-                            </input>
+                        <label class="ml-4 cursor-pointer flex-grow border-2 bg-white p-3 rounded-md" :class="{'border-accent': deliveryMethod === 'Express'}">
+                        <input type="radio" name="shipping" value="Express" x-model="deliveryMethod" checked></input>
                             <div class="flex flex-col">
                                 <div>Express</div>
                                 <div>2-5 business days</div>
-                                <div>14.99 €</div>
+                                <div>12.99 €</div>
                             </div>
-                        </div>
+                        </label>
                     </fieldset>
                 </section>
                 <!-- Payment -->
@@ -211,7 +209,8 @@
             },
 
             calculateTotalPrice() {
-                let shippingEstimate = 4.99;
+                let deliveryChecked = document.querySelector('[name="shipping"]:checked').value
+                let shippingEstimate = 4.99 ? deliveryChecked === "Standard" : 12.99;
                 let totalPrice = parseInt(this.calculateSubtotalPrice()) + shippingEstimate;
                 return Number(totalPrice).toFixed(2);
             },
