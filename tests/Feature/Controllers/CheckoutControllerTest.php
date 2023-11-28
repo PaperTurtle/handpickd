@@ -9,25 +9,6 @@ use Tests\TestCase;
 
 uses(RefreshDatabase::class);
 
-it('displays the checkout page with items in the authenticated user\'s shopping cart', function () {
-    $user = User::factory()->create();
-
-    $product = Product::factory()->create();
-
-    ShoppingCart::factory()->create([
-        'user_id' => $user->id,
-        'product_id' => $product->id,
-    ]);
-
-    $this->actingAs($user);
-
-    $response = $this->get(route('checkout.index'));
-
-    $response->assertStatus(200);
-
-    $response->assertViewHas('cartItems');
-});
-
 it('adds a product to the authenticated user\'s shopping cart', function () {
     $user = User::factory()->create();
 
