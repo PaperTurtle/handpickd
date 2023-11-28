@@ -42,7 +42,7 @@ use Laravel\Sanctum\HasApiTokens;
  * - password: User's password (hashed).
  * - remember_token: Token used for remember me functionality.
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
