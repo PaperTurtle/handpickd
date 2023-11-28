@@ -5,7 +5,7 @@
         </label>
         <div class="flex lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <section class="col-span-7 text-text lg:grid mt-10 pt-4 w-full border-t border-gray-200">
-
+                <!-- Contact Information -->
                 <section>
                     <label class="text-xl">Contact information</label>
                     <div class="mt-4">
@@ -25,6 +25,7 @@
                         </div>
                     </div>
                 </section>
+                <!-- Shipping Information -->
                 <section class="lg:grid border-t border-b border-gray-200 mt-6 pt-4 mb-4 pb-6 text-sm">
                     <label class="text-xl">Shipping information</label>
                     <div class="flex mt-4 justify-between">
@@ -84,6 +85,35 @@
                                                             focus:ring-2 focus:ring-accent focus:border-accent"></input>
                         </div>
                     </div>
+                </section>
+                <!-- Delivery Method -->
+                <section x-data="{deliveryMethod: 'Standard'}">
+                <label class="text-xl">Delivery Method</label>
+                    <fieldset class="flex justify-between">
+                        <div class="flex-grow border bg-white ">
+                            <input type="radio" value="Standard">
+                            </input>
+                            <div class="flex flex-col">
+                                <div>Standard</div>
+                                <div>4-10 business days</div>
+                                <div>4.99 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ml-4 flex-grow border bg-white ">
+                            <input type="radio" value="Express">
+                            </input>
+                            <div class="flex flex-col">
+                                <div>Express</div>
+                                <div>2-5 business days</div>
+                                <div>14.99 €</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </section>
+                <!-- Payment -->
+                <section>
+
                 </section>
             </section>
             <!-- Order Summary -->
