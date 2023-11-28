@@ -135,7 +135,7 @@
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                     <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                         @foreach ($product->images as $image)
-                            <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
+                            <img src="{{ Storage::url($image->show_image_path) }}" alt="{{ $image->alt_text }}"
                                 class="h-full w-full object-cover object-center" loading="lazy">
                         @endforeach
                     </div>
@@ -219,7 +219,8 @@
                         <h3 class="sr-only">Review data</h3>
 
                         <dl class="space-y-3">
-                            <template x-for="(percent, star) in calculateStarRatingPercentages()"
+                            <template
+                                x-for="star in Object.keys(calculateStarRatingPercentages()).sort((a, b) => b - a)"
                                 :key="star">
                                 <div class="flex items-center text-sm">
                                     <dt class="flex flex-1 items-center">
@@ -233,14 +234,14 @@
                                             </svg>
                                             <div class="relative ml-3 flex-1">
                                                 <div class="h-3 rounded-full border border-gray-200 bg-gray-100"></div>
-                                                <div :style="`width: ${percent}%`"
+                                                <div :style="`width: ${calculateStarRatingPercentages()[star]}%`"
                                                     class="absolute inset-y-0 rounded-full border border-yellow-400 bg-yellow-400">
                                                 </div>
                                             </div>
                                         </div>
                                     </dt>
                                     <dd class="ml-3 w-10 text-right text-sm tabular-nums text-gray-900"
-                                        x-text="Math.round(percent) + '%'"></dd>
+                                        x-text="`${Math.round(calculateStarRatingPercentages()[star])}%`"></dd>
                                 </div>
                             </template>
                         </dl>
@@ -475,7 +476,7 @@
                     });
 
                     let percentages = {};
-                    for (let star in starCounts) {
+                    for (let star = 5; star >= 1; star--) {
                         percentages[star] = (starCounts[star] / this.totalReviews) * 100;
                     }
                     return percentages;
