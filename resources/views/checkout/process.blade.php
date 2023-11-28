@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="mx-auto max-w-2xl px-4 pt-16 w-fit">
         <label>
-            <h2 class="text-2xl">Checkout</h2>
+            <h1 class="text-3xl sm:text-4xl tracking-tight font-bold">Checkout</h1>
         </label>
         <div class="text-text lg:grid mt-10 pt-4 w-full border-t border-gray-200">
             <section class="w-full">
