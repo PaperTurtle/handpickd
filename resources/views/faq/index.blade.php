@@ -1,14 +1,14 @@
 <x-app-layout>
-    <div class="container" x-data="{ openGeneral: true, openForCustomers: false, openForArtisans: false }">
-        <h2>FAQ / Support</h2>
-        <h2>Frequently asked questions</h2>
+    <div class="container mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8" x-data="{ openGeneral: true, openForCustomers: false, openForArtisans: false }">
+        <h2 class="text-3xl font-bold">FAQ / Support</h2>
+        <h2 class="text-2xl">Frequently asked questions</h2>
         <div class="flex w-fit">
-            <button class="border-2 rounded-md px-3 border-accent"
+            <button class="border-2 rounded-md px-5 py-3 mr-2 border-accent text-xl font-bold"
                 @click="openGeneral = !openGeneral, openForCustomers = false, openForArtisans = false">General</button>
-            <button class="border-2 rounded-md px-3 border-accent"
+            <button class="border-2 rounded-md px-5 py-3 mr-2 border-accent text-xl font-bold"
                 @click="openForCustomers = !openForCustomers, openGeneral = false, openForArtisans = false">For our
                 Customers</button>
-            <button class="border-2 rounded-md px-3 border-accent"
+            <button class="border-2 rounded-md px-5 py-3 mr-2 border-accent text-xl font-bold"
                 @click="openForArtisans = !openForArtisans, openGeneral = false, openForCustomers = false">For our
                 Artisans</button>
         </div>
