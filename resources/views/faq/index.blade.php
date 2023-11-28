@@ -21,13 +21,13 @@
                             <button @click="openGeneralQuestionOne = !openGeneralQuestionOne">
                                 <!-- Question -->
                                 <div>
-                                    question 1
+                                    What is Handpickd?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openGeneralQuestionOne">
                             <!-- Answer -->
-                            <p>answer 1</p>
+                            <p>Handpickd is a digital marketplace dedicated to showcasing unique, handcrafted items. It connects artisans with enthusiasts who value bespoke creations.</p>
                         </dd>
                     </div>
 
@@ -37,13 +37,13 @@
                             <button @click="openGeneralQuestionTwo = !openGeneralQuestionTwo">
                                 <!-- Question -->
                                 <div>
-                                    question 2
+                                    Who can use Handpickd?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openGeneralQuestionTwo">
                             <!-- Answer -->
-                            <p>answer 2</p>
+                            <p>Handpickd is designed for both artisans who create handcrafted goods and individuals looking for unique, handmade products.</p>
                         </dd>
                     </div>
 
@@ -53,13 +53,13 @@
                             <button @click="openGeneralQuestionThree = !openGeneralQuestionThree">
                                 <!-- Question -->
                                 <div>
-                                    question 3
+                                    Who are the authors of Handpickd?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openGeneralQuestionThree">
                             <!-- Answer -->
-                            <p>answer 3</p>
+                            <p>Handpickd was masterfully created by Loran Heinzel, Seweryn Czabanowski and Tobias Neubert.</p>
                         </dd>
                     </div>
                 </dl>
@@ -73,13 +73,13 @@
                             <button @click="openCustomersQuestionOne = !openCustomersQuestionOne">
                                 <!-- Question -->
                                 <div>
-                                    question 1
+                                    How do I find products on Handpickd?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openCustomersQuestionOne">
                             <!-- Answer -->
-                            <p>answer 1</p>
+                            <p>You can browse products by category, price range, and reviews, or use the search bar to find products by keywords.</p>
                         </dd>
                     </div>
 
@@ -89,13 +89,13 @@
                             <button @click="openCustomersQuestionTwo = !openCustomersQuestionTwo">
                                 <!-- Question -->
                                 <div>
-                                    question 2
+                                    Can I review and rate products?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openCustomersQuestionTwo">
                             <!-- Answer -->
-                            <p>answer 2</p>
+                            <p>Yes, users can post and update reviews for products, providing valuable feedback to the community.</p>
                         </dd>
                     </div>
 
@@ -105,13 +105,13 @@
                             <button @click="openCustomersQuestionThree = !openCustomersQuestionThree">
                                 <!-- Question -->
                                 <div>
-                                    question 3
+                                    How does the shopping cart and checkout process work? 
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openCustomersQuestionThree">
                             <!-- Answer -->
-                            <p>answer 3</p>
+                            <p>You can add items to your cart and proceed to checkout for purchase. A confirmation email will be sent upon completion of the purchase.</p>
                         </dd>
                     </div>
                 </dl>
@@ -125,13 +125,13 @@
                             <button @click="openArtisansQuestionOne = !openArtisansQuestionOne">
                                 <!-- Question -->
                                 <div>
-                                    question 1
+                                    How can I list my products on Handpickd?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openArtisansQuestionOne">
                             <!-- Answer -->
-                            <p>answer 1</p>
+                            <p>Once registered, you can list your handmade items under the 'Products' section by providing detailed descriptions and images.</p>
                         </dd>
                     </div>
 
@@ -141,13 +141,13 @@
                             <button @click="openArtisansQuestionTwo = !openArtisansQuestionTwo">
                                 <!-- Question -->
                                 <div>
-                                    question 2
+                                    Can I update information about my products?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openArtisansQuestionTwo">
                             <!-- Answer -->
-                            <p>answer 2</p>
+                            <p>Yes, you can update product information and images through the 'Edit Product' option in your profile.</p>
                         </dd>
                     </div>
 
@@ -157,13 +157,13 @@
                             <button @click="openArtisansQuestionThree = !openArtisansQuestionThree">
                                 <!-- Question -->
                                 <div>
-                                    question 3
+                                    How do I manage my orders?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openArtisansQuestionThree">
                             <!-- Answer -->
-                            <p>answer 3</p>
+                            <p>The 'Dashboard' provides a personalized overview of your pending and completed orders.</p>
                         </dd>
                     </div>
                     
@@ -173,13 +173,13 @@
                             <button @click="openArtisansQuestionFour = !openArtisansQuestionFour">
                                 <!-- Question -->
                                 <div>
-                                    question 4
+                                    Can I remove my products from the marketplace?
                                 </div>
                             </button>
                         </dt>
                         <dd x-show="openArtisansQuestionFour">
                             <!-- Answer -->
-                            <p>answer 4</p>
+                            <p>Yes, you have the option to delete your products from the marketplace using the 'Delete Product' feature.</p>
                         </dd>
                     </div>
                 </dl>
