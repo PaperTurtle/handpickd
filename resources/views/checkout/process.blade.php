@@ -113,7 +113,20 @@
                 </section>
                 <!-- Payment -->
                 <section>
-
+                <label class="text-xl">Payment</label>
+                <div class="flex flex-col">
+                    <label>Card number</label>
+                    <input type="text"></input>
+                    
+                    <label>Name on card</label>
+                    <input type="text"></input>
+                    
+                    <label>Expiration date (MM/YY)</label>
+                    <input type="text"></input>
+                    
+                    <label>CVC</label>
+                    <input type="text"></input>
+                </div>
                 </section>
             </section>
             <!-- Order Summary -->
