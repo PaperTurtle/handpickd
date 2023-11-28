@@ -261,7 +261,7 @@
                 rating: '1',
                 review: '',
                 reviews: @json($product->reviews->load('user')),
-                userHasReviewed: {{ $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
+                userHasReviewed: {{ auth()->check() ? $product->hasUserReviewed(auth()->id()) : 'false' }},
                 writingReview: false,
                 editingReview: false,
                 showAlert: false,
@@ -295,7 +295,6 @@
                     }
                     return percentages;
                 },
-
 
                 updateReviewData() {
                     this.calculateAverageRating();
