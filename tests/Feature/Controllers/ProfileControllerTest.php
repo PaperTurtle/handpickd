@@ -10,9 +10,9 @@ it('updates user profile information', function () {
     ];
 
     $this->actingAs($user)
-        ->patch(route('profile.update'), $updatedData)
-        ->assertRedirect(route('profile.edit'))
-        ->assertSessionHas('status', 'profile-updated');
+        ->patch(route('profile.update', ['userID' => $user->id]), $updatedData)
+        ->assertRedirect(route('profile.edit', ['userID' => $user->id]))
+        ->assertSessionHas('status', 'Profile updated successfully.');
 
     $this->assertDatabaseHas('users', [
         'id' => $user->id,
@@ -23,8 +23,9 @@ it('updates user profile information', function () {
 
 it('deletes the user account', function () {
     $user = User::factory()->create();
+
     $this->actingAs($user)
-        ->delete(route('profile.destroy'), ['password' => 'password'])
+        ->delete(route('profile.destroy', ['userID' => $user->id]), ['password' => 'password'])
         ->assertRedirect('/')
         ->assertSessionHas('status');
 
