@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\CleanOrphanedImages;
 use App\Console\Commands\ProcessProductImages;
 use App\Console\Commands\UpdateImagePaths;
+use App\Console\Commands\CreateUserProfile;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +15,7 @@ class Kernel extends ConsoleKernel
         CleanOrphanedImages::class,
         ProcessProductImages::class,
         UpdateImagePaths::class,
+        CreateUserProfile::class,
     ];
     /**
      * Define the application's command schedule.
