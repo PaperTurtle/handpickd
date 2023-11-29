@@ -24,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 // Home page
 Route::get('/', [ProductController::class, 'topRatedProducts'])->name('home');
 
+Route::get('profile/{userID}', [ProfileController::class, 'show'])->name('profile.show')
+    ->where('userID', '[0-9]+');
+
 // Product routes
 Route::prefix('products')->group(function () {
     // Publicly accessible product routes
@@ -71,9 +74,12 @@ Route::middleware('auth')->group(function () {
 
     // Profile routes
     Route::prefix('profile')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/{userID}/edit', [ProfileController::class, 'edit'])->name('profile.edit')
+            ->where('userID', '[0-9]+');
+        Route::patch('/{userID}', [ProfileController::class, 'update'])->name('profile.update')
+            ->where('userID', '[0-9]+');
+        Route::delete('/{userID}', [ProfileController::class, 'destroy'])->name('profile.destroy')
+            ->where('userID', '[0-9]+');
     });
 
     // Review routes
