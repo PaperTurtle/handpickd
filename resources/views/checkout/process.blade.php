@@ -123,7 +123,7 @@
                     <div class="flex flex-col">
                         <div class="flex flex-col mt-4">
                             <label>Card number</label>
-                            <input type="number" class="h-8 text-sm rounded-md font-semibold shadow-sm  
+                            <input type="text" class="h-8 text-sm rounded-md font-semibold shadow-sm  
                             ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                             focus:ring-2 focus:ring-accent focus:border-accent"></input>
                         </div>
@@ -218,8 +218,8 @@
 
             calculateTotalPrice() {
                 let deliveryChecked = document.querySelector('[name="shipping"]:checked').value
-                let shippingEstimate = 4.99 ? deliveryChecked === "Standard" : 12.99;
-                let totalPrice = parseInt(this.calculateSubtotalPrice()) + shippingEstimate;
+                let shippingEstimate = deliveryChecked === "Standard" ? 4.99 : 12.99;
+                let totalPrice = parseFloat(this.calculateSubtotalPrice()) + shippingEstimate;
                 return Number(totalPrice).toFixed(2);
             },
         }
