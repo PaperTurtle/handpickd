@@ -1,8 +1,8 @@
-@if (auth()->check() && auth()->id() !== $product->artisan_id)
+@if (auth()->id() !== $product->artisan_id)
     @if ($product->quantity > 0)
         <div class="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <section aria-labelledby="options-heading">
-                <h2 id="options-heading" class="sr-only">Product options</h2>
+                <h2 id="options-heading" class="sr-only">Add to Cart</h2>
 
                 <form method="POST" @submit.prevent="addToCart">
                     @csrf
