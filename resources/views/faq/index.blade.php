@@ -5,16 +5,19 @@
         <h2 class="text-2xl">Frequently asked questions</h2>
         <div class="flex justify-between">
 
-            <label class="border-2 rounded-md px-5 py-3 mr-2 border-accent text-xl text-center font-bold w-full">
+            <label class="border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full"
+                :class="{'border-accent' : chosenTopic === 'general'}">
                 <input type="radio" name="topic" value="general" class="sr-only" x-model="chosenTopic">General</input>
             </label>
 
-            <label class="border-2 rounded-md px-5 py-3 mr-2 border-accent text-xl text-center font-bold w-full">
+            <label class="border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full"
+                :class="{'border-accent' : chosenTopic === 'customers'}">
                 <input type="radio" name="topic" value="customers" class="sr-only" x-model="chosenTopic">For our
                 Customers</input>
             </label>
 
-            <label class="border-2 rounded-md px-5 py-3 border-accent text-xl text-center font-bold w-full">
+            <label class="border-2 border-grey-300 rounded-md px-5 py-3 text-xl text-center font-bold w-full"
+                :class="{'border-accent' : chosenTopic === 'artisans'}">
                 <input type="radio" name="topic" value="artisans" class="sr-only" x-model="chosenTopic">For our
                 Artisans</input>
             </label>
