@@ -32,6 +32,8 @@ class UpdateImagePaths extends Command
      */
     protected $description = 'Updates the database with paths for show, resized, and thumbnail images.';
 
+    const CHUNK_SIZE = 100;
+
     /**
      * Execute the console command.
      * Iterates through different image types and updates their paths in the database.
@@ -63,7 +65,7 @@ class UpdateImagePaths extends Command
 
         ProductImage::where(function ($query) use ($columnName) {
             $query->whereNull($columnName)->orWhere($columnName, '');
-        })->chunk(100, function ($images) use ($columnName, $type) {
+        })->chunk(self::CHUNK_SIZE, function ($images) use ($columnName, $type) {
             foreach ($images as $image) {
                 $path = str_replace('_original', "_$type", $image->image_path);
 

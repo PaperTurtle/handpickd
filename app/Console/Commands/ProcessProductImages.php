@@ -31,6 +31,10 @@ class ProcessProductImages extends Command
      */
     protected $description = 'Process product images to create resized and show versions';
 
+
+    const TYPE_DEFAULT = 'default';
+    const TYPE_SHOW = 'show';
+    const TYPE_THUMBNAIL = 'thumbnail';
     /**
      * Execute the console command.
      */
@@ -42,25 +46,22 @@ class ProcessProductImages extends Command
             if (str_ends_with($imagePath, '_original.webp')) {
                 $this->info("Processing $imagePath");
 
-                $resizedPath = str_replace('_original', '_resized', $imagePath);
-                $showPath = str_replace('_original', '_show', $imagePath);
-                $thumbnailPath = str_replace('_original', '_thumbnail', $imagePath);
-
-                if (!Storage::disk('public')->exists($resizedPath)) {
-                    $this->processImage($imagePath, $resizedPath);
-                }
-
-                if (!Storage::disk('public')->exists($showPath)) {
-                    $this->processImage($imagePath, $showPath, 'show');
-                }
-
-                if (!Storage::disk('public')->exists($thumbnailPath)) {
-                    $this->processImage($imagePath, $thumbnailPath, 'thumbnail');
-                }
+                $this->processImageIfNotExists($imagePath, '_resized', self::TYPE_DEFAULT);
+                $this->processImageIfNotExists($imagePath, '_show', self::TYPE_SHOW);
+                $this->processImageIfNotExists($imagePath, '_thumbnail', self::TYPE_THUMBNAIL);
             }
         }
 
         $this->info('All images processed successfully.');
+    }
+
+    protected function processImageIfNotExists(string $imagePath, string $suffix, string $type): void
+    {
+        $newPath = str_replace('_original', $suffix, $imagePath);
+
+        if (!Storage::disk('public')->exists($newPath)) {
+            $this->processImage($imagePath, $newPath, $type);
+        }
     }
 
     /**
@@ -71,11 +72,11 @@ class ProcessProductImages extends Command
      * @param string $type The type of processing to apply (default, show, or thumbnail).
      * @return void
      */
-    protected function processImage(string $sourcePath, string $targetPath, string $type = 'default'): void
+    protected function processImage(string $sourcePath, string $targetPath, string $type = self::TYPE_DEFAULT): void
     {
         $nodeScript = match ($type) {
-            'show' => 'imageProcessorShow.js',
-            'thumbnail' => 'imageProcessorThumbnail.js',
+            self::TYPE_SHOW => 'imageProcessorShow.js',
+            self::TYPE_THUMBNAIL => 'imageProcessorThumbnail.js',
             default => 'imageProcessor.js',
         };
 
@@ -83,7 +84,15 @@ class ProcessProductImages extends Command
             escapeshellarg(storage_path("app/public/$sourcePath")) . " " .
             escapeshellarg(storage_path("app/public/$targetPath"));
 
-        exec($nodeCommand);
+        $output = null;
+        $returnVar = null;
+        exec($nodeCommand, $output, $returnVar);
+
+        if ($returnVar !== 0) {
+            $this->error("Failed to process $targetPath using $nodeScript");
+            return;
+        }
+
         $this->info("Processed $targetPath using $nodeScript");
     }
 }
