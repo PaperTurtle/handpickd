@@ -163,6 +163,9 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
+# Create a symbolic link to the storage folder (for images)
+php artisan storage:link
+
 # Run migrations
 php artisan migrate // Optional
 
