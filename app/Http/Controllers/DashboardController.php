@@ -42,9 +42,15 @@ class DashboardController extends Controller
      */
     public function markAsSent(Transaction $transaction): JsonResponse
     {
+<<<<<<< HEAD
         if ($transaction->product->artisan_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized action'], 403);
         }
+=======
+        // if ($transaction->product->artisan_id !== Auth::id()) {
+        //     return response()->json(['message' => 'Unauthorized action'], 403);
+        // }
+>>>>>>> parent of 4928782 (TODO: Fix Auth)
 
         $transaction->update(['status' => 'sent']);
 
