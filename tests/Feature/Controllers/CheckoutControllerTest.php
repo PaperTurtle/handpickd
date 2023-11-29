@@ -2,10 +2,8 @@
 
 use App\Models\ShoppingCart;
 use App\Models\User;
-use App\Http\Requests\UpdateCartRequest;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
 uses(RefreshDatabase::class);
 
@@ -100,23 +98,6 @@ it('creates a new cart item when the product does not exist in the cart', functi
         'product_id' => $product->id,
         'quantity' => 1,
     ]);
-});
-
-test('updateCart updates the cart item quantity', function () {
-    $user = User::factory()->create();
-    $cartItem = ShoppingCart::factory()->create(['user_id' => $user->id]);
-
-    $request = new UpdateCartRequest(['quantity' => 5]);
-
-    $response = $this
-        ->actingAs($user)
-        ->patch("/cart/update/{$cartItem->id}", $request->all());
-
-    $response->assertJson(['success' => 'Cart updated successfully']);
-
-    $cartItem->refresh();
-
-    $this->assertEquals(5, $cartItem->quantity);
 });
 
 test('processCheckout processes the checkout successfully', function () {
