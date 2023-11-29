@@ -41,7 +41,7 @@
                                         </div>
                                         <p class="sr-only">4 out of 5 stars</p>
                                     </div>
-                                    <template x-if="totalReviews > 0">
+                                    <template x-if="totalReviews > 0 || totalReviews">
                                         <p class="ml-2 text-sm text-gray-500" x-text="`${totalReviews} reviews`"></p>
                                     </template>
                                     <template x-if="totalReviews === 0">
@@ -260,7 +260,7 @@
                 rating: '1',
                 review: '',
                 reviews: @json($product->reviews->load('user')),
-                userHasReviewed: {{ auth()->check() ? $product->hasUserReviewed(auth()->id()) : 'false' }},
+                userHasReviewed: {{ auth()->check() && $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
                 writingReview: false,
                 editingReview: false,
                 showAlert: false,
