@@ -46,9 +46,17 @@ class ProcessProductImages extends Command
                 $showPath = str_replace('_original', '_show', $imagePath);
                 $thumbnailPath = str_replace('_original', '_thumbnail', $imagePath);
 
-                $this->processImage($imagePath, $resizedPath);
-                $this->processImage($imagePath, $showPath, 'show');
-                $this->processImage($imagePath, $thumbnailPath, 'thumbnail');
+                if (!Storage::disk('public')->exists($resizedPath)) {
+                    $this->processImage($imagePath, $resizedPath);
+                }
+
+                if (!Storage::disk('public')->exists($showPath)) {
+                    $this->processImage($imagePath, $showPath, 'show');
+                }
+
+                if (!Storage::disk('public')->exists($thumbnailPath)) {
+                    $this->processImage($imagePath, $thumbnailPath, 'thumbnail');
+                }
             }
         }
 
