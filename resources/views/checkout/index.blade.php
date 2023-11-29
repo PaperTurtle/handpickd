@@ -83,6 +83,22 @@
                                                             d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                                                     </svg>
                                                 </button>
+                                                <div class="bg-light-grey opacity-100 shadow-md p-4 max-w-sm h-40 m-auto rounded-md fixed inset-0">
+                                                        <h3 class="text-text font-bold">
+                                                            Delete item
+                                                        </h3>
+                                                        <p class="text-text text-sm mt-4">
+                                                            Are you sure you want to delete the item from your shopping cart?
+                                                        </p>
+                                                    <div class="flex justify-end mt-6">
+                                                        <button class="mr-4 py-1 px-2 bg-white border-gray-300 border-2 rounded-md">
+                                                            Cancel
+                                                        </button>
+                                                        <button class="py-1 px-2 text-white bg-red-600 border-red-600 border-2 rounded-md">
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
