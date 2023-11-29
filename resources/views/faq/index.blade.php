@@ -36,9 +36,10 @@
                     </div>
 
                     <!-- Question two -->
-                    <div class="border-t border-gray-300 mt-4 pt-2">
+                    <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
-                            <button @click="openGeneralQuestionTwo = !openGeneralQuestionTwo">
+                            <button @click="openGeneralQuestionTwo = !openGeneralQuestionTwo"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openGeneralQuestionTwo}">
                                 <!-- Question -->
                                 <div>
                                     Who can use Handpickd?
@@ -53,9 +54,10 @@
                     </div>
 
                     <!-- Question three -->
-                    <div>
+                    <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
-                            <button @click="openGeneralQuestionThree = !openGeneralQuestionThree">
+                            <button @click="openGeneralQuestionThree = !openGeneralQuestionThree"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openGeneralQuestionThree}">
                                 <!-- Question -->
                                 <div>
                                     Who are the authors of Handpickd?
@@ -75,9 +77,10 @@
                 x-data="{openCustomersQuestionOne: false, openCustomersQuestionTwo: false, openCustomersQuestionThree: false}">
                 <dl>
                     <!-- Question One -->
-                    <div>
+                    <div class="border-t border-gray-300 mt-6 pt-4">
                         <dt>
-                            <button @click="openCustomersQuestionOne = !openCustomersQuestionOne">
+                            <button @click="openCustomersQuestionOne = !openCustomersQuestionOne"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openCustomersQuestionOne}">
                                 <!-- Question -->
                                 <div>
                                     How do I find products on Handpickd?
@@ -92,9 +95,10 @@
                     </div>
 
                     <!-- Question two -->
-                    <div>
+                    <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
-                            <button @click="openCustomersQuestionTwo = !openCustomersQuestionTwo">
+                            <button @click="openCustomersQuestionTwo = !openCustomersQuestionTwo"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openCustomersQuestionTwo}">
                                 <!-- Question -->
                                 <div>
                                     Can I review and rate products?
@@ -109,9 +113,10 @@
                     </div>
 
                     <!-- Question three -->
-                    <div>
+                    <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
-                            <button @click="openCustomersQuestionThree = !openCustomersQuestionThree">
+                            <button @click="openCustomersQuestionThree = !openCustomersQuestionThree"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openCustomersQuestionThree}">
                                 <!-- Question -->
                                 <div>
                                     How does the shopping cart and checkout process work?
@@ -131,9 +136,10 @@
                 x-data="{openArtisansQuestionOne: false, openArtisansQuestionTwo: false, openArtisansQuestionThree: false, openArtisansQuestionFour: false}">
                 <dl>
                     <!-- Question One -->
-                    <div>
+                    <div class="border-t border-gray-300 mt-6 pt-4">
                         <dt>
-                            <button @click="openArtisansQuestionOne = !openArtisansQuestionOne">
+                            <button @click="openArtisansQuestionOne = !openArtisansQuestionOne"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openArtisansQuestionOne}">
                                 <!-- Question -->
                                 <div>
                                     How can I list my products on Handpickd?
@@ -148,9 +154,10 @@
                     </div>
 
                     <!-- Question two -->
-                    <div>
+                    <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
-                            <button @click="openArtisansQuestionTwo = !openArtisansQuestionTwo">
+                            <button @click="openArtisansQuestionTwo = !openArtisansQuestionTwo"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openArtisansQuestionTwo}">
                                 <!-- Question -->
                                 <div>
                                     Can I update information about my products?
@@ -165,9 +172,10 @@
                     </div>
 
                     <!-- Question three -->
-                    <div>
+                    <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
-                            <button @click="openArtisansQuestionThree = !openArtisansQuestionThree">
+                            <button @click="openArtisansQuestionThree = !openArtisansQuestionThree"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openArtisansQuestionThree}">
                                 <!-- Question -->
                                 <div>
                                     How do I manage my orders?
@@ -182,9 +190,10 @@
                     </div>
 
                     <!-- Question four -->
-                    <div>
+                    <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
-                            <button @click="openArtisansQuestionFour = !openArtisansQuestionFour">
+                            <button @click="openArtisansQuestionFour = !openArtisansQuestionFour"
+                            class="text-left text-base font-bold" :class="{'mb-2' : openArtisansQuestionFour}">
                                 <!-- Question -->
                                 <div>
                                     Can I remove my products from the marketplace?
