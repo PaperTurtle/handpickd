@@ -241,7 +241,7 @@
                                     @endauth
                                 </div>
                             </template>
-                            <p x-show="reviews.length === 0" class="text-gray-600">No reviews yet.</p>
+                            <p x-cloak x-show="reviews.length === 0" class="text-gray-600">No reviews yet.</p>
                         </div>
                     </div>
                 </div>
@@ -390,6 +390,7 @@
                 },
 
                 addToCart(event) {
+                    @auth
                     const formData = new FormData(event.target);
                     formData.append('quantity', '1');
                     fetch('{{ route('cart.add') }}', {
@@ -413,8 +414,12 @@
                         .catch(error => {
                             console.error('Error:', error);
                         });
-                }
-            };
+                @endauth
+                @guest
+                window.location.href = "{{ route('login') }}";
+            @endguest
+        }
+        };
         }
     </script>
 </x-app-layout>
