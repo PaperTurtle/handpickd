@@ -6,6 +6,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Middleware\PreventGetRequestOnCertainRoutes;
 use App\Http\Middleware\RedirectIfNoTransactionDetails;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +88,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/', [ReviewController::class, 'store'])->name('reviews.store');
         Route::patch('/{review}', [ReviewController::class, 'update'])->name('reviews.update');
     });
+});
+
+Route::fallback(function () {
+    return redirect('/')->with('error', 'The requested page is not available.');
 });
 
 // ========= Authentication Routes (Laravel Breeze) =========
