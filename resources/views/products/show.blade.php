@@ -234,10 +234,9 @@
                                     </template>
                                     @auth
                                         <template x-if="review.user.id === {{ auth()->id() }}">
-                                            <button @click="beginEditReview(review)"
-                                                class="flex items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:bg-accent focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
-                                                Edit Review
-                                            </button>
+                                            <button @click="beginEditReview(review)" type="button"
+                                                class="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Edit
+                                                Review</button>
                                         </template>
                                     @endauth
                                 </div>
