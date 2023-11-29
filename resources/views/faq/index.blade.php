@@ -218,5 +218,15 @@
                 </dl>
             </li>
         </ul>
+        <div class="mt-10 text-xl">
+            Can't find the answer to your question?<br>
+            <div class="md:flex">
+                <p class="font-bold mr-3">
+                    Contact our support:
+                </p>
+                <a href="mailto:">handpickd.shop@gmail.com
+                </a>
+            </div>
+        </div>
     </div>
 </x-app-layout>
