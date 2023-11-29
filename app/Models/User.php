@@ -104,4 +104,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class, 'buyer_id');
     }
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            UserProfile::create([
+                'user_id' => $user->id,
+            ]);
+        });
+    }
 }
