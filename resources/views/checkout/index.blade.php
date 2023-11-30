@@ -161,8 +161,7 @@
                 </template>
             </section>
             <!-- Order Summary -->
-            <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8" x-cloak
-                x-show="cartItem.length < 0">
+            <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
                 <dl class="text-text text-sm">
                     <!-- heading text -->
                     <div class="flex items-baseline justify-between">
