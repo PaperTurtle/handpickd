@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 /**
  * SendOrderConfirmation is a mailable class responsible for constructing and sending an order confirmation email.
@@ -88,13 +89,21 @@ class SendOrderConfirmation extends Mailable
 
     public function generatePdf(): string
     {
-        $pdf = app('dompdf.wrapper');
-        $pdf->loadView('pdf.order_confirmation', [
-            'transactionDetails' => $this->transactionDetails
-        ]);
+        try {
+            $pdf = app('dompdf.wrapper');
+            $pdf->loadView('pdf.order_confirmation', [
+                'transactionDetails' => $this->transactionDetails,
+            ]);
 
-        $pdfFilePath = storage_path('pdfs/order-confirmation-' . time() . '.pdf');
-        $pdf->save($pdfFilePath);
+            $pdfFilePath = storage_path('pdfs/order-confirmation-' . time() . '.pdf');
+
+            $pdf->save($pdfFilePath);
+        } catch (\Exception $e) {
+            Log::error('Error during PDF generation and saving: ' . $e->getMessage(), [
+                'exception' => $e,
+            ]);
+        }
+
         return $pdfFilePath;
     }
 }
