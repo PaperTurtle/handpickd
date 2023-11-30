@@ -47,6 +47,7 @@ class CheckoutService
                 $buyer = new Buyer(array_merge($buyerData, ['transaction_id' => $transaction->id]));
                 $buyer->save();
 
+                $transaction->load('transactionBuyer');
                 $transactionDetails[] = $transaction;
                 $item->product->decrement('quantity', $item->quantity);
             }
