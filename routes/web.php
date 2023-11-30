@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
     // Checkout process
     Route::prefix("checkout")->group(function () {
         Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
+        Route::get('/process', [CheckoutController::class, 'process'])->name('checkout.process');
         Route::post('/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
         Route::get('/success', [CheckoutController::class, 'success'])->name('checkout.success')
             ->middleware(RedirectIfNoTransactionDetails::class);
