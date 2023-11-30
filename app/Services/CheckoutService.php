@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\ShoppingCart;
 use App\Models\Transaction;
 use App\Mail\SendOrderConfirmation;
+use App\Models\Buyer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -27,7 +28,7 @@ class CheckoutService
      * @throws ModelNotFoundException Throws if a product in the cart is not found.
      * @throws Exception Throws on any other error encountered during the process.
      */
-    public function processCheckout(?User $user): array
+    public function processCheckout(?User $user, array $buyerData): array
     {
         DB::beginTransaction();
 
@@ -43,6 +44,8 @@ class CheckoutService
                     'total_price' => $item->quantity * $item->product->price,
                     'status' => 'pending',
                 ]);
+                $buyer = new Buyer(array_merge($buyerData, ['transaction_id' => $transaction->id]));
+                $buyer->save();
 
                 $transactionDetails[] = $transaction;
                 $item->product->decrement('quantity', $item->quantity);
