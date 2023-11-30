@@ -69,7 +69,7 @@ class Transaction extends Model
      */
     public function transactionBuyer(): BelongsTo
     {
-        return $this->belongsTo(Buyer::class);
+        return $this->belongsTo(Buyer::class, 'id', 'transaction_id');
     }
 
     /**
