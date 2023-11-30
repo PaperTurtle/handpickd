@@ -14,8 +14,8 @@
                                         class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
                                 </div>
 
-                                <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-                                    <div class="relative sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                                <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6" x-data="{modalOpen: false}">
+                                    <div class="relative sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0 z-10">
 
                                         <div>
                                             <!-- name -->
@@ -75,7 +75,7 @@
                                                     </p> -->
                                             <!-- remove -->
                                             <div class="absolute right-0 top-0">
-                                                <button type="button" @click="removeFromCart(cartItem.id)"
+                                                <button type="button" @click="modalOpen = true"
                                                     class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
                                                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
                                                         aria-hidden="true">
@@ -83,43 +83,51 @@
                                                             d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                                                     </svg>
                                                 </button>
-                                                <div class=" opacity-100 shadow-md p-4 max-w-sm h-40 m-auto rounded-md fixed inset-0"
-                                                    style="background-color: #f7f2e4;">
-                                                    <div class="flex">
-                                                        <svg class="mr-2 h-6 w-6 text-red-600" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            aria-hidden="true">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                                                        </svg>
-                                                        <P class="text-text font-bold">
-                                                            Delete item
-                                                        </P>
-                                                        <svg class="h-5 w-5 ml-auto text-right text-gray-400" fill="none" viewBox="0 0 24 24"
-                                                            stroke-width="1.5" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M6 18L18 6M6 6l12 12" />
-                                                        </svg>
-                                                    </div>
-                                                    <p class="text-text text-sm mt-3">
-                                                        Are you sure you want to delete the item from your shopping
-                                                        cart?
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Confirm deletion modal -->
+                                    <div x-show="modalOpen" class="z-50">
+                                        <div class="bg-gray-400 fixed inset-0 opacity-40"></div>
+                                        <div class="shadow-md p-4 max-w-sm h-40 m-auto rounded-md fixed inset-0"
+                                            style="background-color: #f7f2e4;">
+
+                                            <div class="flex">
+                                                <svg class="mr-2 h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                                </svg>
+                                                <P class="text-text font-bold">
+                                                    Delete item
+                                                </P>
+                                                <button @click="modalOpen = false" class="h-5 w-5 ml-auto">
+                                                    <svg class="text-gray-400" fill="none" viewBox="0 0 24 24"
+                                                        stroke-width="1.5" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            <p class="text-text text-sm mt-3">
+                                                Are you sure you want to delete the item from your shopping
+                                                cart?
+                                            </p>
+                                            <div class="flex justify-end mt-5">
+                                                <button
+                                                    class="mr-4 py-1 px-2 bg-white border-gray-300 border-2 rounded-md"
+                                                    @click="modalOpen = false">
+                                                    <p class="text-text">
+                                                        Cancel
                                                     </p>
-                                                    <div class="flex justify-end mt-5">
-                                                        <button
-                                                            class="mr-4 py-1 px-2 bg-white border-gray-300 border-2 rounded-md">
-                                                            <p class="text-text">
-                                                                Cancel
-                                                            </p>
-                                                        </button>
-                                                        <button
-                                                            class="py-1 px-2 text-white bg-red-600 border-red-600 border-2 rounded-md">
-                                                            <p class="">
-                                                                Delete
-                                                            </p>
-                                                        </button>
-                                                    </div>
-                                                </div>
+                                                </button>
+                                                <button
+                                                    class="py-1 px-2 text-white bg-red-600 border-red-600 border-2 rounded-md"
+                                                    @click="removeFromCart(cartItem.id), modalOpen = false">
+                                                    <p class="">
+                                                        Delete
+                                                    </p>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
