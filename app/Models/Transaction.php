@@ -63,6 +63,16 @@ class Transaction extends Model
     }
 
     /**
+     * Get the buyer details associated with the transaction.
+     *
+     * @return BelongsTo
+     */
+    public function transactionBuyer(): BelongsTo
+    {
+        return $this->belongsTo(Buyer::class);
+    }
+
+    /**
      * Get the product that was transacted.
      *
      * @return BelongsTo
