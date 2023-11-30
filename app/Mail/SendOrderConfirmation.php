@@ -66,7 +66,6 @@ class SendOrderConfirmation extends Mailable
             view: 'emails.send_order_confirmation',
             with: [
                 'user' => $this->user,
-                'transactionDetails' => $this->transactionDetails,
             ],
         );
     }
@@ -79,6 +78,23 @@ class SendOrderConfirmation extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        $pdfPath = $this->generatePdf();
+        return [
+            Attachment::fromPath($pdfPath)
+                ->as('order-confirmation.pdf')
+                ->withMime('application/pdf'),
+        ];
+    }
+
+    public function generatePdf(): string
+    {
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('pdf.order_confirmation', [
+            'transactionDetails' => $this->transactionDetails
+        ]);
+
+        $pdfFilePath = storage_path('pdfs/order-confirmation-' . time() . '.pdf');
+        $pdf->save($pdfFilePath);
+        return $pdfFilePath;
     }
 }
