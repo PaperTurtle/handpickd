@@ -59,7 +59,7 @@
                                                     x-transition:leave-end="transform opacity-0 scale-95">
                                                     <template x-for="i in cartItem.product.quantity">
                                                         <li class="text-text block px-4 py-2 text-sm 
-                                                        hover:bg-accent hover:text-white hover:duration-200 rounded-md"
+                                                        hover:bg-accent hover:text-white hover:duration-200 rounded-md cursor-pointer"
                                                             @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
                                                             <button class="text-center" x-text="`${i}`"></button>
                                                         </li>
