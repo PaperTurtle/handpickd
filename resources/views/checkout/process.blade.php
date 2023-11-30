@@ -5,7 +5,7 @@
                 <span aria-hidden="true"> &larr;</span>
                 Return to cart
             </a>
-            <h1 class="text-3xl sm:text-4xl tracking-tight font-bold">Checkout</h1>
+            <h1 class="text-3xl sm:text-4xl tracking-tight font-bold font-heading">Checkout</h1>
         </label>
         <form class="pt-4" action="{{ route('checkout.process') }}" method="POST" x-cloak x-show="cartItems.length > 0">
             @csrf

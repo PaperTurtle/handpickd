@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8" x-data="cart()"
         x-cloak>
-        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl">Shopping Cart</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-text sm:text-4xl font-heading">Shopping Cart</h1>
         <div class="mt-12 lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
             <!-- Shopping cart -->
             <section class="col-span-7">
@@ -161,7 +161,8 @@
                 </template>
             </section>
             <!-- Order Summary -->
-            <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8">
+            <section class="col-span-5 bg-light-grey h-fit rounded-lg px-4 py-6 sm:p-6 lg:p-8" x-cloak
+                x-show="cartItem.length < 0">
                 <dl class="text-text text-sm">
                     <!-- heading text -->
                     <div class="flex items-baseline justify-between">
