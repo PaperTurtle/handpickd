@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
+use App\Http\Requests\CheckoutRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\View;
@@ -12,6 +13,7 @@ use App\Models\ShoppingCart;
 use App\Services\CartService;
 use App\Services\CheckoutService;
 use Exception;
+use Illuminate\Validation\ValidationException;
 
 /**
  * CheckoutController handles operations related to managing the shopping cart and processing the checkout in an e-commerce context.
@@ -38,9 +40,25 @@ class CheckoutController extends Controller
      */
     public function index(): View
     {
-        $cartItems = ShoppingCart::with('product')->where('user_id', auth()->id())->get();
+        $cartItems = ShoppingCart::with(['product', 'product.images'])
+            ->where('user_id', auth()->id())
+            ->get();
 
         return view('checkout.index', compact('cartItems'));
+    }
+
+    /**
+     * Prepare the checkout process by retrieving the current user's shopping cart items
+     * and displaying them on the checkout page.
+     *
+     * @return View Returns a view of the checkout page pre-populated with the user's cart items and product details.
+     * @throws AuthorizationException If the user is not authenticated.
+     */
+    public function process(): View
+    {
+        $user = auth()->user();
+        $cartItems = ShoppingCart::with('product')->where('user_id', auth()->id())->get();
+        return view('checkout.process', ["user" => $user, "cartItems" => $cartItems]);
     }
 
     /**
@@ -60,7 +78,7 @@ class CheckoutController extends Controller
      *
      * @param AddToCartRequest $request The request object containing product details.
      * @return JsonResponse Redirects back with a success message on adding the product.
-     * @throws AuthorizationException
+     * @throws AuthorizationException If the user is not authenticated.
      */
     public function addToCart(AddToCartRequest $request): JsonResponse
     {
@@ -77,7 +95,7 @@ class CheckoutController extends Controller
      *
      * @param int $cartItemId The unique identifier of the cart item to be removed.
      * @return JsonResponse Redirects back with a success message on removing the product.
-     * @throws AuthorizationException
+     * @throws AuthorizationException If the user is not authenticated.
      */
     public function removeFromCart(int $cartItemId): JsonResponse
     {
@@ -98,7 +116,7 @@ class CheckoutController extends Controller
      * @param int $itemId The ID of the cart item to update.
      * @param UpdateCartRequest $request The request object containing the new quantity.
      * @return JsonResponse Returns JSON response with the result of the update operation.
-     * @throws AuthorizationException
+     * @throws AuthorizationException If the user is not authenticated.
      */
     public function updateCart(int $itemId, UpdateCartRequest $request): JsonResponse
     {
@@ -116,14 +134,19 @@ class CheckoutController extends Controller
      * Process the checkout by creating transactions for each item in the cart and updating product quantities.
      * On success, the user's cart is cleared and redirected to a success route.
      * On failure, the transaction is rolled back and the user is redirected back with an error message.
-     *
+     * 
+     * @throws AuthorizationException If the user is not authorized to perform a checkout.
+     * @throws ValidationException If the request data does not pass validation checks.
+     * @throws Exception If an unexpected error occurs during the process.
      * @return RedirectResponse Redirects to a success route on successful checkout, or back with an error on failure.
-     * @throws Exception
+     * @throws AuthorizationException If the user is not authenticated.
      */
-    public function processCheckout(): RedirectResponse
+    public function processCheckout(CheckoutRequest $request): RedirectResponse
     {
         $user = auth()->user();
-        $response = $this->checkoutService->processCheckout($user);
+        $buyerData = $request->validated();
+
+        $response = $this->checkoutService->processCheckout($user, $buyerData);
 
         if ($response['status'] === 'success') {
             return redirect()->route('checkout.success')->with('success', $response['message'])
