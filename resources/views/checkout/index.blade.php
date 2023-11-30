@@ -83,19 +83,40 @@
                                                             d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                                                     </svg>
                                                 </button>
-                                                <div class="bg-light-grey opacity-100 shadow-md p-4 max-w-sm h-40 m-auto rounded-md fixed inset-0">
-                                                        <h3 class="text-text font-bold">
+                                                <div class=" opacity-100 shadow-md p-4 max-w-sm h-40 m-auto rounded-md fixed inset-0"
+                                                    style="background-color: #f7f2e4;">
+                                                    <div class="flex">
+                                                        <svg class="mr-2 h-6 w-6 text-red-600" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            aria-hidden="true">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                                        </svg>
+                                                        <P class="text-text font-bold">
                                                             Delete item
-                                                        </h3>
-                                                        <p class="text-text text-sm mt-4">
-                                                            Are you sure you want to delete the item from your shopping cart?
-                                                        </p>
-                                                    <div class="flex justify-end mt-6">
-                                                        <button class="mr-4 py-1 px-2 bg-white border-gray-300 border-2 rounded-md">
-                                                            Cancel
+                                                        </P>
+                                                        <svg class="h-5 w-5 ml-auto text-right text-gray-400" fill="none" viewBox="0 0 24 24"
+                                                            stroke-width="1.5" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M6 18L18 6M6 6l12 12" />
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-text text-sm mt-3">
+                                                        Are you sure you want to delete the item from your shopping
+                                                        cart?
+                                                    </p>
+                                                    <div class="flex justify-end mt-5">
+                                                        <button
+                                                            class="mr-4 py-1 px-2 bg-white border-gray-300 border-2 rounded-md">
+                                                            <p class="text-text">
+                                                                Cancel
+                                                            </p>
                                                         </button>
-                                                        <button class="py-1 px-2 text-white bg-red-600 border-red-600 border-2 rounded-md">
-                                                            Delete
+                                                        <button
+                                                            class="py-1 px-2 text-white bg-red-600 border-red-600 border-2 rounded-md">
+                                                            <p class="">
+                                                                Delete
+                                                            </p>
                                                         </button>
                                                     </div>
                                                 </div>
