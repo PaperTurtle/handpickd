@@ -1,6 +1,6 @@
 <footer class="bg-accent">
   <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-5 lg:px-8">
-    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+    <nav class="-mb-6 columns-2 flex justify-center space-x-8 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
       <div class="pb-6">
         <a href="http://127.0.0.1:8000/faq" class="text-sm leading-6 text-background hover:text-primary hover:font-bold">About</a>
       </div>
