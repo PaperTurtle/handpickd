@@ -17,7 +17,7 @@
                         <div class="mt-4">
                             <div class="grid">
                                 <label>Email address</label>
-                                <input type="email" name="email"
+                                <input type="email" name="email" value={{ Auth::user()->email }}
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                                     focus:ring-2 focus:ring-accent focus:border-accent"></input>
