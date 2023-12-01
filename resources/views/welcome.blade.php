@@ -51,7 +51,7 @@
               </div>
             </div>
 
-            <a href="#" class="inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Browse Products</a>
+            <a href="http://127.0.0.1:8000/products" class="inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Browse Products</a>
           </div>
         </div>
       </div>
