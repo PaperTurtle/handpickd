@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Represents a product in the application.
@@ -126,5 +127,18 @@ class Product extends Model
     public function totalReviews(): int
     {
         return $this->reviews()->count();
+    }
+
+    /**
+     * Checks if the product is in the current user's shopping cart.
+     *
+     * @return bool
+     */
+    public function isInUserCart(): bool
+    {
+        // Assumes that there's a relationship called 'cartItems' in the User model
+        return ShoppingCart::where('user_id', Auth::id())
+            ->where('product_id', $this->id)
+            ->exists();
     }
 }
