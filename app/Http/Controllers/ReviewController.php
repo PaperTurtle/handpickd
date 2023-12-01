@@ -48,4 +48,20 @@ class ReviewController extends Controller
 
         return response()->json($review);
     }
+
+    /**
+     * Delete an existing review.
+     * Deletes the review if the authenticated user owns it.
+     * Returns a JSON response containing the deleted review data.
+     *
+     * @param Review $review The review instance to be deleted.
+     * @return JsonResponse Returns JSON response with the deleted review data.
+     */
+    public function destroy($id)
+    {
+        $review = Review::find($id);
+        $review->delete();
+
+        return response()->json(['message' => 'Review deleted successfully']);
+    }
 }
