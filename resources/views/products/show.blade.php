@@ -234,9 +234,15 @@
                                     </template>
                                     @auth
                                         <template x-if="review.user.id === {{ auth()->id() }}">
-                                            <button @click="beginEditReview(review)" type="button"
-                                                class="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Edit
-                                                Review</button>
+                                            <div class="flex mt-4 flex-row gap-4">
+                                                <button @click="beginEditReview(review)" type="button"
+                                                    class="rounded-md bg-blue-600 hover:bg-blue-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Edit
+                                                    Review</button>
+                                                <button @click="beginDeleteReview(review)"
+                                                    class="rounded-md bg-red-600 hover:bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                                                    Delete Review
+                                                </button>
+                                            </div>
                                         </template>
                                     @endauth
                                 </div>
@@ -247,9 +253,11 @@
                 </div>
             </div>
             <!-- Edit Review Form Modal -->
-            <x-edit-modal :product="$product" />
+            <x-edit-review-modal :product="$product" />
             <!-- Create Review Form Modal -->
-            <x-create-modal :product="$product" />
+            <x-create-review-modal :product="$product" />
+            <!-- Delete Review Form Modal -->
+            <x-delete-review-modal :product="$product" />
         </section>
     </section>
     <script>
@@ -263,10 +271,12 @@
                 userHasReviewed: {{ auth()->check() && $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
                 writingReview: false,
                 editingReview: false,
+                deletingReview: false,
                 showAlert: false,
                 editRating: 1,
                 editReviewText: '',
                 editReviewId: null,
+                deleteReviewId: null,
                 averageRating: {{ $averageRating ?? 0 }},
                 totalReviews: {{ $totalReviews ?? 0 }},
 
@@ -307,6 +317,11 @@
                     this.editReviewId = review.id;
                 },
 
+                beginDeleteReview(reviews) {
+                    this.deletingReview = true;
+                    this.deleteReviewId = reviews.id;
+                },
+
                 formatDate(dateString) {
                     const options = {
                         year: 'numeric',
@@ -339,6 +354,7 @@
                             this.userHasReviewed = true;
                             this.rating = '';
                             this.review = '';
+                            this.writingReview = false;
                             this.openModal = false;
                         })
                         .catch((error) => {
@@ -385,6 +401,31 @@
                             }
                         })
                         .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                },
+
+                deleteReview() {
+                    fetch('/reviews/' + this.deleteReviewId, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.reviews = this.reviews.filter(review => review.id !== this.deleteReviewId);
+                            this.userHasReviewed = false;
+                            this.updateReviewData();
+                            this.deletingReview = false;
+                        })
+                        .catch(error => {
                             console.error('Error:', error);
                         });
                 },
