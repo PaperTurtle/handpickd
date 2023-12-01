@@ -37,6 +37,7 @@ class CheckoutRequest extends FormRequest
             'country' => 'required|string|max:255',
             'state_province' => 'sometimes|string|max:255',
             'postal_code' => 'required|string|max:255',
+            'delivery_method' => 'required|in:Standard,Express',
         ];
     }
 }
