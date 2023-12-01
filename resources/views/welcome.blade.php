@@ -360,8 +360,8 @@
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-background">My order arrived super quickly. The product is even better than I hoped it would be. Very happy customer over here!</p>
-                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Sarah Peters, New Orleans</cite>
+                <p class="text-lg text-background">My order arrived super quickly. The leather wallet is even better than I hoped it would be. Very happy customer over here!</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Hannah Davis</cite>
               </div>
             </blockquote>
             <blockquote class="sm:flex lg:block">
@@ -369,8 +369,8 @@
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-background">I had to return a purchase that didn’t fit. The whole process was so simple that I ended up ordering two new items!</p>
-                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Kelly McPherson, Chicago</cite>
+                <p class="text-lg text-background">I had to return a purchase that didn’t meet my expectations. The whole process was so simple that I ended up ordering two new items!</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">George Miller</cite>
               </div>
             </blockquote>
             <blockquote class="sm:flex lg:block">
@@ -378,8 +378,8 @@
                 <path d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z" fill="currentColor" />
               </svg>
               <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
-                <p class="text-lg text-background">Now that I’m on holiday for the summer, I’ll probably order a few more shirts. It’s just so convenient.</p>
-                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Chris Paul, Phoenix</cite>
+                <p class="text-lg text-background">Now that christmas is approaching, I’ll probably order a few more of the handwoven scarves. It’s just so convenient.</p>
+                <cite class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Ryan Moore</cite>
               </div>
             </blockquote>
           </div>
