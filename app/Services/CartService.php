@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Product;
 use App\Models\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,21 +23,34 @@ class CartService
      */
     public function addToCart(int $productId, int $quantity): array
     {
+        $product = Product::find($productId);
+        if (!$product) {
+            return ['error' => 'Product not found'];
+        }
+
         $cartItem = ShoppingCart::where('user_id', Auth::id())
             ->where('product_id', $productId)
             ->first();
 
         if ($cartItem) {
+            // Check if adding the quantity exceeds the available quantity
+            if (($cartItem->quantity + $quantity) > $product->quantity) {
+                return ['error' => 'Cannot add more of this item to the cart'];
+            }
             $cartItem->quantity += $quantity;
-            $cartItem->save();
         } else {
-            ShoppingCart::create([
+            // Check if the requested quantity is more than available
+            if ($quantity > $product->quantity) {
+                return ['error' => 'Requested quantity exceeds available stock'];
+            }
+            $cartItem = ShoppingCart::create([
                 'user_id' => Auth::id(),
                 'product_id' => $productId,
                 'quantity' => $quantity,
             ]);
         }
 
+        $cartItem->save();
         return ['success' => 'Product added to cart!'];
     }
 }
