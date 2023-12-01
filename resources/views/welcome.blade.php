@@ -258,7 +258,7 @@
       <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="sm:flex sm:items-baseline sm:justify-between">
           <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Our Favorites</h2>
-          <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
+          <a href="http://127.0.0.1:8000/products" class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
             Shop all products
             <span aria-hidden="true"> &rarr;</span>
           </a>
