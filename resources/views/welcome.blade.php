@@ -67,6 +67,26 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
             </svg>
       </div>
+
+      <script src="{{ mix('js/app.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Scroll-to-Top Button Logic
+                var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+                window.addEventListener('scroll', function () {
+                    if (window.scrollY > 200) {
+                        scrollToTopBtn.style.display = 'block';
+                    } else {
+                        scrollToTopBtn.style.display = 'none';
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+      </script>
     </div>
     
 
