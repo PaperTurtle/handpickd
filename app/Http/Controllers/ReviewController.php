@@ -52,10 +52,10 @@ class ReviewController extends Controller
     /**
      * Delete an existing review.
      * Deletes the review if the authenticated user owns it.
-     * Returns a JSON response containing the deleted review data.
+     * Returns a JSON response with a success message.
      *
-     * @param Review $review The review instance to be deleted.
-     * @return JsonResponse Returns JSON response with the deleted review data.
+     * @param int $id The ID of the review to be deleted.
+     * @return JsonResponse Returns JSON response with a success message.
      */
     public function destroy($id)
     {
