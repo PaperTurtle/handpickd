@@ -2,8 +2,8 @@
 
     <section x-data="reviewForm()">
         <!-- Notification when adding product to cart-->
-        <x-notification />
-
+        <x-success-notification />
+        <x-failure-notification />
         <!-- Main Content  -->
         <div class="container" x-data="{ showModal: false }">
             <!-- Product Details Section -->
@@ -67,6 +67,15 @@
                                     to
                                     ship
                                 </p>
+                                @if ($product->isInUserCart())
+                                    <div class="tooltip-div" data-tooltip="You already have this item in your cart!">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="ml-1 w-4 h-4 text-gray-500">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                                        </svg>
+                                    </div>
+                                @endif
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="red" class="h-5 w-5 flex-shrink-0">
@@ -272,7 +281,8 @@
                 writingReview: false,
                 editingReview: false,
                 deletingReview: false,
-                showAlert: false,
+                showSuccessAlert: false,
+                showFailureAlert: false,
                 editRating: 1,
                 editReviewText: '',
                 editReviewId: null,
@@ -449,8 +459,13 @@
                             return response.json();
                         })
                         .then(data => {
-                            this.showAlert = true;
-                            setTimeout(() => this.showAlert = false, 5000);
+                            if (data.success) {
+                                this.showSuccessAlert = true;
+                                setTimeout(() => this.showSuccessAlert = false, 5000);
+                            } else {
+                                this.showFailureAlert = true;
+                                setTimeout(() => this.showFailureAlert = false, 5000);
+                            }
                         })
                         .catch(error => {
                             console.error('Error:', error);
