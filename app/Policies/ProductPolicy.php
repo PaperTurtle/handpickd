@@ -69,7 +69,7 @@ class ProductPolicy
      * @param User $user The authenticated user.
      * @return bool True if the user can delete products; otherwise, false.
      */
-    public function delete(User $user): bool
+    public function delete(User $user, Product $product): bool
     {
         return true;
     }
@@ -105,7 +105,7 @@ class ProductPolicy
      * @param Product $product The product to edit.
      * @return bool True if the user can edit the product; otherwise, false.
      */
-    public function edit(User $user, Product $product)
+    public function edit(User $user, Product $product): bool
     {
         return $user->id === $product->artisan_id;
     }

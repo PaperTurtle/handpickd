@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
  * The command is designed to maintain different versions of product images for various use cases.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan product:process-images`.
+ * Command: `php artisan images:ppi` (process-product-images).
  */
 class ProcessProductImages extends Command
 {
@@ -22,7 +22,7 @@ class ProcessProductImages extends Command
      *
      * @var string
      */
-    protected $signature = 'product:process-images';
+    protected $signature = 'images:ppi';
 
     /**
      * The console command description.
@@ -31,10 +31,14 @@ class ProcessProductImages extends Command
      */
     protected $description = 'Process product images to create resized and show versions';
 
+
+    const TYPE_DEFAULT = 'default';
+    const TYPE_SHOW = 'show';
+    const TYPE_THUMBNAIL = 'thumbnail';
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $originalImages = Storage::disk('public')->files('product_images');
 
@@ -42,17 +46,22 @@ class ProcessProductImages extends Command
             if (str_ends_with($imagePath, '_original.webp')) {
                 $this->info("Processing $imagePath");
 
-                $resizedPath = str_replace('_original', '_resized', $imagePath);
-                $showPath = str_replace('_original', '_show', $imagePath);
-                $thumbnailPath = str_replace('_original', '_thumbnail', $imagePath);
-
-                $this->processImage($imagePath, $resizedPath);
-                $this->processImage($imagePath, $showPath, 'show');
-                $this->processImage($imagePath, $thumbnailPath, 'thumbnail');
+                $this->processImageIfNotExists($imagePath, '_resized', self::TYPE_DEFAULT);
+                $this->processImageIfNotExists($imagePath, '_show', self::TYPE_SHOW);
+                $this->processImageIfNotExists($imagePath, '_thumbnail', self::TYPE_THUMBNAIL);
             }
         }
 
         $this->info('All images processed successfully.');
+    }
+
+    protected function processImageIfNotExists(string $imagePath, string $suffix, string $type): void
+    {
+        $newPath = str_replace('_original', $suffix, $imagePath);
+
+        if (!Storage::disk('public')->exists($newPath)) {
+            $this->processImage($imagePath, $newPath, $type);
+        }
     }
 
     /**
@@ -63,24 +72,27 @@ class ProcessProductImages extends Command
      * @param string $type The type of processing to apply (default, show, or thumbnail).
      * @return void
      */
-    protected function processImage($sourcePath, $targetPath, $type = 'default')
+    protected function processImage(string $sourcePath, string $targetPath, string $type = self::TYPE_DEFAULT): void
     {
-        switch ($type) {
-            case 'show':
-                $nodeScript = 'imageProcessorShow.js';
-                break;
-            case 'thumbnail':
-                $nodeScript = 'imageProcessorThumbnail.js';
-                break;
-            default:
-                $nodeScript = 'imageProcessor.js';
-        }
+        $nodeScript = match ($type) {
+            self::TYPE_SHOW => 'imageProcessorShow.js',
+            self::TYPE_THUMBNAIL => 'imageProcessorThumbnail.js',
+            default => 'imageProcessor.js',
+        };
 
         $nodeCommand = "node " . escapeshellarg(base_path("resources/js/$nodeScript")) . " " .
             escapeshellarg(storage_path("app/public/$sourcePath")) . " " .
             escapeshellarg(storage_path("app/public/$targetPath"));
 
-        exec($nodeCommand);
+        $output = null;
+        $returnVar = null;
+        exec($nodeCommand, $output, $returnVar);
+
+        if ($returnVar !== 0) {
+            $this->error("Failed to process $targetPath using $nodeScript");
+            return;
+        }
+
         $this->info("Processed $targetPath using $nodeScript");
     }
 }

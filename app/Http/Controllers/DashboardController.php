@@ -27,7 +27,15 @@ class DashboardController extends Controller
             ->whereHas('product', function ($query) {
                 $query->where('artisan_id', auth()->id());
             })
-            ->get();
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(function ($transaction) {
+                $transaction->delivered_on = $transaction->updated_at->format('F j, Y'); // format date
+                return $transaction;
+            })
+            ->groupBy(function ($transaction) {
+                return $transaction->created_at->toDateTimeString();
+            });
 
         return view('dashboard', compact('transactions'));
     }

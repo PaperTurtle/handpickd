@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,8 +18,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $description Description of the product.
  * @property float $price Price of the product, stored as a decimal with two digits after the decimal point.
  * @property int $quantity Quantity of the product available.
- * @property \Illuminate\Support\Carbon $created_at Timestamp when the product was created.
- * @property \Illuminate\Support\Carbon $updated_at Timestamp when the product was last updated.
+ * @property Carbon $created_at Timestamp when the product was created.
+ * @property Carbon $updated_at Timestamp when the product was last updated.
  *
  * @method BelongsTo artisan() BelongsTo relationship with User. Indicates the creator of the product.
  * @method BelongsTo category() BelongsTo relationship with Category. Indicates the category of the product.
@@ -102,7 +103,7 @@ class Product extends Model
      * @param int $userId
      * @return bool
      */
-    public function hasUserReviewed($userId): bool
+    public function hasUserReviewed(int $userId): bool
     {
         return $this->reviews()->where('user_id', $userId)->exists();
     }
@@ -110,9 +111,9 @@ class Product extends Model
     /**
      * Calculates and returns the average rating of the product based on its reviews.
      *
-     * @return float
+     * @return float|null
      */
-    public function averageRating()
+    public function averageRating(): float|null
     {
         return $this->reviews()->avg('rating');
     }
@@ -122,7 +123,7 @@ class Product extends Model
      *
      * @return int
      */
-    public function totalReviews()
+    public function totalReviews(): int
     {
         return $this->reviews()->count();
     }

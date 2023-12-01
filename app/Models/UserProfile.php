@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,8 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $bio Biography or description of the user. Can be null.
  * @property string|null $contact_info Contact information of the user. Can be null.
  * @property string|null $profile_picture File path or URL of the user's profile picture. Can be null.
- * @property \Illuminate\Support\Carbon $created_at Timestamp when the profile was created.
- * @property \Illuminate\Support\Carbon $updated_at Timestamp when the profile was last updated.
+ * @property Carbon $created_at Timestamp when the profile was created.
+ * @property Carbon $updated_at Timestamp when the profile was last updated.
  *
  * @method BelongsTo user() BelongsTo relationship with User. Represents the user to whom the profile belongs.
  *

@@ -13,11 +13,11 @@ class ShoppingCartPolicy
     /**
      * Determine whether the user can view the shopping cart item.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\ShoppingCart  $shoppingCart
-     * @return mixed
+     * @param User $user
+     * @param ShoppingCart $shoppingCart
+     * @return bool
      */
-    public function view(User $user, ShoppingCart $shoppingCart)
+    public function view(User $user, ShoppingCart $shoppingCart): bool
     {
         return $user->id === $shoppingCart->user_id;
     }
@@ -25,22 +25,22 @@ class ShoppingCartPolicy
     /**
      * Determine whether the user can add an item to the shopping cart.
      *
-     * @param  \App\Models\User  $user
-     * @return mixed
+     * @param User $user
+     * @return bool
      */
-    public function addToCart(User $user)
+    public function addToCart(User $user): bool
     {
-        return $user ? true : false;
+        return (bool)$user;
     }
 
     /**
      * Determine whether the user can update an item in the shopping cart.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\ShoppingCart  $shoppingCart
-     * @return mixed
+     * @param User $user
+     * @param ShoppingCart $shoppingCart
+     * @return bool
      */
-    public function update(User $user, ShoppingCart $shoppingCart)
+    public function update(User $user, ShoppingCart $shoppingCart): bool
     {
         return $user->id === $shoppingCart->user_id;
     }
@@ -48,11 +48,11 @@ class ShoppingCartPolicy
     /**
      * Determine whether the user can remove an item from the shopping cart.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\ShoppingCart  $shoppingCart
-     * @return mixed
+     * @param User $user
+     * @param ShoppingCart $shoppingCart
+     * @return bool
      */
-    public function removeFromCart(User $user, ShoppingCart $shoppingCart)
+    public function removeFromCart(User $user, ShoppingCart $shoppingCart): bool
     {
         return $user->id === $shoppingCart->user_id;
     }

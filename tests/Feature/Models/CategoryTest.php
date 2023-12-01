@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Product;
-use \App\Models\Category;
+use App\Models\Category;
 
 it('has many products', function () {
     $category = Category::factory()->create();

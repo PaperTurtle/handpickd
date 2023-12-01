@@ -13,6 +13,8 @@ class CreateProductImagesTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('image_path');
             $table->string('resized_image_path');
+            $table->string('show_image_path');
+            $table->string('thumbnail_image_path');
             $table->string('alt_text')->nullable();
             $table->timestamps();
 

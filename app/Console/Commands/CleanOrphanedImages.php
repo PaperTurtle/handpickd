@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\ProductImage;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 
 /**
  * A Laravel console command to clean orphaned images.
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Storage;
  * images are retained.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan app:coi` (clean-orphaned-images).
+ * Command: `php artisan images:coi` (clean-orphaned-images).
  */
 class CleanOrphanedImages extends Command
 {
@@ -24,7 +25,7 @@ class CleanOrphanedImages extends Command
      *
      * @var string
      */
-    protected $signature = 'app:coi';
+    protected $signature = 'images:coi';
 
     /**
      * The console command description.
@@ -36,27 +37,22 @@ class CleanOrphanedImages extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         // Get all image paths from storage
         $allImagePaths = Storage::disk('public')->files('product_images');
 
         // Get all image paths from the database (both original and resized)
-        $dbImagePaths = ProductImage::pluck('image_path')->toArray();
-        $dbResizedImagePaths = ProductImage::pluck('resized_image_path')->toArray();
-        $dbShowImagePaths = ProductImage::pluck('show_image_path')->toArray();
-        $dbThumbnailImagePaths = ProductImage::pluck('thumbnail_image_path')->toArray();
+        $dbImagePaths = ProductImage::select(['image_path', 'resized_image_path', 'show_image_path', 'thumbnail_image_path'])->get()->toArray();
 
-        // Merge the two arrays and remove duplicates
-        $allDbImagePaths = array_unique(array_merge($dbImagePaths, $dbResizedImagePaths, $dbShowImagePaths, $dbThumbnailImagePaths));
+
+        $allDbImagePaths = array_unique(Arr::flatten($dbImagePaths));
 
         // Calculate the orphaned images by diffing storage and database paths
         $orphanedImages = array_diff($allImagePaths, $allDbImagePaths);
 
-        // Delete orphaned images from storage
-        foreach ($orphanedImages as $orphanedImage) {
-            Storage::disk('public')->delete($orphanedImage);
-        }
+        // Delete all orphaned images from storage at once
+        Storage::disk('public')->delete($orphanedImages);
 
         $orphanedImagesCount = count($orphanedImages);
         $this->info("Orphaned images cleaned successfully. Total: $orphanedImagesCount");

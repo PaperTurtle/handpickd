@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -16,11 +17,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $id Unique identifier for the user.
  * @property string $name Name of the user.
  * @property string $email Email address of the user.
- * @property \Illuminate\Support\Carbon|null $email_verified_at Timestamp when the user's email was verified. Can be null.
+ * @property Carbon|null $email_verified_at Timestamp when the user's email was verified. Can be null.
  * @property string $password Password of the user (hashed).
  * @property string|null $remember_token Token for the user's session. Can be null.
- * @property \Illuminate\Support\Carbon|null $created_at Timestamp when the user account was created. Can be null.
- * @property \Illuminate\Support\Carbon|null $updated_at Timestamp when the user account was last updated. Can be null.
+ * @property Carbon|null $created_at Timestamp when the user account was created. Can be null.
+ * @property Carbon|null $updated_at Timestamp when the user account was last updated. Can be null.
  * @property bool $isArtisan Flag indicating whether the user is an artisan.
  *
  * @method HasOne profile() HasOne relationship with UserProfile. Represents the user's profile.
@@ -43,6 +44,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'isArtisan',
     ];
 
     /**
@@ -102,5 +104,14 @@ class User extends Authenticatable
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class, 'buyer_id');
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            UserProfile::create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

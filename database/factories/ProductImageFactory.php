@@ -15,6 +15,8 @@ class ProductImageFactory extends Factory
             'product_id' => \App\Models\Product::factory(),
             'image_path' => $this->faker->imageUrl(),
             'resized_image_path' => $this->faker->imageUrl(),
+            'show_image_path' => $this->faker->imageUrl(),
+            'thumbnail_image_path' => $this->faker->imageUrl(),
             'alt_text' => $this->faker->words(3, true),
         ];
     }

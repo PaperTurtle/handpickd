@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
  * to image files stored in the system, especially after batch processing or migration.
  *
  * Usage: Run the command using the Laravel Artisan command line tool.
- * Command: `php artisan images:update-thumbnails`.
+ * Command: `php artisan images:ui` (update-images).
  */
 class UpdateImagePaths extends Command
 {
@@ -23,7 +23,7 @@ class UpdateImagePaths extends Command
      *
      * @var string
      */
-    protected $signature = 'images:update-thumbnails';
+    protected $signature = 'images:ui';
 
     /**
      * The console command description.
@@ -32,13 +32,15 @@ class UpdateImagePaths extends Command
      */
     protected $description = 'Updates the database with paths for show, resized, and thumbnail images.';
 
+    const CHUNK_SIZE = 100;
+
     /**
      * Execute the console command.
      * Iterates through different image types and updates their paths in the database.
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('Updating image paths...');
 
@@ -51,7 +53,7 @@ class UpdateImagePaths extends Command
         $this->info('All image paths updated successfully.');
     }
 
-    protected function updateImagePathsForType($type)
+    protected function updateImagePathsForType($type): void
     {
         $columnName = "{$type}_image_path";
 
@@ -59,20 +61,20 @@ class UpdateImagePaths extends Command
             $query->whereNull($columnName)->orWhere($columnName, '');
         })->count();
 
-        $this->info("Found {$imagesCount} images with null or empty {$type} image path.");
+        $this->info("Found $imagesCount images with null or empty $type image path.");
 
         ProductImage::where(function ($query) use ($columnName) {
             $query->whereNull($columnName)->orWhere($columnName, '');
-        })->chunk(100, function ($images) use ($columnName, $type) {
+        })->chunk(self::CHUNK_SIZE, function ($images) use ($columnName, $type) {
             foreach ($images as $image) {
-                $path = str_replace('_original', "_{$type}", $image->image_path);
+                $path = str_replace('_original', "_$type", $image->image_path);
 
                 if (Storage::disk('public')->exists($path)) {
                     $image->$columnName = $path;
                     $image->save();
-                    $this->info("{$type} path updated for image: {$image->id}");
+                    $this->info("$type path updated for image: $image->id");
                 } else {
-                    $this->error("{$type} image does not exist for image: {$image->id}");
+                    $this->error("$type image does not exist for image: $image->id");
                 }
             }
         });

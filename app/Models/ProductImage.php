@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,8 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $resized_image_path File path of the resized version of the image.
  * @property string $show_image_path File path of the resized (for show blade) version of the image.
  * @property string|null $alt_text Alternative text for the image, used for accessibility and SEO.
- * @property \Illuminate\Support\Carbon $created_at Timestamp when the image was created.
- * @property \Illuminate\Support\Carbon $updated_at Timestamp when the image was last updated.
+ * @property Carbon $created_at Timestamp when the image was created.
+ * @property Carbon $updated_at Timestamp when the image was last updated.
  *
  * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product to which the image belongs.
  *

@@ -1,24 +1,25 @@
 <?php
 
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\User;
 
 it('belongs to a product', function () {
     $product = Product::factory()->create();
-    $review = \App\Models\Review::factory()->create(['product_id' => $product->id]);
+    $review = Review::factory()->create(['product_id' => $product->id]);
 
     expect($review->product)->toBeInstanceOf(Product::class);
 });
 
 it('belongs to a user', function () {
     $user = User::factory()->create();
-    $review = \App\Models\Review::factory()->create(['user_id' => $user->id]);
+    $review = Review::factory()->create(['user_id' => $user->id]);
 
     expect($review->user)->toBeInstanceOf(User::class);
 });
 
 it('has correct fillable attributes', function () {
-    $review = new \App\Models\Review();
+    $review = new Review();
 
     expect($review->getFillable())->toBe([
         'product_id',
@@ -29,7 +30,7 @@ it('has correct fillable attributes', function () {
 });
 
 it('has correct casts', function () {
-    $review = new \App\Models\Review();
+    $review = new Review();
 
     expect($review->getCasts())->toHaveKey('created_at', 'datetime');
     expect($review->getCasts())->toHaveKey('updated_at', 'datetime');
@@ -37,7 +38,7 @@ it('has correct casts', function () {
 });
 
 it('can be created', function () {
-    $review = \App\Models\Review::create([
+    $review = Review::create([
         'product_id' => Product::factory()->create()->id,
         'user_id' => User::factory()->create()->id,
         'rating' => 5,
@@ -51,7 +52,7 @@ it('can be created', function () {
 });
 
 it('can update attributes', function () {
-    $review = \App\Models\Review::factory()->create();
+    $review = Review::factory()->create();
 
     $review->update(['rating' => 4, 'review' => 'Good, but could be better']);
 
