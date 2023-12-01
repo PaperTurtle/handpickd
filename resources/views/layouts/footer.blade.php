@@ -17,8 +17,12 @@
         <a href="#" class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Partners</a>
       </div>
     </nav>
-    <div class="mt-10 flex justify-center space-x-10">
+
+    <div class="mt-10 flex-col sm-flex justify-center space-y-5 space-x-10">
         <p class="mt-1 text-center text-xs leading-5 text-background">Copyright &#169; 2023 Handpickd. All Rights Reserved</p>
+    </div>
+
+    <div class="mt-10 flex justify-center space-x-10">
       <a href="https://github.com/PaperTurtle/handpickd" class="text-background hover:text-primary">
         <span class="sr-only">GitHub</span>
         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
