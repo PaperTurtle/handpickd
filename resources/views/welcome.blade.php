@@ -259,7 +259,7 @@
         <div class="sm:flex sm:items-baseline sm:justify-between">
           <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Our Favorites</h2>
           <a href="#" class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
-            Browse all favorites
+            Shop all products
             <span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
