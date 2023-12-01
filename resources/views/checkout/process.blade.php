@@ -32,19 +32,25 @@
                         </div>
                     </section>
                     <!-- Shipping Information -->
+                    @php
+                        $fullName = $user->name;
+                        $parts = explode(' ', $fullName);
+                        $last_name = array_pop($parts);
+                        $first_name = implode(' ', $parts);
+                    @endphp
                     <section class="lg:grid border-t border-b border-gray-200 mt-6 pt-4 mb-4 pb-6 ">
                         <label class="text-xl">Shipping information</label>
                         <div class="flex mt-4 justify-between">
                             <div class="grid flex-grow">
                                 <label class="text-md">First name</label>
-                                <input type="text" name="first_name"
+                                <input type="text" name="first_name" value="{{ $first_name }}"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                                     focus:ring-2 focus:ring-accent focus:border-accent"></input>
                             </div>
                             <div class="grid ml-4 flex-grow">
                                 <label class="text-md">Last name</label>
-                                <input type="text" name="last_name"
+                                <input type="text" name="last_name" value="{{ $last_name }}"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                                     focus:ring-2 focus:ring-accent focus:border-accent"></input>
@@ -94,7 +100,7 @@
                             <legend class="text-xl">Delivery Method</legend>
                             <label class="flex flex-1 justify-between cursor-pointer border-2 bg-white p-3 rounded-md"
                                 :class="{ 'border-accent': deliveryMethod === 'Standard' }">
-                                <input type="radio" name="shipping" value="Standard" x-model="deliveryMethod"
+                                <input type="radio" name="delivery_method" value="Standard" x-model="deliveryMethod"
                                     class="sr-only" @change="calculateTotalPrice()">
                                 <div class="flex flex-col">
                                     <div>Standard</div>
@@ -112,7 +118,7 @@
                             <label
                                 class="flex flex-1 justify-between ml-4 cursor-pointer border-2 bg-white p-3 rounded-md"
                                 :class="{ 'border-accent': deliveryMethod === 'Express' }">
-                                <input type="radio" name="shipping" value="Express" x-model="deliveryMethod"
+                                <input type="radio" name="delivery_method" value="Express" x-model="deliveryMethod"
                                     class="sr-only" @change="calculateTotalPrice()">
                                 <div class="flex flex-col">
                                     <div>Express</div>
@@ -149,8 +155,8 @@
                             </template>
                         </div>
                         <!-- subtotal -->
-                        <div class="flex items-center justify-between mt-6">
-                            <dt x-text="`Subotal:`"></dt>
+                        <div class="flex items-center justify-between border-t border-gray-200 mt-4 pt-4">
+                            <dt x-text="`Subtotal:`"></dt>
                             <dd class="font-medium" x-text="`${Number(calculateSubtotalPrice()).toFixed(2)} €`"></dd>
                         </div>
                         <!-- shipping estimate -->
