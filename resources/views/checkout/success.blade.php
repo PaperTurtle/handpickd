@@ -1,6 +1,7 @@
 <x-app-layout>
     @if (session('transactionDetails') && is_array(session('transactionDetails')))
         @php
+            $shippingCost = 0;
             $orderPayment = 0;
         @endphp
         <main class="relative lg:min-h-full">
@@ -24,6 +25,7 @@
                             @foreach (session('transactionDetails') as $transaction)
                                 @php
                                     $orderPayment += number_format($transaction->total_price, 2);
+                                    $shippingCost = $transaction->delivery_method === 'Standard' ? 4.99 : 12.99;
                                 @endphp
                                 <li class="flex space-x-6 py-6">
                                     <img src="{{ Storage::url($transaction->product->images->first()->thumbnail_image_path) }}"
@@ -43,9 +45,18 @@
                         </ul>
 
                         <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
+                            <div class="flex justify-between">
+                                <dt>Subtotal</dt>
+                                <dd class="text-gray-900">{{ number_format($orderPayment, 2) }} €</dd>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <dt>Shipping</dt>
+                                <dd class="text-gray-900">{{ $shippingCost }} €</dd>
+                            </div>
                             <div class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
                                 <dt class="text-base">Total</dt>
-                                <dd class="text-base">{{ number_format($orderPayment, 2) }} €</dd>
+                                <dd class="text-base">{{ number_format($orderPayment, 2) + $shippingCost }} €</dd>
                             </div>
                         </dl>
 
