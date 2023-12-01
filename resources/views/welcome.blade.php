@@ -60,6 +60,16 @@
 
   <main>
 
+    <!-- Scroll-to-Top Button -->
+    <div>
+      <div id="scrollToTopBtn" class="z-50 fixed bottom-4 right-4 bg-secondary p-3 rounded-full cursor-pointer">
+            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            </svg>
+      </div>
+    </div>
+    
+
     <!-- Category section -->
     <section aria-labelledby="category-heading" class="bg-primary">
       <div class="mx-auto max-w-[2000px] mb-[100px] px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
