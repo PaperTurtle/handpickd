@@ -421,8 +421,8 @@
                         })
                         .then(data => {
                             this.reviews = this.reviews.filter(review => review.id !== this.deleteReviewId);
-                            this.userHasReviewed = false;
                             this.updateReviewData();
+                            this.userHasReviewed = false;
                             this.deletingReview = false;
                         })
                         .catch(error => {
