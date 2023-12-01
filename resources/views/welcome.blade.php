@@ -11,7 +11,7 @@
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
           <h1 class="text-4xl font-bold tracking-tight text-primary sm:text-6xl">Handpickd</h1>
-          <p class="mt-4 text-xl text-gray-500">Welcome to Handpickd, a community-driven platform that celebrates creativity and craftsmanship. </br> Handpickd provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.</p>
+          <p class="mt-4 text-xl text-gray-500">Welcome to Handpickd, a community-driven platform that celebrates creativity and craftsmanship </br> Handpickd provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.</p>
         </div>
         <div>
           <div class="mt-10">
