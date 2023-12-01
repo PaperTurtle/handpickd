@@ -42,7 +42,6 @@ class DashboardController extends Controller
      */
     public function markAsSent(Transaction $transaction): JsonResponse
     {
-<<<<<<< HEAD
         if ($transaction->product->artisan_id !== Auth::id()) {
             return response()->json(['message' => 'Unauthorized action'], 403);
         }
