@@ -8,6 +8,8 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\PreventGetRequestOnCertainRoutes;
 use App\Http\Middleware\RedirectIfNoTransactionDetails;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -92,7 +94,6 @@ Route::middleware('auth')->group(function () {
         Route::patch('/{review}', [ReviewController::class, 'update'])->name('reviews.update');
     });
 
-    // Email Verification
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
     })->middleware('auth')->name('verification.notice');
@@ -106,7 +107,10 @@ Route::middleware('auth')->group(function () {
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', 'Verification link sent!');
     })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ec6a66af3581e2f80fa843578ba6a309e6d4efb
 });
 
 Route::fallback(function () {
