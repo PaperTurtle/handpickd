@@ -13,6 +13,7 @@
 
         @php
             $orderPayment = 0;
+            $shipping = 0;
             $firstTransaction = reset($transactionDetails);
             $buyer = $firstTransaction->transactionBuyer ?? null;
         @endphp
@@ -33,7 +34,8 @@
 
         @foreach ($transactionDetails as $transaction)
             @php
-                $orderPayment += $transaction->total_price;
+                $orderPayment += $transaction->product->price * $transaction->quantity;
+                $shipping = $transaction->delivery_method === 'Standard' ? 4.99 : 12.99;
             @endphp
             <div style="border-bottom: 1px solid #ddd; padding: 8px; display: flex;">
                 <img src="{{ storage_path('app/public/' . $transaction->product->images->first()->thumbnail_image_path) }}"
@@ -42,12 +44,12 @@
                     <h3>{{ $transaction->product->name }}</h3>
                     <p>{{ $transaction->quantity }}x</p>
                 </div>
-                <p style="flex-shrink: 0;">{{ number_format($transaction->total_price, 2) }} €</p>
+                <p style="flex-shrink: 0;">{{ $transaction->total_price }} €</p>
             </div>
         @endforeach
-
+        <p>{{ $shipping }}</p>
         <div style="text-align: right;">
-            <strong>Total: {{ number_format($orderPayment, 2) }} €</strong>
+            <strong>Total: {{ number_format($orderPayment, 2) + $shipping }} €</strong>
         </div>
     </div>
 </body>
