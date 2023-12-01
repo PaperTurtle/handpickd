@@ -21,6 +21,11 @@
 	}
 }
 
+@layer utilities {
+	.tooltip-div {
+		@apply relative before:ml-[0.1rem] before:absolute before:content-[attr(data-tooltip)] before:px-4 before:py-2 before:left-1/2 before:-top-2 before:w-max before:max-w-xs before:-translate-x-1/2 before:-translate-y-full before:bg-gray-700 before:text-white before:rounded-md before:opacity-0 before:transition-all after:absolute after:ml-[0.1rem] after:left-1/2 after:-top-2 after:h-0 after:w-0 after:-translate-x-1/2 after:border-8 after:border-t-gray-700 after:border-l-transparent after:border-b-transparent after:border-r-transparent after:opacity-0 after:transition-all hover:before:opacity-100 hover:after:opacity-100 text-sm;
+	}
+}
 [x-cloak] {
 	display: none;
 }
