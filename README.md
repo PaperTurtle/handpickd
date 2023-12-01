@@ -3,6 +3,7 @@
 <img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" width=192 height=192 alt="logo" />
 </div>
 <img src="https://img.shields.io/badge/project_status-developing-yellow" />
+<img src="https://github.com/Paperturtle/handpickd/actions/workflows/laravel.yml/badge.svg?branch=main" />
 
 Handpickd is a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
 
