@@ -248,7 +248,7 @@
         <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
           <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-background sm:text-4xl">Long-term thinking</h2>
           <p class="mt-3 text-xl text-background">We're committed to create a space for responsible, sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus on quality and not quantity. We're doing our best to delay the inevitable heat-death of the universe :)</p>
-          <a href="#" class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Find out more about us</a>
+          <a href="http://127.0.0.1:8000/faq" class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-secondary hover:text-primary">Find out more about us</a>
         </div>
       </div>
     </section>
