@@ -167,7 +167,7 @@ php artisan key:generate
 php artisan storage:link
 
 # Run migrations
-php artisan migrate // Optional
+php artisan migrate // Optional, no need to do it if you have already added the database manually
 
 # Serve the application
 php artisan serve // (Terminal 1)
