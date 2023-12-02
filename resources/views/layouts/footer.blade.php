@@ -3,21 +3,19 @@
         <nav class="-mb-6 columns-2 flex justify-center space-x-8 sm:flex sm:justify-center sm:space-x-12"
             aria-label="Footer">
             <div class="pb-6">
-                <a href="{{ route('faq.index') }}"
+                <a href="{{ route('about-us') }}"
                     class="text-sm leading-6 text-background hover:text-primary hover:font-bold">About</a>
             </div>
             <div class="pb-6">
-                <a href="#" class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Jobs</a>
+                <a href="{{ route('jobs') }}"
+                    class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Jobs</a>
             </div>
             <div class="pb-6">
-                <a href="#" class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Press</a>
-            </div>
-            <div class="pb-6">
-                <a href="#"
+                <a href="{{ route('accessibility') }}"
                     class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Accessibility</a>
             </div>
             <div class="pb-6">
-                <a href="#"
+                <a href="{{ route('partners') }}"
                     class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Partners</a>
             </div>
         </nav>
