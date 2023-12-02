@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <a href="{{ route('products.index') }}"
-                                class="inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-accent">Browse
+                                class="inline-block rounded-md border border-transparent bg-primary px-6 py-3 text-center font-bold text-background hover:bg-accent transition-all delay-[20ms]">Browse
                                 Products</a>
                         </div>
                     </div>
@@ -307,7 +307,7 @@
                     <!-- Browse Categories mobile -->
                     <div class="mt-6 sm:hidden">
                         <a href="#"
-                            class="block text-sm font-semibold rounded-md border border-transparent bg-background px-4 py-1 text-primary hover:shadow-lg hover:scale-105">
+                            class="block text-sm font-semibold rounded-md border border-transparent bg-background px-4 py-1 text-primary hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
                             Browse all categories
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -331,7 +331,7 @@
                             on quality and not quantity. We're doing our best to delay the inevitable heat-death of the
                             universe :)</p>
                         <a href="{{ route('about-us') }}"
-                            class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-accent">Find
+                            class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-accent transition-all delay-[20ms]">Find
                             out more about us</a>
                     </div>
                 </div>
@@ -344,7 +344,7 @@
                         <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Top Rated
                             Products</h2>
                         <a href="{{ route('products.index') }}"
-                            class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
+                            class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
                             Shop all products
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -374,7 +374,7 @@
                     <!-- Browse all favorites mobile  -->
                     <div class="mt-6 sm:hidden">
                         <a href="#"
-                            class="block text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105">
+                            class="block text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
                             Browse all favorites
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
