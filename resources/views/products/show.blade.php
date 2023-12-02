@@ -90,12 +90,54 @@
                 <!-- Product Image Section -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                     <div class="relative">
-                        <x-product-image :product="$product" />
+                        @if ($product->images->count() > 1)
+                            <!-- Carousel with Tabs -->
+                            <div x-data="{ selectedImage: 1 }" class="flex flex-col-reverse">
+                                <!-- Image selector -->
+                                <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+                                    <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
+                                        @foreach ($product->images as $index => $image)
+                                            <button @click="selectedImage = {{ $index + 1 }}"
+                                                id="tabs-1-tab-{{ $index + 1 }}"
+                                                class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+                                                aria-controls="tabs-1-panel-{{ $index + 1 }}" role="tab"
+                                                type="button">
+                                                <span class="sr-only">Image {{ $index + 1 }}</span>
+                                                <span class="absolute inset-0 overflow-hidden rounded-md">
+                                                    <img src="{{ Storage::url($image->show_image_path) }}"
+                                                        alt="{{ $image->alt_text }}"
+                                                        class="h-full w-full object-cover object-center">
+                                                </span>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="aspect-h-1 aspect-w-1 w-full">
+                                    @foreach ($product->images as $index => $image)
+                                        <div x-cloak x-show="selectedImage === {{ $index + 1 }}"
+                                            id="tabs-1-panel-{{ $index + 1 }}" role="tabpanel" tabindex="0">
+                                            <img src="{{ Storage::url($image->show_image_path) }}"
+                                                alt="{{ $image->alt_text }}"
+                                                class="h-full w-full object-cover object-center sm:rounded-lg">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
+                                @foreach ($product->images as $image)
+                                    <img src="{{ Storage::url($image->show_image_path) }}"
+                                        alt="{{ $image->alt_text }}" class="h-full w-full object-cover object-center"
+                                        loading="lazy">
+                                @endforeach
+                            </div>
+                        @endif
                         @auth
                             @if (auth()->id() === $product->artisan_id)
                                 <div class="absolute top-0 right-0">
                                     <button @click="showModal = true"
-                                        class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-red-500 focus-visible:outline font-body focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                        class="inline-flex items-center gap-x-2 rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-red-500 focus-visible:outline font-body focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 z-50">
                                         Delete
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="1.5" stroke="currentColor" class="-mr-0.5 h-5 w-5">
