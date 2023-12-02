@@ -23,7 +23,8 @@
                                         <div>
                                             <!-- name -->
                                             <h3 class="text-md">
-                                                <a href="#" class="font-medium text-text hover:text-gray-400"
+                                                <a :href="`{{ route('products.show', '') }}/${cartItem.product.id}`"
+                                                    class="font-medium text-text hover:text-gray-400"
                                                     x-text="`${cartItem.product.name}`"></a>
                                             </h3>
                                             <!-- price -->
