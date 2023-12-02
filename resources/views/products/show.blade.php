@@ -39,10 +39,11 @@
                                                 </template>
                                             </div>
                                         </div>
-                                        <p class="sr-only">4 out of 5 stars</p>
+                                        <p class="sr-only" x-text="`${Math.round(averageRating)} out of 5 stars`"></p>
                                     </div>
                                     <template x-if="totalReviews > 0 || totalReviews">
-                                        <p class="ml-2 text-sm text-gray-500" x-text="`${totalReviews} reviews`"></p>
+                                        <p class="ml-2 text-sm text-gray-500" x-text="`${totalReviews} reviews`">
+                                        </p>
                                     </template>
                                     <template x-if="totalReviews === 0">
                                         <p class="ml-2 text-sm text-gray-500">No reviews yet.</p>
