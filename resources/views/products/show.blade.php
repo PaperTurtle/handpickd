@@ -206,8 +206,10 @@
                                 <div class="py-12">
                                     <div class="flex items-center">
                                         <div class="ml-4">
-                                            <h4 class="text-sm font-bold text-text" x-text="review.user.name">
-                                            </h4>
+                                            <a :href="`{{ route('profile.show', '') }}/${review.user.id}`">
+                                                <h4 class="text-sm font-bold text-text" x-text="review.user.name">
+                                                </h4>
+                                            </a>
                                             <div class="mt-2 flex items-center">
                                                 <template x-for="i in review.rating">
                                                     <svg class="text-yellow-400 h-5 w-5 flex-shrink-0"

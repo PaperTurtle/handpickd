@@ -26,6 +26,18 @@ use Illuminate\Support\Facades\Route;
 // ========= Public Routes =========
 // Home page
 Route::get('/', [ProductController::class, 'topRatedProducts'])->name('home');
+Route::get('about-us', function () {
+    return view('about-us');
+})->name('about-us');
+Route::get('jobs', function () {
+    return view('jobs');
+})->name('jobs');
+Route::get('accessibility', function () {
+    return view('accessibility');
+})->name('accessibility');
+Route::get('partners', function () {
+    return view('partners');
+})->name('partners');
 
 Route::get('profile/{userID}', [ProfileController::class, 'show'])->name('profile.show')
     ->where('userID', '[0-9]+');
