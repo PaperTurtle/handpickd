@@ -121,7 +121,7 @@
                             <div class="flex items-end p-6">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=1">
                                             <span class="absolute inset-0"></span>
                                             Handmade Crafts
                                         </a>
@@ -142,7 +142,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=3">
                                             <span class="absolute inset-0"></span>
                                             Jewelry & Accessories
                                         </a>
@@ -164,7 +164,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=4">
                                             <span class="absolute inset-0"></span>
                                             Home & Living
                                         </a>
@@ -184,7 +184,7 @@
                             <div class="flex items-end p-6">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=5">
                                             <span class="absolute inset-0"></span>
                                             Art & Collectibles
                                         </a>
@@ -205,7 +205,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=6">
                                             <span class="absolute inset-0"></span>
                                             Clothing & Shoes
                                         </a>
@@ -227,7 +227,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=7">
                                             <span class="absolute inset-0"></span>
                                             Wedding & Party
                                         </a>
@@ -249,7 +249,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=8">
                                             <span class="absolute inset-0"></span>
                                             Toys & Entertainment
                                         </a>
@@ -271,7 +271,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=9">
                                             <span class="absolute inset-0"></span>
                                             Vintage
                                         </a>
@@ -293,7 +293,7 @@
                             <div class="flex items-end p-6 sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold text-white">
-                                        <a href="#">
+                                        <a href="/products?categories[]=10">
                                             <span class="absolute inset-0"></span>
                                             Bath & Beauty
                                         </a>
