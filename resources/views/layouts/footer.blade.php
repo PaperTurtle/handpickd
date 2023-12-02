@@ -4,19 +4,19 @@
             aria-label="Footer">
             <div class="pb-6">
                 <a href="{{ route('about-us') }}"
-                    class="text-sm leading-6 text-background hover:text-primary hover:font-bold">About</a>
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">About</a>
             </div>
             <div class="pb-6">
                 <a href="{{ route('jobs') }}"
-                    class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Jobs</a>
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Jobs</a>
             </div>
             <div class="pb-6">
                 <a href="{{ route('accessibility') }}"
-                    class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Accessibility</a>
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Accessibility</a>
             </div>
             <div class="pb-6">
                 <a href="{{ route('partners') }}"
-                    class="text-sm leading-6 text-background hover:text-primary hover:font-bold">Partners</a>
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Partners</a>
             </div>
         </nav>
 
