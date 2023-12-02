@@ -32,7 +32,7 @@
     @error('images.*')
         <div class="text-sm text-red-600">{{ $message }}</div>
     @enderror
-    <div id="image-preview-container" x-show="newImages.length > 0" class="mt-4 flex space-x-4">
+    <div id="image-preview-container" x-show="images.length > 0" class="mt-4 flex space-x-4">
         <div id="image-preview-container" x-show="images.length > 0">
             <template x-for="image in images" :key="image">
                 <img :src="image" style="height: 100px; margin-right: 10px;" alt="Image preview">
