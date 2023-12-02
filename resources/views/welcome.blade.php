@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="http://127.0.0.1:8000/products"
+                            <a href="{{ route('products.index') }}"
                                 class="inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-accent">Browse
                                 Products</a>
                         </div>
@@ -77,7 +77,6 @@
                     </svg>
                 </div>
 
-                <script src="{{ mix('js/app.js') }}"></script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         // Scroll-to-Top Button Logic
@@ -331,7 +330,7 @@
                             sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus
                             on quality and not quantity. We're doing our best to delay the inevitable heat-death of the
                             universe :)</p>
-                        <a href="http://127.0.0.1:8000/faq"
+                        <a href="{{ route('about-us') }}"
                             class="mt-4 inline-block rounded-md border border-transparent bg-primary px-8 py-3 text-center font-bold text-background hover:bg-accent">Find
                             out more about us</a>
                     </div>
@@ -344,7 +343,7 @@
                     <div class="sm:flex sm:items-baseline sm:justify-between">
                         <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Top Rated
                             Products</h2>
-                        <a href="http://127.0.0.1:8000/products"
+                        <a href="{{ route('products.index') }}"
                             class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block">
                             Shop all products
                             <span aria-hidden="true"> &rarr;</span>
