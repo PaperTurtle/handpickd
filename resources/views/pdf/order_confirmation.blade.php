@@ -48,6 +48,7 @@
                 </div>
                 <p style="flex-shrink: 0; font-size: 14px; color: #333;">{{ $transaction->total_price }} €</p>
             </div>
+            <hr>
         @endforeach
         <div style="margin-top: 20px; text-align: right;">
             <p style="font-size: 14px; color: #555;">Shipping: {{ $shipping }} €</p>
