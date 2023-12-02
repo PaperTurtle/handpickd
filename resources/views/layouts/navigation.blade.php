@@ -117,7 +117,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden absolute bg-primary w-full">
+    <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden absolute bg-primary w-full" x-cloak>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
                 <span>{{ __('Products') }}</span>
