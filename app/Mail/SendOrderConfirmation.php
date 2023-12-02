@@ -86,7 +86,11 @@ class SendOrderConfirmation extends Mailable
                 ->withMime('application/pdf'),
         ];
     }
-
+    /**
+     * Generates a PDF file using the dompdf library.
+     *
+     * @return string The file path of the generated PDF file.
+     */
     public function generatePdf(): string
     {
         try {
