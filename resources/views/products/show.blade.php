@@ -1,9 +1,13 @@
 <x-app-layout>
 
     <section x-data="reviewForm()">
-        <!-- Notification when adding product to cart-->
+        <!-- Notifications when adding product to cart-->
         <x-success-notification />
         <x-failure-notification />
+        <!-- Notifications for review actions to cart-->
+        <x-success-edit-notification />
+        <x-success-write-notification />
+        <x-success-delete-notification />
         <!-- Main Content  -->
         <div class="container" x-data="{ showModal: false }">
             <!-- Product Details Section -->
@@ -328,6 +332,9 @@
                 deletingReview: false,
                 showSuccessAlert: false,
                 showFailureAlert: false,
+                showSuccessWriteAlert: false,
+                showSuccessEditAlert: false,
+                showSuccessDeleteAlert: false,
                 editRating: 1,
                 editReviewText: '',
                 editReviewId: null,
@@ -411,6 +418,8 @@
                             this.review = '';
                             this.writingReview = false;
                             this.openModal = false;
+                            this.showSuccessWriteAlert = true;
+                            setTimeout(() => this.showSuccessWriteAlert = false, 5000);
                         })
                         .catch((error) => {
                             console.error('Error:', error);
@@ -453,6 +462,8 @@
                                 this.editReviewId = null;
                                 this.editRating = '1';
                                 this.editReviewText = '';
+                                this.showSuccessEditAlert = true;
+                                setTimeout(() => this.showSuccessEditAlert = false, 5000);
                             }
                         })
                         .catch((error) => {
@@ -479,6 +490,8 @@
                             this.updateReviewData();
                             this.userHasReviewed = false;
                             this.deletingReview = false;
+                            this.showSuccessDeleteAlert = true;
+                            setTimeout(() => this.showSuccessDeleteAlert = false, 5000);
                         })
                         .catch(error => {
                             console.error('Error:', error);
