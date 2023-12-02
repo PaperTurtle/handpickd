@@ -8,23 +8,23 @@ Handpickd is a community-driven platform that celebrates creativity and craftsma
 
 ## 📖 Table of Contents
 
--  [📖 Table of Contents](#-table-of-contents)
--  [🌟 Project Overview](#-project-overview)
--  [🔧 Requirements](#-requirements)
--  [⚙️ Installation Instructions](#️-installation-instructions)
-   -  [NodeJS](#nodejs)
-   -  [XAMPP](#xampp)
-   -  [Composer](#composer)
-   -  [Laravel](#laravel)
--  [📜 Page Breakdown](#-page-breakdown)
--  [✨ Features \& Functionality](#-features--functionality)
--  [🧰 Built with](#-built-with)
-   -  [🖥️ Frontend](#️-frontend)
-   -  [🗄️ Backend](#️-backend)
-   -  [🧪 Testing](#-testing)
--  [🚀 Getting Started](#-getting-started)
--  [🐛 Known Issues](#-known-issues)
--  [📜 Authors](#-authors)
+- [📖 Table of Contents](#-table-of-contents)
+- [🌟 Project Overview](#-project-overview)
+- [🔧 Requirements](#-requirements)
+- [⚙️ Installation Instructions](#️-installation-instructions)
+  - [NodeJS](#nodejs)
+  - [XAMPP](#xampp)
+  - [Composer](#composer)
+  - [Laravel](#laravel)
+- [📜 Page Breakdown](#-page-breakdown)
+- [✨ Features \& Functionality](#-features--functionality)
+- [🧰 Built with](#-built-with)
+  - [🖥️ Frontend](#️-frontend)
+  - [🗄️ Backend](#️-backend)
+  - [🧪 Testing](#-testing)
+- [🚀 Getting Started](#-getting-started)
+- [🐛 Known Issues](#-known-issues)
+- [📜 Authors](#-authors)
 
 ## 🌟 Project Overview
 
@@ -165,9 +165,6 @@ php artisan key:generate
 
 # Create a symbolic link to the storage folder (for images)
 php artisan storage:link
-
-# Run migrations
-php artisan migrate // Optional, no need to do it if you have already added the database manually
 
 # Serve the application
 php artisan serve // (Terminal 1)
