@@ -13,7 +13,7 @@
             x-transition:leave="ease-in duration-200"
             x-transition:leave-start="opacity-100 transform translate-y-0 sm:scale-100"
             x-transition:leave-end="opacity-0 transform translate-y-4 sm:translate-y-0 sm:scale-95"
-            class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <div
                 class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div class="sm:flex sm:items-start">
@@ -31,7 +31,7 @@
                             <div class="mt-2">
                                 <div>
                                     <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-                                    <div id="rating" class="flex">
+                                    <div id="rating" class="flex justify-center sm:justify-start">
                                         <template x-for="i in 5" :key="i">
                                             <svg @click="rating = i" class="h-5 w-5 flex-shrink-0 cursor-pointer"
                                                 :class="{ 'text-yellow-400': i <= rating, 'text-gray-300': i > rating }"
