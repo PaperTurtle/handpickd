@@ -27,6 +27,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @method HasOne profile() HasOne relationship with UserProfile. Represents the user's profile.
  * @method HasMany products() HasMany relationship with Product. Represents products created by the user (if the user is an artisan).
  * @method HasMany reviews() HasMany relationship with Review. Represents reviews written by the user.
+ * @method HasOne cart() HasOne relationship with ShoppingCart. Represents the user's cart.
  * @method HasMany transactions() HasMany relationship with Transaction. Represents transactions where the user is the buyer.
  *
  * @package App\Models
@@ -94,6 +95,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+
+    /**
+     * Get the cart associated with the user.
+     * 
+     * @return HasOne
+     */
+    public function cart(): HasOne
+    {
+        // Assuming each user has one cart
+        return $this->hasOne(ShoppingCart::class);
     }
 
     /**

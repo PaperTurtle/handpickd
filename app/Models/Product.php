@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Auth;
  * @method BelongsTo category() BelongsTo relationship with Category. Indicates the category of the product.
  * @method HasMany images() HasMany relationship with ProductImage. Represents the images associated with the product.
  * @method HasMany reviews() HasMany relationship with Review. Represents the reviews made for the product.
+ * 
+ * @method bool hasUserReviewed(int $userId) Checks if a specific user has already reviewed the product.
+ * @method float|null averageRating() Calculates and returns the average rating of the product based on its reviews.
+ * @method int totalReviews() Returns the total number of reviews made for the product.
+ * @method bool isInUserCart() Checks if the product is in the current user's shopping cart.
  *
  * @package App\Models
  */
@@ -136,7 +141,6 @@ class Product extends Model
      */
     public function isInUserCart(): bool
     {
-        // Assumes that there's a relationship called 'cartItems' in the User model
         return ShoppingCart::where('user_id', Auth::id())
             ->where('product_id', $this->id)
             ->exists();
