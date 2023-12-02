@@ -25,6 +25,6 @@ class EnsureUserIsArtisan
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'You do not have access to this page.');
+        return response()->json(['message' => 'Unauthorized action'], 403);
     }
 }
