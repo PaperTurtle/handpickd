@@ -6,7 +6,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Middleware\PreventGetRequestOnCertainRoutes;
+use App\Http\Middleware\EnsureCartIsNotEmpty;
+use App\Http\Middleware\EnsureUserIsArtisan;
 use App\Http\Middleware\RedirectIfNoTransactionDetails;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -67,9 +68,9 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::prefix("dashboard")->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(EnsureUserIsArtisan::class);
         Route::patch('/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
-            ->name('dashboard.markAsSent');
+            ->name('dashboard.markAsSent')->middleware(EnsureUserIsArtisan::class);;
     });
 
     // Cart routes
@@ -82,7 +83,7 @@ Route::middleware('auth')->group(function () {
     // Checkout process
     Route::prefix("checkout")->group(function () {
         Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
-        Route::get('/process', [CheckoutController::class, 'process'])->name('checkout.process');
+        Route::get('/process', [CheckoutController::class, 'process'])->name('checkout.process')->middleware(EnsureCartIsNotEmpty::class);
         Route::post('/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
         Route::get('/success', [CheckoutController::class, 'success'])->name('checkout.success')
             ->middleware(RedirectIfNoTransactionDetails::class);
