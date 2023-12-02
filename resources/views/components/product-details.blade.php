@@ -16,9 +16,13 @@
         </h1>
         <h3 class="text-lg font-medium text-gray-700">Created by:
             @if (auth()->check() && auth()->id() === $product->artisan_id)
-                <strong>You</strong>
+                <a href="{{ route('profile.show', $product->artisan->id) }}">
+                    <strong>You</strong>
+                </a>
             @else
-                {{ $product->artisan->name }}
+                <a href="{{ route('profile.show', $product->artisan->id) }}">
+                    {{ $product->artisan->name }}
+                </a>
             @endif
         </h3>
     </div>
