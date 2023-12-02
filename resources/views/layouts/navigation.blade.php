@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-primary border-b border-gray-100 sticky top-0 z-50">
+<nav x-data="{ open: false, transitioning: false }" class="bg-primary border-b border-gray-100 sticky top-0 z-50">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-24">
@@ -97,10 +97,11 @@
             @endauth
             <!-- Hamburger -->
             <div class="flex items-center md:hidden" x-data="{ focused: false }">
-                <button @click="open = ! open" @focus="focused = true" @blur="focused = false"
+                <button @click="open = !open; transitioning = true; focused = true;"
+                    @transitionend="transitioning = false" @blur="focused = false"
                     class="p-2 rounded-md text-gray-600 hover:text-gray-700 focus:outline-none focus:bg-background transition duration-150 ease-in-out">
                     <!-- Hamburger Icon when Menu is closed -->
-                    <svg x-show="!open" :stroke="focused ? 'black' : 'white'" class="h-6 w-6"
+                    <svg x-show="!open" x-cloak :stroke="focused ? 'black' : '#fffaeb'" class="h-6 w-6"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16m-7 6h7" />
@@ -117,7 +118,12 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="md:hidden absolute bg-primary w-full" x-cloak>
+    <div x-cloak x-show="open" x-transition:enter="transition ease-out duration-150"
+        x-transition:enter-start="opacity-0 transform scale-95"
+        x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 transform scale-100"
+        x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden absolute bg-primary w-full"
+        @click.away="open = false">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('products.index')" :active="request()->routeIs('products.*')">
                 <span>{{ __('Products') }}</span>
@@ -166,6 +172,11 @@
             <div class="pt-2 pb-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.show', auth()->user()->id)" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 ml-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                 </x-responsive-nav-link>
             </div>
             <div class="pt-2 pb-3 space-y-1">
