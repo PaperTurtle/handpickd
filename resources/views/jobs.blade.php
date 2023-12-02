@@ -5,7 +5,8 @@
                 <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
                     <div>
                         <h2 class="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
-                        <p class="mt-4 leading-7 text-gray-600">We're always interested in hearing from you!</p>
+                        <p class="mt-4 leading-7 text-gray-600">We're currently not looking for any new engineers, but
+                            we're always interested in hearing from you!</p>
                     </div>
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:col-span-2 lg:gap-8">
                         <div class="rounded-2xl bg-gray-50 p-10">
