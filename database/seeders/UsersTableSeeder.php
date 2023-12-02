@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $firstName . ' ' . $lastName,
                 'email' => $email,
                 'password' => Hash::make('password'),
+                'isArtisan' => false,
             ]);
         }
     }
