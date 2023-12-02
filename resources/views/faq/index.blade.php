@@ -1,33 +1,31 @@
 <x-app-layout>
-    <div class="container mx-auto px-4 pb-24 pt-16 sm:px-6 max-w-4xl lg:px-8 text-text"
-        x-data="{ chosenTopic : 'general' }" x-cloak>
-        <h2 class="text-3xl font-bold">FAQ / Support</h2>
+    <div class="container mx-auto px-4 pb-24 pt-16 sm:px-6 max-w-4xl lg:px-8 text-text" x-data="{ chosenTopic: 'general' }" x-cloak>
+        <h2 class="text-3xl font-bold font-heading">FAQ / Support</h2>
         <h2 class="text-2xl mt-10">Frequently asked questions</h2>
         <div class="flex justify-between mt-5">
 
             <label
                 class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full cursor-pointer"
-                :class="{'border-accent' : chosenTopic === 'general'}">
+                :class="{ 'border-accent': chosenTopic === 'general' }">
                 <input type="radio" name="topic" value="general" class="sr-only" x-model="chosenTopic">General</input>
             </label>
 
             <label
                 class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full cursor-pointer"
-                :class="{'border-accent' : chosenTopic === 'customers'}">
+                :class="{ 'border-accent': chosenTopic === 'customers' }">
                 <input type="radio" name="topic" value="customers" class="sr-only" x-model="chosenTopic">For our
                 Customers</input>
             </label>
 
             <label
                 class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 text-xl text-center font-bold w-full cursor-pointer"
-                :class="{'border-accent' : chosenTopic === 'artisans'}">
+                :class="{ 'border-accent': chosenTopic === 'artisans' }">
                 <input type="radio" name="topic" value="artisans" class="sr-only" x-model="chosenTopic">For our
                 Artisans</input>
             </label>
         </div>
         <ul>
-            <li x-show="chosenTopic === 'general'"
-                x-data="{openGeneralQuestionOne: false, openGeneralQuestionTwo: false, openGeneralQuestionThree: false}">
+            <li x-show="chosenTopic === 'general'" x-data="{ openGeneralQuestionOne: false, openGeneralQuestionTwo: false, openGeneralQuestionThree: false }">
                 <dl>
                     <!-- Question One -->
                     <div class="border-t border-gray-300 mt-6 pt-4">
@@ -108,8 +106,8 @@
                                 </div>
                                 <!-- closed -->
                                 <svg x-show=" !openGeneralQuestionThree" class="h-6 w-6 ml-auto" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                                 </svg>
                                 <!-- open -->
                                 <svg x-show="openGeneralQuestionThree" class="h-6 w-6 ml-auto" fill="none"
@@ -133,8 +131,7 @@
                 </dl>
             </li>
             <!-- Customers -->
-            <li x-show="chosenTopic === 'customers'"
-                x-data="{openCustomersQuestionOne: false, openCustomersQuestionTwo: false, openCustomersQuestionThree: false}">
+            <li x-show="chosenTopic === 'customers'" x-data="{ openCustomersQuestionOne: false, openCustomersQuestionTwo: false, openCustomersQuestionThree: false }">
                 <dl>
                     <!-- Question One -->
                     <div class="border-t border-gray-300 mt-6 pt-4">
@@ -240,8 +237,7 @@
                 </dl>
             </li>
             <!-- Artisans -->
-            <li x-show="chosenTopic === 'artisans'"
-                x-data="{openArtisansQuestionOne: false, openArtisansQuestionTwo: false, openArtisansQuestionThree: false, openArtisansQuestionFour: false}">
+            <li x-show="chosenTopic === 'artisans'" x-data="{ openArtisansQuestionOne: false, openArtisansQuestionTwo: false, openArtisansQuestionThree: false, openArtisansQuestionFour: false }">
                 <dl>
                     <!-- Question One -->
                     <div class="border-t border-gray-300 mt-6 pt-4">
