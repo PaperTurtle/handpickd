@@ -7,12 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Handpickd') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -20,7 +14,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col justify-center items-center">
             <x-application-logo class="w-12 h-12 text-gray-500" />
-            @if (route('register'))
+            @if (request()->routeIs('register'))
                 <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create a new
                     Account
                 </h2>
