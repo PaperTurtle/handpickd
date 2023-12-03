@@ -14,6 +14,11 @@
     <div class="min-h-screen">
         @include('layouts.navigation')
         <main class="min-h-screen">
+            @if (session('error'))
+                <x-error-notification>
+                    {{ session('error') }}
+                </x-error-notification>
+            @endif
             {{ $slot }}
         </main>
         @include('layouts.footer')
