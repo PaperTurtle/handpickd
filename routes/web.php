@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ReviewController;
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 // ========= Public Routes =========
 // Home page
 Route::get('/', [ProductController::class, 'topRatedProducts'])->name('home');
+
+// Static pages
 Route::get('about-us', function () {
     return view('about-us');
 })->name('about-us');
@@ -40,6 +43,14 @@ Route::get('partners', function () {
     return view('partners');
 })->name('partners');
 
+Route::prefix("contact-us")->group(function () {
+    Route::get('/', function () {
+        return view('contact-us');
+    })->name('contact-us');
+    Route::post('/', [ContactController::class, "sendEmail"]);
+})->name('contact-us');
+
+// Profile routes (publicly accessible)
 Route::get('profile/{userID}', [ProfileController::class, 'show'])->name('profile.show')
     ->where('userID', '[0-9]+');
 
