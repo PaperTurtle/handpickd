@@ -21,7 +21,7 @@ use Illuminate\View\View;
  */
 class ProductController extends Controller
 {
-    const MAX_IMAGES = 3; // Maximum number of images allowed per product
+    const MAX_IMAGES = 4; // Maximum number of images allowed per product
 
     /**
      * @var ImageService
