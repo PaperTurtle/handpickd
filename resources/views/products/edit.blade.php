@@ -1,40 +1,42 @@
 @php use App\Models\Category; @endphp
 <x-app-layout>
-    <div class="container mx-auto px-4 py-6" x-data="{
-        removeImage(imageId) {
-            if (!confirm('Are you sure you want to delete this image?')) return;
-            fetch(`/products/{{ $product->id }}/images/` + imageId, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                })
-                .then(response => {
-                    if (!response.ok) throw response;
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        this.$refs['image' + imageId].remove();
-                        this.imageCount--;
-                    } else {
-                        alert(data.message || 'Server error occurred.');
-                    }
-                })
-                .catch(error => {
-                    if (error instanceof Response) {
-                        error.json().then(body => {
-                            console.error('Error:', body);
-                            alert(body.message || 'Could not delete the image.');
-                        });
-                    } else {
-                        console.error('Error:', error);
-                        alert('Could not delete the image.');
-                    }
-                });
-        }
-    }">
-        <h1 class="text-xl font-semibold leading-7 text-gray-900">Edit {{ $product->name }}</h1>
+    <div class="container mx-auto px-4 py-6 flex flex-col items-center justify-center sm:px-6 lg:px-8"
+        x-data="{
+            removeImage(imageId) {
+                if (!confirm('Are you sure you want to delete this image?')) return;
+                fetch(`/products/{{ $product->id }}/images/` + imageId, {
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        },
+                    })
+                    .then(response => {
+                        if (!response.ok) throw response;
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            this.$refs['image' + imageId].remove();
+                            this.imageCount--;
+                        } else {
+                            alert(data.message || 'Server error occurred.');
+                        }
+                    })
+                    .catch(error => {
+                        if (error instanceof Response) {
+                            error.json().then(body => {
+                                console.error('Error:', body);
+                                alert(body.message || 'Could not delete the image.');
+                            });
+                        } else {
+                            console.error('Error:', error);
+                            alert('Could not delete the image.');
+                        }
+                    });
+            }
+        }">
+        <h1 class="text-3xl font-semibold leading-9 text-gray-900 font-heading mb-4 mt-4 text-center ">Edit
+            {{ $product->name }}</h1>
         <!-- Display Validation Errors -->
         @if ($errors->any())
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -47,7 +49,7 @@
         @endif
         <!-- Edit Product Form -->
         <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data"
-            class="mt-6 space-y-6">
+            class="mt-6 space-y-6 min-w-[1083.4px] flex flex-col justify-center items-center">
             @csrf
             @method('PUT')
 
@@ -72,7 +74,8 @@
 
             <x-image-upload-edit :product="$product" />
 
-            <button type="submit" class="rounded-md bg-primary px-4 py-2 text-lg text-white shadow-sm">Update
+            <button type="submit"
+                class="w-1/4 md:w-1/2 rounded-md bg-primary px-4 py-2 text-lg text-white shadow-sm">Update
                 Product
             </button>
         </form>
