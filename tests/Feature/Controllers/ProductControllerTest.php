@@ -28,8 +28,9 @@ it('updates a product', function () {
 });
 
 it('deletes a product', function () {
-    $this->actingAs(User::factory()->create());
-    $product = Product::factory()->create();
+    $user = User::factory()->create();
+    $this->actingAs($user);
+    $product = Product::factory()->create(['artisan_id' => $user->id]);
     $response = $this->delete(route('products.destroy', $product));
     $response->assertRedirect(route('products.index'));
     $this->assertDatabaseMissing('products', ['id' => $product->id]);
