@@ -252,6 +252,11 @@
                             <template x-for="review in reviews" :key="review.id">
                                 <div class="py-12">
                                     <div class="flex items-center">
+                                        <span
+                                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
+                                            <span class="font-medium leading-none text-black"
+                                                x-text="getUserInitials(review.user.name)"></span>
+                                        </span>
                                         <div class="ml-4">
                                             <a :href="`{{ route('profile.show', '') }}/${review.user.id}`">
                                                 <h4 class="text-sm font-bold text-text" x-text="review.user.name">
@@ -346,6 +351,12 @@
                     let totalRating = 0;
                     this.reviews.forEach(review => totalRating += review.rating);
                     this.averageRating = this.reviews.length > 0 ? totalRating / this.reviews.length : 0;
+                },
+
+                getUserInitials(name) {
+                    const names = name.split(' ');
+                    const initials = names.map(n => n[0]).join('');
+                    return initials.toUpperCase();
                 },
 
                 calculateStarRatingPercentages() {
