@@ -26,7 +26,8 @@
                 <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
                     <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                         <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">We’re changing the
+                            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl font-heading">We’re
+                                changing the
                                 way people create.</h1>
                             <p class="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">Handpickd
                                 is a community-driven platform that celebrates creativity and craftsmanship. This
@@ -41,10 +42,10 @@
         <!-- Content section -->
         <div class="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
             <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our mission</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-heading">Our mission</h2>
                 <div class="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
                     <div class="lg:w-full lg:max-w-2xl lg:flex-auto">
-                        <p class="text-xl leading-8 text-gray-600">Handpickd offers an alternative to mass-produced
+                        <p class="text-xl leading-10 text-gray-600">Handpickd offers an alternative to mass-produced
                             goods by highlighting unique, handcrafted items. It's a digital homage to the tradition of
                             artisanry, designed to connect makers with those who appreciate the value of bespoke
                             creations.</p>
@@ -62,7 +63,7 @@
         <!-- Team section -->
         <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our team</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-heading">Our team</h2>
                 <p class="mt-6 text-lg leading-8 text-gray-600">This Web Application has been created by a team of
                     talented individuals</p>
             </div>
