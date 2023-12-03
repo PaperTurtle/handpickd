@@ -18,10 +18,17 @@
 
 <body class="font-poppins text-gray-900 antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col justify-center items-center">
+            <x-application-logo class="w-12 h-12 text-gray-500" />
+            @if (route('register'))
+                <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create a new
+                    Account
+                </h2>
+            @else
+                <h2 class="mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    Sign in to your account
+                </h2>
+            @endif
         </div>
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
