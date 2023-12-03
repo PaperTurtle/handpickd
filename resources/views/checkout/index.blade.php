@@ -144,7 +144,7 @@
                     </div>
                 </dl>
                 <div class="pt-4 flex text-center">
-                    <a class="bg-accent hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full"
+                    <a class="bg-primary hover:bg-accent text-white font-bold py-2 px-4 rounded-lg min-w-full transition-all delay-[20ms]"
                         href="{{ route('checkout.process') }}">Checkout</a>
                 </div>
             </section>

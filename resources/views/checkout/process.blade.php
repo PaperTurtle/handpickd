@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="container mx-auto max-w-2xl px-4 pt-16 lg:max-w-7xl lg:px-8 text-sm" x-data="cart()">
         <label>
-            <a href="{{ route('checkout.index') }}" class="text-sm font-medium text-primary hover:text-accent">
+            <a href="{{ route('checkout.index') }}"
+                class="text-sm font-medium text-primary hover:text-accent transition-all delay-[20ms]">
                 <span aria-hidden="true"> &larr;</span>
                 Return to cart
             </a>
@@ -20,14 +21,14 @@
                                 <input type="email" name="email" value={{ Auth::user()->email }}
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                    focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                    focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                             <div class="grid mt-4">
                                 <label class="">Phone number</label>
                                 <input type="text" name="phone_number"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                    focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                    focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                         </div>
                     </section>
@@ -46,35 +47,35 @@
                                 <input type="text" name="first_name" value="{{ $first_name }}"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                    focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                    focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                             <div class="grid ml-4 flex-grow">
                                 <label class="text-md">Last name</label>
                                 <input type="text" name="last_name" value="{{ $last_name }}"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                     ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                    focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                    focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                         </div>
                         <label class="text-md mt-4">Address</label>
                         <input type="text" name="address"
                             class="w-full h-8 text-sm rounded-md font-semibold shadow-sm  
                                 ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                         <div class="flex mt-4 justify-between">
                             <div class="grid flex-grow">
                                 <label class="text-md">City</label>
                                 <input type="text" name="city"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                         ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                        focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                        focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                             <div class="grid ml-4 flex-grow">
                                 <label class="text-md">Country</label>
                                 <input type="text" name="country"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                         ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                        focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                        focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                         </div>
                         <div class="flex mt-4 justify-between">
@@ -83,14 +84,14 @@
                                 <input type="text" name="state_province"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm 
                                         ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                        focus:ring-2 focus:ring-accent focus:border-accent "></input>
+                                        focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                             <div class="grid ml-4 flex-grow">
                                 <label class="text-md">Postal code</label>
                                 <input type="text" name="postal_code"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm  
                                         ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
-                                        focus:ring-2 focus:ring-accent focus:border-accent"></input>
+                                        focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
                             </div>
                         </div>
                     </section>
@@ -173,7 +174,7 @@
                     <!-- checkout button -->
                     <div class="pt-4">
                         <button type="submit"
-                            class="bg-accent text-base hover:bg-primary text-white font-bold py-2 px-4 rounded-lg min-w-full">
+                            class="bg-primary text-base hover:bg-accent text-white font-bold py-2 px-4 rounded-lg min-w-full transition-all delay-[20ms]">
                             Confirm Order
                         </button>
                     </div>
