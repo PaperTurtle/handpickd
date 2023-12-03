@@ -98,7 +98,7 @@
                             <!-- Carousel with Tabs -->
                             <div x-data="{ selectedImage: 1 }" class="flex flex-col-reverse">
                                 <!-- Image selector -->
-                                <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+                                <div class="mx-auto mt-6 w-full max-w-2xl sm:block lg:max-w-none">
                                     <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
                                         @foreach ($product->images as $index => $image)
                                             <button @click="selectedImage = {{ $index + 1 }}"
