@@ -4,7 +4,7 @@
             <div class="mx-auto max-w-2xl space-y-16 divide-y divide-gray-100 lg:mx-0 lg:max-w-none">
                 <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
                     <div>
-                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Get in touch</h2>
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900 font-heading">Get in touch</h2>
                         <p class="mt-4 leading-7 text-gray-600">We're currently not looking for any new engineers, but
                             we're always interested in hearing from you!</p>
                     </div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="grid grid-cols-1 gap-x-8 gap-y-10 pt-16 lg:grid-cols-3">
                     <div>
-                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Locations</h2>
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900 font-heading">Locations</h2>
                         <p class="mt-4 leading-7 text-gray-600">We work from home, but we are mostly stationed in
                             Germany</p>
                     </div>
