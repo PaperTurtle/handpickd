@@ -73,7 +73,6 @@ class SendOrderConfirmation extends Mailable
 
     /**
      * Get the attachments for the message.
-     * Currently, this method returns an empty array as no attachments are added by default.
      *
      * @return array<int, Attachment> Returns an array of attachments.
      */
