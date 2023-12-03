@@ -21,7 +21,7 @@ class EnsureCartIsNotEmpty
     {
         $user = Auth::user();
         if ($user && ($user->cart == null || $user->cart->isEmpty())) {
-            return redirect()->route('products.index')->with('error', 'Your cart is empty.');
+            return redirect()->route('checkout.index')->with('error', 'Your cart is empty.');
         }
 
         return $next($request);
