@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="relative isolate px-6 lg:px-8">
+    <div class="relative px-6 lg:px-8">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -23,8 +23,8 @@
                                 src="https://content.u-blox.com/sites/default/files/2023-03/R3%20Solutions%20Logo2.png"
                                 alt="R3 Solutions" width="158" height="48">
                             <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-                                src="https://frachtwerk.de/wp-content/uploads/2020/06/frachtwerk_320px.png" alt="Frachtwerk GmbH"
-                                width="158" height="48">
+                                src="https://frachtwerk.de/wp-content/uploads/2020/06/frachtwerk_320px.png"
+                                alt="Frachtwerk GmbH" width="158" height="48">
                             <img class="col-span-2 max-h-16 w-full object-contain sm:col-start-2 lg:col-span-1"
                                 src="https://inside.iu-fernstudium.de/wp-content/uploads/2021/03/iu_Logo_D_black_RGB_horizontal.png"
                                 alt="IU" width="158" height="48">
