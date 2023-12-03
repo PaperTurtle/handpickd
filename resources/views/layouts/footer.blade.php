@@ -1,6 +1,6 @@
 <footer class="bg-primary mt-10">
     <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-5 lg:px-8">
-        <nav class="-mb-6 columns-2 flex justify-center space-x-8 sm:flex sm:justify-center sm:space-x-12"
+        <nav class="-mb-6 columns-2 flex justify-center space-x-4 sm:flex sm:justify-center sm:space-x-12"
             aria-label="Footer">
             <div class="pb-6">
                 <a href="{{ route('about-us') }}"
@@ -20,8 +20,9 @@
             </div>
             <div class="pb-6">
                 <a href="{{ route('contact-us') }}"
-                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Contact
-                    Us</a>
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">
+                    Contact Us
+                </a>
             </div>
         </nav>
 
