@@ -18,6 +18,11 @@
                 <a href="{{ route('partners') }}"
                     class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Partners</a>
             </div>
+            <div class="pb-6">
+                <a href="{{ route('contact-us') }}"
+                    class="py-1 px-2 rounded-full text-sm leading-6 text-background hover:bg-secondary hover:text-text transition-colors duration-300">Contact
+                    Us</a>
+            </div>
         </nav>
 
         <div class="mt-10 flex-col sm-flex justify-center space-y-5 space-x-10">
