@@ -400,8 +400,7 @@
                             <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                                 <p class="text-lg text-background">My order arrived super quickly. The leather wallet
                                     is even better than I hoped it would be. Very happy customer over here!</p>
-                                <cite
-                                    class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Hannah
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Hannah
                                     Davis</cite>
                             </div>
                         </blockquote>
@@ -416,8 +415,7 @@
                                 <p class="text-lg text-background">I had to return a purchase that didn’t meet my
                                     expectations. The whole process was so simple that I ended up ordering two new
                                     items!</p>
-                                <cite
-                                    class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">George
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">George
                                     Miller</cite>
                             </div>
                         </blockquote>
@@ -431,8 +429,7 @@
                             <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                                 <p class="text-lg text-background">Now that christmas is approaching, I’ll probably
                                     order a few more of the handwoven scarves. It’s just so convenient.</p>
-                                <cite
-                                    class="mt-4 block font-semibold not-italic text-background font-bold opacity-75">Ryan
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Ryan
                                     Moore</cite>
                             </div>
                         </blockquote>
