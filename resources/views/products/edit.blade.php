@@ -70,6 +70,7 @@
             <x-form-input type="number" name="price" label="Price:" :value="$product->price"
                 step="0.01">Price:</x-form-input>
 
+            <x-form-input type="number" name="quantity" required :value="$product->quantity">Quantity:</x-form-input>
             <x-existing-images-display :images="$product->images"></x-existing-images-display>
 
             <x-image-upload-edit :product="$product" />
