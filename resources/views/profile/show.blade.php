@@ -4,12 +4,12 @@
         <!-- Personal Information -->
         <h2 class="text-2xl mt-10">Personal information</h2>
         <section class="mt-6 border-t border-b border-gray-300 pt-8 pb-6 h-fit">
-            <div class="flex">
+            <div class="md:flex">
                 <div>
                     <img src="{{Storage::url($user->profile->profile_picture)}}" alt="" class="w-60 h-60">
                     </img>
                 </div>
-                <div class="ml-40">
+                <div class="md:ml-40">
                     <div>
                         <div class="mt-4 font-bold">Name:</div>
                         <div class="mt-1"> {{$user->name}}</div>
@@ -27,9 +27,9 @@
             </div>
             <div class="relative mt-16 mb-4">
                 <a href="{{ route('profile.edit', auth()->user()->id)}}"><button type="submit"
-                    class="absolute bottom-0 right-0 w-20 py-2 bg-accent hover:bg-primary rounded-md text-white">Edit</button>
+                        class="absolute bottom-0 right-0 w-20 py-2 bg-accent hover:bg-primary rounded-md text-white">Edit</button>
                 </a>
-                
+
             </div>
         </section>
 
@@ -45,18 +45,22 @@
             @if ($hasProducts)
             <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
                 @foreach ($user->products as $product)
-                <div class="mt-4 mb-4 justify-between grid ">
+                <div class="mt-4 mb-4 justify-between grid bg-light-grey rounded-md p-4">
                     <div class="flex relative">
                         <div class="mr-4">
                             <img class="w-32 h-32" src=""></img>
                         </div>
                         <div class="relative">
-                            <div class="font-medium">{{$product->name}}</div>
+                            <div class="font-medium">
+                                <a href="`{{ route('products.show', '')}}`"
+                                    class="font-medium text-text hover:text-gray-400">{{$product->name}}</a>
+                            </div>
                             <div class="mt-4">{{$product->price}} €</div>
                             <div class="mt-8">{{$product->description}}</div>
                         </div>
                     </div>
-                    <button type="submit" class="mt-4 w-20 h-10 rounded-lg bg-accent hover:bg-primary p-1 text-white ml-auto mr-4">Edit</button>
+                    <button type="submit"
+                        class="mt-4 w-20 h-10 rounded-lg bg-accent hover:bg-primary p-1 text-white ml-auto mr-4">Edit</button>
                 </div>
                 @endforeach
             </div>
@@ -72,10 +76,23 @@
         <!-- Your Orders -->
         <section class="border-b border-gray-300 pb-6 ">
             <h3 class="text-2xl mb-4 mt-6">Your Orders</h3>
-            @if ($hasOrders)
-            <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
-                @foreach ($user->transactions as $transaction)
-                <div class="mt-4 mb-4 justify-between grid ">
+            @if($hasOrders)
+            @php
+            $groupedTransactions = [];
+            foreach($user->transactions as $transaction){
+            $date = strval($transaction->created_at);
+
+            if (!isset($groupedTransactions[$date][0])){
+            $groupedTransactions[$date] = [];
+            }
+            array_push($groupedTransactions[$date], $transaction);
+            }
+            @endphp
+            @foreach ($groupedTransactions as $date => $transactions)
+            <div class="text-xl mt-6">Ordered on: {{$transaction->created_at->format('Y-m-d H:i')}}</div>
+            <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4 my-4 bg-light-grey rounded-md">
+                @foreach ($transactions as $transaction)
+                <div class="mt-4 mb-4 justify-between grid p-4">
                     <div class="flex relative">
                         <div class="mr-4">
                             <img class="w-32 h-32" src=""></img>
@@ -85,12 +102,12 @@
                             <div class="mt-4">Quantity: {{$transaction->quantity}} pcs.</div>
                             <div class="mt-4">Price: {{$transaction->total_price}} €</div>
                             <div class="mt-4">Status: {{$transaction->status}}</div>
-                            <div class="mt-4">Ordered on: {{$transaction->created_at}}</div>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
+            @endforeach
             @else
             <div>You havn't ordered anything yet.</div>
             <a href="{{route('products.index')}}">Visit the product page to order something.</a>
