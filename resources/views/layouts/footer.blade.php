@@ -43,7 +43,7 @@
                 </svg>
             </a>
 
-            <a href="#"
+            <a href="https://www.facebook.com/"
                 class="text-background hover:text-primary hover:bg-background transition-all duration-200 rounded-full">
                 <span class="sr-only">Facebook</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -52,7 +52,7 @@
                         clip-rule="evenodd" />
                 </svg>
             </a>
-            <a href="#"
+            <a href="https://twitter.com/"
                 class="text-background hover:text-primary hover:bg-background transition-all duration-200 rounded-full">
                 <span class="sr-only">Twitter</span>
                 <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
