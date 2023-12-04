@@ -50,9 +50,9 @@
             @endif
         </div>
 
-        <div class="h-40">
+        <div class="h-40" x-data="bio()">
             <x-input-label for="bio" :value="__('Bio')" />
-            <textarea id="bio" name="bio" type="text" class="mt-1 w-full h-32" cols=20>{{$user->profile->bio}}</textarea>
+            <textarea id="bio" x-model="inputValue" name="bio" type="text" class="mt-1 w-full h-32" :value="old('bio', $user->profile->bio)"></textarea>
         </div>
 
         <div class="flex items-center gap-4">
@@ -65,3 +65,11 @@
         </div>
     </form>
 </section>
+
+<script>
+    function bio(){
+        return {
+            inputValue: @json($user->profile->bio)
+        }
+    }
+</script>
