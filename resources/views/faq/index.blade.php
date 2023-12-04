@@ -4,20 +4,20 @@
         <h2 class="text-2xl mt-10">Frequently asked questions</h2>
         <div class="flex flex-col gap-2 sm:flex-row justify-between mt-5">
             <label
-                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full cursor-pointer"
+                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-semi-bold w-full cursor-pointer"
                 :class="{ 'border-accent': chosenTopic === 'general' }">
                 <input type="radio" name="topic" value="general" class="sr-only" x-model="chosenTopic">General</input>
             </label>
 
             <label
-                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-bold w-full cursor-pointer"
+                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-semi-bold w-full cursor-pointer"
                 :class="{ 'border-accent': chosenTopic === 'customers' }">
                 <input type="radio" name="topic" value="customers" class="sr-only" x-model="chosenTopic">For our
                 Customers</input>
             </label>
 
             <label
-                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 text-xl text-center font-bold w-full cursor-pointer"
+                class="bg-white border-2 border-grey-300 rounded-md px-5 py-3 text-xl text-center font-semi-bold w-full cursor-pointer"
                 :class="{ 'border-accent': chosenTopic === 'artisans' }">
                 <input type="radio" name="topic" value="artisans" class="sr-only" x-model="chosenTopic">For our
                 Artisans</input>
@@ -30,7 +30,7 @@
                     <div class="border-t border-gray-300 mt-6 pt-4">
                         <dt>
                             <button @click="openGeneralQuestionOne = !openGeneralQuestionOne"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     What is Handpickd?
@@ -64,7 +64,7 @@
                     <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
                             <button @click="openGeneralQuestionTwo = !openGeneralQuestionTwo"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     Who can use Handpickd?
@@ -98,7 +98,7 @@
                     <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
                             <button @click="openGeneralQuestionThree = !openGeneralQuestionThree"
-                                class="text-left text-base font-bold w-full flex"">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     Who are the authors of Handpickd?
@@ -136,7 +136,7 @@
                     <div class="border-t border-gray-300 mt-6 pt-4">
                         <dt>
                             <button @click="openCustomersQuestionOne = !openCustomersQuestionOne"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     How do I find products on Handpickd?
@@ -170,7 +170,7 @@
                     <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
                             <button @click="openCustomersQuestionTwo = !openCustomersQuestionTwo"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     Can I review and rate products?
@@ -204,7 +204,7 @@
                     <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
                             <button @click="openCustomersQuestionThree = !openCustomersQuestionThree"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     How does the shopping cart and checkout process work?
@@ -242,7 +242,7 @@
                     <div class="border-t border-gray-300 mt-6 pt-4">
                         <dt>
                             <button @click="openArtisansQuestionOne = !openArtisansQuestionOne"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     How can I list my products on Handpickd?
@@ -276,7 +276,7 @@
                     <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
                             <button @click="openArtisansQuestionTwo = !openArtisansQuestionTwo"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     Can I update information about my products?
@@ -310,7 +310,7 @@
                     <div class="border-t border-gray-300 mt-4 pt-4">
                         <dt>
                             <button @click="openArtisansQuestionThree = !openArtisansQuestionThree"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     How do I manage my orders?
@@ -344,7 +344,7 @@
                     <div class="border-y border-gray-300 mt-4 py-4">
                         <dt>
                             <button @click="openArtisansQuestionFour = !openArtisansQuestionFour"
-                                class="text-left text-base font-bold w-full flex">
+                                class="text-left text-base font-semi-bold w-full flex">
                                 <!-- Question -->
                                 <div>
                                     Can I remove my products from the marketplace?
@@ -376,7 +376,7 @@
                 </dl>
             </li>
         </ul>
-        <div class="mt-10 text-xl">
+        <div class="mt-10 text-base">
             Can't find the answer to your question?<br>
             <div class="md:flex">
                 <p class="font-bold mr-3">
