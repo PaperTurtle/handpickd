@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4 pb-24 pt-16 sm:px-6 max-w-4xl lg:px-8 text-text text-sm">
         <h2 class="text-4xl font-bold font-heading">Profile</h2>
         <!-- Personal Information -->
-        <h2 class="text-2xl mt-10 font-heading">Personal information</h2>
+        <h2 class="text-3xl font-bold mt-10 font-heading">Personal information</h2>
         <section class="mt-6 border-t border-b border-gray-300 pt-8 pb-6 h-fit">
             <div class="md:flex justify-center">
                 <div class="flex justify-center items-center">
@@ -49,7 +49,7 @@
         @if ($user->isArtisan)
             <!-- Your Products -->
             <section class="border-b border-gray-300 mt-6 pb-8">
-                <h3 class="text-3xl font-heading">Your Products</h3>
+                <h3 class="text-3xl font-bold font-heading">Your Products</h3>
                 @if ($hasProducts)
                     <div class="mt-6 grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-3">
                         @foreach ($user->products as $product)
@@ -89,45 +89,73 @@
         @endif
 
         <!-- Your Orders -->
-        <section class="border-b border-gray-300 pb-6 ">
-            <h3 class="text-2xl mb-4 mt-6 font-heading">Your Orders</h3>
-            @if ($hasOrders)
+        <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:pb-32 sm:pt-24 lg:px-8">
+            <div class="max-w-xl">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 font-heading">Your Order History</h1>
+                <p class="mt-2 text-sm text-gray-500">Check the status of your orders</p>
+            </div>
+
+            <div class="mt-12 space-y-16 sm:mt-16">
                 @php
                     $groupedTransactions = [];
                     foreach ($user->transactions as $transaction) {
-                        $date = strval($transaction->created_at);
+                        $date = new \DateTime($transaction->created_at);
+                        $orderNumber = $date->format('YmdHi');
 
-                        if (!isset($groupedTransactions[$date][0])) {
-                            $groupedTransactions[$date] = [];
+                        if (!isset($groupedTransactions[$orderNumber])) {
+                            $groupedTransactions[$orderNumber] = [];
                         }
-                        array_push($groupedTransactions[$date], $transaction);
+                        array_push($groupedTransactions[$orderNumber], $transaction);
                     }
                 @endphp
                 @foreach ($groupedTransactions as $date => $transactions)
-                    <div class="text-xl mt-6">Ordered on: {{ $transaction->created_at->format('Y-m-d H:i') }}</div>
-                    <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4 my-4 bg-light-grey rounded-md">
+                    @php
+                        $isOrderCompleted = collect($transactions)->every(fn($transaction) => $transaction->status === 'sent');
+                    @endphp
+                    <section aria-labelledby="{{ $orderNumber }}-heading">
+                        <div class="space-y-1 md:flex md:items-baseline md:space-x-4 md:space-y-0">
+                            <h2 id="{{ $orderNumber }}-heading"
+                                class="text-xl font-medium text-gray-900 md:flex-shrink-0">Order
+                                #{{ $orderNumber }}</h2>
+                            @if ($isOrderCompleted)
+                                <div
+                                    class="space-y-5 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 md:min-w-0 md:flex-1">
+                                    <h3 class="inline-flex items-center text-green-500 font-bold">
+                                        <span>Order Completed</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="2.5" stroke="currentColor" class="ml-2 w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </h3>
+                                </div>
+                            @endif
+                        </div>
                         @foreach ($transactions as $transaction)
-                            <div class="mt-4 mb-4 justify-between grid p-4">
-                                <div class="flex relative">
-                                    <div class="mr-4">
-                                        <img class="w-32 h-32 rounded-md"
-                                            src="{{ Storage::url($transaction->product->images->first()->thumbnail_image_path) }}"></img>
-                                    </div>
-                                    <div class="relative">
-                                        <div class="font-medium">{{ $transaction->product->name }}</div>
-                                        <div class="mt-4">Quantity: {{ $transaction->quantity }} pcs.</div>
-                                        <div class="mt-4">Price: {{ $transaction->total_price }} €</div>
-                                        <div class="mt-4">Status: {{ $transaction->status }}</div>
+                            <div class="-mb-6 mt-6 flow-root divide-y divide-gray-200 border-t border-gray-200">
+                                <div class="py-6 sm:flex">
+                                    <div class="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
+                                        <img src="{{ Storage::url($transaction->product->images->first()->resized_image_path) }}"
+                                            alt="{{ $transaction->product->first()->alt_text }}"
+                                            class="h-20 w-20 flex-none rounded-md object-cover object-center sm:h-48 sm:w-48">
+                                        <div class="min-w-0 flex-1 pt-1.5 sm:pt-0">
+                                            <h3 class="font-medium text-gray-900 text-xl">
+                                                <a
+                                                    href="{{ route('products.show', $transaction->product->id) }}">{{ $transaction->product->name }}</a>
+                                            </h3>
+                                            <p class="mt-1 text-md font-medium text-gray-900">
+                                                Q: {{ $transaction->product->quantity }}</p>
+                                            <p class="mt-1 text-md font-medium text-gray-900">
+                                                {{ $transaction->product->price }} €</p>
+                                            <p class="mt-4 font-medium text-gray-900">
+                                                Status: {{ $transaction->status }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         @endforeach
-                    </div>
+                    </section>
                 @endforeach
-            @else
-                <div>You havn't ordered anything yet.</div>
-                <a href="{{ route('products.index') }}">Visit the product page to order something.</a>
-            @endif
+            </div>
         </section>
     </div>
 </x-app-layout>
