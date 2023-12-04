@@ -10,6 +10,7 @@
         </label>
         <form class="pt-4" action="{{ route('checkout.process') }}" @submit="handleSubmit" method="POST" x-cloak
             x-show="cartItems.length > 0">
+            <input type="hidden" name="state_province" value="">
             @csrf
             <div class="lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
                 <section class="col-span-7 text-text lg:grid mt-10 pt-4 w-full border-t border-gray-200">
