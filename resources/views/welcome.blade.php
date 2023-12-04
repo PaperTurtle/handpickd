@@ -22,29 +22,29 @@
                 <div class="flex items-center space-x-6 lg:space-x-8">
                   <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                      <img src="https://tinyurl.com/4n99dch9" alt="" class="h-full w-full object-cover object-center">
+                      <img src="https://tinyurl.com/54e269vb" alt="" class="h-full w-full object-cover object-center">
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/44dxdyt2" alt="" class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/4mk79k5p" alt="" class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/546vxr2a" alt="" class="h-full w-full object-cover object-center">l
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/2tuw5p7h" alt="" class="h-full w-full object-cover object-center">
+                      <img src="https://tinyurl.com/2vyj3dha" alt="" class="h-full w-full object-cover object-center">
                     </div>
                   </div>
                   <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/3xu9fxas" alt="" class="h-full w-full object-cover object-center">
+                      <img src="https://tinyurl.com/3jnws7ze" alt="" class="h-full w-full object-cover object-center">
                     </div>
                     <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img src="https://tinyurl.com/235fzjcy" alt="" class="h-full w-full object-cover object-center">
+                      <img src="https://tinyurl.com/y7xzsuxv" alt="" class="h-full w-full object-cover object-center">l
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <img src="https://tinyurl.com/fnar22vr" alt="" class="h-full w-full object-cover object-center">
+                    </div>
+                  </div>
+                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <img src="https://tinyurl.com/3rwazb7p" alt="" class="h-full w-full object-cover object-center">
+                    </div>
+                    <div class="h-64 w-44 overflow-hidden rounded-lg">
+                      <img src="https://tinyurl.com/2rjv9w2v" alt="" class="h-full w-full object-cover object-center">
                     </div>
                   </div>
                 </div>
@@ -105,7 +105,7 @@
         <!-- Erstes Element -->
         <div class="mt-6 grid grid-cols-1 grid-rows-2 gap-y-6 sm:grid-cols-5 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
           <div class="group aspect-h-1 aspect-w-3 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-1 transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/8063850/pexels-photo-8063850.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="orange clay jugs on a table" class="object-cover object-center">
+            <img src="https://tinyurl.com/y8srwphp" alt="orange clay jugs on a table" class="object-cover object-center">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50"></div>
             <div class="flex items-end p-6">
               <div>
@@ -122,7 +122,7 @@
 
           <!-- Zweites Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://tinyurl.com/yrprq2e8" alt="diamond drop earrings on a blue background" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/273m34be" alt="diamond drop earrings on a blue background" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -139,7 +139,7 @@
 
           <!-- Drittes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full sm:row-span-2 transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/18946616/pexels-photo-18946616/free-photo-of-schreibtisch-pflanze-fenster-zimmer.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="a hanging rack in a industrial looking room" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/bdf4caav" alt="a hanging rack in a industrial looking room" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -156,7 +156,7 @@
 
           <!-- Viertes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-auto transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/1579708/pexels-photo-1579708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="wall with many different paintings" class="object-cover object-center">
+            <img src="https://tinyurl.com/572puvpp" alt="wall with many different paintings" class="object-cover object-center">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50"></div>
             <div class="flex items-end p-6">
               <div>
@@ -173,7 +173,7 @@
 
           <!-- Fünftes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://tinyurl.com/yocfe2m8" alt="a hanging rack in an industrial like room" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/kcb59pyr" alt="a hanging rack in an industrial like room" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -190,7 +190,7 @@
 
           <!-- Sechstes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/313707/pexels-photo-313707.jpeg?auto=compress&cs=tinysrgb&w=600" alt="wedding shoes and bouquet of white roses" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/yy6m3uky" alt="wedding shoes and bouquet of white roses" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -207,7 +207,7 @@
 
           <!-- Siebtes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/3661222/pexels-photo-3661222.jpeg?auto=compress&cs=tinysrgb&w=600" alt="a wooden giraffe, crocodile and an elephant sit on top of a book" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/5c2w7m25" alt="a wooden giraffe, crocodile and an elephant sit on top of a book" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -224,7 +224,7 @@
 
           <!-- Achtes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/247929/pexels-photo-247929.jpeg?auto=compress&cs=tinysrgb&w=600" alt="a chair with a chest on top and a bike next to each other outside of a store" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/pmc7xvsf" alt="a chair with a chest on top and a bike next to each other outside of a store" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -241,7 +241,7 @@
 
           <!-- Neuntes Element -->
           <div class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-150 hover:scale-105 hover:shadow">
-            <img src="https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=600" alt="a white sink surrounded by a circular mirror with cosmetics on top" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
+            <img src="https://tinyurl.com/3e7sc9nw" alt="a white sink surrounded by a circular mirror with cosmetics on top" class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0"></div>
             <div class="flex items-end p-6 sm:absolute sm:inset-0">
               <div>
@@ -272,7 +272,7 @@
     <section aria-labelledby="cause-heading">
     <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
         <div class="absolute inset-0 overflow-hidden">
-          <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-full w-full object-cover object-center">
+          <img src="https://tinyurl.com/39297xb6" alt="" class="h-full w-full object-cover object-center">
         </div>
         <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
         <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
