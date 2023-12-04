@@ -29,6 +29,30 @@ class ImageService
         }
     }
 
+    public function processAndStoreProfilePicture(UploadedFile $imageFile, string $path): string
+    {
+        // Save the original image temporarily
+        $tempFilename = 'temp_' . time() . '.' . $imageFile->getClientOriginalExtension();
+        $tempPath = 'temp/' . $tempFilename;
+        Storage::disk('public')->put($tempPath, file_get_contents($imageFile));
+
+        $newFilename = 'profile_' . time() . '.webp';
+        $newPath = 'profile_pictures/' . $newFilename;
+
+        // Process the image using the Node.js script
+        $this->processImage($tempPath, $newPath, 'imageProcessorProfile.js');
+
+        // Delete the temporary file
+        Storage::disk('public')->delete($tempPath);
+
+        // Delete the old image if it exists
+        if (!empty($path) && Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->delete($path);
+        }
+
+        return $newPath;
+    }
+
     /**
      * Store an individual image associated with a product.
      * Processes the image and creates various versions (original, resized, show, thumbnail).

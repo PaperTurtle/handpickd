@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Services\ImageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**
@@ -16,6 +19,13 @@ use Illuminate\View\View;
  */
 class ProfileController extends Controller
 {
+    protected $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     /**
      * Display the user's profile.
      * This method returns the view for the user's profile with the user data.
@@ -39,7 +49,15 @@ class ProfileController extends Controller
     public function edit(int $userID): View
     {
         $user = User::findOrFail($userID);
-        return view('profile.edit', ['user' => $user]);
+        $profilePictureUrl = '';
+        if ($user->profile->profile_picture) {
+            $profilePictureUrl = Storage::url($user->profile->profile_picture);
+        }
+
+        return view('profile.edit', [
+            'user' => $user,
+            'profilePictureUrl' => $profilePictureUrl
+        ]);
     }
 
     /**
@@ -54,16 +72,27 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request, int $userID): RedirectResponse
     {
-        $user = User::findOrFail($userID);
+        $user = User::with('profile')->findOrFail($userID);
         $user->fill($request->validated());
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        $user->save();
+        if ($request->hasFile('profile_picture')) {
+            $path = $this->imageService->processAndStoreProfilePicture(
+                $request->file('profile_picture'),
+                $user->profile->profile_picture ?? ''
+            );
 
-        return Redirect::route('profile.edit', $userID)->with('status', 'Profile updated successfully.');
+            $user->profile->profile_picture = $path;
+        }
+
+        $user->save();
+        $user->profile->bio = $request->input('bio');
+        $user->profile->save();
+
+        return Redirect::route('profile.show', $userID)->with('status', 'Profile updated successfully.');
     }
 
     /**
