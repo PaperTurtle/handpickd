@@ -20,7 +20,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @method BelongsTo user() BelongsTo relationship with User. Indicates the user who owns the shopping cart item.
  * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product that is in the shopping cart.
- *
+ * 
+ * @method float|int getTotalPriceAttribute() Accessor to calculate the total price of the cart item.
+ * @method bool isEmpty() Checks if the shopping cart is empty.
+ * 
  * @package App\Models
  */
 class ShoppingCart extends Model
@@ -66,5 +69,15 @@ class ShoppingCart extends Model
     public function getTotalPriceAttribute(): float|int
     {
         return $this->quantity * $this->product->price;
+    }
+
+    /**
+     * Check if the shopping cart is empty.
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return $this->where('user_id', $this->user_id)->count() == 0;
     }
 }
