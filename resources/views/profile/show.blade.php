@@ -11,14 +11,6 @@
                             class="w-60 h-60 rounded-full">
                         </img>
                     @else
-                        @php
-                            function getUserInitials($name)
-                            {
-                                return collect(explode(' ', $name))
-                                    ->map(fn($word) => strtoupper(substr($word, 0, 1)))
-                                    ->join('');
-                            }
-                        @endphp
                         <span class="inline-flex h-28 w-28 items-center justify-center rounded-full bg-gray-500">
                             <span class="text-3xl font-medium leading-none text-white">
                                 {{ getUserInitials($user->name) }}</span>
