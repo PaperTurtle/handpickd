@@ -63,7 +63,10 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return Redirect::route('profile.edit', $userID)->with('status', 'Profile updated successfully.');
+        $user->profile->bio = $request->input('bio');
+        $user->profile->save();
+
+        return Redirect::route('profile.index', $userID)->with('status', 'Profile updated successfully.');
     }
 
     /**
