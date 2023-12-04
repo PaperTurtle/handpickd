@@ -11,13 +11,14 @@ it('updates user profile information', function () {
 
     $this->actingAs($user)
         ->patch(route('profile.update', ['userID' => $user->id]), $updatedData)
-        ->assertRedirect(route('profile.edit', ['userID' => $user->id]))
+        ->assertRedirect(route('profile.show', ['userID' => $user->id]))
         ->assertSessionHas('status', 'Profile updated successfully.');
 
     $this->assertDatabaseHas('users', [
         'id' => $user->id,
         'name' => 'New Name',
         'email' => 'newemail@example.com',
+
     ]);
 });
 
