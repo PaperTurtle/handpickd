@@ -13,7 +13,7 @@
                 <div class="flex items-center">
                     <input id="{{ $category->name }}" name="categories[]" value="{{ $category->id }}" type="checkbox"
                         {{ in_array($category->id, request('categories', [])) ? 'checked' : '' }}
-                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 transition-all delay-[10ms]">
                     <label for="{{ $category->name }}"
                         class="ml-3 whitespace-nowrap pr-6 text-sm font-medium text-text">{{ $category->name }}</label>
                 </div>
