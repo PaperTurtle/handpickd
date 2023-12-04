@@ -237,7 +237,7 @@
                                     customers</p>
 
                                 <button @click="writingReview = true"
-                                    class="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-text hover:bg-gray-50 sm:w-auto lg:w-full">Write
+                                    class="mt-6 inline-flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-8 py-2 text-sm font-medium text-text hover:bg-gray-50 sm:w-auto lg:w-full transition-all delay-[15ms]">Write
                                     a review</button>
                             </div>
                         </template>
