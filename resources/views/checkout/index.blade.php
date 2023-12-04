@@ -136,9 +136,6 @@
                 openDeleteModal: false,
                 showSuccessDeleteAlert: false,
 
-                init() {
-                    console.log(this.cartItems);
-                },
                 removeFromCart(itemId) {
                     fetch(`/cart/${itemId}`, {
                             method: 'DELETE',
