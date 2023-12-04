@@ -4,15 +4,28 @@
         <!-- Personal Information -->
         <h2 class="text-2xl mt-10 font-heading">Personal information</h2>
         <section class="mt-6 border-t border-b border-gray-300 pt-8 pb-6 h-fit">
-            <div class="md:flex">
-                <div>
+            <div class="md:flex justify-center">
+                <div class="flex justify-center items-center">
                     @if ($user->profile->profile_picture !== null)
                         <img src="{{ Storage::url($user->profile->profile_picture) }}" alt=""
                             class="w-60 h-60 rounded-full">
                         </img>
+                    @else
+                        @php
+                            function getUserInitials($name)
+                            {
+                                return collect(explode(' ', $name))
+                                    ->map(fn($word) => strtoupper(substr($word, 0, 1)))
+                                    ->join('');
+                            }
+                        @endphp
+                        <span class="inline-flex h-28 w-28 items-center justify-center rounded-full bg-gray-500">
+                            <span class="text-3xl font-medium leading-none text-white">
+                                {{ getUserInitials($user->name) }}</span>
+                        </span>
                     @endif
                 </div>
-                <div class="md:ml-40">
+                <div class="md:ml-10">
                     <div>
                         <div class="mt-4 font-bold">Name:</div>
                         <div class="mt-1"> {{ $user->name }}</div>
