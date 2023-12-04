@@ -22,35 +22,35 @@
                                         <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div
                                                 class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                                                <img src="{{ URL('images/index_1.jpg') }}" alt=""
+                                                <img src="{{ URL('images/index_1.jpg') }}" alt="Index Image 1"
                                                     class="h-full w-full object-cover object-center">
                                             </div>
                                             <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_2.jpg') }}" alt=""
-                                                    class="h-full w-full object-cover object-center">
-                                            </div>
-                                        </div>
-                                        <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_3.jpg') }}" alt=""
-                                                    class="h-full w-full object-cover object-center">
-                                            </div>
-                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_4.jpg') }}" alt=""
-                                                    class="h-full w-full object-cover object-center">l
-                                            </div>
-                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_5.jpg') }}" alt=""
+                                                <img src="{{ URL('images/index_2.jpg') }}" alt="Index Image 2"
                                                     class="h-full w-full object-cover object-center">
                                             </div>
                                         </div>
                                         <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                                             <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_6.jpg') }}" alt=""
+                                                <img src="{{ URL('images/index_3.jpg') }}" alt="Index Image 3"
                                                     class="h-full w-full object-cover object-center">
                                             </div>
                                             <div class="h-64 w-44 overflow-hidden rounded-lg">
-                                                <img src="{{ URL('images/index_7.jpg') }}" alt=""
+                                                <img src="{{ URL('images/index_4.jpg') }}" alt="Index Image 4"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="{{ URL('images/index_5.jpg') }}" alt="Index Image 5"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                        </div>
+                                        <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="{{ URL('images/index_6.jpg') }}" alt="Index Image 6"
+                                                    class="h-full w-full object-cover object-center">
+                                            </div>
+                                            <div class="h-64 w-44 overflow-hidden rounded-lg">
+                                                <img src="{{ URL('images/index_7.jpg') }}" alt="Index Image 7"
                                                     class="h-full w-full object-cover object-center">
                                             </div>
                                         </div>
@@ -322,7 +322,7 @@
             <section aria-labelledby="cause-heading">
                 <div class="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
                     <div class="absolute inset-0 overflow-hidden">
-                        <img src="{{ URL('images/we_as_handpickd.jpg') }}" alt=""
+                        <img src="{{ URL('images/we_as_handpickd.jpg') }}" alt="We As Handpickd"
                             class="h-full w-full object-cover object-center">
                     </div>
                     <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
@@ -391,7 +391,8 @@
             <section aria-labelledby="testimonial-heading"
                 class="bg-primary mb-20 relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-10 rounded-lg">
                 <div class="mx-auto max-w-2xl lg:max-w-none">
-                    <h2 id="testimonial-heading" class="text-2xl font-bold tracking-tight text-background">What are
+                    <h2 id="testimonial-heading"
+                        class="text-3xl font-bold tracking-tight text-background font-heading text-center">What are
                         people saying?</h2>
 
                     <div class="mt-16 space-y-16 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
