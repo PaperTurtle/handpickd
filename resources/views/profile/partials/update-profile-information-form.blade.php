@@ -50,10 +50,11 @@
             @endif
         </div>
 
-        <div class="h-40" x-data="bio()">
+        <div class="h-40" x-data="{ inputValue: '{{ old('bio', $user->profile->bio) }}' }">
             <x-input-label for="bio" :value="__('Bio')" />
-            <textarea id="bio" x-model="inputValue" name="bio" type="text" class="mt-1 w-full h-32" :value="old('bio', $user->profile->bio)"></textarea>
+            <textarea id="bio" x-model="inputValue" name="bio" type="text" class="mt-1 w-full h-32">{{ old('bio', $user->profile->bio) }}</textarea>
         </div>
+
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
@@ -67,7 +68,7 @@
 </section>
 
 <script>
-    function bio(){
+    function bio() {
         return {
             inputValue: @json($user->profile->bio)
         }
