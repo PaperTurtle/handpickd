@@ -1,6 +1,6 @@
 <footer class="bg-primary mt-10">
     <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-5 lg:px-8">
-        <nav class="-mb-6 columns-2 flex justify-center space-x-4 sm:flex sm:justify-center sm:space-x-12"
+        <nav class="-mb-6 columns-2 flex justify-center space-x-4 sm:flex sm:justify-center sm:space-x-12 font-medium"
             aria-label="Footer">
             <div class="pb-6">
                 <a href="{{ route('about-us') }}"
@@ -27,7 +27,8 @@
         </nav>
 
         <div class="mt-10 flex-col sm-flex justify-center space-y-5 space-x-10">
-            <p class="mt-1 text-center text-xs leading-5 text-background">Copyright &#169; 2023 Handpickd. All Rights
+            <p class="mt-1 text-center text-xs leading-5 text-background font-medium">Copyright &#169; 2023 Handpickd.
+                All Rights
                 Reserved</p>
         </div>
 
