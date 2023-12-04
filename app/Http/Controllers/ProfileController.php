@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Services\ImageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,13 @@ use Illuminate\View\View;
  */
 class ProfileController extends Controller
 {
+    protected $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     /**
      * Display the user's profile.
      * This method returns the view for the user's profile with the user data.
@@ -72,15 +80,12 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('profile_picture')) {
-            $photo = $request->file('profile_picture');
-            $filename = time() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('public/profile_pictures', $filename);
+            $path = $this->imageService->processAndStoreProfilePicture(
+                $request->file('profile_picture'),
+                $user->profile->profile_picture ?? ''
+            );
 
-            Log::info("File stored at: " . $path);
-
-            $user->profile->profile_picture = 'profile_pictures/' . $filename;
-        } else {
-            Log::error("File upload error");
+            $user->profile->profile_picture = $path;
         }
 
         $user->save();
