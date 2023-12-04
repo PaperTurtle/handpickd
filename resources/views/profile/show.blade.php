@@ -6,9 +6,11 @@
         <section class="mt-6 border-t border-b border-gray-300 pt-8 pb-6 h-fit">
             <div class="md:flex">
                 <div>
-                    <img src="{{ Storage::url($user->profile->profile_picture) }}" alt=""
-                        class="w-60 h-60 rounded-full">
-                    </img>
+                    @if ($user->profile->profile_picture !== null)
+                        <img src="{{ Storage::url($user->profile->profile_picture) }}" alt=""
+                            class="w-60 h-60 rounded-full">
+                        </img>
+                    @endif
                 </div>
                 <div class="md:ml-40">
                     <div>
