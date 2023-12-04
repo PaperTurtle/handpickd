@@ -21,6 +21,7 @@ it('updates a product', function () {
         'name' => 'Updated Name',
         'description' => 'Updated Description',
         'price' => '10.00',
+        'quantity' => '10',
     ];
     $response = $this->put(route('products.update', $product), $updatedData);
     $response->assertRedirect(route('products.show', $product));
