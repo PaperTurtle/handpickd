@@ -5,7 +5,7 @@
             <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                 <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div class="sm:max-w-lg">
-                        <h1 class="text-4xl font-bold tracking-tight sm:text-6xl font-heading">Handpickd</h1>
+                        <h1 class="text-5xl font-bold tracking-tight font-heading">Handpickd</h1>
                         <p class="mt-4 text-md text-gray-500 leading-8">Welcome to Handpickd, a community-driven platform
                             that
                             celebrates creativity and craftsmanship. </br> Handpickd provides a space for artisans to
@@ -105,7 +105,8 @@
             <section aria-labelledby="category-heading" class="bg-primary">
                 <div class="mx-auto max-w-[2000px] mb-[100px] px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
                     <div class="sm:flex sm:items-baseline sm:justify-between">
-                        <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-background">Shop by
+                        <h2 id="category-heading"
+                            class="text-3xl font-bold tracking-tight text-background font-heading">Shop by
                             Category</h2>
                     </div>
 
@@ -326,7 +327,8 @@
                     </div>
                     <div aria-hidden="true" class="absolute inset-0 bg-gray-900 bg-opacity-50"></div>
                     <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-                        <h2 id="cause-heading" class="text-3xl font-bold tracking-tight text-background sm:text-4xl">
+                        <h2 id="cause-heading"
+                            class="text-3xl font-bold tracking-tight text-background sm:text-4xl font-heading">
                             Long-term thinking</h2>
                         <p class="mt-3 text-xl text-background">We're committed to create a space for responsible,
                             sustainable, and ethical manufacturing. Our small-scale approach allows our users to focus
@@ -343,10 +345,11 @@
             <section aria-labelledby="favorites-heading">
                 <div class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
                     <div class="sm:flex sm:items-baseline sm:justify-between">
-                        <h2 id="favorites-heading" class="text-2xl font-bold tracking-tight text-primary">Top Rated
+                        <h2 id="favorites-heading"
+                            class="text-3xl font-bold tracking-tight text-primary font-heading">Top Rated
                             Products</h2>
                         <a href="{{ route('products.index') }}"
-                            class="hidden text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
+                            class="hidden text-md font-semibold rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
                             Shop all products
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -375,8 +378,8 @@
 
                     <!-- Browse all favorites mobile  -->
                     <div class="mt-6 sm:hidden">
-                        <a href="#"
-                            class="block text-sm font-semibold rounded-md border border-transparent bg-primary px-4 py-1 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
+                        <a href="{{ route('products.index') }}"
+                            class="block text-md font-semibold text-center rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
                             Browse all favorites
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -406,6 +409,7 @@
                                     Davis</cite>
                             </div>
                         </blockquote>
+                        <hr class="mt-1 mb-1 w-1/2 mx-auto block sm:hidden">
                         <blockquote class="sm:flex lg:block">
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
                                 class="flex-shrink-0 text-background opacity-75">
@@ -421,6 +425,7 @@
                                     Miller</cite>
                             </div>
                         </blockquote>
+                        <hr class="mt-1 mb-1 w-1/2 mx-auto block sm:hidden">
                         <blockquote class="sm:flex lg:block">
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
                                 class="flex-shrink-0 text-background opacity-75">
