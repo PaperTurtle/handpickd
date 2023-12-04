@@ -34,40 +34,18 @@
 
                                         <div>
                                             <!-- quantity dropdown-->
-                                            <div class="relative inline-block text-left w-16" x-data="{
-                                                open: false,
-                                                toggle() { this.open = !this.open },
-                                                closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } }
-                                            }"
-                                                @click.away="closeOnClickAway">
-                                                <!-- Button -->
-                                                <button type="button"
-                                                    class="inline-flex w-full justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    @click="open = !open">
-                                                    <div class="row-span-6" x-text="cartItem.quantity"></div>
-                                                    <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20"
-                                                        fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd"
-                                                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                                            clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
-                                                <!-- items -->
-                                                <ul class="absolute right-0 mt-2 w-16 max-h-52 overflow-y-auto bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50"
-                                                    x-show="open" x-transition:enter="transition ease-out duration-100"
-                                                    x-transition:enter-start="transform opacity-0 scale-95"
-                                                    x-transition:enter-end="transform opacity-100 scale-100"
-                                                    x-transition:leave="transition ease-in duration-75"
-                                                    x-transition:leave-start="transform opacity-100 scale-100"
-                                                    x-transition:leave-end="transform opacity-0 scale-95">
+                                            <div class="relative inline-block text-left sm:w-16">
+                                                <select x-model="cartItem.quantity"
+                                                    @change="updateCart(cartItem.id, $event.target.value)"
+                                                    class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
                                                     <template
-                                                        x-for="i in Array.from({length: cartItem.product.quantity}, (_, i) => i + 1)">
-                                                        <li class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-100"
-                                                            @click="`${toggle()}; ${updateCart(cartItem.id, i)}`">
-                                                            <button class="text-center" x-text="i"></button>
-                                                        </li>
+                                                        x-for="i in Array.from({length: cartItem.product.quantity}, (_, i) => i + 1)"
+                                                        :key="i">
+                                                        <option :value="i"
+                                                            x-bind:selected="i == cartItem.quantity" x-text="i">
+                                                        </option>
                                                     </template>
-                                                </ul>
+                                                </select>
                                             </div>
                                             <!-- Remove -->
                                             <div class="absolute right-0 top-0">
@@ -157,6 +135,10 @@
                 cartItems: @json($cartItems),
                 openDeleteModal: false,
                 showSuccessDeleteAlert: false,
+
+                init() {
+                    console.log(this.cartItems);
+                },
                 removeFromCart(itemId) {
                     fetch(`/cart/${itemId}`, {
                             method: 'DELETE',
