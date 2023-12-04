@@ -348,9 +348,9 @@
                         <h2 id="favorites-heading"
                             class="text-3xl font-bold tracking-tight text-primary font-heading">Top Rated
                             Products</h2>
-                        <a href="{{ route('products.index') }}"
+                        <a href="{{ route('products.index', ['sort' => 'rating']) }}"
                             class="hidden text-md font-semibold rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
-                            Shop all products
+                            Browse all favorites
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </div>
