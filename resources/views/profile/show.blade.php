@@ -45,19 +45,18 @@
             @if ($hasProducts)
             <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
                 @foreach ($user->products as $product)
-                <div class="mt-4 mb-4 row-span-4 justify-between grid">
-                    <div class="flex">
+                <div class="mt-4 mb-4 justify-between grid ">
+                    <div class="flex relative">
                         <div class="mr-4">
                             <img class="w-32 h-32" src=""></img>
                         </div>
-                        <div >
-                            <div>{{$product->name}}</div>
+                        <div class="relative">
+                            <div class="font-medium">{{$product->name}}</div>
                             <div class="mt-4">{{$product->price}} €</div>
-                            <!-- <<div>{{$product->reviews}}</div> -->
                             <div class="mt-8">{{$product->description}}</div>
                         </div>
                     </div>
-                    <button class="mt-4 border-2">edit</button>
+                    <button type="submit" class="mt-4 w-20 h-10 rounded-lg bg-accent hover:bg-primary p-1 text-white ml-auto mr-4">Edit</button>
                 </div>
                 @endforeach
             </div>
@@ -74,9 +73,25 @@
         <section class="border-b border-gray-300 pb-6 ">
             <h3 class="text-2xl mb-4 mt-6">Your Orders</h3>
             @if ($hasOrders)
-            <div>your orders</div>
-            @endif
-            @if (!$hasOrders)
+            <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
+                @foreach ($user->transactions as $transaction)
+                <div class="mt-4 mb-4 justify-between grid ">
+                    <div class="flex relative">
+                        <div class="mr-4">
+                            <img class="w-32 h-32" src=""></img>
+                        </div>
+                        <div class="relative">
+                            <div class="font-medium">{{$transaction->product->name}}</div>
+                            <div class="mt-4">Quantity: {{$transaction->quantity}} pcs.</div>
+                            <div class="mt-4">Price: {{$transaction->total_price}} €</div>
+                            <div class="mt-4">Status: {{$transaction->status}}</div>
+                            <div class="mt-4">Ordered on: {{$transaction->created_at}}</div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @else
             <div>You havn't ordered anything yet.</div>
             <a href="{{route('products.index')}}">Visit the product page to order something.</a>
             @endif
