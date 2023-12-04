@@ -7,7 +7,9 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**
@@ -39,7 +41,15 @@ class ProfileController extends Controller
     public function edit(int $userID): View
     {
         $user = User::findOrFail($userID);
-        return view('profile.edit', ['user' => $user]);
+        $profilePictureUrl = '';
+        if ($user->profile->profile_picture) {
+            $profilePictureUrl = Storage::url($user->profile->profile_picture);
+        }
+
+        return view('profile.edit', [
+            'user' => $user,
+            'profilePictureUrl' => $profilePictureUrl
+        ]);
     }
 
     /**
@@ -54,19 +64,30 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request, int $userID): RedirectResponse
     {
-        $user = User::findOrFail($userID);
+        $user = User::with('profile')->findOrFail($userID);
         $user->fill($request->validated());
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        $user->save();
+        if ($request->hasFile('profile_picture')) {
+            $photo = $request->file('profile_picture');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            $path = $photo->storeAs('public/profile_pictures', $filename);
 
+            Log::info("File stored at: " . $path);
+
+            $user->profile->profile_picture = 'profile_pictures/' . $filename;
+        } else {
+            Log::error("File upload error");
+        }
+
+        $user->save();
         $user->profile->bio = $request->input('bio');
         $user->profile->save();
 
-        return Redirect::route('profile.index', $userID)->with('status', 'Profile updated successfully.');
+        return Redirect::route('profile.show', $userID)->with('status', 'Profile updated successfully.');
     }
 
     /**
