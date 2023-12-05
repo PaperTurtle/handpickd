@@ -16,9 +16,7 @@ it('has correct fillable attributes', function () {
 
     expect($userProfile->getFillable())->toBe([
         'user_id',
-        'location',
         'bio',
-        'contact_info',
         'profile_picture',
     ]);
 });
@@ -26,12 +24,10 @@ it('has correct fillable attributes', function () {
 
 it('can be created', function () {
     $userProfile = UserProfile::factory()->create([
-        'location' => 'New York',
         'bio' => 'This is a bio.',
     ]);
 
     $this->assertDatabaseHas('user_profiles', [
-        'location' => 'New York',
         'bio' => 'This is a bio.',
     ]);
 });
@@ -39,10 +35,9 @@ it('can be created', function () {
 it('can update attributes', function () {
     $userProfile = UserProfile::factory()->create();
 
-    $userProfile->update(['location' => 'Los Angeles']);
+    $userProfile->update(['bio' => 'Something else.']);
 
     $this->assertDatabaseHas('user_profiles', [
         'id' => $userProfile->id,
-        'location' => 'Los Angeles',
     ]);
 });
