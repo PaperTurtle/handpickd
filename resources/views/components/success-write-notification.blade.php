@@ -1,4 +1,4 @@
-<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start z-50">
+<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start z-[100]">
     <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
         <div x-cloak x-show="showSuccessWriteAlert" x-transition:enter="transform ease-out duration-300 transition"
             x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"

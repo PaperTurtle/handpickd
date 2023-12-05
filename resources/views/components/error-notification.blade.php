@@ -1,4 +1,4 @@
-<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start z-50">
+<div aria-live="assertive" class="pointer-events-none fixed inset-0 flex px-4 py-6 items-start z-[100]">
     <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
             x-transition:enter="transform ease-out duration-300 transition"
