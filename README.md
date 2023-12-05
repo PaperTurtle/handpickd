@@ -84,12 +84,19 @@ composer global require laravel/installer
 
 ### Change PHP.ini
 
-Lastly, open up the `php.ini` file in the `C:\xampp\php` directory or open the XAMPP Control Panel and click on the Config Button in the Apache Section and uncomment the following line to the bottom of the file:
+Lastly, open up the `php.ini` file in the `C:\xampp\php` directory or open the XAMPP Control Panel and click on the Config Button in the Apache Section. Once opened, use STRG + F to search for `extension=gd`. Once found, remove the semicolon in front of it. It should look like this:
+
+```shell
 ;extension=gd
+```
 
 To
 
+```shell
 extension=gd
+```
+
+> **This is very important, as it will allow the application to send emails to users when they register, reset their password, or purchase a product.**
 
 ## 📜 Page Breakdown
 
