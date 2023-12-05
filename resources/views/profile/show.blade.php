@@ -46,7 +46,11 @@
         @if ($user->isArtisan)
             <!-- Your Products -->
             <section class="border-b border-gray-300 mt-6 pb-8">
-                <h3 class="text-3xl font-bold font-heading">Your Products</h3>
+                @if ($user->id === auth()->id())
+                    <h3 class="text-3xl font-bold font-heading">Your Products</h3>
+                @else
+                    <h3 class="text-3xl font-bold font-heading">{{ $user->name }}'s Products</h3>
+                @endif
                 @if ($hasProducts)
                     <div class="mt-6 grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-3">
                         @foreach ($user->products as $product)
