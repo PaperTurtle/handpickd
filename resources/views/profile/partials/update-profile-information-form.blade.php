@@ -20,7 +20,7 @@
 
         <div class="col-span-full" x-data="{ imagePreview: '{{ $profilePictureUrl }}' }">
             <label for="profile_picture" class="block text-sm font-medium leading-6 text-gray-900">Photo
-                <div class="mt-2 flex items-center gap-x-3">
+                <div class="mt-2 flex items-center gap-x-3 cursor-pointer">
                     <template x-if="imagePreview">
                         <img :src="imagePreview" class="h-16 w-16 rounded-full" alt="Profile picture preview">
                     </template>
