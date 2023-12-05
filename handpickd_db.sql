@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 06:31 PM
+-- Generation Time: Dec 05, 2023 at 09:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,66 @@ SET time_zone = "+00:00";
 --
 -- Database: `handpickd_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buyers`
+--
+
+CREATE TABLE `buyers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `transaction_id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `state_province` varchar(255) DEFAULT NULL,
+  `postal_code` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `delivery_method` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `buyers`
+--
+
+INSERT INTO `buyers` (`id`, `transaction_id`, `email`, `phone_number`, `first_name`, `last_name`, `address`, `city`, `country`, `state_province`, `postal_code`, `created_at`, `updated_at`, `delivery_method`) VALUES
+(1, 47, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 17:37:12', '2023-11-30 17:37:12', NULL),
+(2, 48, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 17:37:12', '2023-11-30 17:37:12', NULL),
+(3, 49, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 18:09:52', '2023-11-30 18:09:52', NULL),
+(4, 50, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 18:41:19', '2023-11-30 18:41:19', NULL),
+(5, 51, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 18:46:29', '2023-11-30 18:46:29', NULL),
+(6, 52, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 18:52:30', '2023-11-30 18:52:30', NULL),
+(7, 53, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:01:44', '2023-11-30 19:01:44', NULL),
+(8, 54, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:06:15', '2023-11-30 19:06:15', NULL),
+(9, 55, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:10:08', '2023-11-30 19:10:08', NULL),
+(10, 56, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:10:08', '2023-11-30 19:10:08', NULL),
+(11, 57, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:11:21', '2023-11-30 19:11:21', NULL),
+(12, 58, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:16:04', '2023-11-30 19:16:04', NULL),
+(13, 59, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:21:23', '2023-11-30 19:21:23', NULL),
+(14, 60, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:22:46', '2023-11-30 19:22:46', NULL),
+(15, 61, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:26:22', '2023-11-30 19:26:22', NULL),
+(16, 62, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:29:01', '2023-11-30 19:29:01', NULL),
+(17, 63, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:35:47', '2023-11-30 19:35:47', NULL),
+(18, 64, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:37:39', '2023-11-30 19:37:39', NULL),
+(19, 65, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:42:16', '2023-11-30 19:42:16', NULL),
+(20, 66, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:52:32', '2023-11-30 19:52:32', NULL),
+(21, 67, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-11-30 19:56:01', '2023-11-30 19:56:01', NULL),
+(22, 68, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 15:59:07', '2023-12-01 15:59:07', 'Express'),
+(23, 69, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:10:49', '2023-12-01 16:10:49', 'Standard'),
+(24, 70, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:34:33', '2023-12-01 16:34:33', 'Express'),
+(25, 71, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:34:33', '2023-12-01 16:34:33', 'Express'),
+(26, 72, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:41:04', '2023-12-01 16:41:04', 'Express'),
+(27, 73, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:41:04', '2023-12-01 16:41:04', 'Express'),
+(28, 74, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:50:03', '2023-12-01 16:50:03', 'Express'),
+(29, 75, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 16:50:03', '2023-12-01 16:50:03', 'Express'),
+(30, 76, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-01 20:04:03', '2023-12-01 20:04:03', 'Express'),
+(31, 77, 'seweryn_cz@outlook.com', '01590 1137779', 'Seweryn', 'Czabanowski', 'Pepitapromenade 22', 'Berlin', 'Germany', 'Berlin', '13587', '2023-12-04 07:48:28', '2023-12-04 07:48:28', 'Standard');
 
 -- --------------------------------------------------------
 
@@ -143,26 +203,26 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `artisan_id`, `category_id`, `name`, `description`, `price`, `quantity`, `created_at`, `updated_at`) VALUES
-(4, 1, 1, 'Handmade Wooden Bowl', 'A beautifully carved wooden bowl that serves as a centerpiece.', 59.99, 6, '2023-11-01 16:34:34', '2023-11-09 16:31:53'),
-(11, 16, 3, 'Vintage Leather Wallet', 'A durable and stylish vintage leather wallet.', 29.99, 18, '2023-11-12 09:41:12', '2023-11-22 11:20:56'),
-(12, 16, 4, 'Handwoven Scarf', 'A warm and fashionable handwoven scarf.', 34.99, 5, '2023-11-12 09:41:12', '2023-11-22 11:20:56'),
-(13, 21, 5, 'Artisanal Scented Candles', 'Soothing scented candles made with natural ingredients.', 19.99, 29, '2023-11-12 09:41:12', '2023-11-21 16:11:56'),
-(14, 21, 6, 'Hand-painted Canvas Art', 'Abstract canvas art, perfect for decorating any room.', 89.99, 5, '2023-11-12 09:41:12', '2023-11-12 09:41:12'),
-(15, 27, 7, 'Personalized Jewelry Box', 'An elegant, personalized jewelry box for your treasures.', 49.99, 11, '2023-11-12 09:41:12', '2023-11-21 16:11:56'),
-(16, 27, 8, 'Custom Engraved Pen', 'A custom engraved pen, ideal for gifts.', 24.99, 19, '2023-11-12 09:41:12', '2023-11-21 16:14:39'),
+(4, 1, 1, 'Handmade Wooden Bowl', 'A beautifully carved wooden bowl that serves as a centerpiece.', 60.99, 8, '2023-11-01 16:34:34', '2023-12-04 08:43:59'),
+(11, 16, 3, 'Vintage Leather Wallet', 'A durable and stylish vintage leather wallet.', 29.99, 2, '2023-11-12 09:41:12', '2023-12-01 20:04:03'),
+(12, 16, 4, 'Handwoven Scarf', 'A warm and fashionable handwoven scarf.', 34.99, 1, '2023-11-12 09:41:12', '2023-12-01 15:59:07'),
+(13, 21, 5, 'Artisanal Scented Candles', 'Soothing scented candles made with natural ingredients.', 19.99, 24, '2023-11-12 09:41:12', '2023-11-30 17:37:12'),
+(14, 21, 6, 'Hand-painted Canvas Art', 'Abstract canvas art, perfect for decorating any room.', 89.99, 1, '2023-11-12 09:41:12', '2023-12-01 16:10:49'),
+(15, 27, 7, 'Personalized Jewelry Box', 'An elegant, personalized jewelry box for your treasures.', 49.99, 8, '2023-11-12 09:41:12', '2023-11-30 19:10:08'),
+(16, 27, 8, 'Custom Engraved Pen', 'A custom engraved pen, ideal for gifts.', 24.99, 14, '2023-11-12 09:41:12', '2023-11-30 13:46:27'),
 (17, 1, 4, 'Rustic Wooden Serving Tray', 'A handcrafted serving tray made from reclaimed wood, perfect for rustic-themed gatherings.', 39.99, 14, '2023-11-17 13:34:53', '2023-11-23 15:51:47'),
 (18, 1, 4, 'Oak Wood Coaster Set', 'A set of six oak wood coasters, each uniquely grained and finished with a protective coating to resist water stains.', 25.00, 25, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
 (19, 1, 4, 'Carved Wooden Picture Frame', 'An elegantly carved picture frame, suitable for 5x7 inch photos.', 29.50, 20, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
-(20, 16, 3, 'Hand-Stitched Leather Belt', 'A classic, durable leather belt, hand-stitched for superior quality.', 35.99, 18, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
-(21, 16, 3, 'Leather Journal Cover', 'A premium leather journal cover, designed to fit standard-sized notebooks.', 40.00, 12, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
-(22, 16, 3, 'Leather Phone Case', 'A sleek, handcrafted leather phone case.', 27.99, 23, '2023-11-17 13:34:53', '2023-11-22 11:20:56'),
-(23, 16, 3, 'Vintage Leather Satchel', 'A stylish satchel made from high-quality vintage leather.', 69.99, 9, '2023-11-17 13:34:53', '2023-11-21 17:59:15'),
+(20, 16, 3, 'Hand-Stitched Leather Belt', 'A classic, durable leather belt, hand-stitched for superior quality.', 35.99, 11, '2023-11-17 13:34:53', '2023-12-04 07:48:28'),
+(21, 16, 3, 'Leather Journal Cover', 'A premium leather journal cover, designed to fit standard-sized notebooks.', 40.00, 10, '2023-11-17 13:34:53', '2023-12-01 16:34:33'),
+(22, 16, 3, 'Leather Phone Case', 'A sleek, handcrafted leather phone case.', 27.99, 21, '2023-11-17 13:34:53', '2023-12-01 16:41:04'),
+(23, 16, 3, 'Vintage Leather Satchel', 'A stylish satchel made from high-quality vintage leather.', 69.99, 8, '2023-11-17 13:34:53', '2023-12-01 16:41:04'),
 (24, 21, 10, 'Handcrafted Soap Set', 'A set of four natural, handcrafted soaps made with organic ingredients.', 24.99, 29, '2023-11-17 13:34:53', '2023-11-23 16:10:14'),
-(25, 21, 10, 'Decorative Throw Pillows', 'A pair of hand-sewn throw pillows, featuring vibrant, artistic designs.', 55.00, 14, '2023-11-17 13:34:53', '2023-11-23 16:13:11'),
-(26, 21, 10, 'Ceramic Coffee Mugs', 'A set of two handcrafted ceramic coffee mugs, each with a unique, rustic design.', 32.99, 20, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
-(27, 27, 1, 'Engraved Wooden Watch', 'A sophisticated wooden watch with a custom engraving option.', 60.00, 12, '2023-11-17 13:34:53', '2023-11-23 16:08:06'),
-(28, 27, 1, 'Personalized Leather Bookmark', 'A sleek leather bookmark, customizable with your choice of initials or a short message.', 12.99, 40, '2023-11-17 13:34:53', '2023-11-17 13:34:53'),
-(29, 27, 1, 'Hand-Engraved Decorative Plate', 'A stunning, hand-engraved decorative plate, ideal for display or special occasions.', 49.99, 8, '2023-11-17 13:34:53', '2023-11-17 13:34:53');
+(25, 21, 10, 'Decorative Throw Pillows', 'A pair of hand-sewn throw pillows, featuring vibrant, artistic designs.', 55.00, 12, '2023-11-17 13:34:53', '2023-11-30 19:01:44'),
+(26, 21, 10, 'Ceramic Coffee Mugs', 'A set of two handcrafted ceramic coffee mugs, each with a unique, rustic design.', 32.99, 19, '2023-11-17 13:34:53', '2023-12-01 16:50:03'),
+(27, 27, 1, 'Engraved Wooden Watch', 'A sophisticated wooden watch with a custom engraving option.', 60.00, 11, '2023-11-17 13:34:53', '2023-12-01 16:50:03'),
+(28, 27, 1, 'Personalized Leather Bookmark', 'A sleek leather bookmark, customizable with your choice of initials or a short message.', 12.99, 37, '2023-11-17 13:34:53', '2023-11-30 18:46:29'),
+(29, 27, 1, 'Hand-Engraved Decorative Plate', 'A stunning, hand-engraved decorative plate, ideal for display or special occasions.', 49.99, 5, '2023-11-17 13:34:53', '2023-11-25 16:59:27');
 
 -- --------------------------------------------------------
 
@@ -188,7 +248,6 @@ CREATE TABLE `product_images` (
 
 INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `alt_text`, `created_at`, `updated_at`, `resized_image_path`, `show_image_path`, `thumbnail_image_path`) VALUES
 (44, 13, 'product_images/product_1700227257_original.webp', 'Soothing scented candles made with natural ingredients.', '2023-11-17 12:20:57', '2023-11-21 17:01:33', 'product_images/product_1700227257_resized.webp', 'product_images/product_1700227257_show.webp', 'product_images/product_1700227257_thumbnail.webp'),
-(54, 4, 'product_images/product_1700237749_original.webp', 'A beautifully carved wooden bowl that serves as a centerpiece.', '2023-11-17 15:15:51', '2023-11-21 17:01:33', 'product_images/product_1700237749_resized.webp', 'product_images/product_1700237749_show.webp', 'product_images/product_1700237749_thumbnail.webp'),
 (56, 12, 'product_images/product_1700237909_original.webp', 'A warm and fashionable handwoven scarf.', '2023-11-17 15:18:30', '2023-11-21 17:01:33', 'product_images/product_1700237909_resized.webp', 'product_images/product_1700237909_show.webp', 'product_images/product_1700237909_thumbnail.webp'),
 (57, 13, 'product_images/product_1700237975_original.webp', 'Soothing scented candles made with natural ingredients.', '2023-11-17 15:19:37', '2023-11-21 17:01:33', 'product_images/product_1700237975_resized.webp', 'product_images/product_1700237975_show.webp', 'product_images/product_1700237975_thumbnail.webp'),
 (58, 14, 'product_images/product_1700238001_original.webp', 'Abstract canvas art, perfect for decorating any room.', '2023-11-17 15:20:04', '2023-11-21 17:01:34', 'product_images/product_1700238001_resized.webp', 'product_images/product_1700238001_show.webp', 'product_images/product_1700238001_thumbnail.webp'),
@@ -209,7 +268,7 @@ INSERT INTO `product_images` (`id`, `product_id`, `image_path`, `alt_text`, `cre
 (73, 28, 'product_images/product_1700239687_original.webp', 'A sleek leather bookmark, customizable with your choice of initials or a short message.', '2023-11-17 15:48:10', '2023-11-21 17:01:34', 'product_images/product_1700239687_resized.webp', 'product_images/product_1700239687_show.webp', 'product_images/product_1700239687_thumbnail.webp'),
 (74, 29, 'product_images/product_1700239767_original.webp', 'A stunning, hand-engraved decorative plate, ideal for display or special occasions.', '2023-11-17 15:49:29', '2023-11-21 17:01:34', 'product_images/product_1700239767_resized.webp', 'product_images/product_1700239767_show.webp', 'product_images/product_1700239767_thumbnail.webp'),
 (75, 11, 'product_images/product_1700585995_original.webp', 'A durable and stylish vintage leather wallet.', '2023-11-21 16:00:00', '2023-11-21 16:00:00', 'product_images/product_1700585995_resized.webp', 'product_images/product_1700585995_show.webp', 'product_images/product_1700585995_thumbnail.webp'),
-(76, 11, 'product_images/product_1700586064_original.webp', 'A durable and stylish vintage leather wallet.', '2023-11-21 16:01:08', '2023-11-21 17:01:34', 'product_images/product_1700586064_resized.webp', 'product_images/product_1700586064_show.webp', 'product_images/product_1700586064_thumbnail.webp');
+(82, 4, 'product_images/product_1701189156_original.webp', 'A beautifully carved wooden bowl that serves as a centerpiece.', '2023-11-28 15:32:40', '2023-11-28 15:32:40', 'product_images/product_1701189156_resized.webp', 'product_images/product_1701189156_show.webp', 'product_images/product_1701189156_thumbnail.webp');
 
 -- --------------------------------------------------------
 
@@ -249,12 +308,9 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `rating`, `review`, `creat
 (21, 15, 31, 1, 'Not what I expected, and the material feels a bit cheap.', '2023-11-12 09:47:34', '2023-11-12 09:47:34'),
 (22, 16, 30, 5, 'Stunning design and excellent quality. I highly recommend it.', '2023-11-12 09:47:34', '2023-11-12 09:47:34'),
 (23, 16, 31, 4, 'Great product, but the packaging could be improved.', '2023-11-12 09:47:34', '2023-11-12 09:47:34'),
-(24, 12, 1, 3, 'Very interesting product', '2023-11-14 11:09:44', '2023-11-14 11:09:44'),
-(25, 11, 1, 4, 'Very cool item', '2023-11-14 11:32:28', '2023-11-14 11:32:28'),
-(26, 14, 1, 5, 'Not so cool product :(', '2023-11-14 12:01:16', '2023-11-17 11:24:26'),
-(38, 13, 1, 4, 'Cool', '2023-11-14 19:55:36', '2023-11-15 14:29:15'),
+(26, 14, 1, 5, 'I\'ve changed my mind...THIS IS AMAZING!!! HELL YEAH', '2023-11-14 12:01:16', '2023-12-02 18:54:02'),
+(38, 13, 1, 5, 'Cool', '2023-11-14 19:55:36', '2023-12-02 19:29:26'),
 (39, 16, 1, 1, 'Rool', '2023-11-15 16:19:50', '2023-11-15 16:19:50'),
-(42, 15, 1, 4, 'Cool Stuff', '2023-11-16 15:15:06', '2023-11-17 11:48:09'),
 (71, 17, 11, 4, 'The rustic charm of this tray is perfect for my country cottage aesthetic. Love it!', '2023-11-17 13:44:08', '2023-11-17 13:44:08'),
 (72, 17, 11, 4, 'The rustic charm of this tray is perfect for my country cottage aesthetic. Love it!', '2023-11-17 13:44:38', '2023-11-17 13:44:38'),
 (101, 17, 13, 5, 'Every time I have guests over, they compliment this tray. It’s as sturdy as it is beautiful.', '2023-11-17 13:46:13', '2023-11-17 13:46:13'),
@@ -311,7 +367,103 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `rating`, `review`, `creat
 (296, 23, 12, 4, 'Classic design with a lot of character. It stands out from typical bags.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
 (297, 23, 29, 4, 'The satchel carries all my essentials without being bulky. The leather is really high quality.', '2023-11-17 14:07:18', '2023-11-17 17:05:05'),
 (298, 23, 10, 3, 'Good bag but I expected more compartments for organization.', '2023-11-17 14:07:18', '2023-11-17 14:07:18'),
-(299, 23, 11, 5, 'I’ve received numerous compliments on this bag. It’s durable and looks even better as it ages.', '2023-11-17 14:07:18', '2023-11-17 14:07:18');
+(299, 23, 11, 5, 'I’ve received numerous compliments on this bag. It’s durable and looks even better as it ages.', '2023-11-17 14:07:18', '2023-11-17 14:07:18'),
+(300, 28, 1, 5, 'Cool Stuff', '2023-11-25 13:33:05', '2023-11-25 13:33:05'),
+(309, 11, 1, 5, 'Very nice product, would buy again (maybe)', '2023-12-01 17:56:34', '2023-12-05 07:21:08'),
+(310, 24, 1, 5, 'Coolest Thing Ever!', '2023-12-02 18:16:01', '2023-12-02 18:16:22'),
+(314, 23, 1, 5, 'Cool thing!', '2023-12-03 13:26:30', '2023-12-03 13:26:30'),
+(315, 15, 1, 5, 'Cool Thing!', '2023-12-04 08:23:53', '2023-12-04 08:23:53'),
+(316, 4, 12, 5, 'This handmade wooden bowl is a masterpiece! The intricate carving and attention to detail make it a stunning centerpiece on my dining table. The craftsmanship is top-notch, and it adds a touch of elegance to any room. Highly recommended!', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(317, 4, 14, 3, 'While the design of this bowl is lovely, I found it to be slightly smaller than expected. The craftsmanship is good, but the size doesn\'t make it as versatile as I hoped. Still a beautiful piece, but be mindful of the dimensions.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(318, 4, 17, 4, 'This wooden bowl is a charming addition to my home. The quality is excellent, and it makes for a unique focal point. My only minor gripe is that it requires careful cleaning to preserve its beauty. Nevertheless, it\'s a delightful purchase.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(319, 4, 20, 2, 'Unfortunately, my bowl arrived with a small crack. While the design is appealing, the quality control seems lacking. Disappointed in the durability, as I expected better from a handmade item.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(320, 4, 22, 5, 'I absolutely love my handmade wooden bowl! It\'s not just a functional piece but a work of art. The size is perfect, and the craftsmanship is outstanding. It has become the highlight of my dining room.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(321, 4, 24, 3, 'The bowl\'s design is beautiful, but the wood seems a bit too delicate. I\'ve noticed a few scratches despite gentle use. It requires extra care to maintain its appearance, which can be a bit inconvenient.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(322, 4, 26, 4, 'The handmade wooden bowl is a conversation starter! Its unique design catches everyone\'s eye. It\'s perfect for serving snacks, though I wish it came with care instructions to ensure its longevity.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(323, 4, 28, 5, 'Exquisite craftsmanship! The bowl is not only a practical item but also a piece of art. The wood\'s natural grain is showcased beautifully. I couldn\'t be happier with this purchase.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(324, 4, 30, 2, 'The bowl arrived with an uneven finish, and the carving details were not as precise as I expected. It\'s a bit disappointing given the price. Quality control needs improvement.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(325, 4, 32, 4, 'I love the rustic charm of this bowl! It\'s well-made and looks fantastic as a centerpiece. The only downside is that it\'s not dishwasher-safe, which makes cleaning a bit more laborious.', '2023-12-04 20:49:16', '2023-12-04 20:49:16'),
+(326, 11, 10, 4, 'I love the vintage vibe of this leather wallet! It\'s durable and has that worn-in charm that gives it character. The stitching is well done, and it has enough compartments for all my cards and cash. The only downside is that it\'s a bit bulkier than I expected, but overall, it\'s a solid choice.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(327, 11, 11, 2, 'Disappointed with the quality of this wallet. The leather feels cheap, and after just a few weeks of use, it started showing signs of wear and tear. The card slots are tight, making it difficult to retrieve cards easily. Not worth the price in my opinion.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(328, 11, 13, 5, 'Absolutely thrilled with my purchase! This wallet exceeded my expectations. The leather is soft, the stitching is impeccable, and the vintage design is just what I was looking for. It\'s a stylish accessory that adds a touch of sophistication to my everyday carry.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(329, 11, 14, 3, 'The wallet is decent, but the color started fading sooner than I anticipated. The card slots are well-sized, but the overall construction feels a bit flimsy. It gets the job done, but I expected better longevity.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(330, 11, 15, 5, 'This wallet is a classic! The leather is of excellent quality, and it has a timeless appeal. The compartments are well-organized, and it fits comfortably in my pocket. A must-have for anyone who appreciates a blend of style and functionality.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(332, 11, 17, 4, 'The wallet has a rustic charm that I adore. It\'s spacious enough for my essentials, and the leather feels authentic. My only complaint is that the closure button is a bit loose, but it hasn\'t caused any issues so far.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(333, 11, 21, 5, 'Fantastic wallet! The vintage look is spot on, and it\'s holding up well to daily use. The attention to detail in the design is commendable. I appreciate the craftsmanship that went into creating this stylish accessory.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(334, 11, 22, 3, 'It\'s an average wallet. The leather is okay, but I expected a richer color. The card slots are a bit tight initially, and the wallet takes some breaking in. Decent for the price, but not outstanding.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(335, 11, 23, 5, 'This vintage leather wallet is a gem! The quality is exceptional, and it ages beautifully. The compartments are well thought out, providing practicality without compromising on style. A reliable and stylish accessory for sure.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(336, 11, 24, 2, 'Regretting my purchase. The leather feels plasticky, and the wallet started falling apart after a few weeks of use. Not the durable vintage accessory I was hoping for. Disappointed.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(337, 11, 25, 4, 'Pleasantly surprised by the quality of this wallet. The leather is soft yet sturdy, and the design is timeless. The only drawback is that it could use more card slots. Nonetheless, it\'s a stylish addition to my collection.', '2023-12-04 20:51:43', '2023-12-04 20:51:43'),
+(338, 12, 10, 4, 'I love the cozy feel of this handwoven scarf. The craftsmanship is evident in its softness and intricate patterns. However, I wish it were a bit longer for more styling options. Overall, a great addition to my winter wardrobe.', '2023-12-04 21:05:17', '2023-12-04 21:05:17'),
+(339, 12, 11, 5, 'The handwoven scarf exceeded my expectations! It\'s not only stylish but also incredibly warm. The quality is exceptional, and I appreciate the attention to detail in every stitch. A must-have accessory for the colder months.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(340, 12, 12, 3, 'The design of the handwoven scarf is lovely, but I found it to be a bit itchy against my skin. It\'s a beautiful accessory, but comfort is crucial for me. Perhaps a softer material would make it more wearable.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(341, 12, 13, 5, 'This scarf is a work of art! The vibrant colors and unique patterns make it a standout piece. The quality is excellent, and I\'ve received numerous compliments every time I wear it. Definitely, a great investment for anyone who loves statement accessories.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(342, 12, 14, 2, 'Unfortunately, I was disappointed with the handwoven scarf. The colors faded after just a few washes, and the fabric lost its original softness. It\'s a beautiful piece initially, but the lack of durability was a letdown.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(343, 12, 15, 5, 'I am in awe of the craftsmanship in this handwoven scarf. The intricate details and high-quality materials make it a standout accessory. It\'s not just a scarf; it\'s a wearable piece of art that enhances any outfit. Highly satisfied!', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(345, 12, 17, 5, 'I adore my handwoven scarf! The color palette is versatile, allowing me to pair it with various outfits. It\'s incredibly soft and comfortable, making it my go-to accessory during the colder months. A definite must-have for fashion enthusiasts!', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(346, 12, 18, 3, 'While the design of the handwoven scarf is nice, I noticed some loose threads that affect its overall durability. It\'s disappointing as I expected better quality for the price. A beautiful piece, but attention to detail is crucial.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(347, 12, 19, 5, 'I\'m thrilled with my purchase of the handwoven scarf! The texture is delightful, and the scarf is surprisingly lightweight yet incredibly warm. It\'s become my favorite winter accessory, and I can\'t recommend it enough.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(348, 12, 20, 4, 'The handwoven scarf is a versatile addition to my wardrobe. It drapes beautifully and adds a touch of sophistication to any outfit. My only suggestion would be to offer more color options to cater to different preferences.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(349, 12, 32, 1, 'Regrettably, the handwoven scarf didn\'t meet my expectations. The colors faded significantly after the first wash, and the fabric lost its softness. It\'s not worth the price considering the lack of durability. Disappointed with the overall quality.', '2023-12-04 21:05:18', '2023-12-04 21:05:18'),
+(350, 13, 14, 4, 'These scented candles are a delightful addition to my relaxation routine. The soothing aroma fills the room, creating a calming atmosphere. While the scent is fantastic, I wish the candles burned a bit longer. Still, a lovely product for winding down after a hectic day.', '2023-12-04 21:07:03', '2023-12-04 21:07:03'),
+(351, 13, 18, 3, 'The scent of these candles is pleasant, but I found it to be a bit overpowering. The natural ingredients are a plus, but the fragrance intensity might be too much for some. The quality is good, but I\'d prefer a milder option for a more subtle ambiance.', '2023-12-04 21:07:03', '2023-12-04 21:07:03'),
+(352, 13, 25, 5, 'These artisanal scented candles exceeded my expectations. The fragrance is divine, not too strong, and the natural ingredients are a big selling point for me. They burn evenly, and the packaging is elegant. Perfect for creating a cozy and inviting atmosphere.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(353, 13, 28, 2, 'Unfortunately, these candles didn\'t live up to the hype. The scent is barely noticeable, and they burn unevenly. The natural ingredients didn\'t seem to make a significant difference. Disappointed with the overall quality; there are better options available.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(354, 13, 16, 5, 'These candles are a game-changer! The natural ingredients create a pure and refreshing scent that instantly lifts my mood. The packaging is chic, and they burn for an extended period. A must-have for anyone looking to enhance their home with a touch of luxury.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(355, 13, 30, 3, 'These candles have a unique fragrance, but it\'s not my personal favorite. The natural ingredients are a plus, but the scent doesn\'t align with my preferences. The burn time is decent, though. It\'s all about individual taste when it comes to these candles.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(356, 13, 12, 4, 'I\'m impressed with the quality of these candles. The natural ingredients ensure a clean burn, and the scent is invigorating. However, the price point is a bit high compared to similar products on the market. Nevertheless, a solid choice for those who prioritize natural ingredients.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(357, 13, 29, 5, 'These scented candles are a true gem! The natural ingredients make a noticeable difference in the purity of the fragrance. The packaging is elegant, and the burn time is exceptional. I\'m a repeat customer and highly recommend these candles for a luxurious sensory experience.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(358, 13, 19, 2, 'I had high hopes for these candles, but I was disappointed. The scent is too faint, and they burn out quickly. The promise of natural ingredients didn\'t translate into a memorable experience. I won\'t be purchasing these candles again.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(359, 13, 31, 4, 'These candles strike a good balance between fragrance and subtlety. The natural ingredients are a plus, and they burn evenly. While the scent is enjoyable, it could be a touch stronger for those who prefer a more pronounced aroma. Overall, a solid choice.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(360, 13, 20, 5, 'These candles are a sensory delight! The natural ingredients create a pure, refreshing scent that permeates the room. The burn time is impressive, and the packaging is visually appealing. I\'m thoroughly satisfied with this purchase and will be buying more.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(361, 13, 26, 3, 'The candles are decent, but the fragrance is a bit too overpowering for my taste. The burn time is satisfactory, and the natural ingredients are appreciated. It\'s a matter of personal preference, so if you enjoy stronger scents, these might be perfect for you.', '2023-12-04 21:07:04', '2023-12-04 21:07:04'),
+(362, 14, 10, 4, 'The abstract canvas art exceeded my expectations in terms of vibrant colors and unique design. It effortlessly transformed the ambiance of my living room. However, the canvas could be a bit sturdier for long-term durability.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(363, 14, 11, 2, 'Disappointed with the purchase. The colors in the picture online are much brighter than in reality. The quality of the canvas is mediocre, and the overall impression is not as captivating as I had hoped.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(364, 14, 12, 5, 'This canvas art is a true masterpiece! The colors blend seamlessly, creating a captivating and lively atmosphere. It\'s the perfect addition to my home decor, and I couldn\'t be happier with this purchase.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(365, 14, 13, 3, 'The abstract canvas art is decent, but the packaging could be improved. The edges arrived slightly damaged, impacting the overall presentation. Otherwise, the colors and design are as expected.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(366, 14, 14, 5, 'Absolutely in love with this canvas art! It effortlessly brings life and character to my bedroom. The quality is superb, and the attention to detail is commendable. Highly recommend to anyone looking for a statement piece.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(367, 14, 15, 2, 'Not satisfied with the purchase. The canvas arrived with noticeable creases, and the colors looked faded. The quality does not match the price point, and I expected better packaging to prevent damage.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(368, 14, 16, 4, 'The abstract canvas art is a fantastic addition to my home. The colors are vibrant, and the design is eye-catching. The only drawback is that the hanging hardware provided was a bit flimsy.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(369, 14, 17, 5, 'This hand-painted canvas art is a true work of art. The intricate details and bold colors make it a focal point in my living room. The quality is exceptional, and it arrived well-packaged and in perfect condition.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(370, 14, 18, 3, 'The canvas art is decent, but the colors are not as vibrant as I expected. It adds a subtle touch to my room, but I wish it had more pop. The quality is acceptable for the price.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(371, 14, 19, 5, 'Absolutely stunning! This canvas art exceeded my expectations. The colors are rich, and the abstract design adds a modern touch to my home. It\'s a conversation starter, and I couldn\'t be happier.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(372, 14, 20, 1, 'Extremely disappointed with the purchase. The canvas arrived with visible scratches and the colors were dull. The quality is far below what was advertised, and I regret buying it.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(373, 14, 32, 4, 'The canvas art is a great addition to my office space. The colors are vibrant, and the abstract design sparks creativity. However, the price seems a bit high for the size of the artwork.', '2023-12-04 21:08:47', '2023-12-04 21:08:47'),
+(374, 4, 10, 4, 'Beautifully crafted and perfect for salads. Just wish it was a bit larger.', '2023-12-04 21:12:24', '2023-12-04 21:12:24'),
+(375, 4, 11, 5, 'Absolutely love this bowl! It\'s a work of art and functional too.', '2023-12-04 21:12:24', '2023-12-04 21:12:24'),
+(376, 4, 12, 3, 'Good quality, but the color is a bit different than what I expected.', '2023-12-04 21:12:24', '2023-12-04 21:12:24'),
+(377, 4, 13, 5, 'Perfect centerpiece for my dining table. Everyone compliments it.', '2023-12-04 21:12:24', '2023-12-04 21:12:24'),
+(378, 4, 14, 4, 'Sturdy and well-made, but requires careful maintenance.', '2023-12-04 21:12:24', '2023-12-04 21:12:24'),
+(379, 17, 15, 4, 'Great rustic look, but a bit heavier than I anticipated.', '2023-12-04 21:12:32', '2023-12-04 21:12:32'),
+(380, 17, 16, 5, 'This tray is just stunning and adds charm to our brunches.', '2023-12-04 21:12:32', '2023-12-04 21:12:32'),
+(381, 17, 17, 3, 'Looks good, but not as smooth as I\'d like. Be careful of splinters.', '2023-12-04 21:12:32', '2023-12-04 21:12:32'),
+(382, 17, 18, 5, 'A perfect mix of rustic and elegance. Very durable!', '2023-12-04 21:12:32', '2023-12-04 21:12:32'),
+(383, 17, 19, 2, 'The tray is okay, but it arrived with a small crack on the side.', '2023-12-04 21:12:32', '2023-12-04 21:12:32'),
+(384, 18, 20, 5, 'Superb quality and finish. Protects my table perfectly.', '2023-12-04 21:12:37', '2023-12-04 21:12:37'),
+(385, 18, 21, 3, 'Functional, but one of the coasters is not level.', '2023-12-04 21:12:37', '2023-12-04 21:12:37'),
+(386, 18, 22, 5, 'Elegant and durable. They look great on my coffee table.', '2023-12-04 21:12:37', '2023-12-04 21:12:37'),
+(387, 18, 23, 4, 'Love the design, but they are a bit thinner than I expected.', '2023-12-04 21:12:37', '2023-12-04 21:12:37'),
+(388, 18, 24, 2, 'Nice looking but started to warp after a few uses.', '2023-12-04 21:12:37', '2023-12-04 21:12:37'),
+(389, 19, 25, 5, 'Gorgeous frame, it really highlights the picture inside.', '2023-12-04 21:13:48', '2023-12-04 21:13:48'),
+(390, 19, 26, 4, 'Beautiful craftsmanship, but the hanging mechanism is a bit flimsy.', '2023-12-04 21:13:48', '2023-12-04 21:13:48'),
+(391, 19, 27, 3, 'Okay, but the color is darker than shown in the pictures.', '2023-12-04 21:13:48', '2023-12-04 21:13:48'),
+(392, 19, 28, 4, 'Lovely detail in the carving. A real artisan product.', '2023-12-04 21:13:48', '2023-12-04 21:13:48'),
+(393, 19, 29, 5, 'This frame added such a warm, rustic touch to my room.', '2023-12-04 21:13:48', '2023-12-04 21:13:48'),
+(394, 11, 30, 5, 'A timeless piece. The leather quality is top-notch.', '2023-12-04 21:14:01', '2023-12-04 21:14:01'),
+(395, 11, 31, 4, 'Stylish and functional, though a bit tight for all my cards.', '2023-12-04 21:14:01', '2023-12-04 21:14:01'),
+(396, 11, 32, 2, 'Looks good but started to show wear quite quickly.', '2023-12-04 21:14:01', '2023-12-04 21:14:01'),
+(397, 11, 10, 5, 'Perfect size, great material. Feels like it will last a lifetime.', '2023-12-04 21:14:01', '2023-12-04 21:14:01'),
+(398, 11, 11, 3, 'Decent wallet, but not as many compartments as I\'d like.', '2023-12-04 21:14:01', '2023-12-04 21:14:01'),
+(399, 12, 12, 4, 'Beautifully woven and warm. A bit scratchy, though.', '2023-12-04 21:14:08', '2023-12-04 21:14:08'),
+(400, 12, 13, 5, 'Absolutely gorgeous scarf, the craftsmanship is excellent.', '2023-12-04 21:14:08', '2023-12-04 21:14:08'),
+(401, 12, 14, 3, 'Nice pattern, but the colors were not as vibrant as in the photo.', '2023-12-04 21:14:08', '2023-12-04 21:14:08'),
+(402, 12, 15, 5, 'Perfect for chilly days, very cozy and stylish.', '2023-12-04 21:14:08', '2023-12-04 21:14:08'),
+(404, 20, 17, 5, 'High-quality leather and stitching. Fits perfectly.', '2023-12-04 21:14:31', '2023-12-04 21:14:31'),
+(405, 20, 18, 3, 'Looks good, but the buckle feels a bit flimsy.', '2023-12-04 21:14:31', '2023-12-04 21:14:31'),
+(406, 20, 19, 5, 'This belt is exceptional. The attention to detail is evident.', '2023-12-04 21:14:31', '2023-12-04 21:14:31'),
+(407, 20, 20, 4, 'Durable and stylish, though it took some time to break in.', '2023-12-04 21:14:31', '2023-12-04 21:14:31'),
+(408, 20, 21, 1, 'Not very comfortable, and the color started fading quickly.', '2023-12-04 21:14:31', '2023-12-04 21:14:31'),
+(409, 17, 21, 5, 'Very Cool!', '2023-12-04 20:31:15', '2023-12-04 20:31:15');
 
 -- --------------------------------------------------------
 
@@ -356,10 +508,65 @@ INSERT INTO `transactions` (`id`, `buyer_id`, `product_id`, `quantity`, `total_p
 (13, 1, 12, 1, 34.99, 'sent', '2023-11-22 11:20:56', '2023-11-22 15:15:48'),
 (14, 1, 22, 1, 27.99, 'sent', '2023-11-22 11:20:56', '2023-11-22 15:14:15'),
 (15, 1, 27, 2, 120.00, 'sent', '2023-11-22 17:18:51', '2023-11-22 17:19:34'),
-(16, 16, 17, 1, 39.99, 'pending', '2023-11-23 15:51:47', '2023-11-23 15:51:47'),
+(16, 16, 17, 1, 39.99, 'sent', '2023-11-23 15:51:47', '2023-11-27 08:07:12'),
 (17, 16, 27, 1, 60.00, 'pending', '2023-11-23 16:08:06', '2023-11-23 16:08:06'),
 (18, 16, 24, 1, 24.99, 'pending', '2023-11-23 16:10:14', '2023-11-23 16:10:14'),
-(19, 16, 25, 1, 55.00, 'pending', '2023-11-23 16:13:11', '2023-11-23 16:13:11');
+(19, 16, 25, 1, 55.00, 'pending', '2023-11-23 16:13:11', '2023-11-23 16:13:11'),
+(20, 1, 12, 1, 34.99, 'sent', '2023-11-24 17:45:13', '2023-11-25 09:05:55'),
+(21, 1, 25, 1, 55.00, 'pending', '2023-11-24 17:58:56', '2023-11-24 17:58:56'),
+(22, 1, 15, 1, 49.99, 'pending', '2023-11-24 18:00:19', '2023-11-24 18:00:19'),
+(23, 1, 29, 1, 49.99, 'pending', '2023-11-24 18:12:39', '2023-11-24 18:12:39'),
+(24, 1, 29, 1, 49.99, 'pending', '2023-11-24 18:46:22', '2023-11-24 18:46:22'),
+(25, 1, 16, 1, 24.99, 'pending', '2023-11-24 18:46:39', '2023-11-24 18:46:39'),
+(26, 1, 11, 1, 29.99, 'pending', '2023-11-24 18:47:25', '2023-11-24 18:47:25'),
+(28, 1, 12, 1, 34.99, 'pending', '2023-11-24 19:00:02', '2023-11-24 19:00:02'),
+(29, 1, 13, 1, 19.99, 'pending', '2023-11-24 19:27:14', '2023-11-24 19:27:14'),
+(30, 1, 14, 1, 89.99, 'pending', '2023-11-24 19:34:50', '2023-11-24 19:34:50'),
+(31, 1, 15, 1, 49.99, 'pending', '2023-11-24 19:34:50', '2023-11-24 19:34:50'),
+(32, 1, 20, 1, 35.99, 'pending', '2023-11-24 19:38:48', '2023-11-24 19:38:48'),
+(33, 1, 28, 1, 12.99, 'pending', '2023-11-25 09:28:03', '2023-11-25 09:28:03'),
+(36, 1, 13, 1, 19.99, 'pending', '2023-11-25 16:26:47', '2023-11-25 16:26:47'),
+(37, 1, 29, 1, 49.99, 'pending', '2023-11-25 16:59:27', '2023-11-25 16:59:27'),
+(38, 1, 14, 1, 89.99, 'pending', '2023-11-27 08:10:43', '2023-11-27 08:10:43'),
+(39, 1, 11, 1, 29.99, 'sent', '2023-11-29 16:03:18', '2023-11-29 16:04:35'),
+(40, 1, 12, 1, 34.99, 'sent', '2023-11-29 16:03:18', '2023-11-29 16:04:37'),
+(41, 1, 16, 1, 24.99, 'pending', '2023-11-30 13:40:00', '2023-11-30 13:40:00'),
+(42, 1, 16, 1, 24.99, 'pending', '2023-11-30 13:42:05', '2023-11-30 13:42:05'),
+(43, 1, 16, 1, 24.99, 'pending', '2023-11-30 13:45:39', '2023-11-30 13:45:39'),
+(44, 1, 16, 1, 24.99, 'pending', '2023-11-30 13:46:27', '2023-11-30 13:46:27'),
+(45, 1, 13, 1, 19.99, 'pending', '2023-11-30 13:47:30', '2023-11-30 13:47:30'),
+(46, 1, 13, 1, 19.99, 'pending', '2023-11-30 13:49:31', '2023-11-30 13:49:31'),
+(47, 1, 22, 1, 27.99, 'pending', '2023-11-30 17:37:12', '2023-11-30 17:37:12'),
+(48, 1, 13, 1, 19.99, 'pending', '2023-11-30 17:37:12', '2023-11-30 17:37:12'),
+(49, 1, 11, 1, 29.99, 'pending', '2023-11-30 18:09:52', '2023-11-30 18:09:52'),
+(50, 1, 20, 1, 35.99, 'pending', '2023-11-30 18:41:19', '2023-11-30 18:41:19'),
+(51, 1, 28, 2, 25.98, 'pending', '2023-11-30 18:46:29', '2023-11-30 18:46:29'),
+(52, 1, 21, 1, 40.00, 'pending', '2023-11-30 18:52:30', '2023-11-30 18:52:30'),
+(53, 1, 25, 1, 55.00, 'pending', '2023-11-30 19:01:44', '2023-11-30 19:01:44'),
+(54, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:06:15', '2023-11-30 19:06:15'),
+(55, 1, 14, 1, 89.99, 'pending', '2023-11-30 19:10:08', '2023-11-30 19:10:08'),
+(56, 1, 15, 1, 49.99, 'pending', '2023-11-30 19:10:08', '2023-11-30 19:10:08'),
+(57, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:11:21', '2023-11-30 19:11:21'),
+(58, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:16:04', '2023-11-30 19:16:04'),
+(59, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:21:23', '2023-11-30 19:21:23'),
+(60, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:22:46', '2023-11-30 19:22:46'),
+(61, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:26:22', '2023-11-30 19:26:22'),
+(62, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:29:01', '2023-11-30 19:29:01'),
+(63, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:35:47', '2023-11-30 19:35:47'),
+(64, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:37:39', '2023-11-30 19:37:39'),
+(65, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:42:16', '2023-11-30 19:42:16'),
+(66, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:52:32', '2023-11-30 19:52:32'),
+(67, 1, 11, 1, 29.99, 'pending', '2023-11-30 19:56:01', '2023-11-30 19:56:01'),
+(68, 1, 12, 1, 34.99, 'pending', '2023-12-01 15:59:07', '2023-12-01 15:59:07'),
+(69, 1, 14, 1, 89.99, 'pending', '2023-12-01 16:10:49', '2023-12-01 16:10:49'),
+(70, 1, 20, 1, 48.98, 'pending', '2023-12-01 16:34:33', '2023-12-01 16:34:33'),
+(71, 1, 21, 1, 52.99, 'pending', '2023-12-01 16:34:33', '2023-12-01 16:34:33'),
+(72, 1, 23, 1, 69.99, 'pending', '2023-12-01 16:41:04', '2023-12-01 16:41:04'),
+(73, 1, 22, 1, 27.99, 'pending', '2023-12-01 16:41:04', '2023-12-01 16:41:04'),
+(74, 1, 26, 1, 32.99, 'pending', '2023-12-01 16:50:03', '2023-12-01 16:50:03'),
+(75, 1, 27, 1, 60.00, 'pending', '2023-12-01 16:50:03', '2023-12-01 16:50:03'),
+(76, 1, 11, 1, 29.99, 'sent', '2023-12-01 20:04:03', '2023-12-02 17:47:09'),
+(77, 1, 20, 4, 143.96, 'pending', '2023-12-04 07:48:28', '2023-12-04 07:48:28');
 
 -- --------------------------------------------------------
 
@@ -384,7 +591,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `isArtisan`) VALUES
-(1, 'Seweryn Czabanowski', 'seweryn_cz@outlook.com', NULL, '$2y$12$Lx4yjybUIz9Bfs.L/Ssfzu.evzsjd1ypIo970xrpj.US63kRCh8Qq', NULL, '2023-11-01 14:07:21', '2023-11-01 14:07:21', 1),
+(1, 'Seweryn Czabanowski', 'seweryn_cz@outlook.com', NULL, '$2y$12$Lx4yjybUIz9Bfs.L/Ssfzu.evzsjd1ypIo970xrpj.US63kRCh8Qq', 'Lj2n8Kd6HhakJYugqL3zanEdsduJIF1yzVkDazvPI8f8hzXP5tBgqPAUGPL7', '2023-11-01 14:07:21', '2023-11-01 14:07:21', 1),
 (10, 'John Doe', 'john@example.com', NULL, '$2y$12$fR.GGqbu9X196vY4xfFuS.rCaHzMmVt8Z95.c81BrW8mYZbC/BbmK', NULL, '2023-11-01 16:34:34', '2023-11-01 16:34:34', 0),
 (11, 'Some Guy', 'someguy@email.com', NULL, '$2y$12$RuNqNdgbeYT5qSPWD5HH9.88AoMYPLJFARWVo1fnkr.ofvDxaa.pi', NULL, '2023-11-09 15:02:29', '2023-11-09 15:02:29', 0),
 (12, 'Alice Smith', 'alice.smith@example.com', NULL, '$2y$12$RaeQYYWYlLw.hUrQRFQT5eS3q6sAOJupNzuVScycy7FH6dbu7fy0W', NULL, '2023-11-12 09:35:24', '2023-11-12 09:35:24', 0),
@@ -407,7 +614,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (29, 'Ryan Moore', 'ryan.moore@example.com', NULL, '$2y$12$SD3DimREtQFPo6gKVT.eV.xpEboqMYobIm39Z5m2rj1ykTKH5CtSa', NULL, '2023-11-12 09:35:34', '2023-11-12 09:35:34', 0),
 (30, 'Sophia Jackson', 'sophia.jackson@example.com', NULL, '$2y$12$6fntDq24ad4dqVLH1Yv2v.tu6Ad34fYra0R/jGagr6yPF1OKUvic.', NULL, '2023-11-12 09:35:35', '2023-11-12 09:35:35', 0),
 (31, 'Tyler Martin', 'tyler.martin@example.com', NULL, '$2y$12$ayy0qBTOtfn5b.kpeEZvT.rm73nHdPns1Kk2z7nAUmuuGQJ8o5.Ou', NULL, '2023-11-12 09:35:35', '2023-11-12 09:35:35', 0),
-(32, 'Emily Thornton', 'emily.thornton@example.com', NULL, '$2y$12$UttJkr6bniMZTVXGZxBiJuBDsskrf5w5vBznRSL2VL.ytYWVHkonS', NULL, '2023-11-23 16:21:19', '2023-11-23 16:21:19', 0);
+(32, 'Emily Thornton', 'emily.thornton@example.com', NULL, '$2y$12$UttJkr6bniMZTVXGZxBiJuBDsskrf5w5vBznRSL2VL.ytYWVHkonS', NULL, '2023-11-23 16:21:19', '2023-11-23 16:21:19', 0),
+(33, 'Bob Dome', 'bob.dome@example.com', NULL, '$2y$12$Q50w3LuqzZU17I7lRMKV5eM385le4rj1ZvzM7H4kcWWo09z2qcGm6', NULL, '2023-11-29 13:27:43', '2023-11-29 13:27:43', 0);
 
 -- --------------------------------------------------------
 
@@ -419,7 +627,7 @@ CREATE TABLE `user_profiles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `location` varchar(255) DEFAULT NULL,
-  `bio` text DEFAULT NULL,
+  `bio` longtext DEFAULT NULL,
   `contact_info` text DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -427,8 +635,46 @@ CREATE TABLE `user_profiles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user_profiles`
+--
+
+INSERT INTO `user_profiles` (`id`, `user_id`, `location`, `bio`, `contact_info`, `profile_picture`, `created_at`, `updated_at`) VALUES
+(1, 33, NULL, NULL, NULL, NULL, '2023-11-29 13:27:43', '2023-11-29 13:27:43'),
+(2, 1, NULL, 'Just a guy that loves turtles a bit too much :)', NULL, 'profile_pictures/profile_1701762719.webp', '2023-11-29 17:43:19', '2023-12-05 07:28:32'),
+(3, 10, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(4, 11, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(5, 12, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(6, 13, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(7, 14, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(8, 15, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(9, 16, NULL, 'Hello! I\'m Ethan Jones, and this is my arena of innovation where functionality meets art. Growing up in a tech-savvy environment, I was always fascinated by the fusion of technology and traditional art forms. My creations are designed not just to please the eye but to serve a purpose in your daily life. From tech-inspired home gadgets to sleek, minimalist accessories, each item reflects a blend of modern aesthetics and practical design. Dive into my collection and discover how art can be both beautiful and useful. Thanks for visiting, and enjoy exploring!', NULL, 'profile_pictures/profile_1701725350.webp', '2023-11-29 17:43:19', '2023-12-04 20:29:10'),
+(10, 17, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(11, 18, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(12, 19, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(13, 20, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(14, 21, NULL, 'Hi there! I\'m Julia Martinez. Welcome to my creative corner where each item is a testament to my love for detailed, precision crafting. My journey as an artist began in the bustling city, surrounded by vibrant cultures and diverse inspirations. Specializing in contemporary designs with a touch of traditional flair, my work aims to blend the old with the new. Whether it\'s home decor or personalized gifts, I strive to infuse a sense of warmth and personality into every piece. Thank you for stopping by, and I hope my creations resonate with your own style and story!', NULL, 'profile_pictures/profile_1701725425.webp', '2023-11-29 17:43:19', '2023-12-04 20:30:25'),
+(15, 22, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(16, 23, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(17, 24, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(18, 25, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(19, 26, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(20, 27, NULL, 'Hello! I\'m Penny Thomas, the heart and hands behind the unique creations you see here. My journey in crafting began as a small-town hobby, turning everyday items into little treasures. I\'m deeply inspired by the beauty of nature and the charm of vintage styles, infusing these elements into each piece I make. My creations are more than just items; they\'re a piece of my world, lovingly crafted to add a special touch to yours. Welcome to my shop – I hope you find something that speaks to you! 🌟', NULL, 'profile_pictures/profile_1701724744.webp', '2023-11-29 17:43:19', '2023-12-04 20:24:35'),
+(21, 28, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(22, 29, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(23, 30, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(24, 31, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(25, 32, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `buyers`
+--
+ALTER TABLE `buyers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `buyers_transaction_fk` (`transaction_id`);
 
 --
 -- Indexes for table `categories`
@@ -522,6 +768,12 @@ ALTER TABLE `user_profiles`
 --
 
 --
+-- AUTO_INCREMENT for table `buyers`
+--
+ALTER TABLE `buyers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
@@ -549,47 +801,53 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;
 
 --
 -- AUTO_INCREMENT for table `shopping_carts`
 --
 ALTER TABLE `shopping_carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`
 --
 ALTER TABLE `user_profiles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `buyers`
+--
+ALTER TABLE `buyers`
+  ADD CONSTRAINT `buyers_transaction_fk` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`);
 
 --
 -- Constraints for table `products`
