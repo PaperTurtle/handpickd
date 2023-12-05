@@ -148,8 +148,6 @@
                             this.status[transaction.id] = transaction.status;
                         });
                     });
-
-                    console.log("Initialized status data:", this.status);
                 },
                 markAsSent(transactionId) {
                     fetch(`/dashboard/transactions/${transactionId}/mark-as-sent`, {
