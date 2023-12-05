@@ -32,7 +32,7 @@
             @if ($user->id === auth()->id())
                 <div class="relative mt-16 mb-4">
                     <a href="{{ route('profile.edit', auth()->user()->id) }}"><button type="submit"
-                            class="absolute bottom-0 right-0 w-20 rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">Edit</button>
+                            class="absolute bottom-0 right-0 w-20 rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">Edit</button>
                     </a>
                 </div>
             @endif
@@ -50,7 +50,7 @@
                     <h3 class="text-3xl font-bold font-heading inline-block">Your Products</h3>
                     <div class="flex justify-end">
                         <button
-                            class="rounded-md bg-primary px-2.5 py-1.5 text-md font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
+                            class="rounded-md bg-primary px-2.5 py-1.5 text-base font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
                             <a href="{{ route('products.create') }}">Create
                                 a new Product</a>
                         </button>
@@ -65,7 +65,7 @@
                                 <div class="group">
                                     <!-- Product Image and Details -->
                                     <div
-                                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80 transition-all delay-[10ms]">
                                         <img src="{{ Storage::url($product->images->first()->resized_image_path) }}"
                                             alt="{{ $product->description }}"
                                             class="h-full w-full object-cover object-center lg:h-full lg:w-full">
@@ -88,11 +88,11 @@
                                     <div class="mt-2 flex justify-center gap-4">
                                         <!-- Delete Button -->
                                         <button
-                                            class="rounded-md bg-red-600 hover:bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary z-50"><a
+                                            class="rounded-md bg-red-600 hover:bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50"><a
                                                 href="{{ route('products.show', $product->id) }}">Delete</a></button>
                                         <!-- Edit Button -->
                                         <button
-                                            class="rounded-md bg-blue-600 hover:bg-blue-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary z-50">
+                                            class="rounded-md bg-blue-600 hover:bg-blue-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50">
                                             <a href="{{ route('products.edit', $product->id) }}">Edit</a></button>
                                         <x-delete-modal :product="$product" />
 
@@ -144,7 +144,7 @@
                                 @if ($isOrderCompleted)
                                     <div
                                         class="space-y-5 sm:flex sm:items-baseline sm:justify-end sm:space-y-0 md:min-w-0 md:flex-1">
-                                        <h3 class="inline-flex items-center text-green-500 font-medium">
+                                        <h3 class="inline-flex items-center text-green-500 font-medium text-base">
                                             <span>Delivery Successful</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6">
@@ -167,12 +167,29 @@
                                                     <a
                                                         href="{{ route('products.show', $transaction->product->id) }}">{{ $transaction->product->name }}</a>
                                                 </h3>
-                                                <p class="mt-1 text-md font-medium text-gray-900">
-                                                    Q: {{ $transaction->quantity }}</p>
-                                                <p class="mt-1 text-md font-medium text-gray-900">
-                                                    {{ $transaction->product->price }} €</p>
-                                                <p class="mt-4 font-medium text-gray-900">
-                                                    Status: {{ $transaction->status }}</p>
+                                                <p class="mt-1 text-base font-medium text-gray-900">
+                                                    Quantity: {{ $transaction->quantity }}</p>
+                                                <p class="mt-1 text-base font-medium text-gray-900">
+                                                    Price: {{ $transaction->product->price }} €</p>
+                                                <p class="mt-24 text-base font-medium text-gray-900 flex gap-2">
+                                                    @if ($transaction->status == 'sent')
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="ml-2 w-6 h-6 text-green-500">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M4.5 12.75l6 6 9-13.5" />
+                                                        </svg> Delivered on
+                                                        {{ $transaction->updated_at->format('F j, Y') }}
+                                                    @else
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                                        </svg>
+                                                        Out for delivery
+                                                    @endif
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
