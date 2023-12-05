@@ -117,10 +117,12 @@ extension=gd
 -  **Dashboard**: Provides a personalized overview of the artisan's pending and completed orders.
 -  **FAQ**: Provides answers to frequently asked questions about the platform.
 -  **Profile**: Offers insights into the artisans' backgrounds, their product range, and customer reviews.
+   -  **Add Product**: Allows artisans to add new products to the marketplace.
    -  **Edit Profile**: Allows users to update their profile information and add new products.
    -  **Edit Product**: Enables artisans to update their product information and images.
    -  **Delete Profile**: Enables users to remove their profile from the marketplace.
    -  **Delete Product**: Allows artisans to remove their products from the marketplace.
+   -  **Check Orders**: Allows users to view their past orders and their status.
 
 ## ✨ Features & Functionality
 
