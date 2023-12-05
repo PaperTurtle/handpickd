@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <section x-data="reviewForm()">
-        <!-- Notifications when adding product to cart-->
+        <!-- Notifications for product action -->
         <x-success-notification />
         <x-failure-notification />
         <!-- Notifications for review actions to cart-->
@@ -253,7 +253,7 @@
                                 <div class="py-12">
                                     <div class="flex items-center">
                                         <span
-                                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary">
+                                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary flex-shrink-0">
                                             <span class="font-medium leading-none text-black"
                                                 x-text="getUserInitials(review.user.name)"></span>
                                         </span>
@@ -347,6 +347,9 @@
                 averageRating: {{ $averageRating ?? 0 }},
                 totalReviews: {{ $totalReviews ?? 0 }},
 
+                init() {
+                    this.updateReviewData();
+                },
                 calculateAverageRating() {
                     let totalRating = 0;
                     this.reviews.forEach(review => totalRating += review.rating);
