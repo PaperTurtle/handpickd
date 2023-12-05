@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 09:44 AM
+-- Generation Time: Dec 05, 2023 at 11:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -626,9 +626,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 CREATE TABLE `user_profiles` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `location` varchar(255) DEFAULT NULL,
   `bio` longtext DEFAULT NULL,
-  `contact_info` text DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -638,32 +636,32 @@ CREATE TABLE `user_profiles` (
 -- Dumping data for table `user_profiles`
 --
 
-INSERT INTO `user_profiles` (`id`, `user_id`, `location`, `bio`, `contact_info`, `profile_picture`, `created_at`, `updated_at`) VALUES
-(1, 33, NULL, NULL, NULL, NULL, '2023-11-29 13:27:43', '2023-11-29 13:27:43'),
-(2, 1, NULL, 'Just a guy that loves turtles a bit too much :)', NULL, 'profile_pictures/profile_1701762719.webp', '2023-11-29 17:43:19', '2023-12-05 07:28:32'),
-(3, 10, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(4, 11, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(5, 12, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(6, 13, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(7, 14, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(8, 15, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(9, 16, NULL, 'Hello! I\'m Ethan Jones, and this is my arena of innovation where functionality meets art. Growing up in a tech-savvy environment, I was always fascinated by the fusion of technology and traditional art forms. My creations are designed not just to please the eye but to serve a purpose in your daily life. From tech-inspired home gadgets to sleek, minimalist accessories, each item reflects a blend of modern aesthetics and practical design. Dive into my collection and discover how art can be both beautiful and useful. Thanks for visiting, and enjoy exploring!', NULL, 'profile_pictures/profile_1701725350.webp', '2023-11-29 17:43:19', '2023-12-04 20:29:10'),
-(10, 17, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(11, 18, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(12, 19, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(13, 20, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(14, 21, NULL, 'Hi there! I\'m Julia Martinez. Welcome to my creative corner where each item is a testament to my love for detailed, precision crafting. My journey as an artist began in the bustling city, surrounded by vibrant cultures and diverse inspirations. Specializing in contemporary designs with a touch of traditional flair, my work aims to blend the old with the new. Whether it\'s home decor or personalized gifts, I strive to infuse a sense of warmth and personality into every piece. Thank you for stopping by, and I hope my creations resonate with your own style and story!', NULL, 'profile_pictures/profile_1701725425.webp', '2023-11-29 17:43:19', '2023-12-04 20:30:25'),
-(15, 22, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(16, 23, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(17, 24, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(18, 25, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(19, 26, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(20, 27, NULL, 'Hello! I\'m Penny Thomas, the heart and hands behind the unique creations you see here. My journey in crafting began as a small-town hobby, turning everyday items into little treasures. I\'m deeply inspired by the beauty of nature and the charm of vintage styles, infusing these elements into each piece I make. My creations are more than just items; they\'re a piece of my world, lovingly crafted to add a special touch to yours. Welcome to my shop – I hope you find something that speaks to you! 🌟', NULL, 'profile_pictures/profile_1701724744.webp', '2023-11-29 17:43:19', '2023-12-04 20:24:35'),
-(21, 28, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(22, 29, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(23, 30, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(24, 31, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
-(25, 32, NULL, NULL, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19');
+INSERT INTO `user_profiles` (`id`, `user_id`, `bio`, `profile_picture`, `created_at`, `updated_at`) VALUES
+(1, 33, NULL, NULL, '2023-11-29 13:27:43', '2023-11-29 13:27:43'),
+(2, 1, 'Just a guy that loves turtles a bit too much :)', 'profile_pictures/profile_1701762719.webp', '2023-11-29 17:43:19', '2023-12-05 07:28:32'),
+(3, 10, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(4, 11, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(5, 12, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(6, 13, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(7, 14, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(8, 15, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(9, 16, 'Hello! I\'m Ethan Jones, and this is my arena of innovation where functionality meets art. Growing up in a tech-savvy environment, I was always fascinated by the fusion of technology and traditional art forms. My creations are designed not just to please the eye but to serve a purpose in your daily life. From tech-inspired home gadgets to sleek, minimalist accessories, each item reflects a blend of modern aesthetics and practical design. Dive into my collection and discover how art can be both beautiful and useful. Thanks for visiting, and enjoy exploring!', 'profile_pictures/profile_1701725350.webp', '2023-11-29 17:43:19', '2023-12-04 20:29:10'),
+(10, 17, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(11, 18, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(12, 19, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(13, 20, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(14, 21, 'Hi there! I\'m Julia Martinez. Welcome to my creative corner where each item is a testament to my love for detailed, precision crafting. My journey as an artist began in the bustling city, surrounded by vibrant cultures and diverse inspirations. Specializing in contemporary designs with a touch of traditional flair, my work aims to blend the old with the new. Whether it\'s home decor or personalized gifts, I strive to infuse a sense of warmth and personality into every piece. Thank you for stopping by, and I hope my creations resonate with your own style and story!', 'profile_pictures/profile_1701725425.webp', '2023-11-29 17:43:19', '2023-12-04 20:30:25'),
+(15, 22, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(16, 23, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(17, 24, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(18, 25, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(19, 26, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(20, 27, 'Hello! I\'m Penny Thomas, the heart and hands behind the unique creations you see here. My journey in crafting began as a small-town hobby, turning everyday items into little treasures. I\'m deeply inspired by the beauty of nature and the charm of vintage styles, infusing these elements into each piece I make. My creations are more than just items; they\'re a piece of my world, lovingly crafted to add a special touch to yours. Welcome to my shop – I hope you find something that speaks to you! 🌟', 'profile_pictures/profile_1701724744.webp', '2023-11-29 17:43:19', '2023-12-04 20:24:35'),
+(21, 28, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(22, 29, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(23, 30, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(24, 31, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19'),
+(25, 32, NULL, NULL, '2023-11-29 17:43:19', '2023-11-29 17:43:19');
 
 --
 -- Indexes for dumped tables
