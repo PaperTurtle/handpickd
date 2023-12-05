@@ -16,6 +16,7 @@ Handpickd is a community-driven platform that celebrates creativity and craftsma
    -  [XAMPP](#xampp)
    -  [Composer](#composer)
    -  [Laravel](#laravel)
+   -  [Change PHP.ini](#change-phpini)
 -  [📜 Page Breakdown](#-page-breakdown)
 -  [✨ Features \& Functionality](#-features--functionality)
 -  [🧰 Built with](#-built-with)
@@ -80,6 +81,15 @@ Next, install Laravel via Composer. Open up a terminal and run the following com
 ```shell
 composer global require laravel/installer
 ```
+
+### Change PHP.ini
+
+Lastly, open up the `php.ini` file in the `C:\xampp\php` directory or open the XAMPP Control Panel and click on the Config Button in the Apache Section and uncomment the following line to the bottom of the file:
+;extension=gd
+
+To
+
+extension=gd
 
 ## 📜 Page Breakdown
 
