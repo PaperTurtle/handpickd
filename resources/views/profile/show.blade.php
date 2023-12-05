@@ -47,7 +47,14 @@
             <!-- Your Products -->
             <section class="border-b border-gray-300 mt-6 pb-8">
                 @if ($user->id === auth()->id())
-                    <h3 class="text-3xl font-bold font-heading">Your Products</h3>
+                    <h3 class="text-3xl font-bold font-heading inline-block">Your Products</h3>
+                    <div class="flex justify-end">
+                        <button
+                            class="rounded-md bg-primary px-2.5 py-1.5 text-md font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
+                            <a href="{{ route('products.create') }}">Create
+                                a new Product</a>
+                        </button>
+                    </div>
                 @else
                     <h3 class="text-3xl font-bold font-heading">{{ $user->name }}'s Products</h3>
                 @endif
