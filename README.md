@@ -189,5 +189,5 @@ Once added, save the file and restart the Apache and MySQL services in the XAMPP
 | Author              | Role               | Project Responsibilities                                                       |
 | ------------------- | ------------------ | ------------------------------------------------------------------------------ |
 | Seweryn Czabanowski | Software Developer | Product Listings, Products Details, Products CRUD, Dashboard, Checkout Success |
-| Loran Heinzel       | Software Developer | Checkout Index, Process Pages, Profile Page                                    |
-| Tobias Neubert      | Software Developer | Login, Register, Footer, Index Page                                            |
+| Loran Heinzel       | Software Developer | Login, Register, Footer, Welcome Page                                          |
+| Tobias Neubert      | Software Developer | Checkout Index, Process Pages, Profile Page                                    |
