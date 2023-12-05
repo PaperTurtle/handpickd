@@ -112,7 +112,7 @@
 
         @if ($user->id === auth()->id())
             <!-- Your Orders -->
-            <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:pb-32 sm:pt-24 lg:px-8">
+            <section class="mx-auto max-w-3xl py-16 sm:pb-24 sm:pt-12">
                 <div class="max-w-xl">
                     <h1 class="text-3xl font-bold tracking-tight text-gray-900 font-heading">Your Order History</h1>
                     <p class="mt-2 text-sm text-gray-500">Check the status of your orders</p>
