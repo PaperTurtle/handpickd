@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <section x-data="reviewForm()">
         <!-- Notifications for product action -->
         <x-success-notification />
@@ -186,7 +185,7 @@
                                     </svg>
                                 </template>
                             </div>
-                            <p class="sr-only">4 out of 5 stars</p>
+                            <p class="sr-only" x-text="`${Math.round(averageRating)} out of 5 stars`"></p>
                         </div>
                         <template x-if="totalReviews > 0">
                             <p class="ml-2 text-sm text-text" x-text="`Based on ${totalReviews} reviews`"></p>
@@ -252,11 +251,17 @@
                             <template x-for="review in reviews" :key="review.id">
                                 <div class="py-12">
                                     <div class="flex items-center">
-                                        <span
-                                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary flex-shrink-0">
-                                            <span class="font-medium leading-none text-black"
-                                                x-text="getUserInitials(review.user.name)"></span>
-                                        </span>
+                                        <template x-if="review.user.profile && review.user.profile.profile_picture">
+                                            <img :src="getProfilePictureUrl(review.user.profile.profile_picture)"
+                                                :alt="review.user.name" class="h-10 w-10 rounded-full flex-shrink-0">
+                                        </template>
+                                        <template x-if="!review.user.profile || !review.user.profile.profile_picture">
+                                            <span
+                                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary flex-shrink-0">
+                                                <span class="font-medium leading-none text-black"
+                                                    x-text="getUserInitials(review.user.name)"></span>
+                                            </span>
+                                        </template>
                                         <div class="ml-4">
                                             <a :href="`{{ route('profile.show', '') }}/${review.user.id}`">
                                                 <h4 class="text-sm font-bold text-text" x-text="review.user.name">
@@ -330,7 +335,7 @@
                 productId: '{{ $product->id }}',
                 rating: '1',
                 review: '',
-                reviews: @json($product->reviews->load('user')),
+                reviews: @json($product->reviews->load('user.profile')),
                 userHasReviewed: {{ auth()->check() && $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
                 writingReview: false,
                 editingReview: false,
@@ -360,6 +365,10 @@
                     const names = name.split(' ');
                     const initials = names.map(n => n[0]).join('');
                     return initials.toUpperCase();
+                },
+
+                getProfilePictureUrl(path) {
+                    return '/storage/' + path;
                 },
 
                 calculateStarRatingPercentages() {
