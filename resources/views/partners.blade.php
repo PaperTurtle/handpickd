@@ -16,18 +16,23 @@
                     <div class="mx-auto max-w-7xl px-6 lg:px-8">
                         <div
                             class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                            <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                                src="https://cdn.join.com/5de77942f3f7c50001e14c25/assecor-gmb-h-logo-xl.jpg"
-                                alt="Assecor GmbH" width="158" height="48">
-                            <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-                                src="https://content.u-blox.com/sites/default/files/2023-03/R3%20Solutions%20Logo2.png"
-                                alt="R3 Solutions" width="158" height="48">
-                            <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1"
-                                src="https://frachtwerk.de/wp-content/uploads/2020/06/frachtwerk_320px.png"
-                                alt="Frachtwerk GmbH" width="158" height="48">
-                            <img class="col-span-2 max-h-16 w-full object-contain sm:col-start-2 lg:col-span-1"
-                                src="https://inside.iu-fernstudium.de/wp-content/uploads/2021/03/iu_Logo_D_black_RGB_horizontal.png"
-                                alt="IU" width="158" height="48">
+                            <a href="https://www.assecor.de/">
+                                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 hover:scale-105 transition-all delay-[10ms] easy-in-out"
+                                    src="https://cdn.join.com/5de77942f3f7c50001e14c25/assecor-gmb-h-logo-xl.jpg"
+                                    alt="Assecor GmbH" width="158" height="48">
+                            </a>
+                            <a href="https://www.r3.group/en/">
+                                <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1 hover:scale-105 transition-all delay-[10ms] easy-in-out"
+                                    src="https://content.u-blox.com/sites/default/files/2023-03/R3%20Solutions%20Logo2.png"
+                                    alt="R3 Solutions" width="158" height="48"></a>
+                            <a href="https://frachtwerk.de/">
+                                <img class="col-span-2 max-h-16 w-full object-contain lg:col-span-1 hover:scale-105 transition-all delay-[10ms] easy-in-out"
+                                    src="https://frachtwerk.de/wp-content/uploads/2020/06/frachtwerk_320px.png"
+                                    alt="Frachtwerk GmbH" width="158" height="48"></a>
+                            <a href="https://www.iu.de/">
+                                <img class="col-span-2 max-h-16 w-full object-contain sm:col-start-2 lg:col-span-1 hover:scale-105 transition-all delay-[10ms] easy-in-out"
+                                    src="https://inside.iu-fernstudium.de/wp-content/uploads/2021/03/iu_Logo_D_black_RGB_horizontal.png"
+                                    alt="IU" width="158" height="48"></a>
                         </div>
                     </div>
                 </div>
