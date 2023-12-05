@@ -331,7 +331,7 @@
                                         class="h-full w-full object-cover object-center">
                                 </div>
                                 <h3 class="mt-4 text-base font-semibold text-primary">
-                                    <a href="#">
+                                    <a href="{{ route('products.show', $product->id) }}">
                                         <span class="absolute inset-0"></span>
                                         {{ $product->name }}
                                     </a>
