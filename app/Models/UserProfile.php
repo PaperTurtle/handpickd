@@ -12,9 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property int $id Unique identifier for the user profile.
  * @property int $user_id Foreign key referencing the associated user.
- * @property string|null $location Location of the user. Can be null.
  * @property string|null $bio Biography or description of the user. Can be null.
- * @property string|null $contact_info Contact information of the user. Can be null.
  * @property string|null $profile_picture File path or URL of the user's profile picture. Can be null.
  * @property Carbon $created_at Timestamp when the profile was created.
  * @property Carbon $updated_at Timestamp when the profile was last updated.
@@ -34,9 +32,7 @@ class UserProfile extends Model
      */
     protected $fillable = [
         'user_id',
-        'location',
         'bio',
-        'contact_info',
         'profile_picture',
     ];
 
