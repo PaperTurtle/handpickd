@@ -112,7 +112,7 @@
 
         @if ($user->id === auth()->id())
             <!-- Your Orders -->
-            <section class="mx-auto max-w-3xl py-16 sm:pb-24 sm:pt-12">
+            <section class="max-w-3xl py-16 sm:pb-24 sm:pt-12">
                 <div class="max-w-xl">
                     <h1 class="text-3xl font-bold tracking-tight text-gray-900 font-heading">Your Order History</h1>
                     <p class="mt-2 text-sm text-gray-500">Check the status of your orders</p>
@@ -145,7 +145,7 @@
                                     <div
                                         class="space-y-5 sm:flex sm:items-baseline sm:justify-end sm:space-y-0 md:min-w-0 md:flex-1">
                                         <h3 class="inline-flex items-center text-green-500 font-medium">
-                                            <span>Order Completed</span>
+                                            <span>Delivery Successful</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="ml-2 w-6 h-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
