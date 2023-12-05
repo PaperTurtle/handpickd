@@ -168,7 +168,7 @@
                                                         href="{{ route('products.show', $transaction->product->id) }}">{{ $transaction->product->name }}</a>
                                                 </h3>
                                                 <p class="mt-1 text-md font-medium text-gray-900">
-                                                    Q: {{ $transaction->product->quantity }}</p>
+                                                    Q: {{ $transaction->quantity }}</p>
                                                 <p class="mt-1 text-md font-medium text-gray-900">
                                                     {{ $transaction->product->price }} €</p>
                                                 <p class="mt-4 font-medium text-gray-900">
