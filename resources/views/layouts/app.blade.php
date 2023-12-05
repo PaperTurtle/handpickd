@@ -8,6 +8,7 @@
     <title>Handpickd</title>
     <link rel="icon" type="image/x-icon" href="{{ URL('images/favicon.ico') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="{{ URL::asset('js/backToTopButton.js') }}" defer></script>
 </head>
 
 <body class="font-body bg-background">
@@ -21,6 +22,7 @@
             @endif
             {{ $slot }}
         </main>
+        <x-back-to-top-btn />
         @include('layouts.footer')
     </div>
 </body>
