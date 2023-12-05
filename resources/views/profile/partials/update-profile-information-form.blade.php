@@ -32,7 +32,8 @@
                         </svg>
                     </template>
                     <input @change="imagePreview = URL.createObjectURL($event.target.files[0])" type="file"
-                        id="profile_picture" name="profile_picture" accept="image/*"
+                        id="profile_picture"
+                        name="profile_picture"accept="image/png, image/jpeg, image/jpg, image/gif, image/svg+xml"
                         class="block w-full text-sm text-gray-900
            file:mr-4 file:py-2 file:px-4 sr-only
            file:border-0 file:text-sm file:font-semibold
