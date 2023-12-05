@@ -76,7 +76,7 @@
             <x-image-upload-edit :product="$product" />
 
             <button type="submit"
-                class="w-1/4 md:w-1/2 rounded-md bg-primary px-4 py-2 text-lg text-white shadow-sm">Update
+                class="w-1/4 md:w-1/2 rounded-md bg-primary px-4 py-2 text-lg text-white shadow-sm hover:bg-accent transition-all delay-[10ms] ease-in-out">Update
                 Product
             </button>
         </form>

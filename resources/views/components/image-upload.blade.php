@@ -27,7 +27,7 @@
             </svg>
             <div class="mt-4 flex justify-center text-sm leading-6 text-gray-600">
                 <label for="images"
-                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                    class="relative text-base cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                     <span>Upload files</span>
                     <input type="file" id="images" name="images[]" class="sr-only"
                         accept="image/png, image/jpeg, image/jpg, image/gif, image/svg+xml" @change="handleFileChange"

@@ -22,7 +22,7 @@
         });
     }
 }" x-init="init">
-    <label for="images" class="block text-sm font-medium leading-6 text-gray-900">Add More Images (up to 4):</label>
+    <label for="images" class="block text-base font-medium leading-6 text-gray-900">Add More Images (up to 4):</label>
     <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 bg-white">
         <div class="text-center">
             <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

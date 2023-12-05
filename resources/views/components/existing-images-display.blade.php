@@ -1,5 +1,5 @@
 <div>
-    <label class="block text-sm font-medium leading-6 text-gray-900">Current Images:</label>
+    <label class="block text-base font-medium leading-6 text-gray-900">Current Images:</label>
     <div class="flex space-x-4 mt-2">
         @foreach ($images as $image)
             <div x-ref="image{{ $image->id }}" class="relative">
