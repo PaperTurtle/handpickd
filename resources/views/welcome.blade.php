@@ -6,7 +6,7 @@
                 <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div class="sm:max-w-lg">
                         <h1 class="text-5xl font-bold tracking-tight font-heading">Handpickd</h1>
-                        <p class="mt-4 text-md text-gray-500 leading-8">Welcome to Handpickd, a community-driven platform
+                        <p class="mt-4 text-base text-gray-500 leading-8">Welcome to Handpickd, a community-driven platform
                             that
                             celebrates creativity and craftsmanship. </br> Handpickd provides a space for artisans to
                             showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.</p>
@@ -314,7 +314,7 @@
                             class="text-3xl font-bold tracking-tight text-primary font-heading">Top Rated
                             Products</h2>
                         <a href="{{ route('products.index', ['sort' => 'rating']) }}"
-                            class="hidden text-md font-semibold rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
+                            class="hidden text-base font-semibold rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
                             Browse all favorites
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -344,7 +344,7 @@
                     <!-- Browse all favorites mobile  -->
                     <div class="mt-6 sm:hidden">
                         <a href="{{ route('products.index') }}"
-                            class="block text-md font-semibold text-center rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
+                            class="block text-base font-semibold text-center rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
                             Browse all favorites
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
