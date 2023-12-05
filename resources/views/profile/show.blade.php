@@ -117,14 +117,15 @@
                             if (!isset($groupedTransactions[$orderNumber])) {
                                 $groupedTransactions[$orderNumber] = [];
                             }
-                            array_push($groupedTransactions[$orderNumber], $transaction);
+                            $groupedTransactions[$orderNumber][] = $transaction;
                         }
+                        krsort($groupedTransactions);
                     @endphp
-                    @foreach ($groupedTransactions as $date => $transactions)
+                    @foreach ($groupedTransactions as $orderNumber => $transactions)
                         @php
                             $isOrderCompleted = collect($transactions)->every(fn($transaction) => $transaction->status === 'sent');
                         @endphp
-                        <section aria-labelledby="{{ $orderNumber }}-heading">
+                        <section class="mb-6" aria-labelledby="{{ $orderNumber }}-heading">
                             <div class="space-y-1 md:flex md:items-baseline md:space-x-4 md:space-y-0">
                                 <h2 id="{{ $orderNumber }}-heading"
                                     class="text-xl font-medium text-gray-900 md:flex-shrink-0">Order
