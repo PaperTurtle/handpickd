@@ -13,9 +13,7 @@ class UserProfileFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::factory(),
-            'location' => $this->faker->city,
             'bio' => $this->faker->paragraph,
-            'contact_info' => $this->faker->email,
             'profile_picture' => $this->faker->imageUrl(640, 480, 'people'),
         ];
     }
