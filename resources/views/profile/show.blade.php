@@ -103,7 +103,7 @@
             </section>
         @endif
 
-        @if (auth()->id() === $product->artisan_id)
+        @if ($user->id === auth()->id())
             <!-- Your Orders -->
             <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:pb-32 sm:pt-24 lg:px-8">
                 <div class="max-w-xl">
