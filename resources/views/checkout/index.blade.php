@@ -24,7 +24,7 @@
                                             <!-- name -->
                                             <h3 class="text-md">
                                                 <a :href="`{{ route('products.show', '') }}/${cartItem.product.id}`"
-                                                    class="font-medium text-text hover:text-gray-500"
+                                                    class="font-medium text-text hover:text-gray-700 transition-all delay-[10ms] ease-in-out"
                                                     x-text="`${cartItem.product.name}`"></a>
                                             </h3>
                                             <!-- price -->
@@ -50,7 +50,7 @@
                                             <!-- Remove -->
                                             <div class="absolute right-0 top-0">
                                                 <button type="button" @click="openDeleteModal = true"
-                                                    class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500 transfition-all delay-[10ms] ease-in-out">
+                                                    class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500 transition-all delay-[10ms] ease-in-out">
                                                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
                                                         aria-hidden="true">
                                                         <path
