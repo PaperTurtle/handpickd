@@ -1,6 +1,6 @@
 <footer class="bg-primary mt-10">
     <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-5 lg:px-8">
-        <nav class="-mb-6 columns-2 flex justify-center space-x-4 sm:flex sm:justify-center sm:space-x-12 font-medium"
+        <nav class="-mb-6 columns-2 flex justify-center space-x-2 sm:flex sm:justify-center sm:space-x-12 font-medium"
             aria-label="Footer">
             <div class="pb-6">
                 <a href="{{ route('about-us') }}"
