@@ -49,7 +49,8 @@
                                             </div>
                                             <!-- Remove -->
                                             <div class="absolute right-0 top-0">
-                                                <button type="button" @click="openDeleteModal = true"
+                                                <button type="button"
+                                                    @click="itemToDelete = cartItem.id; openDeleteModal = true"
                                                     class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500 transition-all delay-[10ms] ease-in-out">
                                                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
                                                         aria-hidden="true">
@@ -135,7 +136,7 @@
                 cartItems: @json($cartItems),
                 openDeleteModal: false,
                 showSuccessDeleteAlert: false,
-
+                itemToDelete: null,
                 removeFromCart(itemId) {
                     fetch(`/cart/${itemId}`, {
                             method: 'DELETE',
@@ -186,6 +187,7 @@
                         .catch(error => {
                             console.error('There has been a problem with your update operation:', error);
                         });
+                    this.itemToDelete = null;
                 },
 
                 calculateSubtotalPrice() {
