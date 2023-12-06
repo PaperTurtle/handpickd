@@ -18,14 +18,14 @@
                 @endif
                 <div class="md:ml-10">
                     <div>
-                        <div class="mt-4 font-bold">Name:</div>
+                        <div class="mt-4 font-bold text-base">Name:</div>
                         <div class="mt-1"> {{ $user->name }}</div>
                     </div>
                     <div>
-                        <div class="mt-4 font-bold">Email:</div>
+                        <div class="mt-4 font-bold text-base">Email:</div>
                         <div class="mt-1">{{ $user->email }}</div>
                     </div>
-                    <div class="mt-4 font-bold">Bio:</div>
+                    <div class="mt-4 font-bold text-base">Bio:</div>
                     <div class="mt-1">{{ $user->profile->bio }}</div>
                 </div>
             </div>
