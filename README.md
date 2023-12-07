@@ -4,7 +4,7 @@
 </div>
 <img src="https://img.shields.io/badge/project_status-complete-31c452" /> <img src="https://github.com/Paperturtle/handpickd/actions/workflows/laravel.yml/badge.svg?branch=main" />
 
-Handpickd is a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
+Handpickd is a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project built with Laravel that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
 
 ## 📖 Table of Contents
 
