@@ -47,8 +47,8 @@
                 </div>
             </div>
             <div class="mt-10">
-                <button type="submit"
-                    class="flex justify-center gap-2 w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all delay-[20ms]">Let's
+                <button type="submit" :disabled="loading"
+                    class="flex justify-center gap-2 w-full rounded-md bg-primary px-3.5 py-2.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all delay-[20ms] disabled:brightness-[.85]">Let's
                     talk <div x-show="loading" class="flex justify-center items-center">
                         <svg aria-hidden="true" class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-white"
                             viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
