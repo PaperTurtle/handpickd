@@ -6,7 +6,8 @@
                 <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div class="sm:max-w-lg">
                         <h1 class="text-5xl font-bold tracking-tight font-heading">Handpickd</h1>
-                        <p class="mt-4 text-base text-gray-500 leading-8">Welcome to Handpickd, a community-driven platform
+                        <p class="mt-4 text-base text-gray-500 leading-8">Welcome to Handpickd, a community-driven
+                            platform
                             that
                             celebrates creativity and craftsmanship. </br> Handpickd provides a space for artisans to
                             showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.</p>
@@ -361,7 +362,7 @@
                         people saying?</h2>
 
                     <div class="mt-16 space-y-16 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
-                        <blockquote class="sm:flex lg:block">
+                        <blockquote class="sm:flex lg:block relative">
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
                                 class="flex-shrink-0 text-background opacity-75">
                                 <path
@@ -374,9 +375,15 @@
                                 <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Hannah
                                     Davis</cite>
                             </div>
+                            <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
+                                class="flex-shrink-0 text-background opacity-75 absolute right-0 bottom-0 scale-y-[-1]">
+                                <path
+                                    d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z"
+                                    fill="currentColor" />
+                            </svg>
                         </blockquote>
                         <hr class="mt-1 mb-1 w-1/2 mx-auto block sm:hidden">
-                        <blockquote class="sm:flex lg:block">
+                        <blockquote class="sm:flex lg:block relative">
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
                                 class="flex-shrink-0 text-background opacity-75">
                                 <path
@@ -387,12 +394,17 @@
                                 <p class="text-lg text-background">I had to return a purchase that didn’t meet my
                                     expectations. The whole process was so simple that I ended up ordering two new
                                     items!</p>
-                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">George
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">- George
                                     Miller</cite>
                             </div>
+                            <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
+                                class="flex-shrink-0 text-background opacity-75 absolute right-0 bottom-0 scale-y-[-1]">
+                                <path
+                                    d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z"
+                                    fill="currentColor" />
                         </blockquote>
                         <hr class="mt-1 mb-1 w-1/2 mx-auto block sm:hidden">
-                        <blockquote class="sm:flex lg:block">
+                        <blockquote class="sm:flex lg:block relative">
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
                                 class="flex-shrink-0 text-background opacity-75">
                                 <path
@@ -404,7 +416,13 @@
                                     order a few more of the handwoven scarves. It’s just so convenient.</p>
                                 <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Ryan
                                     Moore</cite>
+
                             </div>
+                            <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
+                                class="flex-shrink-0 text-background opacity-75 absolute right-0 bottom-0 scale-y-[-1]">
+                                <path
+                                    d="M0 18h8.7v-5.555c-.024-3.906 1.113-6.841 2.892-9.68L6.452 0C3.188 2.644-.026 7.86 0 12.469V18zm12.408 0h8.7v-5.555C21.083 8.539 22.22 5.604 24 2.765L18.859 0c-3.263 2.644-6.476 7.86-6.451 12.469V18z"
+                                    fill="currentColor" />
                         </blockquote>
                     </div>
                 </div>
