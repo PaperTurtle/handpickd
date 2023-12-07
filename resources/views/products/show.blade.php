@@ -331,6 +331,7 @@
     <script>
         function reviewForm() {
             return {
+                loading: false,
                 openModal: false,
                 productId: '{{ $product->id }}',
                 rating: '1',
@@ -523,6 +524,7 @@
 
                 addToCart(event) {
                     @auth
+                    this.loading = true;
                     const formData = new FormData(event.target);
                     formData.append('quantity', '1');
                     fetch('{{ route('cart.add') }}', {
@@ -541,9 +543,11 @@
                         })
                         .then(data => {
                             if (data.success) {
+                                this.loading = false;
                                 this.showSuccessAlert = true;
                                 setTimeout(() => this.showSuccessAlert = false, 5000);
                             } else {
+                                this.loading = false;
                                 this.showFailureAlert = true;
                                 setTimeout(() => this.showFailureAlert = false, 5000);
                             }
