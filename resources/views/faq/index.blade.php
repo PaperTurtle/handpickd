@@ -5,20 +5,20 @@
         <div class="flex flex-col gap-2 sm:flex-row justify-between mt-5">
             <label
                 class="bg-white border-2 border-gray-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-semibold w-full cursor-pointer transition-all delay-[10ms] ease-in-out"
-                :class="{ 'border-[#538a38]': chosenTopic === 'general', 'hover:border-gray-400': chosenTopic !== 'general' }">
+                :class="{ 'border-primary': chosenTopic === 'general', 'hover:border-gray-400': chosenTopic !== 'general' }">
                 <input type="radio" name="topic" value="general" class="sr-only" x-model="chosenTopic">General</input>
             </label>
 
             <label
                 class="bg-white border-2 border-gray-300 rounded-md px-5 py-3 mr-2 text-xl text-center font-semibold w-full cursor-pointer transition-all delay-[10ms] ease-in-out"
-                :class="{ 'border-[#538a38]': chosenTopic === 'customers', 'hover:border-gray-400': chosenTopic !== 'customers' }">
+                :class="{ 'border-primary': chosenTopic === 'customers', 'hover:border-gray-400': chosenTopic !== 'customers' }">
                 <input type="radio" name="topic" value="customers" class="sr-only" x-model="chosenTopic">For our
                 Customers</input>
             </label>
 
             <label
                 class="bg-white border-2 border-gray-300 rounded-md px-5 py-3 text-xl text-center font-semibold w-full cursor-pointer transition-all delay-[10ms] ease-in-out"
-                :class="{ 'border-[#538a38]': chosenTopic === 'artisans', 'hover:border-gray-400': chosenTopic !== 'artisans' }">
+                :class="{ 'border-primary': chosenTopic === 'artisans', 'hover:border-gray-400': chosenTopic !== 'artisans' }">
                 <input type="radio" name="topic" value="artisans" class="sr-only" x-model="chosenTopic">For our
                 Artisans</input>
             </label>
