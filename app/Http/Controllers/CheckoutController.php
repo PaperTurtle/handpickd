@@ -138,10 +138,10 @@ class CheckoutController extends Controller
      * @throws AuthorizationException If the user is not authorized to perform a checkout.
      * @throws ValidationException If the request data does not pass validation checks.
      * @throws Exception If an unexpected error occurs during the process.
-     * @return RedirectResponse Redirects to a success route on successful checkout, or back with an error on failure.
+     * @return JsonResponse Redirects to a success route on successful checkout, or back with an error on failure.
      * @throws AuthorizationException If the user is not authenticated.
      */
-    public function processCheckout(CheckoutRequest $request): RedirectResponse
+    public function processCheckout(CheckoutRequest $request): JsonResponse
     {
         $user = auth()->user();
         $buyerData = $request->validated();
@@ -149,10 +149,19 @@ class CheckoutController extends Controller
         $response = $this->checkoutService->processCheckout($user, $buyerData);
 
         if ($response['status'] === 'success') {
-            return redirect()->route('checkout.success')->with('success', $response['message'])
-                ->with('transactionDetails', $response['transactionDetails']);
+            session(['transactionDetails' => $response['transactionDetails']]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => $response['message'],
+                'transactionDetails' => $response['transactionDetails'],
+                'redirectUrl' => route('checkout.success')
+            ]);
         } else {
-            return redirect()->back()->with('error', $response['message']);
+            return response()->json([
+                'status' => 'error',
+                'message' => $response['message']
+            ], 422);
         }
     }
 }
