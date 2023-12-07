@@ -8,8 +8,7 @@
             </a>
             <h1 class="text-3xl sm:text-4xl tracking-tight font-bold font-heading">Checkout</h1>
         </label>
-        <form class="pt-4" action="{{ route('checkout.process') }}" @submit="handleSubmit" method="POST" x-cloak
-            x-show="cartItems.length > 0">
+        <form class="pt-4" action="{{ route('checkout.process') }}" method="POST" x-cloak x-show="cartItems.length > 0">
             <input type="hidden" name="state_province" value="">
             @csrf
             <div class="lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
