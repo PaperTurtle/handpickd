@@ -83,5 +83,8 @@
                 </div>
             </div>
         </main>
+        @php
+            session()->forget('transactionDetails');
+        @endphp
     @endif
 </x-app-layout>
