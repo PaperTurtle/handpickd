@@ -48,11 +48,11 @@
                             </button>
                         </dt>
                         <dd class="mt-2" x-show="openGeneralQuestionOne"
-                            x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="transform opacity-0 scale-95"
-                            x-transition:enter-end="transform opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-75"
-                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:enter-end="transform opacity-100 scale-105"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="transform opacity-100 scale-105"
                             x-transition:leave-end="transform opacity-0 scale-95">
                             <!-- Answer -->
                             <p>Handpickd is a digital marketplace dedicated to showcasing unique, handcrafted items. It
@@ -82,11 +82,11 @@
                             </button>
                         </dt>
                         <dd class="mt-2" x-show="openGeneralQuestionTwo"
-                            x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="transform opacity-0 scale-95"
-                            x-transition:enter-end="transform opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-75"
-                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:enter-end="transform opacity-100 scale-105"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="transform opacity-100 scale-105"
                             x-transition:leave-end="transform opacity-0 scale-95">
                             <!-- Answer -->
                             <p>Handpickd is designed for both artisans who create handcrafted goods and individuals
@@ -116,11 +116,11 @@
                             </button>
                         </dt>
                         <dd class="mt-2" x-show="openGeneralQuestionThree"
-                            x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="transform opacity-0 scale-95"
-                            x-transition:enter-end="transform opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-75"
-                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:enter-end="transform opacity-100 scale-105"
+                            x-transition:leave="transition ease-in duration-200"
+                            x-transition:leave-start="transform opacity-100 scale-105"
                             x-transition:leave-end="transform opacity-0 scale-95">
                             <!-- Answer -->
                             <p>Handpickd was masterfully created by Loran Heinzel, Seweryn Czabanowski and Tobias
