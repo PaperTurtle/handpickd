@@ -8,9 +8,9 @@
             </a>
             <h1 class="text-3xl sm:text-4xl tracking-tight font-bold font-heading">Checkout</h1>
         </label>
-        <form class="pt-4" action="{{ route('checkout.process') }}" method="POST" x-cloak x-show="cartItems.length > 0">
-            <input type="hidden" name="state_province" value="">
+        <form class="pt-4" @submit.prevent="submitForm" method="POST" x-cloak x-show="cartItems.length > 0">
             @csrf
+            <input type="hidden" name="state_province" x-model="state_province" value="">
             <div class="lg:grid grid-cols-12 lg:gap-x-12 xl:gap-x-16">
                 <section class="col-span-7 text-text lg:grid mt-10 pt-4 w-full border-t border-gray-200">
                     <!-- Contact Information -->
@@ -82,7 +82,7 @@
                         <div class="flex mt-4 justify-between">
                             <div class="grid flex-grow">
                                 <label class="text-md">State / Province</label>
-                                <input type="text" name="state_province"
+                                <input type="text" name="state_province" x-model="state_province"
                                     class="h-8 text-sm rounded-md font-semibold shadow-sm 
                                         ring-inset ring-gray-300 border-gray-300 hover:bg-gray-50
                                         focus:ring-2 focus:ring-accent focus:border-accent transition-all delay-[20ms]"></input>
@@ -175,7 +175,7 @@
                     <!-- checkout button -->
                     <div class="pt-4">
                         <button type="submit" :disabled="loading"
-                            class="flex justify-center gap-2 bg-primary text-base hover:bg-accent text-white font-bold py-2 px-4 rounded-lg min-w-full transition-all delay-[20ms]">
+                            class="flex justify-center gap-2 bg-primary text-base hover:bg-accent text-white font-bold py-2 px-4 rounded-lg min-w-full transition-all delay-[20ms] disabled:brightness-[.85]">
                             Confirm Order <div x-show="loading" class="flex justify-center items-center">
                                 <svg aria-hidden="true"
                                     class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-white"
@@ -200,6 +200,7 @@
                 loading: false,
                 cartItems: @json($cartItems),
                 deliveryMethod: 'Standard',
+                state_province: '',
 
                 calculateSubtotalPrice() {
                     let subTotalPrice = 0;
@@ -218,6 +219,55 @@
                 calculateShippingEstimate() {
                     return this.deliveryMethod === "Standard" ? 4.99 : 12.99;
                 },
+
+                submitForm() {
+                    this.loading = true;
+
+                    let formData = new FormData();
+                    formData.append('email', document.querySelector('input[name="email"]').value);
+                    formData.append('phone_number', document.querySelector('input[name="phone_number"]').value);
+                    formData.append('first_name', document.querySelector('input[name="first_name"]').value);
+                    formData.append('last_name', document.querySelector('input[name="last_name"]').value);
+                    formData.append('address', document.querySelector('input[name="address"]').value);
+                    formData.append('city', document.querySelector('input[name="city"]').value);
+                    formData.append('country', document.querySelector('input[name="country"]').value);
+                    if (this.state_province) {
+                        formData.append('state_province', this.state_province);
+                    }
+                    formData.append('postal_code', document.querySelector('input[name="postal_code"]').value);
+                    formData.append('delivery_method', this.deliveryMethod);
+
+                    console.log(formData);
+                    fetch('{{ route('checkout.process') }}', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            if (response.headers.get('Content-Type').includes('application/json')) {
+                                return response.json();
+                            } else {
+                                throw new Error('Non-JSON response received');
+                            }
+                        })
+                        .then(data => {
+                            if (data.status === 'success') {
+                                window.location.href = data.redirectUrl;
+                            } else {
+                                console.error('Checkout error:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Error:', error))
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                }
             }
         }
     </script>
