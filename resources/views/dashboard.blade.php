@@ -47,6 +47,8 @@
                                         </div>
                                     </dl>
                                     <h3 x-cloak x-show="isOrderCompleted({{ json_encode($group->pluck('id')) }})"
+                                        x-transition:enter="transition ease-out duration-500"
+                                        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                                         class="inline-flex items-center text-green-500 font-bold">
                                         <span>Order Completed</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
