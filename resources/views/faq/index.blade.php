@@ -27,7 +27,12 @@
             <li x-show="chosenTopic === 'general'" x-data="{ openGeneralQuestionOne: false, openGeneralQuestionTwo: false, openGeneralQuestionThree: false }">
                 <dl>
                     <!-- Question One -->
-                    <div class="border-t border-gray-300 mt-6 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openGeneralQuestionOne,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openGeneralQuestionOne
+                        }">
                         <dt>
                             <button @click="openGeneralQuestionOne = !openGeneralQuestionOne"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -61,7 +66,12 @@
                     </div>
 
                     <!-- Question two -->
-                    <div class="border-t border-gray-300 mt-4 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openGeneralQuestionTwo,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openGeneralQuestionTwo
+                        }">
                         <dt>
                             <button @click="openGeneralQuestionTwo = !openGeneralQuestionTwo"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -95,7 +105,12 @@
                     </div>
 
                     <!-- Question three -->
-                    <div class="border-y border-gray-300 mt-4 py-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openGeneralQuestionThree,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openGeneralQuestionThree
+                        }">
                         <dt>
                             <button @click="openGeneralQuestionThree = !openGeneralQuestionThree"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -133,7 +148,12 @@
             <li x-show="chosenTopic === 'customers'" x-data="{ openCustomersQuestionOne: false, openCustomersQuestionTwo: false, openCustomersQuestionThree: false }">
                 <dl>
                     <!-- Question One -->
-                    <div class="border-t border-gray-300 mt-6 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openCustomersQuestionOne,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openCustomersQuestionOne
+                        }">
                         <dt>
                             <button @click="openCustomersQuestionOne = !openCustomersQuestionOne"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -167,7 +187,12 @@
                     </div>
 
                     <!-- Question two -->
-                    <div class="border-t border-gray-300 mt-4 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openCustomersQuestionTwo,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openCustomersQuestionTwo
+                        }">
                         <dt>
                             <button @click="openCustomersQuestionTwo = !openCustomersQuestionTwo"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -201,7 +226,12 @@
                     </div>
 
                     <!-- Question three -->
-                    <div class="border-y border-gray-300 mt-4 py-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openCustomersQuestionThree,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openCustomersQuestionThree
+                        }">
                         <dt>
                             <button @click="openCustomersQuestionThree = !openCustomersQuestionThree"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -239,7 +269,12 @@
             <li x-show="chosenTopic === 'artisans'" x-data="{ openArtisansQuestionOne: false, openArtisansQuestionTwo: false, openArtisansQuestionThree: false, openArtisansQuestionFour: false }">
                 <dl>
                     <!-- Question One -->
-                    <div class="border-t border-gray-300 mt-6 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openArtisansQuestionOne,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openArtisansQuestionOne
+                        }">
                         <dt>
                             <button @click="openArtisansQuestionOne = !openArtisansQuestionOne"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -273,7 +308,12 @@
                     </div>
 
                     <!-- Question two -->
-                    <div class="border-t border-gray-300 mt-4 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openArtisansQuestionTwo,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openArtisansQuestionTwo
+                        }">
                         <dt>
                             <button @click="openArtisansQuestionTwo = !openArtisansQuestionTwo"
                                 class="text-left text-base font-semi-bold w-full flex">
@@ -307,7 +347,12 @@
                     </div>
 
                     <!-- Question three -->
-                    <div class="border-t border-gray-300 mt-4 pt-4">
+                    <div
+                        :class="{
+                            'border-primary border-t mt-6 pt-4': openArtisansQuestionThree,
+                            'border-t border-gray-300 mt-6 pt-4': !
+                                openArtisansQuestionThree
+                        }">
                         <dt>
                             <button @click="openArtisansQuestionThree = !openArtisansQuestionThree"
                                 class="text-left text-base font-semi-bold w-full flex">
