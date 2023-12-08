@@ -80,7 +80,7 @@
                     <div
                         class="mt-6 grid grid-cols-1 grid-rows-2 gap-y-6 sm:grid-cols-5 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
                         <div
-                            class="group aspect-h-1 aspect-w-3 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-1 transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-3 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-1 transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_1.jpg') }}" alt="orange clay jugs on a table"
                                 class="object-cover object-center">
                             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50"></div>
@@ -99,7 +99,7 @@
 
                         <!-- Zweites Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_2.jpg') }}"
                                 alt="diamond drop earrings on a blue background"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -121,7 +121,7 @@
 
                         <!-- Drittes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full sm:row-span-2 transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full sm:row-span-2 transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_3.jpg') }}"
                                 alt="a hanging rack in a industrial looking room"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -143,7 +143,7 @@
 
                         <!-- Viertes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-auto transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-auto transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_4.jpg') }}" alt="wall with many different paintings"
                                 class="object-cover object-center">
                             <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50">
@@ -163,7 +163,7 @@
 
                         <!-- Fünftes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_5.jpg') }}"
                                 alt="a hanging rack in an industrial like room"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -185,7 +185,7 @@
 
                         <!-- Sechstes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_6.jpg') }}"
                                 alt="wedding shoes and bouquet of white roses"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -207,7 +207,7 @@
 
                         <!-- Siebtes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_7.jpg') }}"
                                 alt="a wooden giraffe, crocodile and an elephant sit on top of a book"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -229,7 +229,7 @@
 
                         <!-- Achtes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_8.jpg') }}"
                                 alt="a chair with a chest on top and a bike next to each other outside of a store"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
@@ -251,7 +251,7 @@
 
                         <!-- Neuntes Element -->
                         <div
-                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow">
+                            class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full transition ease-in-out delay-[20ms] hover:scale-105 hover:shadow hover:brightness-[.85]">
                             <img src="{{ URL('images/category_9.jpg') }}"
                                 alt="a white sink surrounded by a circular mirror with cosmetics on top"
                                 class="object-cover object-center sm:absolute sm:inset-0 sm:h-full sm:w-full">
