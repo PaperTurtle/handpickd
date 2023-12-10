@@ -29,7 +29,7 @@
                     </svg>
                 </x-nav-link>
                 @auth
-                    <x-nav-link :href="route('checkout.index')" :active="request()->routeIs('checkout.index')" class="group">
+                    <x-nav-link :href="route('checkout.index')" :active="request()->routeIs('checkout.index')" class="group" x-data="{ isActive: {{ request()->routeIs('checkout.index') ? 'true' : 'false' }} }">
                         <span>{{ __('Checkout') }}</span>
                         <span class="relative inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -39,7 +39,8 @@
                             </svg>
                             <template x-if="$store.cart.count > 0">
                                 <span
-                                    class="group-hover:bg-secondary absolute right-0 top-0 flex h-[0.85rem] w-[0.85rem] -translate-y-1/3 translate-x-1/2 transform items-center justify-center rounded-full bg-white text-sm text-black transition-colors duration-300">
+                                    :class="{ 'bg-background': isActive, 'bg-background group-hover:bg-secondary': !isActive }"
+                                    class="absolute right-0 top-0 flex h-[0.85rem] w-[0.85rem] -translate-y-1/3 translate-x-1/2 transform items-center justify-center rounded-full text-sm text-black transition-colors duration-300">
                                     <span x-text="$store.cart.count"></span>
                                 </span>
                             </template>
