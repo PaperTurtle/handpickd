@@ -152,6 +152,7 @@
                             return response.json();
                         })
                         .then(data => {
+                            Alpine.store('cart').count--;
                             this.cartItems = this.cartItems.filter(item => item.id !== itemId);
                             this.showSuccessDeleteAlert = true;
                             setTimeout(() => this.showSuccessDeleteAlert = false, 5000);
