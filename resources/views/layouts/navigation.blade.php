@@ -1,4 +1,12 @@
+@php use App\Models\ShoppingCart; @endphp
 <nav x-data="{ open: false, transitioning: false }" class="bg-primary sticky top-0 z-[60]">
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('cart', {
+                count: {{ $cartItemCount }}
+            });
+        });
+    </script>
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-24">
@@ -21,13 +29,21 @@
                     </svg>
                 </x-nav-link>
                 @auth
-                    <x-nav-link :href="route('checkout.index')" :active="request()->routeIs('checkout.index')">
+                    <x-nav-link :href="route('checkout.index')" :active="request()->routeIs('checkout.index')" class="group">
                         <span>{{ __('Checkout') }}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 ml-1 hidden lg:block">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                        </svg>
+                        <span class="relative inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 ml-1 hidden lg:block">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                            <template x-if="$store.cart.count > 0">
+                                <span
+                                    class="group-hover:bg-secondary absolute right-0 top-0 flex h-[0.85rem] w-[0.85rem] -translate-y-1/3 translate-x-1/2 transform items-center justify-center rounded-full bg-white text-sm text-black transition-colors duration-300">
+                                    <span x-text="$store.cart.count"></span>
+                                </span>
+                            </template>
+                        </span>
                     </x-nav-link>
                     @if (auth()->user()->isArtisan)
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
