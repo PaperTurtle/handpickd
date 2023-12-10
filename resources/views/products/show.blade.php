@@ -543,6 +543,9 @@
                         })
                         .then(data => {
                             if (data.success) {
+                                if (data.isNewItem) {
+                                    Alpine.store('cart').count++;
+                                }
                                 this.loading = false;
                                 this.showSuccessAlert = true;
                                 setTimeout(() => this.showSuccessAlert = false, 5000);
