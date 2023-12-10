@@ -32,6 +32,7 @@ class CartService
             ->where('product_id', $productId)
             ->first();
 
+        $isNewItem = false;
         if ($cartItem) {
             // Check if adding the quantity exceeds the available quantity
             if (($cartItem->quantity + $quantity) > $product->quantity) {
@@ -48,9 +49,10 @@ class CartService
                 'product_id' => $productId,
                 'quantity' => $quantity,
             ]);
+            $isNewItem = true;
         }
 
         $cartItem->save();
-        return ['success' => 'Product added to cart!'];
+        return ['success' => 'Product added to cart!', 'isNewItem' => $isNewItem];
     }
 }
