@@ -14,7 +14,7 @@
             <div>
                 <a href="/">
                     <img src="{{ URL('images/logo.png') }}" class="h-16 lg:h-20 w-auto object-contain rounded-full"
-                        alt="logo">
+                        alt="logo" width="80" height="80">
                 </a>
             </div>
 
