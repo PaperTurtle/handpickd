@@ -16,21 +16,21 @@
         </h1>
         <h3 class="text-lg font-medium text-gray-700">Created by:
             @if (auth()->check() && auth()->id() === $product->artisan_id)
-                @if ($product->artisan->profile->profile_picture !== null)
-                    <x-profile-image :product="$product" />
-                @else
-                    <x-profile-initials :product="$product" />
-                @endif
                 <a href="{{ route('profile.show', $product->artisan->id) }}">
+                    @if ($product->artisan->profile->profile_picture !== null)
+                        <x-profile-image :product="$product" />
+                    @else
+                        <x-profile-initials :product="$product" />
+                    @endif
                     <strong>You</strong>
                 </a>
             @else
-                @if ($product->artisan->profile->profile_picture !== null)
-                    <x-profile-image :product="$product" />
-                @else
-                    <x-profile-initials :product="$product" />
-                @endif
                 <a href="{{ route('profile.show', $product->artisan->id) }}">
+                    @if ($product->artisan->profile->profile_picture !== null)
+                        <x-profile-image :product="$product" />
+                    @else
+                        <x-profile-initials :product="$product" />
+                    @endif
                     {{ $product->artisan->name }}
                 </a>
             @endif
