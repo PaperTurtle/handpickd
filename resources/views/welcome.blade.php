@@ -316,7 +316,7 @@
                             Products</h2>
                         <a href="{{ route('products.index', ['sort' => 'rating']) }}"
                             class="hidden text-base font-semibold rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 sm:block transition-all delay-[20ms]">
-                            Browse all favorites
+                            Browse top rated products
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </div>
@@ -346,7 +346,7 @@
                     <div class="mt-6 sm:hidden">
                         <a href="{{ route('products.index') }}"
                             class="block text-base font-semibold text-center rounded-md border border-transparent bg-primary px-4 py-2 text-background hover:shadow-lg hover:scale-105 transition-all delay-[20ms]">
-                            Browse all favorites
+                            Browse top rated products
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </div>
