@@ -194,9 +194,6 @@ class ProductController extends Controller
     /**
      * Retrieve and display the top three rated products.
      * This method fetches the top three products based on their average ratings.
-     * It uses Eloquent relationship and aggregation features to calculate the average rating for each product,
-     * orders them in descending order of their average rating, and then limits the result to the top three products.
-     * The fetched products are then passed to the welcome view.
      *
      * @return Factory|View Returns a view with the top three rated products.
      */
