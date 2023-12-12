@@ -4,7 +4,7 @@
         @foreach ($images as $image)
             <div x-ref="image{{ $image->id }}" class="relative">
                 <img src="{{ Storage::url($image->image_path) }}" alt="{{ $image->alt_text }}"
-                    class="rounded-md h-24 object-cover">
+                    class="h-[15.928em] w-[15.928em] rounded-md object-cover">
                 <button type="button" @click="removeImage({{ $image->id }})"
                     class="absolute top-0 right-0 mt-1 mr-1 rounded-md bg-red-500 px-2 py-1 text-sm text-white">
                     Delete
