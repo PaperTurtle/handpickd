@@ -5,7 +5,7 @@
             <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                 <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div class="sm:max-w-lg">
-                        <h1 class="text-5xl font-bold tracking-tight font-heading">Handpickd</h1>
+                        <h1 class="text-4xl font-bold tracking-tight font-heading">Handpickd</h1>
                         <p class="mt-4 text-base text-gray-500 leading-8">Welcome to Handpickd, a community-driven
                             platform
                             that
