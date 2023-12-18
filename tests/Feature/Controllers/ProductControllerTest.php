@@ -4,19 +4,21 @@ use App\Models\Product;
 use App\Models\User;
 
 it('stores a new product', function () {
-    $this->actingAs(User::factory()->create());
+    $this->actingAs(User::factory()->create(['isArtisan' => true]));
     $productData = Product::factory()->make()->toArray();
+    $fakeImage = \Illuminate\Http\UploadedFile::fake()->image('product.jpg');
+    $productData['images'] = [$fakeImage];
     $response = $this->post(route('products.store'), $productData);
-
     $createdProduct = Product::latest('id')->first();
     $response->assertRedirect(route('products.show', $createdProduct->id));
-
+    unset($productData['images']);
     $this->assertDatabaseHas('products', $productData);
 });
 
 it('updates a product', function () {
-    $this->actingAs(User::factory()->create());
-    $product = Product::factory()->create();
+    $user = User::factory()->create(['isArtisan' => true]);
+    $product = Product::factory()->create(['artisan_id' => $user->id]);
+    $this->actingAs($user);
     $updatedData = [
         'name' => 'Updated Name',
         'description' => 'Updated Description',
@@ -25,11 +27,14 @@ it('updates a product', function () {
     ];
     $response = $this->put(route('products.update', $product), $updatedData);
     $response->assertRedirect(route('products.show', $product));
-    $this->assertDatabaseHas('products', $updatedData);
+    $this->assertDatabaseHas('products', [
+        'id' => $product->id,
+        ...$updatedData
+    ]);
 });
 
 it('deletes a product', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->create(['isArtisan' => true]);
     $this->actingAs($user);
     $product = Product::factory()->create(['artisan_id' => $user->id]);
     $response = $this->delete(route('products.destroy', $product));
