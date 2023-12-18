@@ -90,6 +90,7 @@ class ProductController extends Controller
      */
     public function create(): Factory|View
     {
+        $this->authorize('create', Product::class);
         return view('products.create');
     }
 
@@ -103,13 +104,14 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request): RedirectResponse
     {
+        $this->authorize('create', Product::class);
+
         $validatedData = $request->validated();
 
         $product = Product::create($validatedData);
 
-        if ($request->hasFile('images')) {
-            $this->imageService->processAndStoreImages($product, $request->file('images'), $validatedData['name']);
-        }
+        $this->imageService->processAndStoreImages($product, $request->file('images'), $validatedData['name']);
+
         return redirect()->route('products.show', $product->id)->with('success', 'Product created successfully.');
     }
 
@@ -139,6 +141,8 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
+        $this->authorize('update', $product);
+
         $validatedData = $request->validated();
         $product->update($validatedData);
 
