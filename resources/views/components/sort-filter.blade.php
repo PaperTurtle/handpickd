@@ -1,10 +1,13 @@
 <div x-cloak x-data="{ open: false, toggle() { this.open = !this.open }, closeOnClickAway(event) { if (!this.$el.contains(event.target)) { this.open = false } } }" @click.away="closeOnClickAway" class="relative inline-block text-left">
     <div>
         <button @click="toggle" type="button"
-            class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-text" id="menu-button"
-            aria-expanded="false" aria-haspopup="true">
+            class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-text gap-1"
+            id="menu-button" aria-expanded="false" aria-haspopup="true">
             Sort
-            <!-- SVG Icon here -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+            </svg>
         </button>
     </div>
     <div x-show="open" x-transition
