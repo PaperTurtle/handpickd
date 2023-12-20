@@ -19,8 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at Timestamp when the image was created.
  * @property Carbon $updated_at Timestamp when the image was last updated.
  *
- * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product to which the image belongs.
- *
  * @package App\Models
  */
 class ProductImage extends Model

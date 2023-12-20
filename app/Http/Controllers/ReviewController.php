@@ -57,7 +57,7 @@ class ReviewController extends Controller
      * @param int $id The ID of the review to be deleted.
      * @return JsonResponse Returns JSON response with a success message.
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
         $review = Review::find($id);
         $review->delete();

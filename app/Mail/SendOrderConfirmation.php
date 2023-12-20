@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
@@ -101,7 +102,7 @@ class SendOrderConfirmation extends Mailable
             $pdfFilePath = storage_path('pdfs/order-confirmation-' . time() . '.pdf');
 
             $pdf->save($pdfFilePath);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::error('Error during PDF generation and saving: ' . $e->getMessage(), [
                 'exception' => $e,
             ]);

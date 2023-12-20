@@ -81,7 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix("dashboard")->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware(EnsureUserIsArtisan::class);
         Route::patch('/transactions/{transaction}/mark-as-sent', [DashboardController::class, 'markAsSent'])
-            ->name('dashboard.markAsSent')->middleware(EnsureUserIsArtisan::class);;
+            ->name('dashboard.markAsSent')->middleware(EnsureUserIsArtisan::class);
     });
 
     // Cart routes

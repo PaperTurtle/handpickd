@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Middleware to redirect the user if their cart is empty. 
+ * Middleware to redirect the user if their cart is empty.
  */
 class EnsureUserIsArtisan
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param Request $request
+     * @param Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next): Response

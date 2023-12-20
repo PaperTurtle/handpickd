@@ -8,7 +8,6 @@ use App\Services\ImageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -19,7 +18,7 @@ use Illuminate\View\View;
  */
 class ProfileController extends Controller
 {
-    protected $imageService;
+    protected ImageService $imageService;
 
     public function __construct(ImageService $imageService)
     {
@@ -29,7 +28,7 @@ class ProfileController extends Controller
     /**
      * Display the user's profile.
      * This method returns the view for the user's profile with the user data.
-     * 
+     *
      * @param int $userID The ID of the user whose profile is being displayed.
      * @return View Returns the view for the user's profile with the user data.
      */
@@ -43,7 +42,7 @@ class ProfileController extends Controller
      * Display the user's profile form for editing.
      * This method returns the view for the user to edit their profile information.
      *
-     * @param Request $request The current request instance.
+     * @param int $userID
      * @return View Returns the view for editing the user's profile with the user data.
      */
     public function edit(int $userID): View
@@ -102,7 +101,7 @@ class ProfileController extends Controller
      *
      * @param Request $request The current request instance.
      * @param int $userID The ID of the user whose account is being deleted.
-     * @return RedirectResponse Returns a redirect response to the home page after account deletion. 
+     * @return RedirectResponse Returns a redirect response to the home page after account deletion.
      */
     public function destroy(Request $request, int $userID): RedirectResponse
     {

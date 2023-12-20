@@ -23,7 +23,7 @@ class ContactController extends Controller
      * @return JsonResponse Returns a JSON response indicating the success of the email operation.
      * @throws ValidationException If the request data does not pass validation checks.
      */
-    public function sendEmail(Request $request)
+    public function sendEmail(Request $request): JsonResponse
     {
         // Validate the request data
         $validatedData = $request->validate([

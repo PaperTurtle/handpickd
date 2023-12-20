@@ -16,8 +16,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Carbon $created_at Timestamp when the category was created.
  * @property Carbon $updated_at Timestamp when the category was last updated.
  *
- * @method HasMany products() HasMany relationship with Product. Represents all products belonging to this category.
- *
  * @package App\Models
  */
 class Category extends Model

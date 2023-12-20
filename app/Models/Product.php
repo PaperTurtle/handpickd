@@ -22,16 +22,6 @@ use Illuminate\Support\Facades\Auth;
  * @property Carbon $created_at Timestamp when the product was created.
  * @property Carbon $updated_at Timestamp when the product was last updated.
  *
- * @method BelongsTo artisan() BelongsTo relationship with User. Indicates the creator of the product.
- * @method BelongsTo category() BelongsTo relationship with Category. Indicates the category of the product.
- * @method HasMany images() HasMany relationship with ProductImage. Represents the images associated with the product.
- * @method HasMany reviews() HasMany relationship with Review. Represents the reviews made for the product.
- * 
- * @method bool hasUserReviewed(int $userId) Checks if a specific user has already reviewed the product.
- * @method float|null averageRating() Calculates and returns the average rating of the product based on its reviews.
- * @method int totalReviews() Returns the total number of reviews made for the product.
- * @method bool isInUserCart() Checks if the product is in the current user's shopping cart.
- *
  * @package App\Models
  */
 class Product extends Model

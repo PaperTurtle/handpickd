@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -19,7 +20,7 @@ class ContactMail extends Mailable
     /**
      * @var array The data received from the contact form.
      */
-    public $data;
+    public array $data;
 
     /**
      * Create a new message instance.
@@ -27,7 +28,7 @@ class ContactMail extends Mailable
      *
      * @param array $data Data passed to the email view.
      */
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -64,7 +65,7 @@ class ContactMail extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment> Returns an array of attachments.
+     * @return array<int, Attachment> Returns an array of attachments.
      */
     public function attachments(): array
     {

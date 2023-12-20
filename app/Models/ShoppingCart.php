@@ -18,12 +18,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon|null $updated_at Timestamp when the cart item was last updated. Can be null.
  * @property-read float|int $total_price Accessor to calculate the total price of the cart item, based on the quantity and the product's price.
  *
- * @method BelongsTo user() BelongsTo relationship with User. Indicates the user who owns the shopping cart item.
- * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product that is in the shopping cart.
- * 
- * @method float|int getTotalPriceAttribute() Accessor to calculate the total price of the cart item.
- * @method bool isEmpty() Checks if the shopping cart is empty.
- * 
  * @package App\Models
  */
 class ShoppingCart extends Model

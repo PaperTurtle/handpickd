@@ -87,6 +87,7 @@ class ProductController extends Controller
      * This method returns the view for creating a new product.
      *
      * @return Factory|View Returns a view for creating a new product.
+     * @throws AuthorizationException
      */
     public function create(): Factory|View
     {
@@ -101,6 +102,7 @@ class ProductController extends Controller
      *
      * @param StoreProductRequest $request The request object containing product data.
      * @return RedirectResponse Returns JSON response with the status of product creation.
+     * @throws AuthorizationException
      */
     public function store(StoreProductRequest $request): RedirectResponse
     {
@@ -138,6 +140,7 @@ class ProductController extends Controller
      * @param UpdateProductRequest $request The request object containing updated product data.
      * @param Product $product The product instance to update.
      * @return RedirectResponse Returns a redirect response to the product's detail page.
+     * @throws AuthorizationException
      */
     public function update(UpdateProductRequest $request, Product $product): RedirectResponse
     {
@@ -163,6 +166,7 @@ class ProductController extends Controller
      *
      * @param Product $product The product instance to delete.
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Product $product): RedirectResponse
     {

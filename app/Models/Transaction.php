@@ -19,9 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at Timestamp when the transaction was created.
  * @property Carbon $updated_at Timestamp when the transaction was last updated.
  *
- * @method BelongsTo buyer() BelongsTo relationship with User. Represents the buyer in the transaction.
- * @method BelongsTo product() BelongsTo relationship with Product. Represents the product involved in the transaction.
- *
  * @package App\Models
  */
 class Transaction extends Model

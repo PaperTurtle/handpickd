@@ -18,9 +18,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at Timestamp when the review was created.
  * @property Carbon $updated_at Timestamp when the review was last updated.
  *
- * @method BelongsTo product() BelongsTo relationship with Product. Indicates the product that is being reviewed.
- * @method BelongsTo user() BelongsTo relationship with User. Indicates the user who made the review.
- *
  * @package App\Models
  */
 class Review extends Model

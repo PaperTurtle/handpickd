@@ -17,8 +17,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $created_at Timestamp when the profile was created.
  * @property Carbon $updated_at Timestamp when the profile was last updated.
  *
- * @method BelongsTo user() BelongsTo relationship with User. Represents the user to whom the profile belongs.
- *
  * @package App\Models
  */
 class UserProfile extends Model

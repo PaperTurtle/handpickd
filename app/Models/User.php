@@ -24,12 +24,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @property Carbon|null $updated_at Timestamp when the user account was last updated. Can be null.
  * @property bool $isArtisan Flag indicating whether the user is an artisan.
  *
- * @method HasOne profile() HasOne relationship with UserProfile. Represents the user's profile.
- * @method HasMany products() HasMany relationship with Product. Represents products created by the user (if the user is an artisan).
- * @method HasMany reviews() HasMany relationship with Review. Represents reviews written by the user.
- * @method HasOne cart() HasOne relationship with ShoppingCart. Represents the user's cart.
- * @method HasMany transactions() HasMany relationship with Transaction. Represents transactions where the user is the buyer.
- *
  * @package App\Models
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -99,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Get the cart associated with the user.
-     * 
+     *
      * @return HasOne
      */
     public function cart(): HasOne
