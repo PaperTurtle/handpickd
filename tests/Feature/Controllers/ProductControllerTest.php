@@ -2,11 +2,12 @@
 
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
 
 it('stores a new product', function () {
     $this->actingAs(User::factory()->create(['isArtisan' => true]));
     $productData = Product::factory()->make()->toArray();
-    $fakeImage = \Illuminate\Http\UploadedFile::fake()->image('product.jpg');
+    $fakeImage = UploadedFile::fake()->image('product.jpg');
     $productData['images'] = [$fakeImage];
     $response = $this->post(route('products.store'), $productData);
     $createdProduct = Product::latest('id')->first();
