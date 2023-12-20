@@ -12,7 +12,6 @@ use App\Models\ShoppingCart;
 use App\Services\CartService;
 use App\Services\CheckoutService;
 use Exception;
-use Illuminate\Validation\ValidationException;
 
 /**
  * CheckoutController handles operations related to managing the shopping cart and processing the checkout in an e-commerce context.
@@ -21,9 +20,9 @@ use Illuminate\Validation\ValidationException;
 class CheckoutController extends Controller
 {
 
-    protected $cartService;
+    protected CartService $cartService;
 
-    protected $checkoutService;
+    protected CheckoutService $checkoutService;
 
     public function __construct(CartService $cartService, CheckoutService $checkoutService)
     {
@@ -51,7 +50,6 @@ class CheckoutController extends Controller
      * and displaying them on the checkout page.
      *
      * @return View Returns a view of the checkout page pre-populated with the user's cart items and product details.
-     * @throws AuthorizationException If the user is not authenticated.
      */
     public function process(): View
     {
@@ -61,7 +59,7 @@ class CheckoutController extends Controller
     }
 
     /**
-     * Display the checkout success page. 
+     * Display the checkout success page.
      *
      * @return View Returns a view of the checkout success page.
      */
@@ -133,12 +131,9 @@ class CheckoutController extends Controller
      * Process the checkout by creating transactions for each item in the cart and updating product quantities.
      * On success, the user's cart is cleared and redirected to a success route.
      * On failure, the transaction is rolled back and the user is redirected back with an error message.
-     * 
-     * @throws AuthorizationException If the user is not authorized to perform a checkout.
-     * @throws ValidationException If the request data does not pass validation checks.
+     *
      * @throws Exception If an unexpected error occurs during the process.
      * @return JsonResponse Redirects to a success route on successful checkout, or back with an error on failure.
-     * @throws AuthorizationException If the user is not authenticated.
      */
     public function processCheckout(CheckoutRequest $request): JsonResponse
     {
