@@ -18,10 +18,10 @@
             <a href="{{ route('products.index', ['sort' => 'rating']) }}"
                 class="block px-4 py-2 text-sm font-medium text-text" role="menuitem" id="menu-item-1">Best Rating</a>
             <a href="{{ route('products.index', ['sort' => 'price_asc']) }}"
-                class="block px-4 py-2 text-sm font-medium text-text" role="menuitem" id="menu-item-3">Price: Low to
+                class="block px-4 py-2 text-sm font-medium text-text" role="menuitem" id="menu-item-2">Price: Low to
                 High</a>
             <a href="{{ route('products.index', ['sort' => 'price_desc']) }}"
-                class="block px-4 py-2 text-sm font-medium text-text" role="menuitem" id="menu-item-4">Price: High to
+                class="block px-4 py-2 text-sm font-medium text-text" role="menuitem" id="menu-item-3">Price: High to
                 Low</a>
         </div>
     </div>
