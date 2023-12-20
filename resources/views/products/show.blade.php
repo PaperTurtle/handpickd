@@ -451,7 +451,7 @@
                             data.user.profile = {
                                 profile_picture: this.userProfilePicture
                             };
-                            this.reviews.push(data);
+                            this.reviews.unshift(data);
                             this.updateReviewData();
                             this.userHasReviewed = true;
                             this.rating = '';
