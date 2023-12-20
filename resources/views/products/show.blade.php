@@ -350,6 +350,7 @@
                 review: '',
                 reviews: @json($product->reviews->load('user.profile')),
                 userHasReviewed: {{ auth()->check() && $product->hasUserReviewed(auth()->id()) ? 'true' : 'false' }},
+                userProfilePicture: @json(auth()->check() ? auth()->user()->profile->profile_picture : null),
                 writingReview: false,
                 editingReview: false,
                 deletingReview: false,
@@ -447,6 +448,9 @@
                         })
                         .then(response => response.json())
                         .then(data => {
+                            data.user.profile = {
+                                profile_picture: this.userProfilePicture
+                            };
                             this.reviews.push(data);
                             this.updateReviewData();
                             this.userHasReviewed = true;
