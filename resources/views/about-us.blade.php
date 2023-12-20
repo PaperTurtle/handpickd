@@ -61,7 +61,7 @@
         </div>
 
         <!-- Team section -->
-        <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-48 lg:px-8">
+        <div class="mx-auto mt-16 mb-16 max-w-7xl px-6 sm:mt-24 sm:mb-24 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-heading">Our team</h2>
                 <p class="mt-6 text-lg leading-8 text-gray-600">This Web Application has been created by a team of
