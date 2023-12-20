@@ -26,8 +26,9 @@
             </div>
         </nav>
 
-        <div class="mt-10 flex-col sm-flex justify-center space-y-5 space-x-10">
-            <p class="mt-1 text-center text-xs leading-5 text-background font-medium">Copyright &#169; 2023 Handpickd.
+        <div class="mt-10 flex-row flex justify-center space-y-2 space-x-4 items-center">
+            <p class="mt-1 text-center text-xs leading-5 text-background font-medium">Copyright &#169; 2023
+                Handpickd.
                 All Rights
                 Reserved</p>
         </div>
