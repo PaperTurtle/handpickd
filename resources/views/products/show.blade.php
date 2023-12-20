@@ -226,7 +226,7 @@
                             </template>
                         </dl>
                     </div>
-                    @if (auth()->check() && !$product->hasUserReviewed(auth()->id()) && auth()->id() !== $product->artisan_id)
+                    @if (auth()->check() && auth()->id() !== $product->artisan_id)
                         <template x-if="!userHasReviewed">
                             <div class="mt-10 add-review" @submit.prevent="submitReview">
                                 <h3 class="text-lg font-medium text-text">Share your thoughts</h3>
