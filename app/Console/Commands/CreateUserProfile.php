@@ -34,12 +34,12 @@ class CreateUserProfile extends Command
 
     /**
      * Execute the console command.
-     * 
+     *
      * This method retrieves all users who do not have an associated profile and creates
      * a new UserProfile for each. It outputs information about the process to the console,
      * indicating the creation of user profiles.
      */
-    public function handle()
+    public function handle(): void
     {
         $usersWithoutProfile = User::doesntHave('profile')->get();
 
@@ -48,7 +48,7 @@ class CreateUserProfile extends Command
                 'user_id' => $user->id,
             ]);
 
-            $this->info("Created profile for user: {$user->id}");
+            $this->info("Created profile for user: $user->id");
         }
 
         $this->info('All missing user profiles have been created.');
