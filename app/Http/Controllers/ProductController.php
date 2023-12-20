@@ -73,7 +73,10 @@ class ProductController extends Controller
      */
     public function show(Product $product): Factory|View
     {
-        $product->load('reviews.user');
+        $product->load(['reviews' => function ($query) {
+            $query->orderBy('created_at', 'desc')->with('user.profile');
+        }]);
+
 
         return view('products.show', [
             'product' => $product,
