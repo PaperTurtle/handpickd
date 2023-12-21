@@ -1,4 +1,4 @@
-<h1 align="center"> Handpickd - Artisanal Marketplace</h1> 
+<h1 align="center">Handpickd - Artisanal Marketplace for Handmade Goods</h1> 
 <div align="center">
    <img src="https://github.com/PaperTurtle/handpickd/assets/68080844/3a49f36e-d924-4e05-9e01-654bb12c588e" width=192 height=192 alt="logo" />
 </div>
@@ -12,7 +12,7 @@
    <img src="https://img.shields.io/badge/-MySQL-4479A1?style=for-the-badge&logoColor=white&logo=mysql" alt="MySQL" />
 </div>
 
-Handpickd is a community-driven platform that celebrates creativity and craftsmanship. This marketplace is a school project built with Laravel that provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items.
+Handpickd is a community-driven platform that celebrates creativity and craftsmanship. Our marketplace provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items. Built as a school project using Laravel, Alpine.js, and MySQL, Handpickd is a testament to the power of community and craftsmanship.
 
 ## 📖 Table of Contents
 
