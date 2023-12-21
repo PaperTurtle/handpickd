@@ -14,6 +14,8 @@
 
 Handpickd is a community-driven platform that celebrates creativity and craftsmanship. Our marketplace provides a space for artisans to showcase their handmade goods and for enthusiasts to discover unique, handcrafted items. Built as a school project using Laravel, Alpine.js, and MySQL, Handpickd is a testament to the power of community and craftsmanship.
 
+https://github.com/PaperTurtle/handpickd/assets/68080844/cb575548-7741-4315-a2ca-f03c0af15de1
+
 ## 📖 Table of Contents
 
 -  [📖 Table of Contents](#-table-of-contents)
