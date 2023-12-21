@@ -9,7 +9,9 @@
                 <template x-if="cartItems.length > 0">
                     <div class="cart-items divide-y divide-gray-200 border-b border-t border-gray-200">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
-                            <div class="cart-item flex py-6 sm:py-10 relative">
+                            <div class="cart-item flex py-6 sm:py-10 relative" x-show="!cartItem.deleting"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                                 <!-- Picture -->
                                 <div class="flex-shrink-0">
                                     <img :src="{{ Storage::url('') }} + cartItem.product.images[0].thumbnail_image_path"
@@ -109,7 +111,9 @@
                     <!-- items summary -->
                     <div class="mt-6">
                         <template x-for="cartItem in cartItems" :key="cartItem.id">
-                            <div class="flex items-center justify-between space-y-2">
+                            <div class="flex items-center justify-between space-y-2" x-show="!cartItem.deleting"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                                 <dt x-text="`${cartItem.product.name}`"></dt>
                                 <dd class="font-medium"
                                     x-text="`${Number(cartItem.product.price * cartItem.quantity).toFixed(2)} €`"></dd>
@@ -138,30 +142,41 @@
                 showSuccessDeleteAlert: false,
                 itemToDelete: null,
                 removeFromCart(itemId) {
-                    fetch(`/cart/${itemId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                            },
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            Alpine.store('cart').count--;
-                            this.cartItems = this.cartItems.filter(item => item.id !== itemId);
-                            this.showSuccessDeleteAlert = true;
-                            setTimeout(() => this.showSuccessDeleteAlert = false, 5000);
-                        })
-                        .catch(error => {
-                            console.error('There has been a problem with your fetch operation:', error);
-                        });
+                    this.cartItems = this.cartItems.map(item => {
+                        if (item.id === itemId) {
+                            return {
+                                ...item,
+                                deleting: true
+                            };
+                        }
+                        return item;
+                    });
+                    setTimeout(() => {
+                            fetch(`/cart/${itemId}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                    },
+                                })
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('Network response was not ok');
+                                    }
+                                    return response.json();
+                                })
+                                .then(data => {
+                                    Alpine.store('cart').count--;
+                                    this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+                                    this.showSuccessDeleteAlert = true;
+                                    setTimeout(() => this.showSuccessDeleteAlert = false, 5000);
+                                })
+                                .catch(error => {
+                                    console.error('There has been a problem with your fetch operation:', error);
+                                });
+                        },
+                        200);
                 },
-
                 updateCart(itemId, newQuantity) {
                     fetch(`/cart/update/${itemId}`, {
                             method: 'PATCH',
