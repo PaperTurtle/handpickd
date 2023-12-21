@@ -5,7 +5,7 @@
             <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                 <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div class="sm:max-w-lg">
-                        <h1 class="text-5xl font-bold tracking-tight font-heading">Handpickd</h1>
+                        <h1 class="text-4xl font-bold tracking-tight font-heading">Handpickd</h1>
                         <p class="mt-4 text-base text-gray-500 leading-8">Welcome to Handpickd, a community-driven
                             platform
                             that
@@ -372,7 +372,7 @@
                             <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                                 <p class="text-lg text-background">My order arrived super quickly. The leather wallet
                                     is even better than I hoped it would be. Very happy customer over here!</p>
-                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Hannah
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">- Hannah
                                     Davis</cite>
                             </div>
                             <svg width="24" height="18" viewBox="0 0 24 18" aria-hidden="true"
@@ -414,7 +414,7 @@
                             <div class="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                                 <p class="text-lg text-background">Now that christmas is approaching, I’ll probably
                                     order a few more of the handwoven scarves. It’s just so convenient.</p>
-                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">Ryan
+                                <cite class="mt-4 block font-semibold not-italic text-background opacity-75">- Ryan
                                     Moore</cite>
 
                             </div>
