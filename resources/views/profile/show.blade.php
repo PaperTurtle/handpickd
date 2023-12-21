@@ -3,6 +3,7 @@
         <h2 class="text-4xl font-bold font-heading">Profile</h2>
         <!-- Personal Information -->
         <h2 class="text-3xl font-bold mt-10 font-heading">Personal information</h2>
+        <p class="mt-2 text-sm text-gray-500">View and update your profile information</p>
         <section class="mt-6 border-t border-b border-gray-300 pt-8 pb-6 h-fit">
             <div class="md:flex">
                 @if ($user->profile->profile_picture !== null)
@@ -32,7 +33,14 @@
             @if ($user->id === auth()->id())
                 <div class="relative mt-16 mb-4">
                     <a href="{{ route('profile.edit', auth()->user()->id) }}"><button type="submit"
-                            class="absolute bottom-0 right-0 w-20 rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">Edit</button>
+                            class="absolute bottom-0 right-0 inline-flex justify-center w-28 rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">Edit
+                            Profile
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-4 h-34">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                            </svg>
+                        </button>
                     </a>
                 </div>
             @endif
@@ -48,11 +56,18 @@
             <section class="border-b border-gray-300 mt-6 pb-8">
                 @if ($user->id === auth()->id())
                     <h3 class="text-3xl font-bold font-heading inline-block">Your Products</h3>
+                    <p class="mt-2 text-sm text-gray-500">View and manage your products</p>
                     <div class="flex justify-end">
                         <button
-                            class="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
+                            class="rounded-md bg-primary flex justify-center gap-1 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
                             <a href="{{ route('products.create') }}">Create
                                 a new Product</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
+                            </svg>
+
                         </button>
                     </div>
                 @else
@@ -88,12 +103,22 @@
                                     <div class="mt-2 flex justify-center gap-4">
                                         <!-- Delete Button -->
                                         <button
-                                            class="rounded-md bg-red-600 hover:bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50"><a
-                                                href="{{ route('products.show', $product->id) }}">Delete</a></button>
+                                            class="flex justify-center gap-1 rounded-md bg-red-600 hover:bg-red-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50"><a
+                                                href="{{ route('products.show', $product->id) }}">Delete</a><svg
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                            </svg></button>
                                         <!-- Edit Button -->
                                         <button
-                                            class="rounded-md bg-blue-600 hover:bg-blue-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50">
-                                            <a href="{{ route('products.edit', $product->id) }}">Edit</a></button>
+                                            class="flex justify-center gap-1 rounded-md bg-blue-600 hover:bg-blue-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms] z-50">
+                                            <a href="{{ route('products.edit', $product->id) }}">Edit </a><svg
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg></button>
                                         <x-delete-modal :product="$product" />
 
                                     </div>
@@ -116,8 +141,14 @@
                 <section class="py-16 sm:pb-24 sm:pt-12">
                     <div class="flex justify-end">
                         <button x-on:click="showAll = !showAll"
-                            class="rounded-md bg-primary px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
+                            class="rounded-md bg-primary flex justify-center gap-1 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all delay-[10ms]">
                             <span x-text="showAll ? 'Show Pending Orders' : 'Show All Orders'"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" data-slot="icon" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+                            </svg>
+
                         </button>
                     </div>
                     <div class="max-w-xl">
@@ -182,13 +213,15 @@
                                                             Quantity: {{ $transaction->quantity }}</p>
                                                         <p class="mt-1 text-base font-medium text-gray-900">
                                                             Price: {{ $transaction->product->price }} €</p>
-                                                        <p class="mt-24 text-base font-medium text-gray-900 flex gap-2">
+                                                        <p
+                                                            class="mt-24 text-base font-medium text-gray-900 flex gap-2">
                                                             @if ($transaction->status == 'sent')
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                     viewBox="0 0 24 24" stroke-width="1.5"
                                                                     stroke="currentColor"
                                                                     class="ml-2 w-6 h-6 text-green-500">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
                                                                         d="M4.5 12.75l6 6 9-13.5" />
                                                                 </svg> Delivered on
                                                                 {{ $transaction->updated_at->format('F j, Y') }}
